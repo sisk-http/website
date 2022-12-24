@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GenerateMdDoc": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\gscat\\source\\repos\\Sisk\\Src\\Core\\bin\\Debug\\net6.0\\Sisk.Core.xml\""
+    }
+  }
+}

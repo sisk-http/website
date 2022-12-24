@@ -1,0 +1,192 @@
+a {
+    color: #0065b3;
+}
+
+.page-content {
+    font-size: 14px;
+}
+
+.text-date {
+    opacity: .75;
+    margin-bottom: 1.5rem;
+}
+
+.Wrap {
+    max-width: 100%;
+}
+
+.Content {
+    margin-inline: auto;
+    max-width: 1200px;
+}
+
+.Sidebar {
+    width: 360px !important;
+    overflow-y: scroll !important;
+    word-break: unset !important;
+}
+
+.site-title span {
+    color: #222;
+    text-transform: uppercase;
+}
+
+.markdown-header,
+.page-title {
+    margin: .8rem 0 !important;
+    font-weight: 600 !important;
+    border-bottom: none !important;
+}
+
+.token.function {
+    color: black;
+}
+
+.token.property {
+    color: #353535
+}
+
+.token.punctuation,
+.token.operator {
+    color: #5c5c5c
+}
+
+.token.string {
+    color: #bf473a
+}
+
+.token.doctype {
+    color: darkred;
+    opacity: .5
+}
+
+.token.tag {
+    color: darkred
+}
+
+.token .attr-name {
+    color: red
+}
+
+.token .attr-value {
+    color: blue !important
+}
+
+.token.boolean {
+    color: #0101fd
+}
+
+.token.number {
+    color: #5b6d3a
+}
+
+.token.keyword {
+    color: #0101fd
+}
+
+.token.class-name {
+    color: #006881
+}
+
+.Content > * {
+    margin-inline: 15px !important;
+}
+
+.page-content pre code {
+    font-size: 1em;
+}
+
+.ItemTitle.collapsable {
+    margin-top: 35px;
+}
+
+.PageToc {
+    margin-top: 0 !important;
+}
+
+.ItemChild {
+    margin-bottom: 0 !important;
+}
+
+.PageToc,
+.ItemChildren {
+    border-left: none !important;
+}
+
+.ItemChildLink {
+    margin: 0 !important;
+    padding: 8px 0;
+}
+
+.PageTocHeading {
+    margin: 0 !important;
+    padding: 8px 16px;
+}
+
+.ItemChildLink.active {
+    font-weight: 500 !important;
+}
+
+.PageTocHeading.router-link-exact-active {
+    font-weight: 500 !important;
+    background-color: rgb(230, 230, 230);
+}
+
+.page-content .pre-wrapper:before {
+    background-color: #e6e6e6;
+    color: #7c7c7c;
+    display: block;
+    position: relative;
+    right: 0;
+    top: 0;
+    padding: 5px 15px;
+}
+
+.page-content .pre-wrapper {
+    border: 1px solid gainsboro;
+    border-radius: 0 !important;
+}
+
+.pre-wrapper > pre {
+    padding: 15px;
+}
+
+.page-content blockquote code {
+    background-color: #b5d0e5;
+}
+
+.page-content blockquote {
+    background-color: #d7eaf8;
+    color: black;
+    border-left: none;
+    border-radius: 5px;
+}
+
+.page-content blockquote:before {
+    content: '🛈 Important';
+    display: block;
+    color: #004173;
+    opacity: .75;
+    font-weight: 500;
+    margin-bottom: .5em;
+}
+
+
+table > thead {
+    display: none;
+}
+
+table,
+th,
+td {
+    border: 1px solid rgb(230, 230, 230);
+    border-collapse: collapse !important;
+}
+
+td {
+    padding: 6px 10px !important;
+}
+
+tr > td:first-of-type {
+    width: 320px;
+}
