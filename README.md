@@ -2,7 +2,7 @@
 
 Sisk documentation and specification, written in Markdown and Javascript. This documentation doesn't currently have tutorials or walkthroughs, but it will.
 
-You can visit the documentation from [this link](https://sisk-web-framework.github.io/docs/static/#/).
+You can visit the documentation from [this link](https://sisk-http.github.io/docs/static/#/).
 
 ## Building docs
 
