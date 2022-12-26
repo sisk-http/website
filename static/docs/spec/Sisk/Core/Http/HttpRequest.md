@@ -1,5 +1,5 @@
 # Class HttpRequest
-Last updated: Thursday, 22 December 2022
+Last updated: Sunday, 25 December 2022
 
 ## Definition
 Namespace: Sisk.Core.Http
@@ -19,6 +19,7 @@ Represents an HTTP request received by a Sisk server.
 | [HasContents](/spec/Sisk/Core/Http/HttpRequest/HasContents) | Gets a boolean indicating whether this request has contents. | 
 | [Headers](/spec/Sisk/Core/Http/HttpRequest/Headers) | Gets the HTTP request headers. | 
 | [Host](/spec/Sisk/Core/Http/HttpRequest/Host) | Get the requested host header (without port) from this HTTP request. | 
+| [Authority](/spec/Sisk/Core/Http/HttpRequest/Authority) | Get the requested host header with the port from this HTTP request. | 
 | [Path](/spec/Sisk/Core/Http/HttpRequest/Path) | Gets the HTTP request path without the query string. | 
 | [FullPath](/spec/Sisk/Core/Http/HttpRequest/FullPath) | Gets the full HTTP request path with the query string. | 
 | [FullUrl](/spec/Sisk/Core/Http/HttpRequest/FullUrl) | Gets the full URL for this request, with scheme, host, port (if any), path and query. | 

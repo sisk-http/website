@@ -180,6 +180,10 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Http/HttpRequest/Host"
   },
   {
+    "title": "Http.HttpRequest.Authority",
+    "link": "/spec/Sisk/Core/Http/HttpRequest/Authority"
+  },
+  {
     "title": "Http.HttpRequest.Path",
     "link": "/spec/Sisk/Core/Http/HttpRequest/Path"
   },
