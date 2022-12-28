@@ -388,6 +388,14 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Http/HttpServerConfiguration"
   },
   {
+    "title": "Http.HttpServerConfiguration.ResolveForwardedOriginAddress",
+    "link": "/spec/Sisk/Core/Http/HttpServerConfiguration/ResolveForwardedOriginAddress"
+  },
+  {
+    "title": "Http.HttpServerConfiguration.ResolveForwardedOriginHost",
+    "link": "/spec/Sisk/Core/Http/HttpServerConfiguration/ResolveForwardedOriginHost"
+  },
+  {
     "title": "Http.HttpServerConfiguration.DefaultEncoding",
     "link": "/spec/Sisk/Core/Http/HttpServerConfiguration/DefaultEncoding"
   },
@@ -398,6 +406,10 @@ var specLinks = [
   {
     "title": "Http.HttpServerConfiguration.Verbose",
     "link": "/spec/Sisk/Core/Http/HttpServerConfiguration/Verbose"
+  },
+  {
+    "title": "Http.HttpServerConfiguration.EnableVerboseColors",
+    "link": "/spec/Sisk/Core/Http/HttpServerConfiguration/EnableVerboseColors"
   },
   {
     "title": "Http.HttpServerConfiguration.IncludeRequestIdHeader",
@@ -462,6 +474,10 @@ var specLinks = [
   {
     "title": "Http.HttpServerExecutionResult.ServerException",
     "link": "/spec/Sisk/Core/Http/HttpServerExecutionResult/ServerException"
+  },
+  {
+    "title": "Http.HttpServerExecutionResult.IsSuccessStatus",
+    "link": "/spec/Sisk/Core/Http/HttpServerExecutionResult/IsSuccessStatus"
   },
   {
     "title": "Http.HttpServerExecutionStatus",
@@ -658,6 +674,18 @@ var specLinks = [
   {
     "title": "Routing.Handlers.RateLimiterPolicy.#ctor",
     "link": "/spec/Sisk/Core/Routing/Handlers/RateLimiterPolicy/_ctor--TimeSpan-Int32-Boolean-Boolean"
+  },
+  {
+    "title": "Routing.Handlers.RequestHandlerFactory",
+    "link": "/spec/Sisk/Core/Routing/Handlers/RequestHandlerFactory"
+  },
+  {
+    "title": "Routing.Handlers.RequestHandlerFactory.BuildRequestHandlers",
+    "link": "/spec/Sisk/Core/Routing/Handlers/RequestHandlerFactory/BuildRequestHandlers--"
+  },
+  {
+    "title": "Routing.Handlers.RequestHandlerFactory.Setup",
+    "link": "/spec/Sisk/Core/Routing/Handlers/RequestHandlerFactory/Setup--NameValueCollection"
   },
   {
     "title": "Routing.RouterCallback",

@@ -1,3 +1,17 @@
+# 0.7.5
+
+Released: 28/12/2022
+
+- Created class `RequestHandlersFactory` to emit `IRequestHandler` instances to use as external modules.
+- Created property `HttpServerConfiguration.ResolveForwardedOriginAddress` and `HttpServerConfiguration.ResolveForwardedOriginHost`, which allows the `HttpRequest` to resolve
+proxied requests to their real addresses and hostnames.
+- Created property `HttpServerExecutionResult.IsSuccessStatus`, which gets an boolean indicating if the execution status is an success status.
+- Put date, time and remote IP address in the detailed verbose message.
+- Verbose messages can write with more meaningful colors now.
+- Changed the `MimeTypeMap.DefaultMimeType` from `application/octet-stream` to `text/plain`.
+- Fixed: cached responses could change the collection of response headers during enumeration of the same on the HTTP server.
+- Fixed: disposing `HttpServer` could crash `ListenerCallback` while trying to get the callback of an disposed object.
+
 # 0.7.3
 
 Released: 25/12/2022
