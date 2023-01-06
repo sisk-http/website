@@ -1,3 +1,24 @@
+# 0.8.0
+
+Released: 06/01/2023
+
+- `HttpServerConfiguration.ListeningHosts` now hosts an `ListeningHostRepository` object, which supports
+updating, adding or removing ListeningHosts during the server execution. If you change ports which the
+HTTP server is listening, an `HttpServer.Restart()` would be necessary to refresh the listening ports of
+the HTTP server.
+- Created property `HttpRequest.IsSecure`, which determines if the request was made by an secure (SSL) layer.
+- Created properties `RequestSize` and `ResponseSize` inside `HttpServerExecutionResult`.
+- Created an unique handle for Listening hosts, which can identify it's instances and prevent duplicates inside
+- an HTTP server.
+- Listening host router can be null and the `ListeningHost` class can now be initialized without an Router. This will
+cause that the `ListeningHost` cannot be listened and if an request matches it's host, an `ListeningHostNotReady` status
+can be reused.
+- Optimized `HttpRequest.GetQueryValue`  and `HttpRequest.GetHeader` methods.
+- Fixed an bug where `HttpServer` don't respects `HttpServerConfiguration.ThrowExceptions` when an error
+inside an Router callback is throwed and can't be handled.
+- Fixed an bug where requests weren't closed after an failed processing.
+- Removed color support.
+
 # 0.7.5
 
 Released: 28/12/2022

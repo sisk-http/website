@@ -1,11 +1,11 @@
 # Class HttpServer
-Last updated: Wednesday, 28 December 2022
+Last updated: Friday, 06 January 2023
 
 ## Definition
 Namespace: Sisk.Core.Http
 
 ```csharp
-public class HttpServer : IDisposable
+public class HttpServer
 ```
 
 Provides an lightweight HTTP server powered by Sisk.
@@ -25,7 +25,6 @@ Provides an lightweight HTTP server powered by Sisk.
 | [GetVersion()](/spec/Sisk/Core/Http/HttpServer/GetVersion--) | Get Sisk version label. | 
 | [Start()](/spec/Sisk/Core/Http/HttpServer/Start--) | Starts listening to the set port and handling requests on this server. | 
 | [Stop()](/spec/Sisk/Core/Http/HttpServer/Stop--) | Stops the server from listening and stops the request handler. | 
-| [Dispose()](/spec/Sisk/Core/Http/HttpServer/Dispose--) | Invalidates this class and releases the resources used by it, and permanently closes the HTTP server. | 
 
 ## Constructors
 

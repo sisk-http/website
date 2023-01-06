@@ -1,5 +1,5 @@
 # Property MaximumContentLength
-Last updated: Wednesday, 28 December 2022
+Last updated: Friday, 06 January 2023
 
 ## Definition
 Namespace: Sisk.Core.Http
@@ -8,5 +8,5 @@ Namespace: Sisk.Core.Http
 public long MaximumContentLength { get; set; }
 ```
 
-Gets or sets the maximum size of a request body before it is closed by the socket.
+Defines the maximum size of a request body before it is closed by the socket.
 

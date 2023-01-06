@@ -1,5 +1,5 @@
 # Constructor #ctor
-Last updated: Wednesday, 28 December 2022
+Last updated: Friday, 06 January 2023
 
 ## Definition
 Namespace: Sisk.Core.Http
@@ -14,5 +14,6 @@ Creates a new default configuration [HttpServer](/spec/Sisk/Core/Http/HttpServer
 
 | Key | Value |
 | --- | --- |
+| r | The routing object to init the Http server. This will not start the server. | 
 | configuration | The configuration object of the server. | 
 

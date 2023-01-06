@@ -1,5 +1,5 @@
 # Property IncludeRequestIdHeader
-Last updated: Wednesday, 28 December 2022
+Last updated: Friday, 06 January 2023
 
 ## Definition
 Namespace: Sisk.Core.Http
@@ -8,5 +8,5 @@ Namespace: Sisk.Core.Http
 public bool IncludeRequestIdHeader { get; set; }
 ```
 
-Gets or sets whether the server should include the "X-Request-Id" header in response headers.
+Determines whether the server should include the "X-Request-Id" header in response headers.
 
