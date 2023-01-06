@@ -8,5 +8,5 @@ Namespace: Sisk.Core.Http
 public bool IncludeRequestIdHeader { get; set; }
 ```
 
-Determines whether the server should include the "X-Request-Id" header in response headers.
+Gets or sets whether the server should include the "X-Request-Id" header in response headers.
 

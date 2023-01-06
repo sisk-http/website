@@ -33,4 +33,5 @@ Provides a class to provide Cross Origin response headers for when communicating
 | Method name | Description |
 | --- | --- |
 | [CrossOriginResourceSharingHeaders(String[], String[], String[], TimeSpan)](/spec/Sisk/Core/Entity/CrossOriginResourceSharingHeaders/_ctor--String[]-String[]-String[]-TimeSpan) | Create a new [CrossOriginResourceSharingHeaders](/spec/Sisk/Core/Entity/CrossOriginResourceSharingHeaders) class instance with given parameters. | 
+| [CrossOriginResourceSharingHeaders()](/spec/Sisk/Core/Entity/CrossOriginResourceSharingHeaders/_ctor--) | Creates an empty [CrossOriginResourceSharingHeaders](/spec/Sisk/Core/Entity/CrossOriginResourceSharingHeaders) instance with no predefined CORS headers. | 
 

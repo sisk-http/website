@@ -164,6 +164,10 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Http/HttpRequest/RequestId"
   },
   {
+    "title": "Http.HttpRequest.IsSecure",
+    "link": "/spec/Sisk/Core/Http/HttpRequest/IsSecure"
+  },
+  {
     "title": "Http.HttpRequest.IsContentAvailable",
     "link": "/spec/Sisk/Core/Http/HttpRequest/IsContentAvailable"
   },
@@ -244,12 +248,12 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Http/HttpRequest/GetRawHttpRequest--Boolean"
   },
   {
-    "title": "Http.HttpRequest.GetHeader",
-    "link": "/spec/Sisk/Core/Http/HttpRequest/GetHeader--String"
-  },
-  {
     "title": "Http.HttpRequest.GetQueryValue",
     "link": "/spec/Sisk/Core/Http/HttpRequest/GetQueryValue--String"
+  },
+  {
+    "title": "Http.HttpRequest.GetHeader",
+    "link": "/spec/Sisk/Core/Http/HttpRequest/GetHeader--String"
   },
   {
     "title": "Http.HttpRequest.CreateHeadResponse",
@@ -298,10 +302,6 @@ var specLinks = [
   {
     "title": "Http.HttpResponse",
     "link": "/spec/Sisk/Core/Http/HttpResponse"
-  },
-  {
-    "title": "Http.HttpResponse.Empty",
-    "link": "/spec/Sisk/Core/Http/HttpResponse/Empty"
   },
   {
     "title": "Http.HttpResponse.Status",
@@ -372,6 +372,10 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Http/HttpServer/_ctor--HttpServerConfiguration"
   },
   {
+    "title": "Http.HttpServer.Restart",
+    "link": "/spec/Sisk/Core/Http/HttpServer/Restart--"
+  },
+  {
     "title": "Http.HttpServer.Start",
     "link": "/spec/Sisk/Core/Http/HttpServer/Start--"
   },
@@ -406,10 +410,6 @@ var specLinks = [
   {
     "title": "Http.HttpServerConfiguration.Verbose",
     "link": "/spec/Sisk/Core/Http/HttpServerConfiguration/Verbose"
-  },
-  {
-    "title": "Http.HttpServerConfiguration.EnableVerboseColors",
-    "link": "/spec/Sisk/Core/Http/HttpServerConfiguration/EnableVerboseColors"
   },
   {
     "title": "Http.HttpServerConfiguration.IncludeRequestIdHeader",
@@ -480,6 +480,14 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Http/HttpServerExecutionResult/IsSuccessStatus"
   },
   {
+    "title": "Http.HttpServerExecutionResult.RequestSize",
+    "link": "/spec/Sisk/Core/Http/HttpServerExecutionResult/RequestSize"
+  },
+  {
+    "title": "Http.HttpServerExecutionResult.ResponseSize",
+    "link": "/spec/Sisk/Core/Http/HttpServerExecutionResult/ResponseSize"
+  },
+  {
     "title": "Http.HttpServerExecutionStatus",
     "link": "/spec/Sisk/Core/Http/HttpServerExecutionStatus"
   },
@@ -516,8 +524,24 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Http/HttpServerExecutionStatus/ExceptionThrown"
   },
   {
+    "title": "Http.HttpServerExecutionStatus.UncaughtExceptionThrown",
+    "link": "/spec/Sisk/Core/Http/HttpServerExecutionStatus/UncaughtExceptionThrown"
+  },
+  {
+    "title": "Http.HttpServerExecutionStatus.ListeningHostNotReady",
+    "link": "/spec/Sisk/Core/Http/HttpServerExecutionStatus/ListeningHostNotReady"
+  },
+  {
     "title": "Http.ListeningHost",
     "link": "/spec/Sisk/Core/Http/ListeningHost"
+  },
+  {
+    "title": "Http.ListeningHost.Handle",
+    "link": "/spec/Sisk/Core/Http/ListeningHost/Handle"
+  },
+  {
+    "title": "Http.ListeningHost.CanListen",
+    "link": "/spec/Sisk/Core/Http/ListeningHost/CanListen"
   },
   {
     "title": "Http.ListeningHost.CrossOriginResourceSharingPolicy",
@@ -557,7 +581,59 @@ var specLinks = [
   },
   {
     "title": "Http.ListeningHost.#ctor",
+    "link": "/spec/Sisk/Core/Http/ListeningHost/_ctor--String-ListeningPort[]"
+  },
+  {
+    "title": "Http.ListeningHost.#ctor",
     "link": "/spec/Sisk/Core/Http/ListeningHost/_ctor--String-Router"
+  },
+  {
+    "title": "Http.ListeningHostRepository",
+    "link": "/spec/Sisk/Core/Http/ListeningHostRepository"
+  },
+  {
+    "title": "Http.ListeningHostRepository.#ctor",
+    "link": "/spec/Sisk/Core/Http/ListeningHostRepository/_ctor--"
+  },
+  {
+    "title": "Http.ListeningHostRepository.#ctor",
+    "link": "/spec/Sisk/Core/Http/ListeningHostRepository/_ctor--"
+  },
+  {
+    "title": "Http.ListeningHostRepository.Count",
+    "link": "/spec/Sisk/Core/Http/ListeningHostRepository/Count"
+  },
+  {
+    "title": "Http.ListeningHostRepository.IsReadOnly",
+    "link": "/spec/Sisk/Core/Http/ListeningHostRepository/IsReadOnly"
+  },
+  {
+    "title": "Http.ListeningHostRepository.Add",
+    "link": "/spec/Sisk/Core/Http/ListeningHostRepository/Add--ListeningHost"
+  },
+  {
+    "title": "Http.ListeningHostRepository.Clear",
+    "link": "/spec/Sisk/Core/Http/ListeningHostRepository/Clear--"
+  },
+  {
+    "title": "Http.ListeningHostRepository.Contains",
+    "link": "/spec/Sisk/Core/Http/ListeningHostRepository/Contains--ListeningHost"
+  },
+  {
+    "title": "Http.ListeningHostRepository.CopyTo",
+    "link": "/spec/Sisk/Core/Http/ListeningHostRepository/CopyTo--ListeningHost[]-Int32"
+  },
+  {
+    "title": "Http.ListeningHostRepository.GetEnumerator",
+    "link": "/spec/Sisk/Core/Http/ListeningHostRepository/GetEnumerator--"
+  },
+  {
+    "title": "Http.ListeningHostRepository.Remove",
+    "link": "/spec/Sisk/Core/Http/ListeningHostRepository/Remove--ListeningHost"
+  },
+  {
+    "title": "Http.ListeningHostRepository.System#Collections#IEnumerable#GetEnumerator",
+    "link": "/spec/Sisk/Core/Http/ListeningHostRepository/System_Collections_IEnumerable_GetEnumerator--"
   },
   {
     "title": "Http.ListeningPort",

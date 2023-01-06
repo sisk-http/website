@@ -8,5 +8,5 @@ Namespace: Sisk.Core.Http
 public Encoding DefaultEncoding { get; set; }
 ```
 
-Determines the default encoding for sending and decoding messages.
+Gets or sets the default encoding for sending and decoding messages.
 

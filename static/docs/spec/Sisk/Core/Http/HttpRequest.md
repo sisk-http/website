@@ -14,13 +14,16 @@ Represents an HTTP request received by a Sisk server.
 
 | Property name | Description |
 | --- | --- |
-| [RequestId](/spec/Sisk/Core/Http/HttpRequest/RequestId) | Gets a unique random ID for this request that is generated on server input. | 
+| [RequestId](/spec/Sisk/Core/Http/HttpRequest/RequestId) | Gets a unique random ID for this request. | 
+| [IsSecure](/spec/Sisk/Core/Http/HttpRequest/IsSecure) | Gets a boolean indicating whether this request was made by an secure transport context (SSL/TLS) or not. | 
 | [IsContentAvailable](/spec/Sisk/Core/Http/HttpRequest/IsContentAvailable) | Gets a boolean indicating whether the content of this request has been processed by the server. | 
 | [HasContents](/spec/Sisk/Core/Http/HttpRequest/HasContents) | Gets a boolean indicating whether this request has contents. | 
 | [Headers](/spec/Sisk/Core/Http/HttpRequest/Headers) | Gets the HTTP request headers. | 
-| [Host](/spec/Sisk/Core/Http/HttpRequest/Host) | Get the requested host header from this HTTP request. | 
+| [Host](/spec/Sisk/Core/Http/HttpRequest/Host) | Get the requested host header (without port) from this HTTP request. | 
+| [Authority](/spec/Sisk/Core/Http/HttpRequest/Authority) | Get the requested host header with the port from this HTTP request. | 
 | [Path](/spec/Sisk/Core/Http/HttpRequest/Path) | Gets the HTTP request path without the query string. | 
 | [FullPath](/spec/Sisk/Core/Http/HttpRequest/FullPath) | Gets the full HTTP request path with the query string. | 
+| [FullUrl](/spec/Sisk/Core/Http/HttpRequest/FullUrl) | Gets the full URL for this request, with scheme, host, port (if any), path and query. | 
 | [RequestEncoding](/spec/Sisk/Core/Http/HttpRequest/RequestEncoding) | Gets the Encoding used in the request. | 
 | [Method](/spec/Sisk/Core/Http/HttpRequest/Method) | Gets the HTTP request method. | 
 | [Body](/spec/Sisk/Core/Http/HttpRequest/Body) | Gets the HTTP request body as string. | 
@@ -38,8 +41,8 @@ Represents an HTTP request received by a Sisk server.
 | [GetMultipartFormContent()](/spec/Sisk/Core/Http/HttpRequest/GetMultipartFormContent--) | Gets the multipart form content for this request. | 
 | [GetFormContent()](/spec/Sisk/Core/Http/HttpRequest/GetFormContent--) | Gets the values sent by a form in this request. | 
 | [GetRawHttpRequest(Boolean)](/spec/Sisk/Core/Http/HttpRequest/GetRawHttpRequest--Boolean) | Gets the raw HTTP request message from the socket. | 
-| [GetHeader(String)](/spec/Sisk/Core/Http/HttpRequest/GetHeader--String) | Gets a header value using a case-insensitive search. | 
 | [GetQueryValue(String)](/spec/Sisk/Core/Http/HttpRequest/GetQueryValue--String) | Gets a query value using an case-insensitive search. | 
+| [GetHeader(String)](/spec/Sisk/Core/Http/HttpRequest/GetHeader--String) | Gets a header value using a case-insensitive search. | 
 | [CreateHeadResponse()](/spec/Sisk/Core/Http/HttpRequest/CreateHeadResponse--) | Create an HTTP response with code 200 OK without any body. | 
 | [CreateResponse(HttpStatusCode, String)](/spec/Sisk/Core/Http/HttpRequest/CreateResponse--HttpStatusCode-String) | Creates an HttpResponse object with given status code and body content. | 
 | [CreateResponse(HttpStatusCode)](/spec/Sisk/Core/Http/HttpRequest/CreateResponse--HttpStatusCode) | Creates an HttpResponse object with given status code. | 

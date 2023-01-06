@@ -5,8 +5,8 @@ Last updated: Friday, 06 January 2023
 Namespace: Sisk.Core.Http
 
 ```csharp
-public Guid RequestId { get; }
+public Guid RequestId { get; init; }
 ```
 
-Gets a unique random ID for this request that is generated on server input.
+Gets a unique random ID for this request.
 

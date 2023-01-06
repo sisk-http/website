@@ -14,6 +14,5 @@ Creates a new default configuration [HttpServer](/spec/Sisk/Core/Http/HttpServer
 
 | Key | Value |
 | --- | --- |
-| r | The routing object to init the Http server. This will not start the server. | 
 | configuration | The configuration object of the server. | 
 

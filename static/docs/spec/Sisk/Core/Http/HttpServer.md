@@ -5,7 +5,7 @@ Last updated: Friday, 06 January 2023
 Namespace: Sisk.Core.Http
 
 ```csharp
-public class HttpServer
+public class HttpServer : IDisposable
 ```
 
 Provides an lightweight HTTP server powered by Sisk.
@@ -25,10 +25,12 @@ Provides an lightweight HTTP server powered by Sisk.
 | [GetVersion()](/spec/Sisk/Core/Http/HttpServer/GetVersion--) | Get Sisk version label. | 
 | [Start()](/spec/Sisk/Core/Http/HttpServer/Start--) | Starts listening to the set port and handling requests on this server. | 
 | [Stop()](/spec/Sisk/Core/Http/HttpServer/Stop--) | Stops the server from listening and stops the request handler. | 
+| [Dispose()](/spec/Sisk/Core/Http/HttpServer/Dispose--) | Invalidates this class and releases the resources used by it, and permanently closes the HTTP server. | 
 
 ## Constructors
 
 | Method name | Description |
 | --- | --- |
 | [HttpServer(HttpServerConfiguration)](/spec/Sisk/Core/Http/HttpServer/_ctor--HttpServerConfiguration) | Creates a new default configuration [HttpServer](/spec/Sisk/Core/Http/HttpServer) instance with the given Route and server configuration. | 
+| [HttpServer()](/spec/Sisk/Core/Http/HttpServer/Restart--) | Restarts this HTTP server, sending all processing responses and starting them again, reading the listening ports again. | 
 

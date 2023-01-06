@@ -1,12 +1,12 @@
-# Method Dispose
+# Method Clear
 Last updated: Friday, 06 January 2023
 
 ## Definition
 Namespace: Sisk.Core.Http
 
 ```csharp
-public void Dispose()
+public void Clear()
 ```
 
-Frees the resources and invalidates this instance.
+Removes all listeninghosts from this repository.
 

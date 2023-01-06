@@ -76,11 +76,18 @@ namespace Sisk.GenerateMdDoc
                         }
                         else
                         {
-                            string seeHref = child.Attributes!["cref"]!.Value;
-                            string seePieceLink = seeHref.Substring(2).Replace('.', '/');
-                            string seePiece = seeHref.Split('.').Last();
+                            if (child.Name == "see")
+                            {
+                                string seeHref = child.Attributes!["cref"]!.Value;
+                                string seePieceLink = seeHref.Substring(2).Replace('.', '/');
+                                string seePiece = seeHref.Split('.').Last();
 
-                            sb.Append($" [{seePiece}](/spec/{seePieceLink}) ");
+                                sb.Append($" [{seePiece}](/spec/{seePieceLink}) ");
+                            }
+                            else if (child.Name == "c" || child.Name == "code")
+                            {
+                                sb.Append($" `{child.InnerText}` ");
+                            }
                         }
                     }
 

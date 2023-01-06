@@ -8,5 +8,5 @@ Namespace: Sisk.Core.Http
 public long MaximumContentLength { get; set; }
 ```
 
-Defines the maximum size of a request body before it is closed by the socket.
+Gets or sets the maximum size of a request body before it is closed by the socket.
 

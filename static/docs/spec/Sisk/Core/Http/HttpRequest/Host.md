@@ -5,8 +5,8 @@ Last updated: Friday, 06 January 2023
 Namespace: Sisk.Core.Http
 
 ```csharp
-public string? Host { get; }
+public string Host { get; }
 ```
 
-Get the requested host header from this HTTP request.
+Get the requested host header (without port) from this HTTP request.
 
