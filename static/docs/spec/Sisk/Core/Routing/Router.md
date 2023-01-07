@@ -1,5 +1,4 @@
 # Class Router
-Last updated: Friday, 06 January 2023
 
 ## Definition
 Namespace: Sisk.Core.Routing
@@ -14,6 +13,7 @@ Represents a collection of Routes and main executor of callbacks in an [HttpServ
 
 | Property name | Description |
 | --- | --- |
+| [MatchRoutesIgnoreCase](/spec/Sisk/Core/Routing/Router/MatchRoutesIgnoreCase) | Gets or sets whether this [Router](/spec/Sisk/Core/Routing/Router) will match routes ignoring case. | 
 | [GlobalRequestHandlers](/spec/Sisk/Core/Routing/Router/GlobalRequestHandlers) | Gets or sets the global requests handlers that will be executed in all matched routes. | 
 | [CallbackErrorHandler](/spec/Sisk/Core/Routing/Router/CallbackErrorHandler) | Gets or sets the Router callback exception handler. | 
 | [NotFoundErrorHandler](/spec/Sisk/Core/Routing/Router/NotFoundErrorHandler) | Gets or sets the Router "404 Not Found" handler. | 

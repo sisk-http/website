@@ -30,6 +30,7 @@ namespace Sisk.GenerateMdDoc
             public string Summary { get; set; }
             public string? Definition { get; set; }
             public string Namespace { get; set; }
+            public string? Remarks { get; set; }
 
             public string DefinitionType { get; set; }
             public DocMemberType MemberType { get; set; }
@@ -106,6 +107,7 @@ namespace Sisk.GenerateMdDoc
                 member.Definition = NormalizeCode(token.SelectSingleNode("definition")?.InnerText.Trim() ?? "");
                 member.Namespace = token.SelectSingleNode("namespace")?.InnerText.Trim() ?? "";
                 member.DefinitionType = token.SelectSingleNode("type")?.InnerText.Trim() ?? "";
+                member.Remarks = token.SelectSingleNode("remarks")?.InnerText.Trim();
 
                 if (member.Name.Contains("("))
                 {
@@ -200,7 +202,6 @@ namespace Sisk.GenerateMdDoc
                     d.DefinitionType == "Constructor" && IsChildOf(d.Name, member.Name)).ToArray();
 
                 sb.AppendLine($"# {member.DefinitionType} {GetMemberName(member.Name)}");
-                sb.AppendLine("Last updated: " + DateTime.Now.ToString("dddd, dd MMMM yyyy", new System.Globalization.CultureInfo("en")));
                 sb.AppendLine();
                 sb.AppendLine("## Definition");
                 sb.AppendLine($"Namespace: {member.Namespace}");
@@ -216,6 +217,11 @@ namespace Sisk.GenerateMdDoc
 
                 sb.AppendLine(member.Summary);
                 sb.AppendLine();
+
+                if (!string.IsNullOrEmpty(member.Remarks))
+                {
+                    sb.AppendLine($"> {NormalizeSummary(member.Remarks)}");
+                }
 
                 if (properties.Length > 0)
                 {
@@ -296,7 +302,7 @@ namespace Sisk.GenerateMdDoc
             }
 
             File.WriteAllText("nasted-links.json", Newtonsoft.Json.JsonConvert.SerializeObject(jsonObj, Newtonsoft.Json.Formatting.Indented));
-            File.WriteAllText("docute-links.json", Newtonsoft.Json.JsonConvert.SerializeObject(docuteJson, Newtonsoft.Json.Formatting.Indented));
+            File.WriteAllText("links.js", "var specLinks = " + Newtonsoft.Json.JsonConvert.SerializeObject(docuteJson, Newtonsoft.Json.Formatting.Indented));
         }
 
         static Dictionary<string, string> JsonPaths = new Dictionary<string, string>();

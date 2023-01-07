@@ -392,6 +392,14 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Http/HttpServerConfiguration"
   },
   {
+    "title": "Http.HttpServerConfiguration.AccessLogsStream",
+    "link": "/spec/Sisk/Core/Http/HttpServerConfiguration/AccessLogsStream"
+  },
+  {
+    "title": "Http.HttpServerConfiguration.ErrorsLogsStream",
+    "link": "/spec/Sisk/Core/Http/HttpServerConfiguration/ErrorsLogsStream"
+  },
+  {
     "title": "Http.HttpServerConfiguration.ResolveForwardedOriginAddress",
     "link": "/spec/Sisk/Core/Http/HttpServerConfiguration/ResolveForwardedOriginAddress"
   },
@@ -634,6 +642,10 @@ var specLinks = [
   {
     "title": "Http.ListeningHostRepository.System#Collections#IEnumerable#GetEnumerator",
     "link": "/spec/Sisk/Core/Http/ListeningHostRepository/System_Collections_IEnumerable_GetEnumerator--"
+  },
+  {
+    "title": "Http.ListeningHostRepository.Item",
+    "link": "/spec/Sisk/Core/Http/ListeningHostRepository/Item(System/Int32)"
   },
   {
     "title": "Http.ListeningPort",
@@ -910,6 +922,10 @@ var specLinks = [
   {
     "title": "Routing.Router",
     "link": "/spec/Sisk/Core/Routing/Router"
+  },
+  {
+    "title": "Routing.Router.MatchRoutesIgnoreCase",
+    "link": "/spec/Sisk/Core/Routing/Router/MatchRoutesIgnoreCase"
   },
   {
     "title": "Routing.Router.#ctor",

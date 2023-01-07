@@ -1,5 +1,4 @@
 # Class ListeningHost
-Last updated: Friday, 06 January 2023
 
 ## Definition
 Namespace: Sisk.Core.Http
@@ -14,7 +13,7 @@ Provides a structure to contain the fields needed by an http server host.
 
 | Property name | Description |
 | --- | --- |
-| [Handle](/spec/Sisk/Core/Http/ListeningHost/Handle) | Gets an unique handle to this router instance. | 
+| [Handle](/spec/Sisk/Core/Http/ListeningHost/Handle) | Gets an unique identifier to this listening host instance. | 
 | [CanListen](/spec/Sisk/Core/Http/ListeningHost/CanListen) | Gets whether this [ListeningHost](/spec/Sisk/Core/Http/ListeningHost) can be listened by it's host [HttpServer](/spec/Sisk/Core/Http/HttpServer) . | 
 | [CrossOriginResourceSharingPolicy](/spec/Sisk/Core/Http/ListeningHost/CrossOriginResourceSharingPolicy) | Gets or sets the CORS sharing policy object. | 
 | [Label](/spec/Sisk/Core/Http/ListeningHost/Label) | Gets or sets a label for this Listening Host. | 

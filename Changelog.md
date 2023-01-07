@@ -1,3 +1,19 @@
+# 0.8.1
+
+Released: 07/01/2023
+
+Core:
+
+- Created an indexer for `ListeningHostRepository`.
+- Created property `HttpServerConfiguration.AccessLogsStream`. [Specification](https://sisk-http.github.io/docs/static/#/spec/Sisk/Core/Http/HttpServerConfiguration/AccessLogsStream).
+- Created property `HttpServerConfiguration.ErrorsLogsStream`. [Specification](https://sisk-http.github.io/docs/static/#/spec/Sisk/Core/Http/HttpServerConfiguration/ErrorsLogsStream).
+- Created property `Router.MatchRoutesIgnoreCase`, which allows to the router to match routes ignoring case.
+- Replaced the router path matching mecanism by a more appropriate string parser without using regex.
+- Replaced the DNS matching mecanism by removing regex. Credits to [this link](https://www.hiimray.co.uk/2020/04/18/implementing-simple-wildcard-string-matching-using-regular-expressions/474).
+- `ListeningHost.Handle` is more deterministic now and doesn't uses an random generator for it.
+- Fixed an bug where the TCP client was sending an IP address with multiple null characters.
+- Deprecated `HttpServerConfiguration.Verbose`.
+
 # 0.8.0
 
 Released: 06/01/2023

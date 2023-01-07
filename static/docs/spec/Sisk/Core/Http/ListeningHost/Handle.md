@@ -1,12 +1,11 @@
 # Property Handle
-Last updated: Friday, 06 January 2023
 
 ## Definition
 Namespace: Sisk.Core.Http
 
 ```csharp
-public int Handle { get; init; }
+public long Handle { get; }
 ```
 
-Gets an unique handle to this router instance.
+Gets an unique identifier to this listening host instance.
 
