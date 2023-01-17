@@ -2,8 +2,14 @@ a {
     color: #0065b3;
 }
 
+img.center {
+    display: block;
+    margin-inline: auto;
+    max-width: 700px;
+}
+
 .page-content {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .text-date {
@@ -33,9 +39,16 @@ a {
 
 .markdown-header,
 .page-title {
-    margin: .8rem 0 !important;
     font-weight: 600 !important;
     border-bottom: none !important;
+}
+
+.markdown-header {
+    margin: 3rem 0 .75rem 0 !important;
+}
+
+.page-title {
+    margin: 1.5rem 0 2rem 0 !important;
 }
 
 .token.function {
@@ -49,6 +62,10 @@ a {
 .token.punctuation,
 .token.operator {
     color: #5c5c5c
+}
+
+.language-bash .token.operator {
+    color: #929292;
 }
 
 .token.string {
@@ -88,12 +105,17 @@ a {
     color: #006881
 }
 
+.token.comment {
+    color: #008000;
+    font-style: normal;
+}
+
 .Content > * {
     margin-inline: 15px !important;
 }
 
 .page-content pre code {
-    font-size: 1em;
+    font-size: 14px;
 }
 
 .ItemTitle.collapsable {
@@ -172,8 +194,12 @@ a {
 }
 
 
-table > thead {
+table:not(.show-header) > thead {
     display: none;
+}
+
+table.sm > tbody {
+    font-size: .85rem;
 }
 
 table,

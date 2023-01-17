@@ -8,14 +8,14 @@ new Docute({
         },
         {
             title: 'GitHub',
-            link: 'https://github.com/CypherPotato/Sisk'
+            link: 'https://github.com/sisk-http/core'
         },
         {
             title: 'Nuget',
             link: 'https://www.nuget.org/packages/Sisk.HttpServer/'
         }
     ],
-    highlight: ['json', 'csharp', 'cshtml'],
+    highlight: ['json', 'csharp', 'cshtml', 'bash'],
     cssVariables(theme) {
         return {
             accentColor: "blue",
@@ -43,6 +43,27 @@ new Docute({
                 {
                     title: 'Installing',
                     link: '/installing'
+                }
+            ]
+        },
+        {
+            title: "Fundamentals",
+            links: [
+                {
+                    title: 'Routing',
+                    link: '/fundamentals/routing.md'
+                },
+                {
+                    title: 'Request handling',
+                    link: '/fundamentals/request-handlers.md'
+                },
+                {
+                    title: 'Requests',
+                    link: '/fundamentals/requests.md'
+                },
+                {
+                    title: 'Responses',
+                    link: '/fundamentals/responses.md'
                 }
             ]
         },

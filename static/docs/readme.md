@@ -1,12 +1,27 @@
-# Welcome to Sisk
+<p align="center">
+  <img width="100%" height="auto" src="/assets/Header.png">
+</p>
 
-<span class="text-date">
-    Last edited: December 14th, 2022
-</span>
+## Welcome to Sisk
 
-Sisk is a ultra-fast, lightweight, cross-platform and open-source library for building restful applications with .NET. You can develop applications, APIs, cloud services and more with Sisk.
+Sisk is a powerful framework for building powerful web applications. With Sisk, you can use .NET to create fast, dynamic and poweful web applications. It's an alternative
+to Microsoft's ASP.NET Core, which it's simpler and easy to setup.
 
-It uses [HTTP.sys](https://learn.microsoft.com/en-us/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#hypertext-transfer-protocol-stack-httpsys) interface to manage HTTP requests, which supports from HTTP/1.1 to HTTP/3.
+## Features
 
-Sisk is optimized for building robust and complete backends applications with minimal and easy coding. It can also be extended for use with other technologies such as the Entity Framework. In addition, Sisk presents surprising results in terms of performance, in any operating system, delivering safe and fast responses to your client application.
+- Multi-platform and cross-operating system
+- Ultra fast response/second average
+- Support to operating system's native HTTP interface listener
+- Sustainable and maintainable
+- Database-agnostic
+- Same code implementation for *nix, Mac OS and Windows
+- Asynchronous request handling
+- Middlewares, before and/or after request handlers
+- Configurable error handling
+- Support to log access/error logs
+- Easy Cross-Origin Resource Sharing setup
+- Written in C#
 
+> You can use Sisk with HTTPS, HTTP/2 and HTTP/3 QUIC if you follow [this Microsoft tutorial](https://learn.microsoft.com/en-us/iis/manage/configuring-security/how-to-set-up-ssl-on-iis). Requires installation of IIS on Windows.
+
+In the next steps of this documentation, you will learn how to get started with Sisk, from basics to advanced.
