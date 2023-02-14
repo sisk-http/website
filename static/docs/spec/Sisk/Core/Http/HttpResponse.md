@@ -24,7 +24,7 @@ Represents an HTTP Response.
 | --- | --- |
 | [GetRawHttpResponse(Boolean)](/spec/Sisk/Core/Http/HttpResponse/GetRawHttpResponse--Boolean) | Gets the raw HTTP response message. | 
 | [SetCookie(String, String)](/spec/Sisk/Core/Http/HttpResponse/SetCookie--String-String) | Sets a cookie and sends it in the response to be set by the client. | 
-| [SetCookie(String, String, String, String)](/spec/Sisk/Core/Http/HttpResponse/SetCookie--String-String-String-String) | Sets a cookie and sends it in the response to be set by the client. | 
+| [SetCookie(String, String, String, String, String)](/spec/Sisk/Core/Http/HttpResponse/SetCookie--String-String-String-String-String) | Sets a cookie and sends it in the response to be set by the client. | 
 
 ## Constructors
 

@@ -13,5 +13,5 @@ Searches the object instance for methods with attribute [RouteAttribute](/spec/S
 
 | Key | Value |
 | --- | --- |
-| attrClassInstance | The instance of the class where the methods are. The routing methods must be static and marked with . | 
+| attrClassInstance | The instance of the class where the instance methods are. The routing methods must be instance methods and marked with . | 
 

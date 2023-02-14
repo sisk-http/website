@@ -7,5 +7,5 @@ Namespace: Sisk.Core.Entity
 public string[] AllowMethods { get; set; }
 ```
 
-The allowed HTTP request methods.
+From MDN: The Access-Control-Allow-Methods header specifies the method or methods allowed when accessing the resource.
 

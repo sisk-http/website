@@ -7,5 +7,5 @@ Namespace: Sisk.Core.Routing
 public bool UseRegex { get; set; }
 ```
 
-Defines if this route should use regex to be interpreted instead of predefined templates.
+Get or sets if this route should use regex to be interpreted instead of predefined templates.
 

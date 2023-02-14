@@ -7,5 +7,5 @@ Namespace: Sisk.Core.Entity
 public string[] AllowOrigins { get; set; }
 ```
 
-The origin hostnames allowed by the browser.
+From MDN: Access-Control-Allow-Origin specifies either a single origin which tells browsers to allow that origin to access the resource; or else — for requests without credentials — the "*" wildcard tells browsers to allow any origin to access the resource.
 

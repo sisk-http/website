@@ -13,7 +13,9 @@ Represents an HTTP route to be matched by an [Router](/spec/Sisk/Core/Routing/Ro
 
 | Property name | Description |
 | --- | --- |
-| [UseRegex](/spec/Sisk/Core/Routing/Route/UseRegex) | Defines if this route should use regex to be interpreted instead of predefined templates. | 
+| [LogMode](/spec/Sisk/Core/Routing/Route/LogMode) | Gets or sets how this route can write messages to log files on the server. | 
+| [UseRegex](/spec/Sisk/Core/Routing/Route/UseRegex) | Get or sets if this route should use regex to be interpreted instead of predefined templates. | 
+| [UseCors](/spec/Sisk/Core/Routing/Route/UseCors) | Gets or sets whether this route should send Cross-Origin Resource Sharing headers in the response. | 
 | [Method](/spec/Sisk/Core/Routing/Route/Method) | Gets or sets the matching HTTP method. If it is "Any", the route will just use the path expression to be matched, not the HTTP method. | 
 | [Path](/spec/Sisk/Core/Routing/Route/Path) | Gets or sets the path expression that will be interpreted by the router and validated by the requests. | 
 | [Name](/spec/Sisk/Core/Routing/Route/Name) | Gets or sets the route name. It allows it to be found by other routes and makes it easier to create links. | 

@@ -30,6 +30,7 @@ Represents a collection of Routes and main executor of callbacks in an [HttpServ
 | [SetRoute(RouteMethod, String, RouterCallback, String, IRequestHandler[])](/spec/Sisk/Core/Routing/Router/SetRoute--RouteMethod-String-RouterCallback-String-IRequestHandler[]) | Defines an route with their method, path, callback function, name and request handlers. | 
 | [SetRoute(Route)](/spec/Sisk/Core/Routing/Router/SetRoute--Route) | Defines an route in this Router instance. | 
 | [SetObject(Object)](/spec/Sisk/Core/Routing/Router/SetObject--Object) | Searches the object instance for methods with attribute [RouteAttribute](/spec/Sisk/Core/Routing/RouteAttribute) and optionals [RequestHandlerAttribute](/spec/Sisk/Core/Routing/RequestHandlerAttribute) , and creates routes from them. | 
+| [SetObject(Type)](/spec/Sisk/Core/Routing/Router/SetObject--Type) | Searches the object instance for methods with attribute [RouteAttribute](/spec/Sisk/Core/Routing/RouteAttribute) and optionals [RequestHandlerAttribute](/spec/Sisk/Core/Routing/RequestHandlerAttribute) , and creates routes from them. | 
 
 ## Constructors
 

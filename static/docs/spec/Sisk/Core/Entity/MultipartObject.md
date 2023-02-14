@@ -25,5 +25,5 @@ Represents an multipart/form-data object.
 | --- | --- |
 | [ReadContentAsString(Encoding)](/spec/Sisk/Core/Entity/MultipartObject/ReadContentAsString--Encoding) | Reads the content bytes with the given encoder. | 
 | [ReadContentAsString()](/spec/Sisk/Core/Entity/MultipartObject/ReadContentAsString--) | Reads the content bytes as an ASCII string. | 
-| [GetImageFormat()](/spec/Sisk/Core/Entity/MultipartObject/GetImageFormat--) | Determine the image format based in the file header for each image content type. | 
+| [GetCommonFileFormat()](/spec/Sisk/Core/Entity/MultipartObject/GetCommonFileFormat--) | Determine the image format based in the file header for each image content type. | 
 

@@ -1,3 +1,74 @@
+# 0.8.9
+
+- New: hot reload support. This is applyable to the .NET support of hot reload. You can use it with `ServiceReloadManager` or
+`ServiceProvider`.
+- New: added HTTP server flags, which holds advanced settings for the HTTP server.
+- New: Router `SetObject(object)` method now defines the instance methods instead of the type
+static methods. Use `SetObject(type)` for defining static route methods.
+- New: Added `PDF` format to `MultipartObject.GetCommonFileFormat()`. Also we've renamed the enumerator to
+`MultipartObjectCommonFormat`.
+- Fixed: HEAD requests should send `Content-*` headers now.
+- Fixed: HEAD requests weren't being matched with GET routes. You can disable it by the `TreatHeadAsGetMethod` flag.
+- Fixed: the access logs weren't displaying the forwareded IP address when `ResolveForwardedOriginAddress` is true.
+- Fixed: CORS `Access-Control-Max-Age` header name.
+- Deprecated: `HttpRequest.CreateHeadResponse()`. Use `HttpRequest.CreateEmptyResponse()` instead.
+- Deprecated: `HttpServerExecutionStatus.ContentServedOnNotSupportedMethod`.
+- 
+
+# 0.8.7
+
+- Fixed `Access-Control-Max-Age` header name.
+
+# 0.8.6
+
+Released: 02/02/2023
+
+- Now it's possible to send headers from an event source request context.
+- Byte calculations and representations are now decimal.
+- Fixed an bug where event source streams weren't sending CORS headers.
+
+# 0.8.5 - Urgent fix to 0.8.4
+
+Released: 30/01/2023
+
+- Fixed an bug on 0.8.4 where OPTIONS weren't being matched to send CORS headers.
+
+# 0.8.4
+
+Released: 30/01/2023
+
+- Deprecated the `CrossOriginResourceSharingHeaders` parametered constructor.
+- Added `Route.UseCors` property.
+- Added `CrossOriginResourceSharingHeaders.ExposeHeaders` property.
+- Added `CrossOriginResourceSharingHeaders.AllowCredentials` property.
+- Added logging shorthands for `ServiceProvider` class.
+- Fixed an bug where `HttpResponse.SetCookie()` with an path wasn't setting the cookie path correctly.
+
+# 0.8.3
+
+Released: 26/01/2023
+
+- Deprecated `HttpResponse.DefaultEncoding`.
+- Malformed requests can throw an `HttpRequestException` from the HTTP server, which will result in
+an `HttpServerExecutionStatus.MalformedRequest` with an automatic response with status 400.
+- HTTP response now uses UTF-8 to calculate the response headers size.
+- Routes can have an `LogMode` property which determines if the server should write access/error logs
+for those route. 
+- Added the `HttpRequest.Cookies` property.
+- Fixed where uncaught exceptions in the router callback shouldn't return an HTTP 500 status code.
+
+# 0.8.2
+
+Released: 09/01/2023
+
+- Introduced "Service providers", which provides an interface for porting services and applications
+easily with Sisk.
+- Added an overload for `Router.SetObject` which allows to pass an type as reference.
+- Added the property `HttpServer.IsListening`.
+- `HttpServer` no longer listens to all authorities with the "+" wildcard, but to individual hosts. Perhaps you will need to have permissions for each authority individually to run without admin privileges in Windows.
+- Fixed an issue where event listeners weren't respecting `AccessLogsStream` and using the deprecated property `Verbose`.
+- Fixed where routers weren't parsing regex routes as ignore-case when `MatchRoutesIgnoreCase` was enabled.
+
 # 0.8.1
 
 Released: 07/01/2023

@@ -7,5 +7,5 @@ Namespace: Sisk.Core.Entity
 public TimeSpan MaxAge { get; set; }
 ```
 
-Defines the Max-Age cache expirity.
+From MDN: The Access-Control-Max-Age header indicates how long the results of a preflight request can be cached.
 

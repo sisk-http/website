@@ -8,6 +8,14 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Entity/CrossOriginResourceSharingHeaders/Empty"
   },
   {
+    "title": "Entity.CrossOriginResourceSharingHeaders.AllowCredentials",
+    "link": "/spec/Sisk/Core/Entity/CrossOriginResourceSharingHeaders/AllowCredentials"
+  },
+  {
+    "title": "Entity.CrossOriginResourceSharingHeaders.ExposeHeaders",
+    "link": "/spec/Sisk/Core/Entity/CrossOriginResourceSharingHeaders/ExposeHeaders"
+  },
+  {
     "title": "Entity.CrossOriginResourceSharingHeaders.AllowOrigins",
     "link": "/spec/Sisk/Core/Entity/CrossOriginResourceSharingHeaders/AllowOrigins"
   },
@@ -32,40 +40,8 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Entity/CrossOriginResourceSharingHeaders/_ctor--"
   },
   {
-    "title": "Entity.CrossOriginResourceSharingHeaders.GetAllowOriginsHeader",
-    "link": "/spec/Sisk/Core/Entity/CrossOriginResourceSharingHeaders/GetAllowOriginsHeader--"
-  },
-  {
-    "title": "Entity.CrossOriginResourceSharingHeaders.GetAllowMethodsHeader",
-    "link": "/spec/Sisk/Core/Entity/CrossOriginResourceSharingHeaders/GetAllowMethodsHeader--"
-  },
-  {
-    "title": "Entity.CrossOriginResourceSharingHeaders.GetAllowHeadersHeader",
-    "link": "/spec/Sisk/Core/Entity/CrossOriginResourceSharingHeaders/GetAllowHeadersHeader--"
-  },
-  {
-    "title": "Entity.CrossOriginResourceSharingHeaders.GetMaxAgeHeader",
-    "link": "/spec/Sisk/Core/Entity/CrossOriginResourceSharingHeaders/GetMaxAgeHeader--"
-  },
-  {
     "title": "Entity.CrossOriginResourceSharingHeaders.CreatePublicContext",
     "link": "/spec/Sisk/Core/Entity/CrossOriginResourceSharingHeaders/CreatePublicContext--"
-  },
-  {
-    "title": "Entity.MimeTypeMap",
-    "link": "/spec/Sisk/Core/Entity/MimeTypeMap"
-  },
-  {
-    "title": "Entity.MimeTypeMap.TryGetMimeType",
-    "link": "/spec/Sisk/Core/Entity/MimeTypeMap/TryGetMimeType--String"
-  },
-  {
-    "title": "Entity.MimeTypeMap.GetMimeType",
-    "link": "/spec/Sisk/Core/Entity/MimeTypeMap/GetMimeType--String"
-  },
-  {
-    "title": "Entity.MimeTypeMap.GetExtension",
-    "link": "/spec/Sisk/Core/Entity/MimeTypeMap/GetExtension--String-Boolean"
   },
   {
     "title": "Entity.MultipartObject",
@@ -100,40 +76,44 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Entity/MultipartObject/ReadContentAsString--"
   },
   {
-    "title": "Entity.MultipartObject.GetImageFormat",
-    "link": "/spec/Sisk/Core/Entity/MultipartObject/GetImageFormat--"
+    "title": "Entity.MultipartObject.GetCommonFileFormat",
+    "link": "/spec/Sisk/Core/Entity/MultipartObject/GetCommonFileFormat--"
   },
   {
-    "title": "Entity.MultipartObjectImageFormat",
-    "link": "/spec/Sisk/Core/Entity/MultipartObjectImageFormat"
+    "title": "Entity.MultipartObjectCommonFormat",
+    "link": "/spec/Sisk/Core/Entity/MultipartObjectCommonFormat"
   },
   {
-    "title": "Entity.MultipartObjectImageFormat.Unknown",
-    "link": "/spec/Sisk/Core/Entity/MultipartObjectImageFormat/Unknown"
+    "title": "Entity.MultipartObjectCommonFormat.Unknown",
+    "link": "/spec/Sisk/Core/Entity/MultipartObjectCommonFormat/Unknown"
   },
   {
-    "title": "Entity.MultipartObjectImageFormat.JPEG",
-    "link": "/spec/Sisk/Core/Entity/MultipartObjectImageFormat/JPEG"
+    "title": "Entity.MultipartObjectCommonFormat.JPEG",
+    "link": "/spec/Sisk/Core/Entity/MultipartObjectCommonFormat/JPEG"
   },
   {
-    "title": "Entity.MultipartObjectImageFormat.GIF",
-    "link": "/spec/Sisk/Core/Entity/MultipartObjectImageFormat/GIF"
+    "title": "Entity.MultipartObjectCommonFormat.GIF",
+    "link": "/spec/Sisk/Core/Entity/MultipartObjectCommonFormat/GIF"
   },
   {
-    "title": "Entity.MultipartObjectImageFormat.PNG",
-    "link": "/spec/Sisk/Core/Entity/MultipartObjectImageFormat/PNG"
+    "title": "Entity.MultipartObjectCommonFormat.PNG",
+    "link": "/spec/Sisk/Core/Entity/MultipartObjectCommonFormat/PNG"
   },
   {
-    "title": "Entity.MultipartObjectImageFormat.TIFF",
-    "link": "/spec/Sisk/Core/Entity/MultipartObjectImageFormat/TIFF"
+    "title": "Entity.MultipartObjectCommonFormat.TIFF",
+    "link": "/spec/Sisk/Core/Entity/MultipartObjectCommonFormat/TIFF"
   },
   {
-    "title": "Entity.MultipartObjectImageFormat.BMP",
-    "link": "/spec/Sisk/Core/Entity/MultipartObjectImageFormat/BMP"
+    "title": "Entity.MultipartObjectCommonFormat.BMP",
+    "link": "/spec/Sisk/Core/Entity/MultipartObjectCommonFormat/BMP"
   },
   {
-    "title": "Entity.MultipartObjectImageFormat.WEBP",
-    "link": "/spec/Sisk/Core/Entity/MultipartObjectImageFormat/WEBP"
+    "title": "Entity.MultipartObjectCommonFormat.WEBP",
+    "link": "/spec/Sisk/Core/Entity/MultipartObjectCommonFormat/WEBP"
+  },
+  {
+    "title": "Entity.MultipartObjectCommonFormat.PDF",
+    "link": "/spec/Sisk/Core/Entity/MultipartObjectCommonFormat/PDF"
   },
   {
     "title": "Http.HttpContext",
@@ -154,6 +134,10 @@ var specLinks = [
   {
     "title": "Http.HttpContext.MatchedRoute",
     "link": "/spec/Sisk/Core/Http/HttpContext/MatchedRoute"
+  },
+  {
+    "title": "Http.HttpRequestException",
+    "link": "/spec/Sisk/Core/Http/HttpRequestException"
   },
   {
     "title": "Http.HttpRequest",
@@ -178,6 +162,10 @@ var specLinks = [
   {
     "title": "Http.HttpRequest.Headers",
     "link": "/spec/Sisk/Core/Http/HttpRequest/Headers"
+  },
+  {
+    "title": "Http.HttpRequest.Cookies",
+    "link": "/spec/Sisk/Core/Http/HttpRequest/Cookies"
   },
   {
     "title": "Http.HttpRequest.Host",
@@ -260,6 +248,10 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Http/HttpRequest/CreateHeadResponse--"
   },
   {
+    "title": "Http.HttpRequest.CreateEmptyResponse",
+    "link": "/spec/Sisk/Core/Http/HttpRequest/CreateEmptyResponse--"
+  },
+  {
     "title": "Http.HttpRequest.CreateResponse",
     "link": "/spec/Sisk/Core/Http/HttpRequest/CreateResponse--HttpStatusCode-String"
   },
@@ -288,6 +280,10 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Http/HttpRequestEventSource/MaximumErrorAttempts"
   },
   {
+    "title": "Http.HttpRequestEventSource.AppendHeader",
+    "link": "/spec/Sisk/Core/Http/HttpRequestEventSource/AppendHeader--String-String"
+  },
+  {
     "title": "Http.HttpRequestEventSource.Send",
     "link": "/spec/Sisk/Core/Http/HttpRequestEventSource/Send--String"
   },
@@ -298,6 +294,10 @@ var specLinks = [
   {
     "title": "Http.HttpRequestEventSource.Cancel",
     "link": "/spec/Sisk/Core/Http/HttpRequestEventSource/Cancel--"
+  },
+  {
+    "title": "Http.HttpRequestEventSource.Dispose",
+    "link": "/spec/Sisk/Core/Http/HttpRequestEventSource/Dispose--"
   },
   {
     "title": "Http.HttpResponse",
@@ -345,7 +345,7 @@ var specLinks = [
   },
   {
     "title": "Http.HttpResponse.SetCookie",
-    "link": "/spec/Sisk/Core/Http/HttpResponse/SetCookie--String-String-String-String"
+    "link": "/spec/Sisk/Core/Http/HttpResponse/SetCookie--String-String-String-String-String"
   },
   {
     "title": "Http.HttpServer",
@@ -354,6 +354,10 @@ var specLinks = [
   {
     "title": "Http.HttpServer.ServerConfiguration",
     "link": "/spec/Sisk/Core/Http/HttpServer/ServerConfiguration"
+  },
+  {
+    "title": "Http.HttpServer.IsListening",
+    "link": "/spec/Sisk/Core/Http/HttpServer/IsListening"
   },
   {
     "title": "Http.HttpServer.OnConnectionClose",
@@ -390,6 +394,10 @@ var specLinks = [
   {
     "title": "Http.HttpServerConfiguration",
     "link": "/spec/Sisk/Core/Http/HttpServerConfiguration"
+  },
+  {
+    "title": "Http.HttpServerConfiguration.Flags",
+    "link": "/spec/Sisk/Core/Http/HttpServerConfiguration/Flags"
   },
   {
     "title": "Http.HttpServerConfiguration.AccessLogsStream",
@@ -504,6 +512,10 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Http/HttpServerExecutionStatus/Executed"
   },
   {
+    "title": "Http.HttpServerExecutionStatus.ContentServedOnIllegalMethod",
+    "link": "/spec/Sisk/Core/Http/HttpServerExecutionStatus/ContentServedOnIllegalMethod"
+  },
+  {
     "title": "Http.HttpServerExecutionStatus.ContentServedOnNotSupportedMethod",
     "link": "/spec/Sisk/Core/Http/HttpServerExecutionStatus/ContentServedOnNotSupportedMethod"
   },
@@ -538,6 +550,30 @@ var specLinks = [
   {
     "title": "Http.HttpServerExecutionStatus.ListeningHostNotReady",
     "link": "/spec/Sisk/Core/Http/HttpServerExecutionStatus/ListeningHostNotReady"
+  },
+  {
+    "title": "Http.HttpServerExecutionStatus.MalformedRequest",
+    "link": "/spec/Sisk/Core/Http/HttpServerExecutionStatus/MalformedRequest"
+  },
+  {
+    "title": "Http.HttpServerFlags",
+    "link": "/spec/Sisk/Core/Http/HttpServerFlags"
+  },
+  {
+    "title": "Http.HttpServerFlags.ThrowContentOnNonSemanticMethods",
+    "link": "/spec/Sisk/Core/Http/HttpServerFlags/ThrowContentOnNonSemanticMethods"
+  },
+  {
+    "title": "Http.HttpServerFlags.HeaderNameRequestId",
+    "link": "/spec/Sisk/Core/Http/HttpServerFlags/HeaderNameRequestId"
+  },
+  {
+    "title": "Http.HttpServerFlags.SendCorsHeaders",
+    "link": "/spec/Sisk/Core/Http/HttpServerFlags/SendCorsHeaders"
+  },
+  {
+    "title": "Http.HttpServerFlags.TreatHeadAsGetMethod",
+    "link": "/spec/Sisk/Core/Http/HttpServerFlags/TreatHeadAsGetMethod"
   },
   {
     "title": "Http.ListeningHost",
@@ -808,8 +844,16 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Routing/Route"
   },
   {
+    "title": "Routing.Route.LogMode",
+    "link": "/spec/Sisk/Core/Routing/Route/LogMode"
+  },
+  {
     "title": "Routing.Route.UseRegex",
     "link": "/spec/Sisk/Core/Routing/Route/UseRegex"
+  },
+  {
+    "title": "Routing.Route.UseCors",
+    "link": "/spec/Sisk/Core/Routing/Route/UseCors"
   },
   {
     "title": "Routing.Route.Method",
@@ -844,6 +888,26 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Routing/Route/_ctor--"
   },
   {
+    "title": "Routing.LogOutput",
+    "link": "/spec/Sisk/Core/Routing/LogOutput"
+  },
+  {
+    "title": "Routing.LogOutput.AccessLog",
+    "link": "/spec/Sisk/Core/Routing/LogOutput/AccessLog"
+  },
+  {
+    "title": "Routing.LogOutput.ErrorLog",
+    "link": "/spec/Sisk/Core/Routing/LogOutput/ErrorLog"
+  },
+  {
+    "title": "Routing.LogOutput.Both",
+    "link": "/spec/Sisk/Core/Routing/LogOutput/Both"
+  },
+  {
+    "title": "Routing.LogOutput.None",
+    "link": "/spec/Sisk/Core/Routing/LogOutput/None"
+  },
+  {
     "title": "Routing.RouteAttribute",
     "link": "/spec/Sisk/Core/Routing/RouteAttribute"
   },
@@ -858,6 +922,14 @@ var specLinks = [
   {
     "title": "Routing.RouteAttribute.Name",
     "link": "/spec/Sisk/Core/Routing/RouteAttribute/Name"
+  },
+  {
+    "title": "Routing.RouteAttribute.UseCors",
+    "link": "/spec/Sisk/Core/Routing/RouteAttribute/UseCors"
+  },
+  {
+    "title": "Routing.RouteAttribute.LogMode",
+    "link": "/spec/Sisk/Core/Routing/RouteAttribute/LogMode"
   },
   {
     "title": "Routing.RouteAttribute.#ctor",
@@ -976,6 +1048,10 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Routing/Router/SetObject--Object"
   },
   {
+    "title": "Routing.Router.SetObject",
+    "link": "/spec/Sisk/Core/Routing/Router/SetObject--Type"
+  },
+  {
     "title": "Routing.RouterFactory",
     "link": "/spec/Sisk/Core/Routing/RouterFactory"
   },
@@ -986,5 +1062,73 @@ var specLinks = [
   {
     "title": "Routing.RouterFactory.Setup",
     "link": "/spec/Sisk/Core/Routing/RouterFactory/Setup--NameValueCollection"
+  },
+  {
+    "title": "Sisk.Provider.ServiceReloadManager",
+    "link": "/spec/Sisk/Provider/ServiceReloadManager"
+  },
+  {
+    "title": "Sisk.Provider.ServiceReloadManager.RegisterServiceProvider",
+    "link": "/spec/Sisk/Provider/ServiceReloadManager/RegisterServiceProvider--ServiceProvider"
+  },
+  {
+    "title": "Sisk.Provider.ServiceReloadManager.Clear",
+    "link": "/spec/Sisk/Provider/ServiceReloadManager/Clear--"
+  },
+  {
+    "title": "Sisk.Provider.ServiceProvider",
+    "link": "/spec/Sisk/Provider/ServiceProvider"
+  },
+  {
+    "title": "Sisk.Provider.ServiceProvider.AccessLogs",
+    "link": "/spec/Sisk/Provider/ServiceProvider/AccessLogs"
+  },
+  {
+    "title": "Sisk.Provider.ServiceProvider.ErrorLogs",
+    "link": "/spec/Sisk/Provider/ServiceProvider/ErrorLogs"
+  },
+  {
+    "title": "Sisk.Provider.ServiceProvider.ConfigurationFile",
+    "link": "/spec/Sisk/Provider/ServiceProvider/ConfigurationFile"
+  },
+  {
+    "title": "Sisk.Provider.ServiceProvider.ServerConfiguration",
+    "link": "/spec/Sisk/Provider/ServiceProvider/ServerConfiguration"
+  },
+  {
+    "title": "Sisk.Provider.ServiceProvider.HttpServer",
+    "link": "/spec/Sisk/Provider/ServiceProvider/HttpServer"
+  },
+  {
+    "title": "Sisk.Provider.ServiceProvider.Initialized",
+    "link": "/spec/Sisk/Provider/ServiceProvider/Initialized"
+  },
+  {
+    "title": "Sisk.Provider.ServiceProvider.RouterFactoryInstance",
+    "link": "/spec/Sisk/Provider/ServiceProvider/RouterFactoryInstance"
+  },
+  {
+    "title": "Sisk.Provider.ServiceProvider.Verbose",
+    "link": "/spec/Sisk/Provider/ServiceProvider/Verbose"
+  },
+  {
+    "title": "Sisk.Provider.ServiceProvider.#ctor",
+    "link": "/spec/Sisk/Provider/ServiceProvider/_ctor--RouterFactory"
+  },
+  {
+    "title": "Sisk.Provider.ServiceProvider.#ctor",
+    "link": "/spec/Sisk/Provider/ServiceProvider/_ctor--RouterFactory-String"
+  },
+  {
+    "title": "Sisk.Provider.ServiceProvider.Initialize",
+    "link": "/spec/Sisk/Provider/ServiceProvider/Initialize--"
+  },
+  {
+    "title": "Sisk.Provider.ServiceProvider.Initialize",
+    "link": "/spec/Sisk/Provider/ServiceProvider/Initialize--Boolean"
+  },
+  {
+    "title": "Sisk.Provider.ServiceProvider.Wait",
+    "link": "/spec/Sisk/Provider/ServiceProvider/Wait--"
   }
 ]

@@ -14,6 +14,7 @@ Provides an lightweight HTTP server powered by Sisk.
 | Property name | Description |
 | --- | --- |
 | [ServerConfiguration](/spec/Sisk/Core/Http/HttpServer/ServerConfiguration) | Gets or sets the Server Configuration object. | 
+| [IsListening](/spec/Sisk/Core/Http/HttpServer/IsListening) | Gets an boolean indicating if this HTTP server is running and listening. | 
 | [OnConnectionClose](/spec/Sisk/Core/Http/HttpServer/OnConnectionClose) | Event that is called when this [HttpServer](/spec/Sisk/Core/Http/HttpServer) computes an request and it's response. | 
 | [OnConnectionOpen](/spec/Sisk/Core/Http/HttpServer/OnConnectionOpen) | Event that is called when this [HttpServer](/spec/Sisk/Core/Http/HttpServer) receives an request. | 
 

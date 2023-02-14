@@ -18,6 +18,7 @@ Represents an HTTP request received by a Sisk server.
 | [IsContentAvailable](/spec/Sisk/Core/Http/HttpRequest/IsContentAvailable) | Gets a boolean indicating whether the content of this request has been processed by the server. | 
 | [HasContents](/spec/Sisk/Core/Http/HttpRequest/HasContents) | Gets a boolean indicating whether this request has contents. | 
 | [Headers](/spec/Sisk/Core/Http/HttpRequest/Headers) | Gets the HTTP request headers. | 
+| [Cookies](/spec/Sisk/Core/Http/HttpRequest/Cookies) | Gets an [NameValueCollection](/spec/System/Collections/Specialized/NameValueCollection) object with all cookies set in this request. | 
 | [Host](/spec/Sisk/Core/Http/HttpRequest/Host) | Get the requested host header (without port) from this HTTP request. | 
 | [Authority](/spec/Sisk/Core/Http/HttpRequest/Authority) | Get the requested host header with the port from this HTTP request. | 
 | [Path](/spec/Sisk/Core/Http/HttpRequest/Path) | Gets the HTTP request path without the query string. | 
@@ -43,6 +44,7 @@ Represents an HTTP request received by a Sisk server.
 | [GetQueryValue(String)](/spec/Sisk/Core/Http/HttpRequest/GetQueryValue--String) | Gets a query value using an case-insensitive search. | 
 | [GetHeader(String)](/spec/Sisk/Core/Http/HttpRequest/GetHeader--String) | Gets a header value using a case-insensitive search. | 
 | [CreateHeadResponse()](/spec/Sisk/Core/Http/HttpRequest/CreateHeadResponse--) | Create an HTTP response with code 200 OK without any body. | 
+| [CreateEmptyResponse()](/spec/Sisk/Core/Http/HttpRequest/CreateEmptyResponse--) | Create an HTTP response with code 204 No Content without any body. | 
 | [CreateResponse(HttpStatusCode, String)](/spec/Sisk/Core/Http/HttpRequest/CreateResponse--HttpStatusCode-String) | Creates an HttpResponse object with given status code and body content. | 
 | [CreateResponse(HttpStatusCode)](/spec/Sisk/Core/Http/HttpRequest/CreateResponse--HttpStatusCode) | Creates an HttpResponse object with given status code. | 
 | [CreateOkResponse(String)](/spec/Sisk/Core/Http/HttpRequest/CreateOkResponse--String) | Creates an HttpResponse object with status code 200 OK and given content. | 
