@@ -5,6 +5,7 @@ Namespace: Sisk.Core.Http
 
 ```csharp
 [Obsolete]
+[System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
 public VerboseMode Verbose { get; set; }
 ```
 

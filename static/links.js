@@ -576,6 +576,10 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Http/HttpServerFlags/TreatHeadAsGetMethod"
   },
   {
+    "title": "Http.HttpServerFlags.#ctor",
+    "link": "/spec/Sisk/Core/Http/HttpServerFlags/_ctor--"
+  },
+  {
     "title": "Http.ListeningHost",
     "link": "/spec/Sisk/Core/Http/ListeningHost"
   },
@@ -1098,6 +1102,10 @@ var specLinks = [
   {
     "title": "Sisk.Provider.ServiceProvider.HttpServer",
     "link": "/spec/Sisk/Provider/ServiceProvider/HttpServer"
+  },
+  {
+    "title": "Sisk.Provider.ServiceProvider.Flags",
+    "link": "/spec/Sisk/Provider/ServiceProvider/Flags"
   },
   {
     "title": "Sisk.Provider.ServiceProvider.Initialized",

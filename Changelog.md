@@ -1,3 +1,16 @@
+# 0.9.0
+
+Thank you for using Sisk.
+
+- Removed the `Newtonsoft.Json` dependency.
+- Added XML doc to the `HttpServerFlags` constructor.
+- You can setup HTTP server flags on `ServiceProvider` now.
+- Routes cannot be added if an route with exact or similar path is already
+defined.
+- Defining routes paths must start with an `/`. Sisk's current routing
+implementation ignores the trailing `/` at the end of the request path and the route path.
+
+
 # 0.8.9
 
 - New: hot reload support. This is applyable to the .NET support of hot reload. You can use it with `ServiceReloadManager` or
@@ -13,7 +26,6 @@ static methods. Use `SetObject(type)` for defining static route methods.
 - Fixed: CORS `Access-Control-Max-Age` header name.
 - Deprecated: `HttpRequest.CreateHeadResponse()`. Use `HttpRequest.CreateEmptyResponse()` instead.
 - Deprecated: `HttpServerExecutionStatus.ContentServedOnNotSupportedMethod`.
-- 
 
 # 0.8.7
 

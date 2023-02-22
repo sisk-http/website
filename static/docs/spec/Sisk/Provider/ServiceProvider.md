@@ -18,6 +18,7 @@ Provides a class that organizes and facilitates the porting management of a serv
 | [ConfigurationFile](/spec/Sisk/Provider/ServiceProvider/ConfigurationFile) | Gets or sets the Sisk server portable configuration file. | 
 | [ServerConfiguration](/spec/Sisk/Provider/ServiceProvider/ServerConfiguration) | Gets the emitted server configuration object interpreted from the configuration file. | 
 | [HttpServer](/spec/Sisk/Provider/ServiceProvider/HttpServer) | Gets the emitted HTTP server object instance interpreted from the configuration file. | 
+| [Flags](/spec/Sisk/Provider/ServiceProvider/Flags) | Gets or sets advanced configuration settings for the HTTP server initialization. | 
 | [Initialized](/spec/Sisk/Provider/ServiceProvider/Initialized) | Gets an boolean indicating if the configuration was successfully interpreted and the server is functional. | 
 | [RouterFactoryInstance](/spec/Sisk/Provider/ServiceProvider/RouterFactoryInstance) | Gets or sets the [RouterFactory](/spec/Sisk/Core/Routing/RouterFactory) object instance which will provide an entry point for this service. | 
 | [Verbose](/spec/Sisk/Provider/ServiceProvider/Verbose) | Gets or sets whether this [ServiceProvider](/spec/Sisk/Provider/ServiceProvider) should write mensagens to console indicating if the server is listening or not. | 
