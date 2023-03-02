@@ -68,6 +68,19 @@ new Docute({
             ]
         },
         {
+            title: "Features",
+            links: [
+                {
+                    title: 'Service Provider',
+                    link: '/features/service-provider'
+                },
+                {
+                    title: 'Native AOT support',
+                    link: '/features/native-aot'
+                }
+            ]
+        },
+        {
             title: "API Specification",
             links: specLinks
         }

@@ -1,6 +1,6 @@
 # Request handling
 
-Request handlers are functions that run before and after a request is executed on the router. They can be defined per route or per router.
+Request handlers, also known as "middlewares", are functions that run before or after a request is executed on the router. They can be defined per route or per router.
 
 There are two types of request handlers:
 

@@ -153,7 +153,9 @@ byte[] bodyBytes = request.RawBody;
 
 It is also possible to determine if there is a body in the request and if it is loaded with the properties [HasContents](/spec/Sisk/Core/Http/HttpRequest/HasContents), which determines if the request has contents and [IsContentAvailable](/spec/Sisk/Core/Http/HttpRequest/IsContentAvailable) which indicates that the HTTP server fully received the content from the remote point.
 
-> Sisk follows the RFC 9110 "HTTP Semantics", which doens't allow certain requests methods to have body. These requests will immediately drop an 400 (Bad Request) with the `ContentServedOnNotSupportedMethod` status. Requests with bodies are not allowed in methods GET, OPTIONS, HEAD and TRACE. You can read the [RFC 9910](https://httpwg.org/specs/rfc9110.html) here.
+> Sisk follows the RFC 9110 "HTTP Semantics", which doens't allow certain requests methods to have body. These requests will immediately drop an 400 (Bad Request) with the `ContentServedOnIllegalMethod` status. Requests with bodies are not allowed in methods GET, OPTIONS, HEAD and TRACE. You can read the [RFC 9910](https://httpwg.org/specs/rfc9110.html) here.
+> 
+> You can disable this feature by turning [ThrowContentOnNonSemanticMethods](http://localhost:5151/#/spec/Sisk/Core/Http/HttpServerFlags) to `false`.
 
 ## Getting the request context
 
@@ -210,7 +212,7 @@ static HttpResponse Index(HttpRequest request)
 }
 ```
 
-This method does not yet support interpreting arrays as multiple fields ending in `[]`.
+This method does not supports interpreting arrays as multiple fields ending in `[]` as some HTTP servers do.
 
 ## Getting multipart form data
 

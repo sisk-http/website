@@ -9,7 +9,7 @@ mainRouter.SetRoute(RouteMethod.Get, "/hey", (request) =>
 });
 ```
 
-To understand what a route is capable of doing, we need to understand what a request is capable of doing. An [HttpRequest](https://sisk-http.github.io/docs/static/#/spec/Sisk/Core/Http/HttpRequest) will contain everything you need. Sisk also includes some extra features that speed up development.
+To understand what a route is capable of doing, we need to understand what a request is capable of doing. An [HttpRequest](https://sisk-http.github.io/docs/static/#/spec/Sisk/Core/Http/HttpRequest) will contain everything you need. Sisk also includes some extra features that speed up the overral development.
 
 ## Creating routes using paths
 
@@ -39,6 +39,8 @@ mainRouter.SetRoute(RouteMethod.Get, "/hey/<name>/surname/<surname>", (request) 
 ```
 
 The HTTP request [Query](https://sisk-http.github.io/docs/static/#/spec/Sisk/Core/Http/HttpRequest/Query) property also stores the content of an original query, but if there are parameters in the route with the same name as a query, it will be replaced by what is in the route. The path that is matched with an request URI is always the path as explained in [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986#section-3.3).
+
+> Paths have their trailing `/` ignored in both request and route path, that is, if you try to access a route defined as `/index/page` you'll be able to access using `/index/page/` too.
 
 ## Creating routes using class instances
 
