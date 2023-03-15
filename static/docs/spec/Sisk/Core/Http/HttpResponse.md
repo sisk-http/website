@@ -13,6 +13,7 @@ Represents an HTTP Response.
 
 | Property name | Description |
 | --- | --- |
+| [CustomStatus](/spec/Sisk/Core/Http/HttpResponse/CustomStatus) | Gets or sets an custom HTTP status code and description for this HTTP response. If this property ins't null, it will overwrite the [Status](/spec/Sisk/Core/Http/HttpResponse/Status) property in this class. | 
 | [Status](/spec/Sisk/Core/Http/HttpResponse/Status) | Gets or sets the HTTP response status code. | 
 | [Headers](/spec/Sisk/Core/Http/HttpResponse/Headers) | Gets a [NameValueCollection](/spec/System/Collections/Specialized/NameValueCollection) instance of the HTTP response headers. | 
 | [Content](/spec/Sisk/Core/Http/HttpResponse/Content) | Gets or sets the HTTP response body contents. | 

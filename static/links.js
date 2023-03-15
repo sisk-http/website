@@ -16,8 +16,8 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Entity/CrossOriginResourceSharingHeaders/ExposeHeaders"
   },
   {
-    "title": "Entity.CrossOriginResourceSharingHeaders.AllowOrigins",
-    "link": "/spec/Sisk/Core/Entity/CrossOriginResourceSharingHeaders/AllowOrigins"
+    "title": "Entity.CrossOriginResourceSharingHeaders.AllowOrigin",
+    "link": "/spec/Sisk/Core/Entity/CrossOriginResourceSharingHeaders/AllowOrigin"
   },
   {
     "title": "Entity.CrossOriginResourceSharingHeaders.AllowMethods",
@@ -33,7 +33,7 @@ var specLinks = [
   },
   {
     "title": "Entity.CrossOriginResourceSharingHeaders.#ctor",
-    "link": "/spec/Sisk/Core/Entity/CrossOriginResourceSharingHeaders/_ctor--String[]-String[]-String[]-TimeSpan"
+    "link": "/spec/Sisk/Core/Entity/CrossOriginResourceSharingHeaders/_ctor--String-String[]-String[]-TimeSpan"
   },
   {
     "title": "Entity.CrossOriginResourceSharingHeaders.#ctor",
@@ -204,6 +204,10 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Http/HttpRequest/RawBody"
   },
   {
+    "title": "Http.HttpRequest.ContentLength",
+    "link": "/spec/Sisk/Core/Http/HttpRequest/ContentLength"
+  },
+  {
     "title": "Http.HttpRequest.Query",
     "link": "/spec/Sisk/Core/Http/HttpRequest/Query"
   },
@@ -242,6 +246,10 @@ var specLinks = [
   {
     "title": "Http.HttpRequest.GetHeader",
     "link": "/spec/Sisk/Core/Http/HttpRequest/GetHeader--String"
+  },
+  {
+    "title": "Http.HttpRequest.Close",
+    "link": "/spec/Sisk/Core/Http/HttpRequest/Close--"
   },
   {
     "title": "Http.HttpRequest.CreateHeadResponse",
@@ -302,6 +310,10 @@ var specLinks = [
   {
     "title": "Http.HttpResponse",
     "link": "/spec/Sisk/Core/Http/HttpResponse"
+  },
+  {
+    "title": "Http.HttpResponse.CustomStatus",
+    "link": "/spec/Sisk/Core/Http/HttpResponse/CustomStatus"
   },
   {
     "title": "Http.HttpResponse.Status",
@@ -556,6 +568,10 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Http/HttpServerExecutionStatus/MalformedRequest"
   },
   {
+    "title": "Http.HttpServerExecutionStatus.ClosedStream",
+    "link": "/spec/Sisk/Core/Http/HttpServerExecutionStatus/ClosedStream"
+  },
+  {
     "title": "Http.HttpServerFlags",
     "link": "/spec/Sisk/Core/Http/HttpServerFlags"
   },
@@ -576,8 +592,36 @@ var specLinks = [
     "link": "/spec/Sisk/Core/Http/HttpServerFlags/TreatHeadAsGetMethod"
   },
   {
+    "title": "Http.HttpServerFlags.OptionsLogMode",
+    "link": "/spec/Sisk/Core/Http/HttpServerFlags/OptionsLogMode"
+  },
+  {
+    "title": "Http.HttpServerFlags.IncludeFullPathOnLog",
+    "link": "/spec/Sisk/Core/Http/HttpServerFlags/IncludeFullPathOnLog"
+  },
+  {
+    "title": "Http.HttpServerFlags.SendSiskHeader",
+    "link": "/spec/Sisk/Core/Http/HttpServerFlags/SendSiskHeader"
+  },
+  {
     "title": "Http.HttpServerFlags.#ctor",
     "link": "/spec/Sisk/Core/Http/HttpServerFlags/_ctor--"
+  },
+  {
+    "title": "Http.HttpStatusInformation",
+    "link": "/spec/Sisk/Core/Http/HttpStatusInformation"
+  },
+  {
+    "title": "Http.HttpStatusInformation.Description",
+    "link": "/spec/Sisk/Core/Http/HttpStatusInformation/Description"
+  },
+  {
+    "title": "Http.HttpStatusInformation.StatusCode",
+    "link": "/spec/Sisk/Core/Http/HttpStatusInformation/StatusCode"
+  },
+  {
+    "title": "Http.HttpStatusInformation.#ctor",
+    "link": "/spec/Sisk/Core/Http/HttpStatusInformation/_ctor--Int32-String"
   },
   {
     "title": "Http.ListeningHost",

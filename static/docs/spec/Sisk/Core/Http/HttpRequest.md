@@ -26,8 +26,9 @@ Represents an HTTP request received by a Sisk server.
 | [FullUrl](/spec/Sisk/Core/Http/HttpRequest/FullUrl) | Gets the full URL for this request, with scheme, host, port (if any), path and query. | 
 | [RequestEncoding](/spec/Sisk/Core/Http/HttpRequest/RequestEncoding) | Gets the Encoding used in the request. | 
 | [Method](/spec/Sisk/Core/Http/HttpRequest/Method) | Gets the HTTP request method. | 
-| [Body](/spec/Sisk/Core/Http/HttpRequest/Body) | Gets the HTTP request body as string. | 
+| [Body](/spec/Sisk/Core/Http/HttpRequest/Body) | Gets the HTTP request body as string, decoded by the request content encoding. | 
 | [RawBody](/spec/Sisk/Core/Http/HttpRequest/RawBody) | Gets the HTTP request body as a byte array. | 
+| [ContentLength](/spec/Sisk/Core/Http/HttpRequest/ContentLength) | Gets the content length in bytes. | 
 | [Query](/spec/Sisk/Core/Http/HttpRequest/Query) | Gets the HTTP request query extracted from the path string. This property also contains routing parameters. | 
 | [QueryString](/spec/Sisk/Core/Http/HttpRequest/QueryString) | Gets the HTTP request URL raw query string. | 
 | [Origin](/spec/Sisk/Core/Http/HttpRequest/Origin) | Gets the incoming IP address from the request. | 
@@ -43,6 +44,7 @@ Represents an HTTP request received by a Sisk server.
 | [GetRawHttpRequest(Boolean)](/spec/Sisk/Core/Http/HttpRequest/GetRawHttpRequest--Boolean) | Gets the raw HTTP request message from the socket. | 
 | [GetQueryValue(String)](/spec/Sisk/Core/Http/HttpRequest/GetQueryValue--String) | Gets a query value using an case-insensitive search. | 
 | [GetHeader(String)](/spec/Sisk/Core/Http/HttpRequest/GetHeader--String) | Gets a header value using a case-insensitive search. | 
+| [Close()](/spec/Sisk/Core/Http/HttpRequest/Close--) | Closes this HTTP request and their connection with the remote client without sending any response. | 
 | [CreateHeadResponse()](/spec/Sisk/Core/Http/HttpRequest/CreateHeadResponse--) | Create an HTTP response with code 200 OK without any body. | 
 | [CreateEmptyResponse()](/spec/Sisk/Core/Http/HttpRequest/CreateEmptyResponse--) | Create an HTTP response with code 204 No Content without any body. | 
 | [CreateResponse(HttpStatusCode, String)](/spec/Sisk/Core/Http/HttpRequest/CreateResponse--HttpStatusCode-String) | Creates an HttpResponse object with given status code and body content. | 

@@ -7,5 +7,5 @@ Namespace: Sisk.Core.Http
 public string Body { get; }
 ```
 
-Gets the HTTP request body as string.
+Gets the HTTP request body as string, decoded by the request content encoding.
 

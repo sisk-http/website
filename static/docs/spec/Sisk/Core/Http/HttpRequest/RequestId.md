@@ -4,7 +4,7 @@
 Namespace: Sisk.Core.Http
 
 ```csharp
-public Guid RequestId { get; init; }
+public string RequestId { get; }
 ```
 
 Gets a unique random ID for this request.

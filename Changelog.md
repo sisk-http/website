@@ -1,6 +1,32 @@
+# 0.10.0
+
+- Added: `ContentLength` property for `HttpRequest` objects.
+- Added: `Close()` method for `HttpRequest` objects.
+- Added: `OptionsLogMode` flag for the HTTP server.
+- Added: `IncludeFullPathOnLog` flag for the HTTP server.
+- Changed: the CORS `Allow-Origin` was an array accepting multiple values. The `AllowOrigins` property was renamed and modified to be an
+`string? AllowOrigin` instead previous `string[] AllowOrigins`. You might change your service configuration in order of this change. Also was
+fixed that this method allows nullable for now.
+- Changed: exceptions thrown from an request handler body will now be supressed if `ThrowExceptions` is enabled.
+- Fixed: the `X-Powered-By` header wasn't being sent. You can disable it by turning `HttpServerFlags.SendSiskHeader` to false.
+- Fixed: `charset` on Content-Type wasn't being set by `StringContent` helper.
+- Fixed: Multipart-form objects were decoding unicode chars to their wrong format. To fix this, we've added two static properties
+to the `MultipartObject` ("DefaultContentEncoding" and "DefaultHeadersEncoding"), which you can set the default encoding for header-parsing and content parsing.
+- Rewrited: the request id generator function to another one a bit faster than `Guid.NewGuid()`.
+- Experimental: you can send custom HTTP status codes and reason phrases using the `HttpResponse.CustomStatus` property.
+- Code cleanup.
+
+# 0.9.1
+
+This version includes bug fixes and support for Native AOT. [Read the docs here]() to see more information about Native AOT and Sisk..
+
+- Sisk programs which uses services providers now supports Native AOT compilation. Read more 
+- Fixed where the `ServiceProvider.ErrorLogs` were redirecting output to `AccessLogs` instead `ErrorLogs` stream.
+- Other small adjustments and improvements.
+
 # 0.9.0
 
-Thank you for using Sisk.
+Thank you for using Sisk. 
 
 - Removed the `Newtonsoft.Json` dependency.
 - Added XML doc to the `HttpServerFlags` constructor.
@@ -9,7 +35,6 @@ Thank you for using Sisk.
 defined.
 - Defining routes paths must start with an `/`. Sisk's current routing
 implementation ignores the trailing `/` at the end of the request path and the route path.
-
 
 # 0.8.9
 
