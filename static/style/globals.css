@@ -1,0 +1,54 @@
+html {
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    --container-inline: 80px;
+    --container-block: 120px;
+    --primary-color: #4408fe;
+}
+
+body {
+    opacity: 0;
+    transition: .25s ease;
+}
+
+body.page-loaded {
+    opacity: 1;
+}
+
+.pad {
+    padding: var(--container-inline);
+}
+
+.pad-inline {
+    padding-inline: var(--container-block) var(--container-inline);
+}
+
+.pad-block {
+    padding-block: var(--container-block) var(--container-inline);
+}
+
+h1 {
+    font-size: 54px;
+    font-weight: 300;
+}
+
+li {
+    margin-bottom: .5rem;
+}
+
+.banner-img {
+    width: 100%;
+    height: auto;
+}
+
+blockquote {
+    background-color: whitesmoke;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+@media only screen and (max-width: 1366px) {
+    html {
+        --container-inline: 80px;
+    }
+}

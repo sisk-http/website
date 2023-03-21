@@ -1,0 +1,138 @@
+<script>
+    setPageTitle("MultipartObject class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                MultipartObject class
+            </h1>
+<p>
+    Definition:
+</p>
+<pre>
+public class MultipartObject
+</pre>
+<p>
+    Represents an multipart/form-data object.
+</p>
+<h2 id="property">
+    Property list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Entity.MultipartObject.ContentBytes">
+            ContentBytes
+        </a>
+    </td>
+    <td>
+        The multipart form data content bytes.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Entity.MultipartObject.ContentLength">
+            ContentLength
+        </a>
+    </td>
+    <td>
+        The multipart form data content length.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Entity.MultipartObject.DefaultContentEncoding">
+            DefaultContentEncoding
+        </a>
+    </td>
+    <td>
+        Gets or sets the default content encoding for decoding objects contents as strings.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Entity.MultipartObject.DefaultHeadersEncoding">
+            DefaultHeadersEncoding
+        </a>
+    </td>
+    <td>
+        Gets or sets the default content encoding for decoding multipart-form headers names and values.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Entity.MultipartObject.Filename">
+            Filename
+        </a>
+    </td>
+    <td>
+        The name of the file provided by Multipart form data. Null is returned if the object is not a file.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Entity.MultipartObject.Headers">
+            Headers
+        </a>
+    </td>
+    <td>
+        The multipart form data object headers.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Entity.MultipartObject.Name">
+            Name
+        </a>
+    </td>
+    <td>
+        The multipart form data object field name.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="method">
+    Method list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Entity.MultipartObject.GetCommonFileFormat()">
+            GetCommonFileFormat()
+        </a>
+    </td>
+    <td>
+        Determine the image format based in the file header for each image content type.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Entity.MultipartObject.ReadContentAsString()">
+            ReadContentAsString()
+        </a>
+    </td>
+    <td>
+        Reads the content bytes as an ASCII string.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Entity.MultipartObject.ReadContentAsString(Encoding)">
+            ReadContentAsString(Encoding)
+        </a>
+    </td>
+    <td>
+        Reads the content bytes with the given encoder.
+    <td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

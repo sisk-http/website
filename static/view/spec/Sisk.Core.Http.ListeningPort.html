@@ -1,0 +1,78 @@
+<script>
+    setPageTitle("ListeningPort struct");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                ListeningPort struct
+            </h1>
+<p>
+    Definition:
+</p>
+<pre>
+public struct ListeningPort
+</pre>
+<p>
+    Provides a structure to contain a listener port for an <see cref="T:Sisk.Core.Http.ListeningHost" /> instance.
+</p>
+<h2 id="property">
+    Property list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.ListeningPort.Port">
+            Port
+        </a>
+    </td>
+    <td>
+        Gets or sets the port where the server will listen.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.ListeningPort.Secure">
+            Secure
+        </a>
+    </td>
+    <td>
+        Gets or sets whether the server should listen to this port securely (SSL).
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="constructor">
+    Constructor list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.ListeningPort.ListeningPort(int-bool)">
+            ListeningPort(int, bool)
+        </a>
+    </td>
+    <td>
+        Creates an new <see cref="T:Sisk.Core.Http.ListeningPort" /> instance with the specified port and secure context.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.ListeningPort.ListeningPort(int)">
+            ListeningPort(int)
+        </a>
+    </td>
+    <td>
+        Creates an new <see cref="T:Sisk.Core.Http.ListeningPort" /> instance with the specified port.
+    <td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

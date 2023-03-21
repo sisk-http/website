@@ -1,0 +1,49 @@
+<script>
+    setPageTitle("Router class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                SetRoute(RouteMethod, string, RouterCallback) method
+            </h1>
+            <p>
+                Declaring type:
+            </p>
+            <a href="/spec/Sisk.Core.Routing.Router">
+                Sisk.Core.Routing.Router
+            </a>
+<p>
+    Definition:
+</p>
+<pre>
+public void SetRoute(RouteMethod method, string path, RouterCallback callback)
+</pre>
+<p>
+    Defines an route with their method, path and callback function.
+</p>
+<h2>
+    Parameters
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>method</td>
+    <td>The route method to be matched. "Any" means any method that matches their path.</td>
+</tr>
+<tr>
+    <td>path</td>
+    <td>The route path.</td>
+</tr>
+<tr>
+    <td>callback</td>
+    <td>The route function to be called after matched.</td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

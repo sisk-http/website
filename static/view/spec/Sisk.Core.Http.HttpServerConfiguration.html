@@ -1,0 +1,175 @@
+<script>
+    setPageTitle("HttpServerConfiguration class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                HttpServerConfiguration class
+            </h1>
+<p>
+    Definition:
+</p>
+<pre>
+public class HttpServerConfiguration : IDisposable
+</pre>
+<p>
+    Provides execution parameters for an <see cref="T:Sisk.Core.Http.HttpServer" />.
+</p>
+<h2 id="property">
+    Property list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerConfiguration.AccessLogsStream">
+            AccessLogsStream
+        </a>
+    </td>
+    <td>
+        Gets or sets the <see cref="T:System.IO.TextWriter" /> object which the HTTP server will write HTTP server access messages to.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerConfiguration.DefaultEncoding">
+            DefaultEncoding
+        </a>
+    </td>
+    <td>
+        Gets or sets the default encoding for sending and decoding messages.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerConfiguration.ErrorsLogsStream">
+            ErrorsLogsStream
+        </a>
+    </td>
+    <td>
+        Gets or sets the <see cref="T:System.IO.TextWriter" /> object which the HTTP server will write HTTP server error transcriptions to.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerConfiguration.Flags">
+            Flags
+        </a>
+    </td>
+    <td>
+        Gets or sets advanced flags and configuration settings for the HTTP server.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerConfiguration.IncludeRequestIdHeader">
+            IncludeRequestIdHeader
+        </a>
+    </td>
+    <td>
+        Gets or sets whether the server should include the "X-Request-Id" header in response headers.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerConfiguration.ListeningHosts">
+            ListeningHosts
+        </a>
+    </td>
+    <td>
+        Gets or sets the listening hosts repository that the <see cref="T:Sisk.Core.Http.HttpServer" /> instance will listen to.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerConfiguration.MaximumContentLength">
+            MaximumContentLength
+        </a>
+    </td>
+    <td>
+        Gets or sets the maximum size of a request body before it is closed by the socket.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerConfiguration.ResolveForwardedOriginAddress">
+            ResolveForwardedOriginAddress
+        </a>
+    </td>
+    <td>
+        Gets or sets whether the HTTP server should resolve remote (IP) addresses by the X-Forwarded-For header. This option is useful if you are using Sisk through a reverse proxy.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerConfiguration.ResolveForwardedOriginHost">
+            ResolveForwardedOriginHost
+        </a>
+    </td>
+    <td>
+        Gets or sets whether the HTTP server should resolve remote forwarded hosts by the header X-Forwarded-Host.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerConfiguration.ThrowExceptions">
+            ThrowExceptions
+        </a>
+    </td>
+    <td>
+        Gets or sets whether the server should throw exceptions instead of reporting it on <see cref="T:Sisk.Core.Http.HttpServerExecutionStatus" /> if any is thrown while processing requests.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerConfiguration.Verbose">
+            Verbose
+        </a>
+    </td>
+    <td>
+        Gets or sets the message level the console will write. This property is now deprecated. Use <see cref="P:Sisk.Core.Http.HttpServerConfiguration.AccessLogsStream" /> or <see cref="P:Sisk.Core.Http.HttpServerConfiguration.ErrorsLogsStream" /> instead.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="constructor">
+    Constructor list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerConfiguration.HttpServerConfiguration()">
+            HttpServerConfiguration()
+        </a>
+    </td>
+    <td>
+        Creates an new <see cref="T:Sisk.Core.Http.HttpServerConfiguration" /> instance with no parameters.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="method">
+    Method list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerConfiguration.Dispose()">
+            Dispose()
+        </a>
+    </td>
+    <td>
+        Frees the resources and invalidates this instance.
+    <td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

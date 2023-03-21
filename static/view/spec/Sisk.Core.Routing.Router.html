@@ -1,0 +1,185 @@
+<script>
+    setPageTitle("Router class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                Router class
+            </h1>
+<p>
+    Definition:
+</p>
+<pre>
+public class Router
+</pre>
+<p>
+    Represents a collection of Routes and main executor of callbacks in an <see cref="T:Sisk.Core.Http.HttpServer" />.
+</p>
+<h2 id="property">
+    Property list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.Router.CallbackErrorHandler">
+            CallbackErrorHandler
+        </a>
+    </td>
+    <td>
+        Gets or sets the Router callback exception handler.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.Router.GlobalRequestHandlers">
+            GlobalRequestHandlers
+        </a>
+    </td>
+    <td>
+        Gets or sets the global requests handlers that will be executed in all matched routes.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.Router.MatchRoutesIgnoreCase">
+            MatchRoutesIgnoreCase
+        </a>
+    </td>
+    <td>
+        Gets or sets whether this <see cref="T:Sisk.Core.Routing.Router" /> will match routes ignoring case.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.Router.MethodNotAllowedErrorHandler">
+            MethodNotAllowedErrorHandler
+        </a>
+    </td>
+    <td>
+        Gets or sets the Router "405 Method Not Allowed" handler.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.Router.NotFoundErrorHandler">
+            NotFoundErrorHandler
+        </a>
+    </td>
+    <td>
+        Gets or sets the Router "404 Not Found" handler.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="constructor">
+    Constructor list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.Router.Router()">
+            Router()
+        </a>
+    </td>
+    <td>
+        Creates an new <see cref="T:Sisk.Core.Routing.Router" /> instance with default properties values.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="method">
+    Method list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.Router.GetDefinedRoutes()">
+            GetDefinedRoutes()
+        </a>
+    </td>
+    <td>
+        Gets all routes defined on this router instance.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.Router.GetRouteFromName(string)">
+            GetRouteFromName(string)
+        </a>
+    </td>
+    <td>
+        Gets an route object by their name that is defined in this Router.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.Router.SetObject(Object)">
+            SetObject(Object)
+        </a>
+    </td>
+    <td>
+        Searches the object instance for methods with attribute <see cref="T:Sisk.Core.Routing.RouteAttribute" /> and optionals <see cref="T:Sisk.Core.Routing.RequestHandlerAttribute" />, and creates routes from them.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.Router.SetObject(Type)">
+            SetObject(Type)
+        </a>
+    </td>
+    <td>
+        Searches the object instance for methods with attribute <see cref="T:Sisk.Core.Routing.RouteAttribute" /> and optionals <see cref="T:Sisk.Core.Routing.RequestHandlerAttribute" />, and creates routes from them.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.Router.SetRoute(Route)">
+            SetRoute(Route)
+        </a>
+    </td>
+    <td>
+        Defines an route in this Router instance.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.Router.SetRoute(RouteMethod-string-RouterCallback-string-IRequestHandler)">
+            SetRoute(RouteMethod, string, RouterCallback, string, IRequestHandler[])
+        </a>
+    </td>
+    <td>
+        Defines an route with their method, path, callback function, name and request handlers.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.Router.SetRoute(RouteMethod-string-RouterCallback-string)">
+            SetRoute(RouteMethod, string, RouterCallback, string)
+        </a>
+    </td>
+    <td>
+        Defines an route with their method, path, callback function and name.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.Router.SetRoute(RouteMethod-string-RouterCallback)">
+            SetRoute(RouteMethod, string, RouterCallback)
+        </a>
+    </td>
+    <td>
+        Defines an route with their method, path and callback function.
+    <td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

@@ -1,0 +1,185 @@
+<script>
+    setPageTitle("ServiceProvider class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                ServiceProvider class
+            </h1>
+<p>
+    Definition:
+</p>
+<pre>
+public class ServiceProvider
+</pre>
+<p>
+    Provides a class that organizes and facilitates the porting management of a service or application that uses Sisk.
+</p>
+<h2 id="property">
+    Property list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Provider.ServiceProvider.AccessLogs">
+            AccessLogs
+        </a>
+    </td>
+    <td>
+        Gets the configured access log stream. This property is inherited from <see cref="P:Sisk.Provider.ServiceProvider.ServerConfiguration" />.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Provider.ServiceProvider.ConfigurationFile">
+            ConfigurationFile
+        </a>
+    </td>
+    <td>
+        Gets or sets the Sisk server portable configuration file.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Provider.ServiceProvider.ErrorLogs">
+            ErrorLogs
+        </a>
+    </td>
+    <td>
+        Gets the configured error log stream. This property is inherited from <see cref="P:Sisk.Provider.ServiceProvider.ServerConfiguration" />.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Provider.ServiceProvider.Flags">
+            Flags
+        </a>
+    </td>
+    <td>
+        Gets or sets advanced configuration settings for the HTTP server initialization.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Provider.ServiceProvider.HttpServer">
+            HttpServer
+        </a>
+    </td>
+    <td>
+        Gets the emitted HTTP server object instance interpreted from the configuration file.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Provider.ServiceProvider.Initialized">
+            Initialized
+        </a>
+    </td>
+    <td>
+        Gets an boolean indicating if the configuration was successfully interpreted and the server is functional.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Provider.ServiceProvider.RouterFactoryInstance">
+            RouterFactoryInstance
+        </a>
+    </td>
+    <td>
+        Gets or sets the <see cref="T:Sisk.Core.Routing.RouterFactory" /> object instance which will provide an entry point for this service.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Provider.ServiceProvider.ServerConfiguration">
+            ServerConfiguration
+        </a>
+    </td>
+    <td>
+        Gets the emitted server configuration object interpreted from the configuration file.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Provider.ServiceProvider.Verbose">
+            Verbose
+        </a>
+    </td>
+    <td>
+        Gets or sets whether this <see cref="T:Sisk.Provider.ServiceProvider" /> should write mensagens to console indicating if the server is listening or not.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="constructor">
+    Constructor list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Provider.ServiceProvider.ServiceProvider(RouterFactory-string)">
+            ServiceProvider(RouterFactory, string)
+        </a>
+    </td>
+    <td>
+        Creates an new <see cref="T:Sisk.Provider.ServiceProvider" /> instance with given router factory and custom settings file name.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Provider.ServiceProvider.ServiceProvider(RouterFactory)">
+            ServiceProvider(RouterFactory)
+        </a>
+    </td>
+    <td>
+        Creates an new <see cref="T:Sisk.Provider.ServiceProvider" /> instance with given router factory.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="method">
+    Method list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Provider.ServiceProvider.Initialize()">
+            Initialize()
+        </a>
+    </td>
+    <td>
+        Opens and reads the configuration file, parses it and starts the HTTP server with the router and settings parsed from the file.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Provider.ServiceProvider.Initialize(bool)">
+            Initialize(bool)
+        </a>
+    </td>
+    <td>
+        Opens and reads the configuration file, parses it and starts the HTTP server with the router and settings parsed from the file.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Provider.ServiceProvider.Wait()">
+            Wait()
+        </a>
+    </td>
+    <td>
+        Prevents the executable from closing automatically after starting the executable.
+    <td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

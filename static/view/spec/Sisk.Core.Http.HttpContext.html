@@ -1,0 +1,71 @@
+<script>
+    setPageTitle("HttpContext class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                HttpContext class
+            </h1>
+<p>
+    Definition:
+</p>
+<pre>
+public class HttpContext
+</pre>
+<p>
+    Represents an context for Http requests.
+</p>
+<h2 id="property">
+    Property list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpContext.HttpServer">
+            HttpServer
+        </a>
+    </td>
+    <td>
+        Gets the context Http Server instance.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpContext.MatchedRoute">
+            MatchedRoute
+        </a>
+    </td>
+    <td>
+        Gets the matched Http Route object from the Router.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpContext.RequestBag">
+            RequestBag
+        </a>
+    </td>
+    <td>
+        Gets or sets a managed object that is accessed and modified by request handlers.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpContext.RouterResponse">
+            RouterResponse
+        </a>
+    </td>
+    <td>
+        Gets or sets the HTTP response for this context. This property is only not null when a post-executing <see cref="T:Sisk.Core.Routing.Handlers.IRequestHandler" /> was executed for this router context.
+    <td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

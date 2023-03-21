@@ -1,0 +1,248 @@
+<script>
+    setPageTitle("Service Provider");
+    app.navPage = "docs";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1 id="service-provider">Service Provider</h1>
+            <p>Service Providers are a simple way to port your application in different environments and configurations
+                easily without having to change your code for it. The <a
+                    href="/spec/Sisk/Provider/ServiceProvider">ServiceProvider</a> class is accessible by type that sets
+                an application with your router, configuration and other settings already available on Sisk.</p>
+            <p>Service Providers managed by a JSON file of settings that is read by the application that is close to its
+                executable. This is a example service setting file:</p>
+            <pre><code class="lang-json">{
+    <span class="hljs-attr">"Server"</span>: {
+        <span class="hljs-attr">"DefaultEncoding"</span>: <span class="hljs-string">"UTF-8"</span>,
+        <span class="hljs-attr">"ThrowExceptions"</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">"IncludeRequestIdHeader"</span>: <span class="hljs-literal">true</span>
+    },
+    <span class="hljs-attr">"ListeningHost"</span>: {
+        <span class="hljs-attr">"Label"</span>: <span class="hljs-string">"My sisk application"</span>,
+        <span class="hljs-attr">"Hostname"</span>: <span class="hljs-string">"localhost"</span>,
+        <span class="hljs-attr">"Ports"</span>: [
+            {
+                <span class="hljs-attr">"Port"</span>: <span class="hljs-number">5555</span>,
+                <span class="hljs-attr">"Secure"</span>: <span class="hljs-literal">false</span>
+            }
+        ],
+        <span class="hljs-attr">"CrossOriginResourceSharingPolicy"</span>: {
+            <span class="hljs-attr">"AllowOrigin"</span>: <span class="hljs-string">"*"</span>,
+            <span class="hljs-attr">"AllowMethods"</span>: [ <span class="hljs-string">"*"</span> ],
+            <span class="hljs-attr">"AllowHeaders"</span>: [ <span class="hljs-string">"*"</span> ],
+            <span class="hljs-attr">"MaxAge"</span>: <span class="hljs-number">3600</span>
+        },
+        <span class="hljs-attr">"Parameters"</span>: {
+            <span class="hljs-attr">"MySqlConnection"</span>: <span class="hljs-string">"server=localhost;user=root;"</span>
+        }
+    }
+}
+</code></pre>
+            <p>This file is read alongside the server executable, regardless of the build platform. By default the file
+                name is <code>service-config.json</code> and must stay at the same directory of the output executeable.
+                It is also possible to change the file name by tweaking the <a
+                    href="/spec/Sisk/Provider/ServiceProvider">ServiceProvider</a> class.</p>
+            <blockquote>
+                <p>Tip: in Sisk service provider configuration files it&#39;s allowed to write <code>// single</code> or
+                    <code>/* multi-line comments */</code>, as they are ignored by the interpreter.</p>
+            </blockquote>
+            <h2 id="creating-an-service-provider-instance">Creating an service provider instance</h2>
+            <p>In this session we will learn how to configure the application to run a Sisk service provider. First of
+                all, you will need to have the latest version of Sisk installed in your project. See <a
+                    href="/installing">how to install here</a>.</p>
+            <p>First let&#39;s configure an RouterFactory class instance that will be configured and will emit a router.
+                This class is not the entry point of the application, but nevertheless it is the object that will run
+                the runtime objects.</p>
+            <pre><code class="lang-cs"><span class="hljs-keyword">internal</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Application</span> : <span class="hljs-title">RouterFactory</span>
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> MySqlConnection { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+
+    <span class="hljs-comment">// Below we indicate to the router to look for the routes in our application instance. </span>
+    <span class="hljs-comment">// You can define the routes on another object or type as well.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> Router <span class="hljs-title">BuildRouter</span>(<span class="hljs-params"></span>)
+    </span>{
+        Router r = <span class="hljs-keyword">new</span> Router();
+        r.SetObject(<span class="hljs-keyword">this</span>);
+        <span class="hljs-keyword">return</span> r;
+    }
+
+    <span class="hljs-comment">// In setupParameters, we can have the parameters set in the parameters section of our json.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Setup</span>(<span class="hljs-params">NameValueCollection setupParameters</span>)
+    </span>{
+        <span class="hljs-keyword">this</span>.MySqlConnection = setupParameters[<span class="hljs-string">"MySqlConnection"</span>] ?? <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ArgumentNullException(<span class="hljs-keyword">nameof</span>(<span class="hljs-string">"MySqlConnection"</span>));
+    }
+
+    [Route(RouteMethod.Get, <span class="hljs-string">"/"</span>)]
+    <span class="hljs-function"><span class="hljs-keyword">public</span> HttpResponse <span class="hljs-title">IndexPage</span>(<span class="hljs-params">HttpRequest request</span>)
+    </span>{
+        HttpResponse htmlResponse = <span class="hljs-keyword">new</span> HttpResponse();
+        htmlResponse.Content = <span class="hljs-keyword">new</span> StringContent(<span class="hljs-string">"Hello, world!"</span>, System.Text.Encoding.UTF8, <span class="hljs-string">"text/plain"</span>);
+        <span class="hljs-keyword">return</span> htmlResponse;
+    }
+}
+</code></pre>
+            <p>Now, we can configure a service in our program entry point:</p>
+            <pre><code class="lang-cs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span>
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Application App { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-keyword">string</span>[] args</span>)
+    </span>{
+        App = <span class="hljs-keyword">new</span> Application();
+        ServiceProvider provider = <span class="hljs-keyword">new</span> ServiceProvider(App);
+        provider.Initialize(<span class="hljs-literal">true</span>); <span class="hljs-comment">// true indicates that the application will support hot reload</span>
+        provider.Wait();           <span class="hljs-comment">// prevents hauting</span>
+    }
+}
+</code></pre>
+            <p>Now our application is ready to be started with a JSON file configuring the ports, methods, hostnames and
+                parameters.</p>
+            <h2 id="configuration-file-structure">Configuration file structure</h2>
+            <p>The JSON file is composed of the properties:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Mandatory</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Server</td>
+                        <td>Required</td>
+                        <td>Represents the server itself with their settings.</td>
+                    </tr>
+                    <tr>
+                        <td>Server.AccessLogsStream</td>
+                        <td>Optional</td>
+                        <td>Default to <code>console</code>. Specifies the access log output stream. Can be an filename,
+                            <code>null</code> or <code>console</code>.</td>
+                    </tr>
+                    <tr>
+                        <td>Server.ErrorsLogsStream</td>
+                        <td>Optional</td>
+                        <td>Default to <code>null</code>. Specifies the error log output stream. Can be an filename,
+                            <code>null</code> or <code>console</code>.</td>
+                    </tr>
+                    <tr>
+                        <td>Server.ResolveForwardedOriginAddress</td>
+                        <td>Optional</td>
+                        <td>Default to <code>false</code>. Specifies if the HTTP server should resolve the
+                            <code>X-Forwarded-For</code> header to the user IP. (Recommended for proxy servers)</td>
+                    </tr>
+                    <tr>
+                        <td>Server.ResolveForwardedOriginHost</td>
+                        <td>Optional</td>
+                        <td>Default to <code>false</code>. Specifies if the HTTP server should resolve the
+                            <code>X-Forwarded-Host</code> header to the server host.</td>
+                    </tr>
+                    <tr>
+                        <td>Server.DefaultEncoding</td>
+                        <td>Optional</td>
+                        <td>Default to <code>UTF-8</code>. Specifies the default text encoding used by the HTTP server.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Server.MaximumContentLength</td>
+                        <td>Optional</td>
+                        <td>Default to <code>0</code>. Specifies the maximum content length in bytes. Zero means
+                            infinite.</td>
+                    </tr>
+                    <tr>
+                        <td>Server.IncludeRequestIdHeader</td>
+                        <td>Optional</td>
+                        <td>Default to <code>false</code>. Specifies if the HTTP server should send the
+                            <code>X-Request-Id</code> header.</td>
+                    </tr>
+                    <tr>
+                        <td>Server.ThrowExceptions</td>
+                        <td>Optional</td>
+                        <td>Default to <code>true</code>. Specifies if unhandled exceptions should be thrown. Set to
+                            <code>false</code> when production and <code>true</code> when debugging.</td>
+                    </tr>
+                    <tr>
+                        <td>ListeningHost</td>
+                        <td>Required</td>
+                        <td>Represents the server listening host.</td>
+                    </tr>
+                    <tr>
+                        <td>ListeningHost.Hostname</td>
+                        <td>Required</td>
+                        <td>Represents the HTTP server listening hostname.</td>
+                    </tr>
+                    <tr>
+                        <td>ListeningHost.Label</td>
+                        <td>Optional</td>
+                        <td>Represents the application label.</td>
+                    </tr>
+                    <tr>
+                        <td>ListeningHost.Ports</td>
+                        <td>Required</td>
+                        <td>Represents an array of listening ports.</td>
+                    </tr>
+                    <tr>
+                        <td>ListeningHost.Ports[*].Port</td>
+                        <td>Required</td>
+                        <td>Specifies the port number.</td>
+                    </tr>
+                    <tr>
+                        <td>ListeningHost.Ports[*].Secure</td>
+                        <td>Required</td>
+                        <td>Specifies if this port should be listened with HTTPS (<code>true</code>) or HTTP
+                            (<code>false</code>).</td>
+                    </tr>
+                    <tr>
+                        <td>ListeningHost.CrossOriginResourceSharingPolicy</td>
+                        <td>Optional</td>
+                        <td>Setup the CORS headers for the application.</td>
+                    </tr>
+                    <tr>
+                        <td>ListeningHost.CrossOriginResourceSharingPolicy.AllowCredentials</td>
+                        <td>Optional</td>
+                        <td>Defaults to <code>false</code>. Specifies the <code>Allow-Credentials</code> header.</td>
+                    </tr>
+                    <tr>
+                        <td>ListeningHost.CrossOriginResourceSharingPolicy.ExposeHeaders</td>
+                        <td>Optional</td>
+                        <td>Defaults to <code>null</code>. This property expects an array of strings. Specifies the
+                            <code>Expose-Headers</code> header.</td>
+                    </tr>
+                    <tr>
+                        <td>ListeningHost.CrossOriginResourceSharingPolicy.AllowOrigin</td>
+                        <td>Optional</td>
+                        <td>Defaults to <code>null</code>. This property expects an string. Specifies the
+                            <code>Allow-Origin</code> header.</td>
+                    </tr>
+                    <tr>
+                        <td>ListeningHost.CrossOriginResourceSharingPolicy.AllowMethods</td>
+                        <td>Optional</td>
+                        <td>Defaults to <code>null</code>. This property expects an array of strings. Specifies the
+                            <code>Allow-Methods</code> header.</td>
+                    </tr>
+                    <tr>
+                        <td>ListeningHost.CrossOriginResourceSharingPolicy.AllowHeaders</td>
+                        <td>Optional</td>
+                        <td>Defaults to <code>null</code>. This property expects an array of strings. Specifies the
+                            <code>Allow-Headers</code> header.</td>
+                    </tr>
+                    <tr>
+                        <td>ListeningHost.CrossOriginResourceSharingPolicy.MaxAge</td>
+                        <td>Optional</td>
+                        <td>Defaults to <code>null</code>. This property expects an interger. Specifies the
+                            <code>Max-Age</code> header in seconds.</td>
+                    </tr>
+                    <tr>
+                        <td>ListeningHost.Parameters</td>
+                        <td>Optional</td>
+                        <td>Specifies the properties provided to the application setup method.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>You can see an example of how to use each property at the top of this page.</p>
+        </article>
+        <include name="component/doc-nav"></include>
+    </section>
+</div>

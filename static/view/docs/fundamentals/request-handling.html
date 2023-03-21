@@ -1,0 +1,145 @@
+<script>
+    setPageTitle("Request Handling");
+    app.navPage = "docs";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1 id="request-handling">Request handling</h1>
+            <p>Request handlers, also known as &quot;middlewares&quot;, are functions that run before or after a request
+                is executed on the router. They can be defined per route or per router.</p>
+            <p>There are two types of request handlers:</p>
+            <ul>
+                <li><strong>Before requests</strong>: defines that the request handler will be executed BEFORE calling
+                    the router callback.
+                    response with it&#39;s own response.</li>
+                <li><strong>After response</strong>: defines that the request handler will be executed AFTER calling the
+                    router callback.</li>
+            </ul>
+            <p>Both requests handlers can override the actual router callback function response. By the way, request
+                handlers can be useful for validating a request, such as authentication, content, or any other
+                information, such as storing information, logs, or other steps that can be performed before or after a
+                response.</p>
+            <p><img src="/img/requesthandlers1.png" class="center" /></p>
+            <p>This way, a request handler can interrupt all this execution and return a response before finishing the
+                cycle, discarding everything else in the process.</p>
+            <p>Example: let&#39;s assume that a user authentication request handler does not authenticate him. It will
+                prevent the request lifecycle from being continued and will hang. If this happens in the request handler
+                at position two, the third and onwards will not be evaluated.</p>
+            <p><img src="/img/requesthandlers2.png" class="center" /></p>
+            <h2 id="creating-an-request-handler">Creating an request handler</h2>
+            <p>To create a request handler, we can create a class that inherits the <a
+                    href="/spec/Sisk/Core/Routing/Handlers/IRequestHandler">IRequestHandler</a> interface, in this
+                format:</p>
+            <pre><code class="lang-cs"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AuthenticateUserRequestHandler</span> : <span class="hljs-type">IRequestHandler</span></span>
+{
+    <span class="hljs-keyword">public</span> string Identifier { <span class="hljs-keyword">get</span>; init; } = Guid.NewGuid().ToString();
+    <span class="hljs-keyword">public</span> RequestHandlerExecutionMode ExecutionMode { <span class="hljs-keyword">get</span>; init; } = RequestHandlerExecutionMode.BeforeResponse;
+
+    <span class="hljs-keyword">public</span> HttpResponse? Execute(HttpRequest request, HttpContext context)
+    {
+        <span class="hljs-keyword">if</span> (request.Headers[<span class="hljs-string">"Authorization"</span>] != <span class="hljs-literal">null</span>)
+        {
+            <span class="hljs-comment">// Returning null indicates that the request cycle can be continued</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+        }
+        <span class="hljs-keyword">else</span>
+        {
+            <span class="hljs-comment">// Returning an HttpResponse object indicates that this response will overwrite adjacent responses.</span>
+            <span class="hljs-keyword">return</span> new HttpResponse(System.Net.HttpStatusCode.Unauthorized);
+        }
+    }
+}
+</code></pre>
+            <p>In the above example, we indicated that if the &quot;Authorization&quot; header is present in the
+                request, it should continue and the next request handler or the router callback should be called,
+                whichever comes next. If it&#39;s a request handler is executed after the response by their property <a
+                    href="/spec/Sisk/Core/Routing/Handlers/IRequestHandler/ExecutionMode">ExecutionMode</a> and return
+                an non-null value, it will overwrite the router&#39;s response.</p>
+            <p>Whenever a Request Handler returns <code>null</code>, it indicates that the request must continue and the
+                next object must be called or the cycle must end with the router&#39;s response.</p>
+            <h2 id="associating-a-request-handler-with-a-single-route">Associating a request handler with a single route
+            </h2>
+            <p>You can define one or more request handlers for a route.</p>
+            <pre><code class="lang-cs">mainRouter.SetRoute(RouteMethod.Get, <span class="hljs-string">"/"</span>, IndexPage, <span class="hljs-string">""</span>, <span class="hljs-keyword">new</span> <span class="hljs-type">IRequestHandler</span>[]
+{
+    <span class="hljs-keyword">new</span> <span class="hljs-type">AuthenticateUserRequestHandler</span>(),     <span class="hljs-comment">// before request handler</span>
+    <span class="hljs-keyword">new</span> <span class="hljs-type">ValidateJsonContentRequestHandler</span>(),  <span class="hljs-comment">// before request handler</span>
+    <span class="hljs-comment">//                                        &lt;-- method IndexPage will be executed here</span>
+    <span class="hljs-keyword">new</span> <span class="hljs-type">WriteToLogRequestHandler</span>()            <span class="hljs-comment">// after request handler</span>
+});
+</code></pre>
+            <p>Or creating an <a href="/spec/Sisk/Core/Routing/Route">Route</a> object:</p>
+            <pre><code class="lang-cs">Route indexRoute = <span class="hljs-keyword">new</span> <span class="hljs-type">Route</span>(RouteMethod.Get, <span class="hljs-string">"/"</span>, <span class="hljs-string">""</span>, IndexPage, <span class="hljs-literal">null</span>);
+indexRoute.RequestHandlers = <span class="hljs-keyword">new</span> <span class="hljs-type">IRequestHandler</span>[]
+{
+    <span class="hljs-keyword">new</span> <span class="hljs-type">AuthenticateUserRequestHandler</span>()
+};
+mainRouter.SetRoute(indexRoute);
+</code></pre>
+            <h2 id="associating-a-request-handler-with-a-router">Associating a request handler with a router</h2>
+            <p>You can define a global request handler that will runned on all routes on a router.</p>
+            <pre><code class="lang-cs">mainRouter.GlobalRequestHandlers = <span class="hljs-keyword">new</span> <span class="hljs-type">IRequestHandler</span>[]
+{
+    <span class="hljs-keyword">new</span> <span class="hljs-type">AuthenticateUserRequestHandler</span>()
+};
+</code></pre>
+            <h2 id="associating-a-request-handler-with-an-attribute">Associating a request handler with an attribute
+            </h2>
+            <p>You can define a request handler on a method attribute along with a route attribute.</p>
+            <pre><code class="lang-cs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">MyController</span>
+{
+    [Route(RouteMethod.Get, <span class="hljs-string">"/"</span>)]
+    [RequestHandler(<span class="hljs-keyword">typeof</span>(AuthenticateUserRequestHandler))]
+    <span class="hljs-function"><span class="hljs-keyword">static</span> HttpResponse <span class="hljs-title">Index</span>(<span class="hljs-params">HttpRequest request</span>)
+    </span>{
+        HttpResponse res = <span class="hljs-keyword">new</span> HttpResponse();
+        res.Content = <span class="hljs-keyword">new</span> StringContent(<span class="hljs-string">"Hello world!"</span>);
+        <span class="hljs-keyword">return</span> res;
+    }
+}
+</code></pre>
+            <p>Note that it is necessary to pass the desired request handler type and not an object instance. That way,
+                the request handler will be instantiated by the router parser. You can pass arguments in the class
+                constructor with the <a
+                    href="/spec/Sisk/Core/Routing/RequestHandlerAttribute/ConstructorArguments">ConstructorArguments</a>
+                property.</p>
+            <p>Example:</p>
+            <pre><code class="lang-cs">[RequestHandler(<span class="hljs-keyword">typeof</span>(AuthenticateUserRequestHandler), ConstructorArguments = <span class="hljs-keyword">new</span> <span class="hljs-keyword">object</span>?[] { <span class="hljs-string">"arg1"</span>, <span class="hljs-number">123</span>, ... })]
+<span class="hljs-function"><span class="hljs-keyword">static</span> HttpResponse <span class="hljs-title">Index</span>(<span class="hljs-params">HttpRequest request</span>)
+</span>{
+    HttpResponse res = <span class="hljs-keyword">new</span> HttpResponse();
+    res.Content = <span class="hljs-keyword">new</span> StringContent(<span class="hljs-string">"Hello world!"</span>);
+    <span class="hljs-keyword">return</span> res;
+}
+</code></pre>
+            <h2 id="bypassing-an-global-request-handler">Bypassing an global request handler</h2>
+            <p>After defining a global request handler on a route, you can ignore this request handler on specific
+                routes.</p>
+            <pre><code class="lang-cs"><span class="hljs-keyword">var</span> myRequestHandler = <span class="hljs-keyword">new</span> <span class="hljs-type">AuthenticateUserRequestHandler</span>();
+mainRouter.GlobalRequestHandlers = <span class="hljs-keyword">new</span> <span class="hljs-type">IRequestHandler</span>[]
+{
+    myRequestHandler
+};
+
+mainRouter.SetRoute(<span class="hljs-keyword">new</span> <span class="hljs-type">Route</span>(RouteMethod.Get, <span class="hljs-string">"/"</span>, <span class="hljs-string">"My route"</span>, IndexPage, <span class="hljs-literal">null</span>)
+{
+    BypassGlobalRequestHandlers = <span class="hljs-keyword">new</span> <span class="hljs-type">IRequestHandler</span>[]
+    {
+        myRequestHandler,                    <span class="hljs-comment">// ok: the same instance of what is in the global request handlers</span>
+        <span class="hljs-keyword">new</span> <span class="hljs-type">AuthenticateUserRequestHandler</span>() <span class="hljs-comment">// wrong: will not skip the global request handler</span>
+    }
+});
+</code></pre>
+            <blockquote>
+                <p>Note that if you bypassing a request handler you must use the same instance of what you instanced
+                    before to skip. Creating another request handler instance will not skip the global request handler
+                    since it&#39;s identifier will change. Remember to use the same request handler instance used in
+                    GlobalRequestHandlers and BypassGlobalRequestHandlers.</p>
+            </blockquote>
+
+        </article>
+        <include name="component/doc-nav"></include>
+    </section>
+</div>

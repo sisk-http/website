@@ -1,0 +1,35 @@
+<script>
+    setPageTitle("HttpServerConfiguration class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                Verbose property
+            </h1>
+            <p>
+                Declaring type:
+            </p>
+            <a href="/spec/Sisk.Core.Http.HttpServerConfiguration">
+                Sisk.Core.Http.HttpServerConfiguration
+            </a>
+<p>
+    Definition:
+</p>
+<pre>
+[Obsolete]
+            [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+            public VerboseMode Verbose { get; set; }
+</pre>
+<p>
+    Gets or sets the message level the console will write. This property is now deprecated. Use <see cref="P:Sisk.Core.Http.HttpServerConfiguration.AccessLogsStream" /> or <see cref="P:Sisk.Core.Http.HttpServerConfiguration.ErrorsLogsStream" /> instead.
+</p>
+<blockquote>
+    Since Sisk 0.8.1, this property was deprecated. The defaults for the  it's the  verbose mode.
+</blockquote>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

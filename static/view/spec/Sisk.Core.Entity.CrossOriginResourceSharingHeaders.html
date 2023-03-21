@@ -1,0 +1,152 @@
+<script>
+    setPageTitle("CrossOriginResourceSharingHeaders class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                CrossOriginResourceSharingHeaders class
+            </h1>
+<p>
+    Definition:
+</p>
+<pre>
+public class CrossOriginResourceSharingHeaders
+</pre>
+<p>
+    Provides a class to provide Cross Origin response headers for when communicating with a browser.
+</p>
+<h2 id="field">
+    Field list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Entity.CrossOriginResourceSharingHeaders.Empty">
+            Empty
+        </a>
+    </td>
+    <td>
+        Gets an instance of CrossOriginResourceSharingHeaders that does not allow CORS by default.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="property">
+    Property list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Entity.CrossOriginResourceSharingHeaders.AllowCredentials">
+            AllowCredentials
+        </a>
+    </td>
+    <td>
+        From MDN: The Access-Control-Allow-Credentials header indicates whether or not the response to the request can be exposed when the credentials flag is true. When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Entity.CrossOriginResourceSharingHeaders.AllowHeaders">
+            AllowHeaders
+        </a>
+    </td>
+    <td>
+        From MDN: The Access-Control-Allow-Headers header is used in response to a preflight request to indicate which HTTP headers can be used when making the actual request.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Entity.CrossOriginResourceSharingHeaders.AllowMethods">
+            AllowMethods
+        </a>
+    </td>
+    <td>
+        From MDN: The Access-Control-Allow-Methods header specifies the method or methods allowed when accessing the resource.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Entity.CrossOriginResourceSharingHeaders.AllowOrigin">
+            AllowOrigin
+        </a>
+    </td>
+    <td>
+        From MDN: Access-Control-Allow-Origin specifies either a single origin which tells browsers to allow that origin to access the resource; or else — for requests without credentials — the "*" wildcard tells browsers to allow any origin to access the resource.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Entity.CrossOriginResourceSharingHeaders.ExposeHeaders">
+            ExposeHeaders
+        </a>
+    </td>
+    <td>
+        From MDN: The Access-Control-Expose-Headers header adds the specified headers to the allowlist that JavaScript in browsers is allowed to access.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Entity.CrossOriginResourceSharingHeaders.MaxAge">
+            MaxAge
+        </a>
+    </td>
+    <td>
+        From MDN: The Access-Control-Max-Age header indicates how long the results of a preflight request can be cached.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="constructor">
+    Constructor list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Entity.CrossOriginResourceSharingHeaders.CrossOriginResourceSharingHeaders()">
+            CrossOriginResourceSharingHeaders()
+        </a>
+    </td>
+    <td>
+        Creates an empty <see cref="T:Sisk.Core.Entity.CrossOriginResourceSharingHeaders" /> instance with no predefined CORS headers.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Entity.CrossOriginResourceSharingHeaders.CrossOriginResourceSharingHeaders(string-String-String-TimeSpan)">
+            CrossOriginResourceSharingHeaders(string, String[], String[], TimeSpan)
+        </a>
+    </td>
+    <td>
+        Create a new <see cref="T:Sisk.Core.Entity.CrossOriginResourceSharingHeaders" /> class instance with given parameters.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="method">
+    Method list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Entity.CrossOriginResourceSharingHeaders.CreatePublicContext()">
+            CreatePublicContext()
+        </a>
+    </td>
+    <td>
+        Create an instance of Cross-Origin Resource Sharing that allows any origin, any method, and any header in the request.
+    <td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

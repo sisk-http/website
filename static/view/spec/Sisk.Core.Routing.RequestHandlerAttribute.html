@@ -1,0 +1,69 @@
+<script>
+    setPageTitle("RequestHandlerAttribute class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                RequestHandlerAttribute class
+            </h1>
+<p>
+    Definition:
+</p>
+<pre>
+[AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
+            public class RequestHandlerAttribute : Attribute
+</pre>
+<p>
+    Specifies that the method, when used on this attribute, will instantiate the type and call the <see cref="T:Sisk.Core.Routing.Handlers.IRequestHandler" /> with given parameters.
+</p>
+<h2 id="property">
+    Property list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.RequestHandlerAttribute.ConstructorArguments">
+            ConstructorArguments
+        </a>
+    </td>
+    <td>
+        Specifies parameters for the given type's constructor.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.RequestHandlerAttribute.RequestHandlerType">
+            RequestHandlerType
+        </a>
+    </td>
+    <td>
+        Gets or sets the type that implements <see cref="T:Sisk.Core.Routing.Handlers.IRequestHandler" /> which will be instantiated.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="constructor">
+    Constructor list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.RequestHandlerAttribute.RequestHandlerAttribute(Type)">
+            RequestHandlerAttribute(Type)
+        </a>
+    </td>
+    <td>
+        Creates a new instance of this attribute with the informed parameters.
+    <td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

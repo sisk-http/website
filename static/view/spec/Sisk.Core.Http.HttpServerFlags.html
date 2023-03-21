@@ -1,0 +1,112 @@
+<script>
+    setPageTitle("HttpServerFlags type");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                HttpServerFlags type
+            </h1>
+<p>
+    Provides advanced fields for Sisk server behavior.
+</p>
+<h2 id="field">
+    Field list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerFlags.HeaderNameRequestId">
+            HeaderNameRequestId
+        </a>
+    </td>
+    <td>
+        Determines the HTTP header name of the request ID.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerFlags.IncludeFullPathOnLog">
+            IncludeFullPathOnLog
+        </a>
+    </td>
+    <td>
+        Determines if the HTTP server should write URL query information to the access/error logs.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerFlags.OptionsLogMode">
+            OptionsLogMode
+        </a>
+    </td>
+    <td>
+        Determines if the HTTP server should write log to OPTIONS requests.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerFlags.SendCorsHeaders">
+            SendCorsHeaders
+        </a>
+    </td>
+    <td>
+        Determines if the HTTP server automatically should send CORS headers if set.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerFlags.SendSiskHeader">
+            SendSiskHeader
+        </a>
+    </td>
+    <td>
+        Determines if the HTTP server should send the X-Powered-By header in all responses.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerFlags.ThrowContentOnNonSemanticMethods">
+            ThrowContentOnNonSemanticMethods
+        </a>
+    </td>
+    <td>
+        Determines if the HTTP server should drop requests which has content body in GET, OPTIONS, HEAD and TRACE methods.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerFlags.TreatHeadAsGetMethod">
+            TreatHeadAsGetMethod
+        </a>
+    </td>
+    <td>
+        Determines if the HTTP server should automatically send HTTP headers of an pre-processed GET response if the request is using HEAD method.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="constructor">
+    Constructor list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServerFlags.HttpServerFlags()">
+            HttpServerFlags()
+        </a>
+    </td>
+    <td>
+        Creates an new <see cref="T:Sisk.Core.Http.HttpServerFlags" /> instance with default flags values.
+    <td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

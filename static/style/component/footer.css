@@ -1,0 +1,18 @@
+footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    margin-top: 2rem;
+    border-top: 1px solid gainsboro;
+    padding-block: 1rem 3rem;
+    padding-inline: var(--container-inline);
+}
+
+footer p {
+    opacity: .75;
+}
+
+footer nav a {
+    display: block;
+    padding: 8px;
+}

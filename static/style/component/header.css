@@ -1,0 +1,46 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding-inline: var(--container-inline);
+}
+
+header > .logo-part {
+    display: flex;
+    align-items: center;
+}
+
+header > .logo-part > img {
+    width: auto;
+    height: 64px;
+}
+
+header > .logo-part > div {
+    font-size: 28px;
+    margin-left: 30px;
+    font-weight: 600;
+    text-transform: lowercase;
+    opacity: .75;
+}
+
+header > nav > a {
+    font-size: 23px;
+    padding: 8px 10px;
+    font-weight: 700;
+    text-decoration: none;
+    font-stretch: normal;
+    font-optical-sizing: auto;
+    text-transform: lowercase;
+    color: black;
+    opacity: .5;
+}
+
+header > nav > a.current-page {
+    opacity: 1;
+    color: var(--primary-color);
+}
+
+header > nav > a:hover {
+    opacity: 1;
+}

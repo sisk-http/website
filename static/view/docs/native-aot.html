@@ -1,0 +1,51 @@
+<script>
+    setPageTitle("Native AOT");
+    app.navPage = "docs";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1 id="native-aot-support">Native AOT support</h1>
+            <p>In the .NET 7, <a href="https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/">Native
+                    AOT</a> was introduced, a .NET compilation mode that allows you to export ready binaries on any
+                supported platform, without requiring the .NET runtime to be installed on the target machine.</p>
+            <p>With Native AOT, your code is compiled for native code and already contains everything it needs to be
+                executed. Sisk has been experimenting with the feature since version 0.9.1, which improves support for
+                Native AOT with features to define dynamic routes by application without afecting the compilation with
+                warning messages.</p>
+            <p>Sisk uses reflection to obtain the methods that will be defined from types and objects. In addition, Sisk
+                uses reflection for attributes such as <code>RequestHandlerAttribute</code>, which are initialized from
+                a type. To function properly, AOT compilation uses trimming, where dynamic types should be specified
+                what will be used in the final assembly.</p>
+            <p>Considering the example below, it is a route that calls a RequestHandler.</p>
+            <pre><code class="lang-cs">[<span class="hljs-name">Route</span>(<span class="hljs-name">RouteMethod.Get</span>, <span class="hljs-string">"/"</span>, LogMode = LogOutput.None)]
+[<span class="hljs-name">RequestHandler</span>(<span class="hljs-name">typeof</span>(<span class="hljs-name">MyRequestHandler</span>))]
+static HttpResponse IndexPage(<span class="hljs-name">HttpRequest</span> request)
+{
+    HttpResponse htmlResponse = new HttpResponse()<span class="hljs-comment">;</span>
+    htmlResponse.Content = new StringContent(<span class="hljs-string">"Hello, world!"</span>, System.Text.Encoding.UTF8, <span class="hljs-string">"text/plain"</span>)<span class="hljs-comment">;</span>
+    return htmlResponse<span class="hljs-comment">;</span>
+}
+</code></pre>
+            <p>This RequestHandler is dynamically invoked during the runtime, and this invocation must be segmented, and
+                this segmentation must be explicitly.</p>
+            <p>To better understand what the compiler will consider from <code>MyRequestHandler</code> should be kept in
+                the final compilation is:</p>
+            <ul>
+                <li>Public properties;</li>
+                <li>Public and private fields;</li>
+                <li>Public and private constructors;</li>
+                <li>Public and private methods;</li>
+            </ul>
+            <p>Everything you have in a RequestHandler that is not mentioned above will be removed by the compiler.</p>
+            <p>Remembering that all other components, classes and packages that you use in your application should be
+                compatible with AOT Trimming, or your code will not function as expected. By the way, Sisk will not
+                leave you if they want to build something where performance is a priority.</p>
+            <p>You can read more about Native AOT and how it works in the official <a
+                    href="https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/">Microsoft
+                    Documentation</a>.</p>
+        </article>
+        <include name="component/doc-nav"></include>
+    </section>
+</div>

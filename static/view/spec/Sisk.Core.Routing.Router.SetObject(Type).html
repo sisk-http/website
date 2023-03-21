@@ -1,0 +1,41 @@
+<script>
+    setPageTitle("Router class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                SetObject(Type) method
+            </h1>
+            <p>
+                Declaring type:
+            </p>
+            <a href="/spec/Sisk.Core.Routing.Router">
+                Sisk.Core.Routing.Router
+            </a>
+<p>
+    Definition:
+</p>
+<pre>
+public void SetObject(Type attrClassType)
+</pre>
+<p>
+    Searches the object instance for methods with attribute <see cref="T:Sisk.Core.Routing.RouteAttribute" /> and optionals <see cref="T:Sisk.Core.Routing.RequestHandlerAttribute" />, and creates routes from them.
+</p>
+<h2>
+    Parameters
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>attrClassType</td>
+    <td>The type of the class where the static methods are. The routing methods must be static and marked with .</td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

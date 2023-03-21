@@ -1,0 +1,71 @@
+<script>
+    setPageTitle("Requests");
+    app.navPage = "docs";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1 id="responses">Responses</h1>
+            <p>Responses represent objects that are HTTP responses to HTTP requests. They are sent by the server to the
+                client as an indication of the request for a resource, page, document, file or other object.</p>
+            <p>An HTTP response is formed up of status, headers and content.</p>
+            <p>In this document, we will teach you how to architect HTTP responses with Sisk.</p>
+            <h2 id="setting-an-http-status">Setting an HTTP status</h2>
+            <p>The HTTP status list is the same since HTTP/1.0, and Sisk supports all of them. </p>
+            <pre><code class="lang-cs">HttpResponse res = <span class="hljs-keyword">new</span> HttpResponse();
+res.Status = <span class="hljs-keyword">System</span>.Net.HttpStatusCode.Accepted; <span class="hljs-comment">// 202</span>
+</code></pre>
+            <p>You can see the full list of available HttpStatusCode <a
+                    href="https://learn.microsoft.com/pt-br/dotnet/api/system.net.httpstatuscode">here</a>.</p>
+            <h2 id="setting-body-and-content-type">Setting body and content-type</h2>
+            <p>Sisk supports native .NET content objects to send body in responses. You can use the <a
+                    href="https://learn.microsoft.com/pt-br/dotnet/api/system.net.http.stringcontent">StringContent</a>
+                class to send a JSON response for example:</p>
+            <pre><code class="lang-cs">HttpResponse res = <span class="hljs-keyword">new</span> <span class="hljs-type">HttpResponse</span>();
+res.Content = <span class="hljs-keyword">new</span> <span class="hljs-type">StringContent</span>(myJson, Encoding.UTF8, <span class="hljs-string">"application/json"</span>);
+</code></pre>
+            <p>You can ignore setting the <code>Content-Length</code> header as it&#39;s automatically calculated in the
+                server infrastructure. Whenever you send an content length header, it will be ignored by the server and
+                it will use the real content length based in the Content property length in bytes.</p>
+            <h2 id="setting-response-headers">Setting response headers</h2>
+            <p>You can add, edit or remove headers you&#39;re sending in the response. The example below shows how to
+                send an redirect response to the client.</p>
+            <pre><code class="lang-cs">HttpResponse res = new HttpResponse()<span class="hljs-comment">;</span>
+res.Status = System.Net.HttpStatusCode.<span class="hljs-keyword">Moved;
+</span>res.Headers.<span class="hljs-keyword">Add("Location", </span><span class="hljs-string">"/login"</span>)<span class="hljs-comment">;</span>
+</code></pre>
+            <p>You can also use the <a
+                    href="/spec/Sisk/Core/Http/HttpRequest/CreateRedirectResponse--String-Boolean">CreateRedirectResponse</a>
+                shorthand available in the HTTP request object.</p>
+            <pre><code class="lang-cs"><span class="hljs-function"><span class="hljs-keyword">return</span> request.<span class="hljs-title">CreateRedirectResponse</span><span class="hljs-params">(<span class="hljs-string">"/login"</span>, <span class="hljs-keyword">false</span>)</span></span>;
+</code></pre>
+            <h2 id="easily-setting-cookies">Easily setting cookies</h2>
+            <p>Sisk has methods that facilitate the definition of cookies in the client. Cookies set by this method are
+                already URL encoded and fit the RFC-6265 standard.</p>
+            <pre><code class="lang-cs">HttpResponse res = <span class="hljs-keyword">new</span> <span class="hljs-type">HttpResponse</span>();
+res.SetCookie(<span class="hljs-string">"cookie-name"</span>, <span class="hljs-string">"cookie-value"</span>);
+</code></pre>
+            <p>There are other <a href="/spec/Sisk/Core/Http/HttpResponse/SetCookie--String-String-String-String">more
+                    complete versions</a> of the same <a
+                    href="/spec/Sisk/Core/Http/HttpResponse/SetCookie--String-String">SetCookie</a> method.</p>
+            <h2 id="sending-response-in-chunks">Sending response in chunks</h2>
+            <p>You can set the transfer encoding to chunked to send large responses.</p>
+            <pre><code class="lang-cs">HttpResponse res = <span class="hljs-keyword">new</span> <span class="hljs-type">HttpResponse</span>();
+res.SendChunked = <span class="hljs-literal">true</span>;
+</code></pre>
+            <h2 id="sending-an-file">Sending an file</h2>
+            <p>This example teaches how to send an binary content by HTTP server response. You can use this to serve
+                images, files and other binary content.</p>
+            <pre><code class="lang-cs"><span class="hljs-keyword">byte</span>[] myMusicAlbum = File.ReadAllBytes(<span class="hljs-string">"my-music.zip"</span>)<span class="hljs-comment">;</span>
+
+HttpResponse res = <span class="hljs-keyword">new</span> HttpResponse();
+res.SendChunked = <span class="hljs-keyword">true</span>;
+res.Status = System.Net.HttpStatusCode.OK;
+res.Content = <span class="hljs-keyword">new</span> ByteArrayContent(myMusicAlbum);
+res.Headers.Add(<span class="hljs-string">"Content-Type"</span>, <span class="hljs-string">"application/zip"</span>)<span class="hljs-comment">; // override the ByteArrayContent headers</span>
+</code></pre>
+        </article>
+        <include name="component/doc-nav"></include>
+    </section>
+</div>

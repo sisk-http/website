@@ -1,0 +1,98 @@
+<script>
+    setPageTitle("HttpRequestEventSource class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                HttpRequestEventSource class
+            </h1>
+<p>
+    Definition:
+</p>
+<pre>
+public class HttpRequestEventSource : IDisposable
+</pre>
+<p>
+    An <see cref="T:Sisk.Core.Http.HttpRequestEventSource" /> instance opens a persistent connection to the request, which sends events in text/event-stream format.
+</p>
+<h2 id="property">
+    Property list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpRequestEventSource.MaximumErrorAttempts">
+            MaximumErrorAttempts
+        </a>
+    </td>
+    <td>
+        Maximum attempts to resend a message if it fails. Leave it as -1 to never stop trying to resent failed messages.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="method">
+    Method list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpRequestEventSource.AppendHeader(string-string)">
+            AppendHeader(string, string)
+        </a>
+    </td>
+    <td>
+        Sends an header to the streaming context.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpRequestEventSource.Cancel()">
+            Cancel()
+        </a>
+    </td>
+    <td>
+        Cancels the sending queue from sending pending messages and clears the queue.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpRequestEventSource.Close()">
+            Close()
+        </a>
+    </td>
+    <td>
+        Closes the event listener and it's connection.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpRequestEventSource.Dispose()">
+            Dispose()
+        </a>
+    </td>
+    <td>
+        Flushes and releases the used resources of this class instance.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpRequestEventSource.Send(string)">
+            Send(string)
+        </a>
+    </td>
+    <td>
+        Writes a event message with their data to the event listener.
+    <td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

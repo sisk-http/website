@@ -1,0 +1,45 @@
+<script>
+    setPageTitle("RateLimiterRepository class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                TestRequestByPolicy(HttpRequest, RateLimiterPolicy) method
+            </h1>
+            <p>
+                Declaring type:
+            </p>
+            <a href="/spec/Sisk.Core.Routing.Handlers.RateLimiterRepository">
+                Sisk.Core.Routing.Handlers.RateLimiterRepository
+            </a>
+<p>
+    Definition:
+</p>
+<pre>
+public bool TestRequestByPolicy(HttpRequest request, RateLimiterPolicy policy)
+</pre>
+<p>
+    Tests whether a request is eligible to continue or will be throttled.
+</p>
+<h2>
+    Parameters
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>request</td>
+    <td>The testing HTTP request.</td>
+</tr>
+<tr>
+    <td>policy</td>
+    <td>The Rate Limiter parameters for testing.</td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

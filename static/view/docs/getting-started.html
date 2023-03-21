@@ -1,0 +1,124 @@
+<script>
+    setPageTitle("Getting Started");
+    app.navPage = "docs";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1 id="getting-started-with-sisk">Getting started with Sisk</h1>
+            <p>Sisk can run in any .NET environment. In this example, we&#39;ll teach you how to create a Sisk
+                application using
+                .NET. If you haven&#39;t installed it yet, install the SDK from <a
+                    href="https://dotnet.microsoft.com/en-us/download/dotnet/7.0">here</a>.</p>
+            <p>In this example, we&#39;ll teach you how to create a project structure, receive a request, obtain a URL
+                parameter and
+                send a response. This tutorial will be entirely teaching how to build a simple server using C#. You can
+                also write
+                in your favorite language.</p>
+            <blockquote>
+                <p>You may be interested on an quickstarter project. Check <a
+                        href="https://github.com/sisk-http/quickstart">this
+                        repository</a> for more info.</p>
+            </blockquote>
+            <h2 id="creating-an-project">Creating an project</h2>
+            <p>Let&#39;s name our project &quot;My Sisk application&quot;. When you&#39;re ready with .NET, we can
+                create our
+                project with:</p>
+            <pre><code class="lang-bash">&gt; dotnet new console -n <span class="hljs-keyword">my</span>-sisk-<span class="hljs-built_in">application</span>
+</code></pre>
+            <p>After that, we can install Sisk with the <code>dotnet</code> utility tool.</p>
+            <pre><code class="lang-bash">&gt; cd my-sisk-application
+&gt; dotnet add <span class="hljs-keyword">package</span> <span class="hljs-title">S</span>isk.HttpServer
+</code></pre>
+            <p>You can see another ways to install Sisk in your project <a
+                    href="https://www.nuget.org/packages/Sisk.HttpServer/">here</a>.</p>
+            <p>Now let&#39;s create an instance of our HTTP server. As a matter of principle, let&#39;s make it listen
+                on port 5000.
+            </p>
+            <blockquote>
+                <p>Windows would ask for elevated privileges since Sisk listens to all incoming hosts. This is required
+                    to match
+                    multiple hosts patterns in the host server.</p>
+            </blockquote>
+            <h2 id="requests-and-responses">Requests and responses</h2>
+            <p>The request and response model is simple: for every request there must be a response. In Sisk ins&#39;t
+                different.
+                Let&#39;s create a method that responds with a Hello World response in HTML, specifying the code and
+                headers.</p>
+            <pre><code class="lang-cs"><span class="hljs-comment">// Program.cs</span>
+<span class="hljs-keyword">using</span> Sisk.Core.Http;
+<span class="hljs-keyword">using</span> Sisk.Core.Routing;
+
+<span class="hljs-function"><span class="hljs-keyword">static</span> HttpResponse <span class="hljs-title">IndexPage</span>(<span class="hljs-params">HttpRequest request</span>)
+</span>{
+    HttpResponse indexResponse = <span class="hljs-keyword">new</span> HttpResponse();
+    indexResponse.Status = System.Net.HttpStatusCode.OK;
+    indexResponse.Content = <span class="hljs-keyword">new</span> StringContent(<span class="hljs-string">@"
+        &lt;html&gt;
+            &lt;body&gt;
+                &lt;h1&gt;Hello, world!&lt;/h1&gt;
+            &lt;/body&gt;
+        &lt;/html&gt;
+    "</span>, System.Text.Encoding.UTF8, <span class="hljs-string">"text/html"</span>);
+
+    <span class="hljs-keyword">return</span> indexResponse;
+}
+</code></pre>
+            <p>The next step is to associate this method with an HTTP route.</p>
+            <h2 id="routers">Routers</h2>
+            <p>Routers are the abstraction of requests routes and the bridge between requests and responses for the
+                service. Routers
+                are responsible for managing service routes, functions and errors.</p>
+            <p>A router can have several routes and each route has a different operation to work on that path, such as
+                executing a
+                function, serving a page or a resource from the server.</p>
+            <p>Let&#39;s create our first router and associate our method <code>IndexPage</code> to the index path.</p>
+            <pre><code class="lang-cs">Router mainRouter = <span class="hljs-keyword">new</span> <span class="hljs-type">Router</span>();
+
+<span class="hljs-comment">// SetRoute will associate all index routes to our method.</span>
+mainRouter.SetRoute(RouteMethod.Get, <span class="hljs-string">"/"</span>, IndexPage);
+</code></pre>
+            <p>Now our router can receive and send responses. But <code>mainRouter</code> is not tied to a host or a
+                server, so it
+                will not work on its own. For this, the next step is to create our <code>ListeningHost</code>.</p>
+            <h2 id="listening-hosts">Listening Hosts</h2>
+            <p>Listening Hosts are objects responsible for representing an application or service on the Sisk HTTP
+                server. It is the
+                highest layer of a service that is not always accessible by self.</p>
+            <p>We can create a <code>ListeningHost</code> that listens to port 5000 on localhost and associate our newly
+                created
+                router with it.</p>
+            <pre><code class="lang-cs"><span class="hljs-attribute">ListeningHost myHost</span> = new ListeningHost(<span class="hljs-string">"localhost"</span>, 5000, mainRouter);
+</code></pre>
+            <p>To better understand this relationship, this diagram explains the hierarchy from a route to the Listening
+                Host.</p>
+            <p><img src="/img/listeninghostdiagram.png" class="center" /></p>
+            <p>Now we have our ListeningHost and we need to associate it with some HTTP Server. It&#39;s time to start
+                building our
+                <code>HttpServer</code> and their <code>HttpServerConfiguration</code>.
+            </p>
+            <h2 id="server-configuration">Server configuration</h2>
+            <p>Server configuration is responsible for most of the behavior of the HTTP server itself. In it we can
+                associate
+                ListeningHosts to our server.</p>
+            <pre><code class="lang-cs"><span class="hljs-type">HttpServerConfiguration</span> confg = <span class="hljs-function"><span class="hljs-keyword">new</span> <span class="hljs-title">HttpServerConfiguration</span>();
+<span class="hljs-title">confg</span>.<span class="hljs-title">ListeningHosts</span>.<span class="hljs-title">Add</span>(myHost); <span class="hljs-comment">// add our ListeningHost to this server configuration</span></span>
+</code></pre>
+            <p>And then we can create our HTTP server:</p>
+            <pre><code class="lang-cs"><span class="hljs-type">HttpServer</span> server = <span class="hljs-function"><span class="hljs-keyword">new</span> <span class="hljs-title">HttpServer</span>(confg);
+<span class="hljs-title">server</span>.<span class="hljs-title">Start</span>(); <span class="hljs-comment">// starts the server</span>
+<span class="hljs-title">Console</span>.<span class="hljs-title">ReadKey</span>(); <span class="hljs-comment">// prevents from exiting</span></span>
+</code></pre>
+            <p>Now we can compile our executable and run our HTTP server with the command:</p>
+            <pre><code class="lang-bash"><span class="hljs-quote">&gt; dotnet watch</span>
+</code></pre>
+            <p>At runtime, open your browser and navigate to our server path, and you should see:</p>
+            <p><img src="/img/localhost.png" class="center" /></p>
+            <p>Congrats! You made your first Sisk web application. See nexts steps to learn more of Sisk to creating
+                powerful
+                applications with .NET and Sisk.</p>
+        </article>
+        <include name="component/doc-nav"></include>
+    </section>
+</div>

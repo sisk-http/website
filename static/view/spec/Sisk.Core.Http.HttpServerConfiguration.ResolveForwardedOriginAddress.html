@@ -1,0 +1,30 @@
+<script>
+    setPageTitle("HttpServerConfiguration class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                ResolveForwardedOriginAddress property
+            </h1>
+            <p>
+                Declaring type:
+            </p>
+            <a href="/spec/Sisk.Core.Http.HttpServerConfiguration">
+                Sisk.Core.Http.HttpServerConfiguration
+            </a>
+<p>
+    Definition:
+</p>
+<pre>
+public bool ResolveForwardedOriginAddress { get; set; }
+</pre>
+<p>
+    Gets or sets whether the HTTP server should resolve remote (IP) addresses by the X-Forwarded-For header. This option is useful if you are using Sisk through a reverse proxy.
+</p>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

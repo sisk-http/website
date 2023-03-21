@@ -1,0 +1,105 @@
+<script>
+    setPageTitle("RateLimiter class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                RateLimiter class
+            </h1>
+<p>
+    Definition:
+</p>
+<pre>
+public class RateLimiter : IRequestHandler
+</pre>
+<p>
+    Represents a rate limiter that is executed after the socket receives the HTTP message from the server.
+</p>
+<h2 id="property">
+    Property list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.Handlers.RateLimiter.ExecutionMode">
+            ExecutionMode
+        </a>
+    </td>
+    <td>
+        Gets or sets when this RequestHandler should run.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.Handlers.RateLimiter.Identifier">
+            Identifier
+        </a>
+    </td>
+    <td>
+        Gets a unique identifier for this <see cref="T:Sisk.Core.Routing.Handlers.RateLimiter" /> instance.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.Handlers.RateLimiter.LimitingPolicy">
+            LimitingPolicy
+        </a>
+    </td>
+    <td>
+        Gets or sets the routing limitation policy settings for this RateLimiter.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.Handlers.RateLimiter.Repository">
+            Repository
+        </a>
+    </td>
+    <td>
+        Gets or sets the cache of requests that this Rate Limiter stores.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="constructor">
+    Constructor list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.Handlers.RateLimiter.RateLimiter(RateLimiterRepository-RateLimiterPolicy)">
+            RateLimiter(RateLimiterRepository, RateLimiterPolicy)
+        </a>
+    </td>
+    <td>
+        Creates a new <see cref="T:Sisk.Core.Routing.Handlers.RateLimiter" /> instance with given parameters.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="method">
+    Method list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Routing.Handlers.RateLimiter.Execute(HttpRequest-HttpContext)">
+            Execute(HttpRequest, HttpContext)
+        </a>
+    </td>
+    <td>
+        Executes the rate limiter action on the route and checks if it will be blocked or not.
+    <td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

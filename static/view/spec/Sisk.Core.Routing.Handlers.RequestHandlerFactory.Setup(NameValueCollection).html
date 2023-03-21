@@ -1,0 +1,41 @@
+<script>
+    setPageTitle("RequestHandlerFactory class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                Setup(NameValueCollection) method
+            </h1>
+            <p>
+                Declaring type:
+            </p>
+            <a href="/spec/Sisk.Core.Routing.Handlers.RequestHandlerFactory">
+                Sisk.Core.Routing.Handlers.RequestHandlerFactory
+            </a>
+<p>
+    Definition:
+</p>
+<pre>
+public abstract void Setup(NameValueCollection setupParameters);
+</pre>
+<p>
+    Method that is called by the Agirax instantiator with the parameters defined in configuration before calling <see cref="M:Sisk.Core.Routing.Handlers.RequestHandlerFactory.BuildRequestHandlers" />.
+</p>
+<h2>
+    Parameters
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>setupParameters</td>
+    <td>Parameters that are defined in a configuration file.</td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

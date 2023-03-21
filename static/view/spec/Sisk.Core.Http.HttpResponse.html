@@ -1,0 +1,165 @@
+<script>
+    setPageTitle("HttpResponse class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                HttpResponse class
+            </h1>
+<p>
+    Definition:
+</p>
+<pre>
+public class HttpResponse
+</pre>
+<p>
+    Represents an HTTP Response.
+</p>
+<h2 id="property">
+    Property list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpResponse.Content">
+            Content
+        </a>
+    </td>
+    <td>
+        Gets or sets the HTTP response body contents.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpResponse.CustomStatus">
+            CustomStatus
+        </a>
+    </td>
+    <td>
+        Gets or sets an custom HTTP status code and description for this HTTP response. If this property ins't null, it will overwrite the <see cref="P:Sisk.Core.Http.HttpResponse.Status" /> property in this class.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpResponse.DefaultEncoding">
+            DefaultEncoding
+        </a>
+    </td>
+    <td>
+        Gets or sets the default encoding when creating new HttpResponse instances.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpResponse.Headers">
+            Headers
+        </a>
+    </td>
+    <td>
+        Gets a <see cref="T:System.Collections.Specialized.NameValueCollection" /> instance of the HTTP response headers.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpResponse.SendChunked">
+            SendChunked
+        </a>
+    </td>
+    <td>
+        Gets or sets whether the HTTP response can be sent chunked.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpResponse.Status">
+            Status
+        </a>
+    </td>
+    <td>
+        Gets or sets the HTTP response status code.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="method">
+    Method list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpResponse.GetRawHttpResponse(bool)">
+            GetRawHttpResponse(bool)
+        </a>
+    </td>
+    <td>
+        Gets the raw HTTP response message.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpResponse.SetCookie(string-string-DateTime-TimeSpan-string-string-bool-bool-string)">
+            SetCookie(string, string, DateTime?, TimeSpan?, string, string, bool?, bool?, string)
+        </a>
+    </td>
+    <td>
+        Sets a cookie and sends it in the response to be set by the client.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpResponse.SetCookie(string-string)">
+            SetCookie(string, string)
+        </a>
+    </td>
+    <td>
+        Sets a cookie and sends it in the response to be set by the client.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="constructor">
+    Constructor list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpResponse.HttpResponse()">
+            HttpResponse()
+        </a>
+    </td>
+    <td>
+        Creates an new <see cref="T:Sisk.Core.Http.HttpResponse" /> instance with HTTP OK status code and no content.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpResponse.HttpResponse(int)">
+            HttpResponse(int)
+        </a>
+    </td>
+    <td>
+        Creates an new <see cref="T:Sisk.Core.Http.HttpResponse" /> instance with given status code.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpResponse.HttpResponse(HttpStatusCode)">
+            HttpResponse(HttpStatusCode)
+        </a>
+    </td>
+    <td>
+        Creates an new <see cref="T:Sisk.Core.Http.HttpResponse" /> instance with given status code.
+    <td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

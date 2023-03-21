@@ -1,0 +1,329 @@
+<script>
+    setPageTitle("Requests");
+    app.navPage = "docs";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1 id="requests">Requests</h1>
+            <p>Requests are structures that represent an HTTP request message. The <a
+                    href="/spec/Sisk/Core/Http/HttpRequest">HttpRequest</a> object contains useful functions for
+                handling HTTP messages throughout your application.</p>
+            <p>An HTTP request is formed by the method, path, version, headers and body.</p>
+            <p>In this document, we will teach you how to obtain each of these elements.</p>
+            <h2 id="getting-the-request-method">Getting the request method</h2>
+            <p>To obtain the method of the received request, you can use the Method property:</p>
+            <pre><code class="lang-cs"><span class="hljs-attribute">HttpMethod requestMethod</span> = request.Method;
+</code></pre>
+            <p>This property returns the request&#39;s method represented by an <a
+                    href="https://learn.microsoft.com/pt-br/dotnet/api/system.net.http.httpmethod">HttpMethod</a>
+                object.</p>
+            <blockquote>
+                <p>Note that, unlike route methods, this property does not serves the <a
+                        href="/spec/Sisk/Core/Routing/RouteMethod/Any">RouteMethod.Any</a> item. Instead, it returns the
+                    real request method. Custom or non RFC http methods are not supported.</p>
+            </blockquote>
+            <h2 id="getting-the-request-url-elements">Getting the request url elements</h2>
+            <p>You can get various elements from a URL through certain properties of a request. For this example,
+                let&#39;s consider the URL:</p>
+            <pre><code>http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">5000</span><span class="hljs-regexp">/user/</span>login?email=foo@bar.com
+</code></pre>
+            <table class="show-header sm">
+                <thead>
+                    <th>Property name</th>
+                    <th>Description</th>
+                    <th>URL piece</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="#/spec/Sisk/Core/Http/HttpRequest/Path">
+                                Path
+                            </a>
+                        </td>
+                        <td>
+                            Gets the request path.
+                        </td>
+                        <td>
+                            <code>/user/login</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#/spec/Sisk/Core/Http/HttpRequest/FullPath">
+                                FullPath
+                            </a>
+                        </td>
+                        <td>
+                            Gets the request path and the query string.
+                        </td>
+                        <td>
+                            <code>/user/login?email=foo@bar.com</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#/spec/Sisk/Core/Http/HttpRequest/FullUrl">
+                                FullUrl
+                            </a>
+                        </td>
+                        <td>
+                            Gets the entire URL request string.
+                        </td>
+                        <td>
+                            <code><a href="http://localhost:5000/user/login?email=foo@bar.com">http://localhost:5000/user/login?email=foo@bar.com</a></code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#/spec/Sisk/Core/Http/HttpRequest/Host">
+                                Host
+                            </a>
+                        </td>
+                        <td>
+                            Gets the request host.
+                        </td>
+                        <td>
+                            <code>localhost</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#/spec/Sisk/Core/Http/HttpRequest/Authority">
+                                Authority
+                            </a>
+                        </td>
+                        <td>
+                            Gets the request host and port.
+                        </td>
+                        <td>
+                            <code>localhost:5000</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#/spec/Sisk/Core/Http/HttpRequest/QueryString">
+                                QueryString
+                            </a>
+                        </td>
+                        <td>
+                            Gets the request query.
+                        </td>
+                        <td>
+                            <code>?email=foo@bar.com</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#/spec/Sisk/Core/Http/HttpRequest/Query">
+                                Query
+                            </a>
+                        </td>
+                        <td>
+                            Gets the request query in an named value collection.
+                        </td>
+                        <td>
+                            <code>{NameValueCollection object}</code>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#/spec/Sisk/Core/Http/HttpRequest/IsSecure">
+                                IsSecure
+                            </a>
+                        </td>
+                        <td>
+                            Determines if the request is using SSL (true) or not (false).
+                        </td>
+                        <td>
+                            <code>false</code>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="getting-the-request-body">Getting the request body</h2>
+            <p>Some requests include body such as forms, files, or API transactions. You can get the body of a request
+                from the property:</p>
+            <pre><code class="lang-cs">// gets the request <span class="hljs-keyword">body </span>as an <span class="hljs-keyword">string, </span>using the request encoding
+<span class="hljs-keyword">string </span><span class="hljs-keyword">body </span>= request.<span class="hljs-keyword">Body;
+</span>// or gets <span class="hljs-keyword">it </span>in <span class="hljs-keyword">byte[]
+</span><span class="hljs-keyword">byte[] </span><span class="hljs-keyword">bodyBytes </span>= request.RawBody<span class="hljs-comment">;</span>
+</code></pre>
+            <p>It is also possible to determine if there is a body in the request and if it is loaded with the
+                properties <a href="/spec/Sisk/Core/Http/HttpRequest/HasContents">HasContents</a>, which determines if
+                the request has contents and <a
+                    href="/spec/Sisk/Core/Http/HttpRequest/IsContentAvailable">IsContentAvailable</a> which indicates
+                that the HTTP server fully received the content from the remote point.</p>
+            <blockquote>
+                <p>Sisk follows the RFC 9110 &quot;HTTP Semantics&quot;, which doens&#39;t allow certain requests
+                    methods to have body. These requests will immediately drop an 400 (Bad Request) with the
+                    <code>ContentServedOnIllegalMethod</code> status. Requests with bodies are not allowed in methods
+                    GET, OPTIONS, HEAD and TRACE. You can read the <a href="https://httpwg.org/specs/rfc9110.html">RFC
+                        9910</a> here.
+                </p>
+                <p>You can disable this feature by turning <a
+                        href="http://localhost:5151/#/spec/Sisk/Core/Http/HttpServerFlags">ThrowContentOnNonSemanticMethods</a>
+                    to <code>false</code>.</p>
+            </blockquote>
+            <h2 id="getting-the-request-context">Getting the request context</h2>
+            <p>The HTTP Context is an exclusive Sisk object that stores HTTP server, route, router and request handler
+                information. You can use it to be able to organize yourself in an environment where these objects are
+                difficult to organize.</p>
+            <p>The <a href="/spec/Sisk/Core/Http/HttpContext/RequestBag">RequestBag</a> object contains stored
+                information that is passed from an request handler to another point, and can be consumed at the final
+                destination. This object can also be used by request handlers that run after the route callback.</p>
+            <pre><code class="lang-cs"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AuthenticateUserRequestHandler</span> : <span class="hljs-type">IRequestHandler</span></span>
+{
+    <span class="hljs-keyword">public</span> string Identifier { <span class="hljs-keyword">get</span>; init; } = Guid.NewGuid().ToString();
+    <span class="hljs-keyword">public</span> RequestHandlerExecutionMode ExecutionMode { <span class="hljs-keyword">get</span>; init; } = RequestHandlerExecutionMode.BeforeResponse;
+
+    <span class="hljs-keyword">public</span> HttpResponse? Execute(HttpRequest request, HttpContext context)
+    {
+        <span class="hljs-keyword">if</span> (request.Headers[<span class="hljs-string">"Authorization"</span>] != <span class="hljs-literal">null</span>)
+        {
+            context.RequestBag.Add(<span class="hljs-string">"AuthenticatedUser"</span>, <span class="hljs-string">"Bob"</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+        }
+        <span class="hljs-keyword">else</span>
+        {
+            <span class="hljs-keyword">return</span> new HttpResponse(System.Net.HttpStatusCode.Unauthorized);
+        }
+    }
+}
+</code></pre>
+            <p>The above request handler will define <code>AuthenticatedUser</code> in the request bag, and can be
+                consumed later in the final callback:</p>
+            <pre><code class="lang-cs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">MyController</span>
+{
+    [Route(RouteMethod.Get, <span class="hljs-string">"/"</span>)]
+    [RequestHandler(<span class="hljs-keyword">typeof</span>(AuthenticateUserRequestHandler))]
+    <span class="hljs-function"><span class="hljs-keyword">static</span> HttpResponse <span class="hljs-title">Index</span>(<span class="hljs-params">HttpRequest request</span>)
+    </span>{
+        HttpResponse res = <span class="hljs-keyword">new</span> HttpResponse();
+        <span class="hljs-keyword">string</span> authUser = request.Context.RequestBag[<span class="hljs-string">"AuthenticatedUser"</span>];
+        res.Content = <span class="hljs-keyword">new</span> StringContent(<span class="hljs-string">$"Hello, <span class="hljs-subst">{authUser}</span>!"</span>);
+        <span class="hljs-keyword">return</span> res;
+    }
+}
+</code></pre>
+            <h2 id="getting-form-data">Getting form data</h2>
+            <p>You can get the values of a form data in an <a
+                    href="https://learn.microsoft.com/pt-br/dotnet/api/system.collections.specialized.namevaluecollection">NameValueCollection</a>
+                with the example below:</p>
+            <pre><code class="lang-cs"><span class="hljs-function"><span class="hljs-keyword">static</span> HttpResponse <span class="hljs-title">Index</span>(<span class="hljs-params">HttpRequest request</span>)
+</span>{
+    <span class="hljs-keyword">var</span> formData = request.GetFormContent();
+}
+</code></pre>
+            <p>This method does not supports interpreting arrays as multiple fields ending in <code>[]</code> as some
+                HTTP servers do.</p>
+            <h2 id="getting-multipart-form-data">Getting multipart form data</h2>
+            <p>Sisk&#39;s HTTP request lets you get uploaded multipart contents, such as a files, form fields, or any
+                binary content.</p>
+            <pre><code class="lang-cs"><span class="hljs-keyword">static</span> HttpResponse Index(HttpRequest request)
+{
+    var multipartFormDataObjects = request.GetMultipartFormContent();
+
+    foreach (MultipartObject uploadedObject in multipartFormDataObjects) {
+        <span class="hljs-comment">// The name of the file provided by Multipart form data. Null is returned if the object is not a file.</span>
+        <span class="hljs-built_in">Console</span>.WriteLine(<span class="hljs-string">"File name       : "</span> + uploadedObject.Filename);
+        <span class="hljs-comment">// The multipart form data object field name.</span>
+        <span class="hljs-built_in">Console</span>.WriteLine(<span class="hljs-string">"Field name      : "</span> + uploadedObject.Name);
+        <span class="hljs-comment">// The multipart form data content length.</span>
+        <span class="hljs-built_in">Console</span>.WriteLine(<span class="hljs-string">"Content length  : "</span> + uploadedObject.ContentLength);
+        <span class="hljs-comment">// Determine the image format based in the file header for each image content type.</span>
+        <span class="hljs-comment">// If the content ins't an recognized image format, this method below will return</span>
+        <span class="hljs-comment">// MultipartObjectImageFormat.Unknown</span>
+        <span class="hljs-built_in">Console</span>.WriteLine(<span class="hljs-string">"Image format    : "</span> + uploadedObject.GetImageFormat());
+    }
+}
+</code></pre>
+            <p>You can read more about Sisk <a href="/spec/Sisk/Core/Entity/MultipartObject">Multipart form objects</a>
+                and it&#39;s methods, properties and functionalities.</p>
+            <h2 id="server-sent-events-support">Server-sent events support</h2>
+            <p>Sisk supports <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events">Server-sent
+                    events</a>, which allows sending chunks as an stream and keeping the connection between the server
+                and the client alive.</p>
+            <p>Calling the <a href="/spec/Sisk/Core/Http/HttpRequest/GetEventSource--">HttpRequest.GetEventSource</a>
+                method will put the HttpRequest in it&#39;s listener state. From this, the context of this HTTP request
+                will not expect an HttpResponse as it will overlap the packets sent by server side events.</p>
+            <p>After sending all packets, the callback must return the <a
+                    href="/spec/Sisk/Core/Http/HttpRequestEventSource/Close--">Close</a> method, which will send the
+                final response to the server and indicate that the streaming has ended.</p>
+            <p>It&#39;s not possible to predict what the total length of all packets that will be sent, so it is not
+                possible to determine the end of the connection with <code>Content-Length</code> header.</p>
+            <p>By most browsers defaults, server-side events does not support sending HTTP headers or methods other than
+                the GET method. Therefore, be careful when using request handlers with event-source requests that
+                require specific headers in the request, as it probably they ins&#39;t going to have them.</p>
+            <p>Also, most browsers restart streams if the <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/API/EventSource/close">EventSource.close</a>
+                method ins&#39;t called on the client side after receiving all the packets, causing infinite additional
+                processing on the server side. To avoid this kind of problem, it&#39;s common to send an final packet
+                indicating that the event source has finished sending all packets.</p>
+            <p>The example below shows how the browser can communicate with the server that supports Server-side events.
+            </p>
+            <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Fruits:<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+        <span class="hljs-keyword">const</span> evtSource = <span class="hljs-keyword">new</span> EventSource(<span class="hljs-string">'/event-source'</span>);
+        <span class="hljs-keyword">const</span> eventList = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'ul'</span>);
+
+        evtSource.onmessage = <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> {
+            <span class="hljs-keyword">const</span> newElement = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"li"</span>);
+
+            newElement.textContent = <span class="hljs-string">`message: <span class="hljs-subst">${e.data}</span>`</span>;
+            eventList.appendChild(newElement);
+
+            <span class="hljs-keyword">if</span> (e.data == <span class="hljs-string">"Tomato"</span>) {
+                evtSource.close();
+            }
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+            <p>And progressively send the messages to the client:</p>
+            <pre><code class="lang-cs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">MyController</span>
+{
+    [Route(RouteMethod.Get, <span class="hljs-string">"/event-source"</span>)]
+    <span class="hljs-function"><span class="hljs-keyword">static</span> HttpResponse <span class="hljs-title">ServerEventsResponse</span>(<span class="hljs-params">HttpRequest request</span>)
+    </span>{
+        <span class="hljs-keyword">var</span> serverEvents = request.GetEventSource();
+
+        <span class="hljs-keyword">string</span>[] fruits = <span class="hljs-keyword">new</span>[] { <span class="hljs-string">"Apple"</span>, <span class="hljs-string">"Banana"</span>, <span class="hljs-string">"Watermelon"</span>, <span class="hljs-string">"Tomato"</span> };
+
+        <span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">string</span> fruit <span class="hljs-keyword">in</span> fruits)
+        {
+            serverEvents.Send(fruit);
+            Thread.Sleep(<span class="hljs-number">1500</span>);
+        }
+
+        <span class="hljs-keyword">return</span> serverEvents.Close();
+    }
+}
+</code></pre>
+            <p>When running this code, we expect a result similar to this:</p>
+            <p><img src="/img/server side events demo.gif" class="center" /></p>
+            <h2 id="resolving-proxied-ips-and-hosts">Resolving proxied IPs and hosts</h2>
+            <p>Sisk can be used with proxies, and therefore IP addresses can be replaced by the proxy endpoint in the
+                transaction from a client to the proxy.</p>
+            <p>By default, most proxies send a header named <code>X-Forwarded-For</code> indicating the real IP of the
+                connecting client. Sisk has properties that resolve these headers to the properties of a request.</p>
+            <p>You can also do this for the host if it is forwarded.</p>
+            <p>To activate this, when configuring your HTTP server, make sure this property is defined:</p>
+            <pre><code class="lang-cs">HttpServerConfiguration confg = <span class="hljs-keyword">new</span> <span class="hljs-type">HttpServerConfiguration</span>();
+confg.ResolveForwardedOriginAddress = <span class="hljs-literal">true</span>; <span class="hljs-comment">// will resolve the first X-Forwarded-For address entry</span>
+confg.ResolveForwardedOriginHost = <span class="hljs-literal">true</span>;
+</code></pre>
+            <p>In case of <a
+                    href="/spec/Sisk/Core/Http/HttpServerConfiguration/ResolveForwardedOriginHost">ResolveForwardedOriginHost</a>
+                and an <code>X-Forwarded-Host</code> header is present, the value of this header will be used for
+                server-side DNS matching.</p>
+        </article>
+        <include name="component/doc-nav"></include>
+    </section>
+</div>
