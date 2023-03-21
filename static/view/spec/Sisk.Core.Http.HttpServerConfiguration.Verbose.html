@@ -19,15 +19,17 @@
     Definition:
 </p>
 <pre>
+<code class="language-cs">
 [Obsolete]
             [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
             public VerboseMode Verbose { get; set; }
+</code>
 </pre>
 <p>
     Gets or sets the message level the console will write. This property is now deprecated. Use <see cref="P:Sisk.Core.Http.HttpServerConfiguration.AccessLogsStream" /> or <see cref="P:Sisk.Core.Http.HttpServerConfiguration.ErrorsLogsStream" /> instead.
 </p>
 <blockquote>
-    Since Sisk 0.8.1, this property was deprecated. The defaults for the  it's the  verbose mode.
+    Since Sisk 0.8.1, this property was deprecated. The defaults for the <see cref="P:Sisk.Core.Http.HttpServerConfiguration.AccessLogsStream" /> it's the <see cref="F:Sisk.Core.Http.VerboseMode.Detailed" /> verbose mode.
 </blockquote>
                     </article>
         <include name="/spec/__Component"></include>

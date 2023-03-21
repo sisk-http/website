@@ -19,7 +19,9 @@
     Definition:
 </p>
 <pre>
+<code class="language-cs">
 HttpResponse? Execute(HttpRequest request, HttpContext context);
+</code>
 </pre>
 <p>
     This method is called by the <see cref="T:Sisk.Core.Routing.Router" /> before executing a request when the <see cref="T:Sisk.Core.Routing.Route" /> instantiates an object that implements this interface. If it returns a <see cref="T:Sisk.Core.Http.HttpResponse" /> object, the route callback is not called and all execution of the route is stopped. If it returns "null", the execution is continued.

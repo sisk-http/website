@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="/style/vendor/normalize.css">
+    <link rel="stylesheet" href="/style/vendor/prism.css">
     <link rel="stylesheet" href="/style/component/header.css">
     <link rel="stylesheet" href="/style/component/section.css">
-    <link rel="stylesheet" href="/style/component/code.css">
     <link rel="stylesheet" href="/style/component/table.css">
     <link rel="stylesheet" href="/style/component/footer.css">
     <link rel="stylesheet" href="/style/globals.css">
@@ -38,7 +38,10 @@
     <script type="text/javascript">
         window.appContainer = document.getElementById("app");
         window.app = {};
+        window.Prism = window.Prism || {};
+        window.Prism.manual = true;
     </script>
+    <script src="/js/prism.js" data-manual></script>
 </body>
 
 </html>

@@ -8,9 +8,9 @@
         <article class="section-content pad">
             <h1 id="routing">Routing</h1>
             <p>The router refers to what redirects requests to their proper places. A <a
-                    href="/spec/Sisk/Core/Routing/Router">Router</a> is
+                    href="/spec/Sisk.Core.Routing.Router">Router</a> is
                 responsible for routing <a
-                    href="/spec/Sisk/Core/Routing/Route">Route</a> to its
+                    href="/spec/Sisk.Core.Routing.Route">Route</a> to its
                 responsible controllers, methods or callbacks. What the Router uses to match a route with a Route is the
                 request path and its method. These two items are responsible for assigning a request to a route.</p>
             <pre><code class="lang-cs">mainRouter.SetRoute(RouteMethod.Get, <span class="hljs-string">"/hey"</span>, <span class="hljs-function"><span class="hljs-params">(request)</span> =&gt;</span>
@@ -19,7 +19,7 @@
 });
 </code></pre>
             <p>To understand what a route is capable of doing, we need to understand what a request is capable of doing.
-                An <a href="/spec/Sisk/Core/Http/HttpRequest">HttpRequest</a>
+                An <a href="/spec/Sisk.Core.Http.HttpRequest">HttpRequest</a>
                 will contain everything you need. Sisk also includes some extra features that speed up the overral
                 development.</p>
             <h2 id="creating-routes-using-paths">Creating routes using paths</h2>
@@ -44,7 +44,7 @@ mainRouter.SetRoute(RouteMethod.Get, <span class="hljs-string">"/hey/&lt;name&gt
 });
 </code></pre>
             <p>The HTTP request <a
-                    href="/spec/Sisk/Core/Http/HttpRequest/Query">Query</a>
+                    href="/spec/Sisk.Core.Http.HttpRequest.Query">Query</a>
                 property also stores the content of an original query, but if there are parameters in the route with the
                 same name as a query, it will be replaced by what is in the route. The path that is matched with an
                 request URI is always the path as explained in <a
@@ -56,7 +56,7 @@ mainRouter.SetRoute(RouteMethod.Get, <span class="hljs-string">"/hey/&lt;name&gt
             </blockquote>
             <h2 id="creating-routes-using-class-instances">Creating routes using class instances</h2>
             <p>You can also define routes dynamically using reflection with the attribute <a
-                    href="/spec/Sisk/Core/Routing/RouteAttribute">RouteAttribute</a>.
+                    href="/spec/Sisk.Core.Routing.RouteAttribute">RouteAttribute</a>.
                 This way, the instance of a class in which its methods implement this attribute will have their routes
                 defined in the target router.</p>
             <p>Methods marked with the route attribute must be static.</p>

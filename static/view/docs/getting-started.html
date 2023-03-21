@@ -46,25 +46,28 @@
                 different.
                 Let&#39;s create a method that responds with a Hello World response in HTML, specifying the code and
                 headers.</p>
-            <pre><code class="lang-cs"><span class="hljs-comment">// Program.cs</span>
-<span class="hljs-keyword">using</span> Sisk.Core.Http;
-<span class="hljs-keyword">using</span> Sisk.Core.Routing;
+            <pre>
+                <code class="language-csharp">
+// Program.cs
+using Sisk.Core.Http;
+using Sisk.Core.Routing;
 
-<span class="hljs-function"><span class="hljs-keyword">static</span> HttpResponse <span class="hljs-title">IndexPage</span>(<span class="hljs-params">HttpRequest request</span>)
-</span>{
-    HttpResponse indexResponse = <span class="hljs-keyword">new</span> HttpResponse();
+static HttpResponse IndexPage(HttpRequest request)
+{
+    HttpResponse indexResponse = new HttpResponse();
     indexResponse.Status = System.Net.HttpStatusCode.OK;
-    indexResponse.Content = <span class="hljs-keyword">new</span> StringContent(<span class="hljs-string">@"
+    indexResponse.Content = new StringContent(@&quot;
         &lt;html&gt;
             &lt;body&gt;
                 &lt;h1&gt;Hello, world!&lt;/h1&gt;
             &lt;/body&gt;
         &lt;/html&gt;
-    "</span>, System.Text.Encoding.UTF8, <span class="hljs-string">"text/html"</span>);
+    &quot;, System.Text.Encoding.UTF8, &quot;text/html&quot;);
 
-    <span class="hljs-keyword">return</span> indexResponse;
+    return indexResponse;
 }
-</code></pre>
+</code>
+</pre>
             <p>The next step is to associate this method with an HTTP route.</p>
             <h2 id="routers">Routers</h2>
             <p>Routers are the abstraction of requests routes and the bridge between requests and responses for the

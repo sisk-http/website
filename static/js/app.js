@@ -13,6 +13,7 @@ function onNavigated() {
         }
     });
     createDocLinks();
+    Prism.highlightAll();
 }
 
 function onNavigating() {

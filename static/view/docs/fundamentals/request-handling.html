@@ -30,7 +30,7 @@
             <p><img src="/img/requesthandlers2.png" class="center" /></p>
             <h2 id="creating-an-request-handler">Creating an request handler</h2>
             <p>To create a request handler, we can create a class that inherits the <a
-                    href="/spec/Sisk/Core/Routing/Handlers/IRequestHandler">IRequestHandler</a> interface, in this
+                    href="/spec/Sisk.Core.Routing.Handlers.IRequestHandler">IRequestHandler</a> interface, in this
                 format:</p>
             <pre><code class="lang-cs"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AuthenticateUserRequestHandler</span> : <span class="hljs-type">IRequestHandler</span></span>
 {
@@ -55,7 +55,7 @@
             <p>In the above example, we indicated that if the &quot;Authorization&quot; header is present in the
                 request, it should continue and the next request handler or the router callback should be called,
                 whichever comes next. If it&#39;s a request handler is executed after the response by their property <a
-                    href="/spec/Sisk/Core/Routing/Handlers/IRequestHandler/ExecutionMode">ExecutionMode</a> and return
+                    href="/spec/Sisk.Core.Routing.Handlers.IRequestHandler.ExecutionMode">ExecutionMode</a> and return
                 an non-null value, it will overwrite the router&#39;s response.</p>
             <p>Whenever a Request Handler returns <code>null</code>, it indicates that the request must continue and the
                 next object must be called or the cycle must end with the router&#39;s response.</p>
@@ -70,7 +70,7 @@
     <span class="hljs-keyword">new</span> <span class="hljs-type">WriteToLogRequestHandler</span>()            <span class="hljs-comment">// after request handler</span>
 });
 </code></pre>
-            <p>Or creating an <a href="/spec/Sisk/Core/Routing/Route">Route</a> object:</p>
+            <p>Or creating an <a href="/spec/Sisk.Core.Routing.Route">Route</a> object:</p>
             <pre><code class="lang-cs">Route indexRoute = <span class="hljs-keyword">new</span> <span class="hljs-type">Route</span>(RouteMethod.Get, <span class="hljs-string">"/"</span>, <span class="hljs-string">""</span>, IndexPage, <span class="hljs-literal">null</span>);
 indexRoute.RequestHandlers = <span class="hljs-keyword">new</span> <span class="hljs-type">IRequestHandler</span>[]
 {
@@ -103,7 +103,7 @@ mainRouter.SetRoute(indexRoute);
             <p>Note that it is necessary to pass the desired request handler type and not an object instance. That way,
                 the request handler will be instantiated by the router parser. You can pass arguments in the class
                 constructor with the <a
-                    href="/spec/Sisk/Core/Routing/RequestHandlerAttribute/ConstructorArguments">ConstructorArguments</a>
+                    href="/spec/Sisk.Core.Routing.RequestHandlerAttribute.ConstructorArguments">ConstructorArguments</a>
                 property.</p>
             <p>Example:</p>
             <pre><code class="lang-cs">[RequestHandler(<span class="hljs-keyword">typeof</span>(AuthenticateUserRequestHandler), ConstructorArguments = <span class="hljs-keyword">new</span> <span class="hljs-keyword">object</span>?[] { <span class="hljs-string">"arg1"</span>, <span class="hljs-number">123</span>, ... })]

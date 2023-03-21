@@ -36,7 +36,7 @@ res.Status = System.Net.HttpStatusCode.<span class="hljs-keyword">Moved;
 </span>res.Headers.<span class="hljs-keyword">Add("Location", </span><span class="hljs-string">"/login"</span>)<span class="hljs-comment">;</span>
 </code></pre>
             <p>You can also use the <a
-                    href="/spec/Sisk/Core/Http/HttpRequest/CreateRedirectResponse--String-Boolean">CreateRedirectResponse</a>
+                    href="/spec/Sisk.Core.Http.HttpRequest.CreateRedirectResponse(string-bool)">CreateRedirectResponse</a>
                 shorthand available in the HTTP request object.</p>
             <pre><code class="lang-cs"><span class="hljs-function"><span class="hljs-keyword">return</span> request.<span class="hljs-title">CreateRedirectResponse</span><span class="hljs-params">(<span class="hljs-string">"/login"</span>, <span class="hljs-keyword">false</span>)</span></span>;
 </code></pre>
@@ -46,9 +46,9 @@ res.Status = System.Net.HttpStatusCode.<span class="hljs-keyword">Moved;
             <pre><code class="lang-cs">HttpResponse res = <span class="hljs-keyword">new</span> <span class="hljs-type">HttpResponse</span>();
 res.SetCookie(<span class="hljs-string">"cookie-name"</span>, <span class="hljs-string">"cookie-value"</span>);
 </code></pre>
-            <p>There are other <a href="/spec/Sisk/Core/Http/HttpResponse/SetCookie--String-String-String-String">more
+            <p>There are other <a href="/spec/Sisk.Core.Http.HttpResponse.SetCookie(string-string-DateTime-TimeSpan-string-string-bool-bool-string)">more
                     complete versions</a> of the same <a
-                    href="/spec/Sisk/Core/Http/HttpResponse/SetCookie--String-String">SetCookie</a> method.</p>
+                    href="/spec/Sisk.Core.Http.HttpResponse.SetCookie(string-string)">SetCookie</a> method.</p>
             <h2 id="sending-response-in-chunks">Sending response in chunks</h2>
             <p>You can set the transfer encoding to chunked to send large responses.</p>
             <pre><code class="lang-cs">HttpResponse res = <span class="hljs-keyword">new</span> <span class="hljs-type">HttpResponse</span>();
