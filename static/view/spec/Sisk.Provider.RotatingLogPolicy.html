@@ -1,0 +1,96 @@
+<script>
+    setPageTitle("RotatingLogPolicy class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                RotatingLogPolicy class
+            </h1>
+<p>
+    Assembly: Sisk.ServiceProvider
+</p>
+<p>
+    Definition:
+</p>
+<pre><code class="language-cs">public class RotatingLogPolicy : IDisposable</code></pre>
+<p>
+    Provides a managed utility for rotating log files by their file size.
+</p>
+<h2 id="property">
+    Property list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Provider.RotatingLogPolicy.Due">
+            Due
+        </a>
+    </td>
+    <td>
+        Gets the time interval between checks.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Provider.RotatingLogPolicy.MaximumSize">
+            MaximumSize
+        </a>
+    </td>
+    <td>
+        Gets the file size threshold in bytes for when the file will be compressed and then cleared.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="constructor">
+    Constructor list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Provider.RotatingLogPolicy.RotatingLogPolicy(LogStream)">
+            RotatingLogPolicy(LogStream)
+        </a>
+    </td>
+    <td>
+        Creates an new <a href="/spec/Sisk.Provider.RotatingLogPolicy">RotatingLogPolicy</a> instance with the given <a href="/spec/Sisk.Core.Http.LogStream">LogStream</a> object to watch.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="method">
+    Method list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Provider.RotatingLogPolicy.Configure(long-TimeSpan)">
+            Configure(long, TimeSpan)
+        </a>
+    </td>
+    <td>
+        Defines the time interval and size threshold for starting the task, and then starts the task.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Provider.RotatingLogPolicy.Dispose()">
+            Dispose()
+        </a>
+    </td>
+    <td>
+        Waits for the last scheduled run and terminates this class and its resources.
+    <td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

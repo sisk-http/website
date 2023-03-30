@@ -1,5 +1,5 @@
 <script>
-    setPageTitle("ServiceReloadManager type");
+    setPageTitle("ServiceReloadManager class");
     app.navPage = "spec";
 </script>
 <include name="component/header"></include>
@@ -11,12 +11,17 @@
             </h1>
             <p>
                 Declaring type:
+                <a href="/spec/Sisk.Provider.ServiceReloadManager">
+                    Sisk.Provider.ServiceReloadManager
+                </a>
+                (from Sisk.ServiceProvider)
             </p>
-            <a href="/spec/Sisk.Provider.ServiceReloadManager">
-                Sisk.Provider.ServiceReloadManager
-            </a>
 <p>
-    Registers a <see cref="T:Sisk.Provider.ServiceProvider" /> to be recompiled every time the assembly is reloaded.
+    Definition:
+</p>
+<pre><code class="language-cs">public static void RegisterServiceProvider(ServiceProvider reloadAwareService)</code></pre>
+<p>
+    Registers a <a href="/spec/Sisk.Provider.ServiceProvider">ServiceProvider</a> to be recompiled every time the assembly is reloaded.
 </p>
 <h2>
     Parameters

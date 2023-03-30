@@ -1,0 +1,40 @@
+<script>
+    setPageTitle("LogStream class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                Wait(bool) method
+            </h1>
+            <p>
+                Declaring type:
+                <a href="/spec/Sisk.Core.Http.LogStream">
+                    Sisk.Core.Http.LogStream
+                </a>
+                (from Sisk.Core)
+            </p>
+<p>
+    Definition:
+</p>
+<pre><code class="language-cs">public void Wait(bool blocking = false)</code></pre>
+<p>
+    Waits for the log to finish writing the current queue state.
+</p>
+<h2>
+    Parameters
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>blocking</td>
+    <td>Block next writings until that instance is released by the  method.</td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

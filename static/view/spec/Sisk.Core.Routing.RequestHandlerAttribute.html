@@ -10,16 +10,15 @@
                 RequestHandlerAttribute class
             </h1>
 <p>
+    Assembly: Sisk.Core
+</p>
+<p>
     Definition:
 </p>
-<pre>
-<code class="language-cs">
-[AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
-            public class RequestHandlerAttribute : Attribute
-</code>
-</pre>
+<pre><code class="language-cs">[AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
+            public class RequestHandlerAttribute : Attribute</code></pre>
 <p>
-    Specifies that the method, when used on this attribute, will instantiate the type and call the <see cref="T:Sisk.Core.Routing.Handlers.IRequestHandler" /> with given parameters.
+    Specifies that the method, when used on this attribute, will instantiate the type and call the <a href="/spec/Sisk.Core.Routing.IRequestHandler">IRequestHandler</a> with given parameters.
 </p>
 <h2 id="property">
     Property list
@@ -43,7 +42,7 @@
         </a>
     </td>
     <td>
-        Gets or sets the type that implements <see cref="T:Sisk.Core.Routing.Handlers.IRequestHandler" /> which will be instantiated.
+        Gets or sets the type that implements <a href="/spec/Sisk.Core.Routing.IRequestHandler">IRequestHandler</a> which will be instantiated.
     <td>
 </tr>
     </tbody>

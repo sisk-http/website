@@ -1,0 +1,48 @@
+<script>
+    setPageTitle("ServiceProvider class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                ServiceProvider(RouterFactory, string, ServiceProviderConfiguratorHandler) constructor
+            </h1>
+            <p>
+                Declaring type:
+                <a href="/spec/Sisk.Provider.ServiceProvider">
+                    Sisk.Provider.ServiceProvider
+                </a>
+                (from Sisk.ServiceProvider)
+            </p>
+<p>
+    Definition:
+</p>
+<pre><code class="language-cs">public ServiceProvider(RouterFactory instance, string configurationFile, ServiceProviderConfiguratorHandler configurator)</code></pre>
+<p>
+    Creates an new <a href="/spec/Sisk.Provider.ServiceProvider">ServiceProvider</a> instance with given router factory, custom settings file name and constructor callback.
+</p>
+<h2>
+    Parameters
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>instance</td>
+    <td>Specifies the  object instance which will provide an entry point for this service.</td>
+</tr>
+<tr>
+    <td>configurationFile</td>
+    <td>Specifies the Sisk server portable configuration file.</td>
+</tr>
+<tr>
+    <td>configurator</td>
+    <td>Defines the generation callback executed after the JSON file is interpreted by the server.</td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

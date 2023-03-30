@@ -11,12 +11,27 @@
                     href="https://www.nuget.org/packages/Sisk.HttpServer/">another options</a>. You can easily setup
                 your Sisk environment
                 by running this command in your developer console:</p>
-            <pre><code class="lang-bash">&gt; dotnet add <span class="hljs-keyword">package</span> <span class="hljs-title">S</span>isk.HttpServer
-            </code></pre>
+            <pre><code class="language-bash">> dotnet add package Sisk.HttpServer</code></pre>
             <p>This command will install the latest version of Sisk in your project.</p>
             <p>Don't want to download the package? Download the
                 <a href="https://github.com/sisk-http/core/releases">binaries</a> instead.
             </p>
+            <section>
+                <h2 id="service-providers">
+                    Service Providers
+                </h2>
+                <p>
+                    Since Sisk 0.11, the service providers feature was removed from the main package and placed in a
+                    package dedicated to it.
+                </p>
+                <p>
+                    You can install it by:
+                </p>
+                <pre><code class="language-bash">> dotnet add package Sisk.SericeProviders</code></pre>
+                <p>
+                    Learn how to use <a href="/docs/service-provider">service providers</a> here.
+                </p>
+            </section>
         </article>
         <include name="component/doc-nav"></include>
     </section>

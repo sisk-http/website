@@ -2,7 +2,7 @@
   "profiles": {
     "GenerateMdDoc": {
       "commandName": "Project",
-      "commandLineArgs": "\"C:\\Users\\gscat\\source\\repos\\Sisk Environment\\core\\src\\bin\\Release\\net6.0\\Sisk.Core.xml\""
+      "commandLineArgs": "\"C:\\Users\\gscat\\source\\repos\\Sisk Environment\\core\\src\\bin\\Debug\\net6.0\\Sisk.Core.xml\" \"C:\\Users\\gscat\\source\\repos\\Sisk Environment\\core\\service\\bin\\Release\\net6.0\\Sisk.ServiceProvider.xml\""
     }
   }
 }

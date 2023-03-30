@@ -1,351 +1,445 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Data;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace Sisk.GenerateMdDoc
 {
     internal class Program
     {
-        enum DocMemberType
+        struct StParam
         {
-            Type,
-            Property,
-            Method
-        }
-
-        protected static string NormalizeSummary(string s)
-        {
-            return Regex.Replace(s, @"\s{2,}", " ").Trim();
-        }
-
-        protected static string NormalizeCode(string code)
-        {
-            return Regex.Replace(code, @"^\s+", "", RegexOptions.Multiline).Trim();
-        }
-
-        class DocMember
-        {
-            public string Name { get; set; }
-            public string Summary { get; set; }
-            public string? Definition { get; set; }
-            public string Namespace { get; set; }
-            public string? Remarks { get; set; }
-
-            public string DefinitionType { get; set; }
-            public DocMemberType MemberType { get; set; }
-
-            public Dictionary<string, string> Parameters { get; set; } = new Dictionary<string, string>();
-
-            public string? Signature { get; set; }
+            public string Name;
+            public string Summary;
 
             public override string ToString() => Name;
-
-            public string GetParent()
-            {
-                string sName = StripArguments(Name);
-                return sName.Substring(0, sName.LastIndexOf('.'));
-            }
-
-            public string GetLink()
-            {
-                if (MemberType == DocMemberType.Method)
-                {
-                    string s = Program.StripArguments(Name).Replace('.', '/').Replace('#', '_') + $"--{Signature?.Replace(", ", "-") ?? ""}";
-                    return s;
-                }
-                else
-                {
-                    return Name.Replace('.', '/');
-                }
-            }
-
-            protected static string ParseSummary(XmlNode rootToken)
-            {
-                XmlNode? summaryNode = rootToken.SelectSingleNode("summary");
-                string result = "";
-                if (summaryNode != null)
-                {
-                    StringBuilder sb = new StringBuilder();
-
-                    XmlNode[] childrens = summaryNode.ChildNodes.Cast<XmlNode>().ToArray();
-                    foreach (XmlNode child in childrens)
-                    {
-                        if (child.NodeType == XmlNodeType.Text)
-                        {
-                            sb.Append(child.InnerText);
-                        }
-                        else
-                        {
-                            if (child.Name == "see")
-                            {
-                                string seeHref = child.Attributes!["cref"]!.Value;
-                                string seePieceLink = seeHref.Substring(2).Replace('.', '/');
-                                string seePiece = seeHref.Split('.').Last();
-
-                                sb.Append($" [{seePiece}](/spec/{seePieceLink}) ");
-                            }
-                            else if (child.Name == "c" || child.Name == "code")
-                            {
-                                sb.Append($" `{child.InnerText}` ");
-                            }
-                        }
-                    }
-
-                    result = sb.ToString();
-                }
-
-                return NormalizeSummary(result);
-            }
-
-            public static DocMember? BuildFromJToken(XmlNode token)
-            {
-                DocMember member = new DocMember();
-                string rawName = token.Attributes!["name"]!.Value;
-                member.Name = rawName.Substring(2);
-                member.Summary = ParseSummary(token);
-                member.Definition = NormalizeCode(token.SelectSingleNode("definition")?.InnerText.Trim() ?? "");
-                member.Namespace = token.SelectSingleNode("namespace")?.InnerText.Trim() ?? "";
-                member.DefinitionType = token.SelectSingleNode("type")?.InnerText.Trim() ?? "";
-                member.Remarks = token.SelectSingleNode("remarks")?.InnerText.Trim();
-
-                if (member.Name.Contains("("))
-                {
-                    string[] types = Regex.Matches(member.Name, @"(?!.*\()\.([\w\[\]]+)[,\)]").Select(m => m.Groups[1].Value).ToArray();
-                    string signature = string.Join(", ", types);
-                    member.Signature = signature;
-                }
-
-                foreach (XmlNode paramNode in token.SelectNodes("param")!)
-                {
-                    member.Parameters.Add(paramNode.Attributes!["name"]!.Value, paramNode.InnerText);
-                }
-
-                if (rawName.StartsWith("T:"))
-                {
-                    member.MemberType = DocMemberType.Type;
-                }
-                else if (rawName.StartsWith("M:"))
-                {
-                    member.MemberType = DocMemberType.Method;
-                }
-                else if (rawName.StartsWith("P:"))
-                {
-                    member.MemberType = DocMemberType.Property;
-                }
-
-                return member;
-            }
         }
 
-        static string GetMemberName(string memberName)
+        struct StMember
         {
-            string strippedMemberName = StripArguments(memberName);
-            return strippedMemberName.Substring(strippedMemberName.LastIndexOf('.') + 1);
+            public string Filename;
+            public string Name;
+            public string DeclaringName;
+            public string ParentType;
+            public string Role;
+            public string Definition;
+            public string Summary;
+            public string Remarks;
+            public List<StParam> Parameters;
+
+            public override string ToString() => DeclaringName;
         }
 
-        static string StripArguments(string s) => s.Contains('(') ? s.Substring(0, s.IndexOf('(')) : s;
-
-        static bool IsChildOf(string child, string parent)
+        struct StType
         {
-            string stripedChild = StripArguments(child);
-            string stripedParent = StripArguments(parent);
+            public string ShortName;
+            public string FullName;
+            public string Type;
+            public string Definition;
+            public string Summary;
+            public string Assembly;
+            public List<StMember> Members;
 
-            return (stripedChild.Split('.').Length - 1 == stripedParent.Split('.').Length
-                 && stripedChild.StartsWith(stripedParent + "."));
+            public override string ToString() => FullName;
         }
+
+        protected static string NormalizeSummary(string s) => Regex.Replace(s, @"\s{2,}", " ").Trim();
 
         static void Main(string[] args)
         {
-            JObject test = new JObject();
-
             if (args.Length == 0)
             {
-                Console.WriteLine("XML input file is necessary.");
-            }
-            if (!File.Exists(args[0]))
-            {
-                Console.WriteLine("XML input file not found.");
+                Console.WriteLine("Sisk XML file is required in order to run the spec generator.");
+                return;
             }
 
-            string xmlDocFile = File.ReadAllText(args[0]);
+            List<StType> typeList = new List<StType>();
 
-            JObject jsonObj = JObject.FromObject(new
+            for (int i = 0; i < args.Length; i++)
             {
-                title = "Specification",
-                links = new object[] { }
-            });
+                string filePath = args[i];
 
-            XmlDocument doc = new XmlDocument();
-            doc.LoadXml(xmlDocFile);
-
-            List<dynamic> docuteJson = new List<dynamic>();
-            List<DocMember> docMembers = new List<DocMember>();
-
-            foreach (XmlNode node in doc.SelectNodes("/doc/members/member")!)
-            {
-                DocMember? m = DocMember.BuildFromJToken(node);
-                if (m is null) continue;
-                docMembers.Add(m);
-            }
-
-            // build markdown for classes
-            foreach (DocMember member in docMembers)
-            {
-                StringBuilder sb = new StringBuilder();
-
-                DocMember[] properties = docMembers.Where(d =>
-                    d.DefinitionType == "Property" && IsChildOf(d.Name, member.Name)).ToArray();
-                DocMember[] methods = docMembers.Where(d =>
-                    d.DefinitionType == "Method" && IsChildOf(d.Name, member.Name)).ToArray();
-                DocMember[] constructor = docMembers.Where(d =>
-                    d.DefinitionType == "Constructor" && IsChildOf(d.Name, member.Name)).ToArray();
-
-                sb.AppendLine($"# {member.DefinitionType} {GetMemberName(member.Name)}");
-                sb.AppendLine();
-                sb.AppendLine("## Definition");
-                sb.AppendLine($"Namespace: {member.Namespace}");
-                sb.AppendLine();
-
-                if (!string.IsNullOrEmpty(member.Definition))
+                if (!File.Exists(filePath))
                 {
-                    sb.AppendLine("```csharp");
-                    sb.AppendLine(member.Definition);
-                    sb.AppendLine("```");
-                    sb.AppendLine();
-                }
-
-                sb.AppendLine(member.Summary);
-                sb.AppendLine();
-
-                if (!string.IsNullOrEmpty(member.Remarks))
-                {
-                    sb.AppendLine($"> {NormalizeSummary(member.Remarks)}");
-                }
-
-                if (properties.Length > 0)
-                {
-                    sb.AppendLine("## Properties");
-                    sb.AppendLine();
-                    sb.AppendLine("| Property name | Description |");
-                    sb.AppendLine("| --- | --- |");
-                    foreach (DocMember property in properties)
-                    {
-                        sb.AppendLine($"| [{GetMemberName(property.Name)}](/spec/{property.GetLink()}) | {property.Summary} | ");
-                    }
-                    sb.AppendLine();
-                }
-
-                if (methods.Length > 0)
-                {
-                    sb.AppendLine("## Methods");
-                    sb.AppendLine();
-                    sb.AppendLine("| Method name | Description |");
-                    sb.AppendLine("| --- | --- |");
-                    foreach (DocMember method in methods)
-                    {
-                        sb.AppendLine($"| [{GetMemberName(method.Name)}({method.Signature})](/spec/{method.GetLink()}) | {method.Summary} | ");
-                    }
-                    sb.AppendLine();
-                }
-
-                if (constructor.Length > 0)
-                {
-                    sb.AppendLine("## Constructors");
-                    sb.AppendLine();
-                    sb.AppendLine("| Method name | Description |");
-                    sb.AppendLine("| --- | --- |");
-                    foreach (DocMember method in constructor)
-                    {
-                        sb.AppendLine($"| [{GetMemberName(member.Name)}({method.Signature})](/spec/{method.GetLink()}) | {method.Summary} | ");
-                    }
-                    sb.AppendLine();
-                }
-
-                if (member.Parameters.Count > 0)
-                {
-                    sb.AppendLine("## Parameters");
-                    sb.AppendLine();
-                    sb.AppendLine("| Key | Value |");
-                    sb.AppendLine("| --- | --- |");
-                    foreach (KeyValuePair<string, string> pair in member.Parameters)
-                    {
-                        sb.AppendLine($"| {pair.Key} | {pair.Value} | ");
-                    }
-                    sb.AppendLine();
-                }
-
-                string fullPath = "Output/" + member.GetLink() + ".md";
-                string dirPath = Path.GetDirectoryName(fullPath)!;
-                string parentName = member.GetParent();
-
-                if (!Directory.Exists(dirPath))
-                {
-                    Directory.CreateDirectory(dirPath);
-                }
-
-                File.WriteAllText(fullPath, sb.ToString());
-
-                // get the links location
-                string fullName = StripArguments(member.Name).Replace("Sisk.Core.", "");
-                JToken? token = jsonObj.SelectToken("$." + fullName);
-                if (token == null)
-                {
-                    CreateRecursive(jsonObj, fullName, "/spec/" + member.GetLink());
-                }
-
-                docuteJson.Add(new
-                {
-                    title = StripArguments(member.Name).Replace("Sisk.Core.", ""),
-                    link = "/spec/" + member.GetLink()
-                });
-            }
-
-            File.WriteAllText("nasted-links.json", Newtonsoft.Json.JsonConvert.SerializeObject(jsonObj, Newtonsoft.Json.Formatting.Indented));
-            File.WriteAllText("links.js", "var specLinks = " + Newtonsoft.Json.JsonConvert.SerializeObject(docuteJson, Newtonsoft.Json.Formatting.Indented));
-        }
-
-        static Dictionary<string, string> JsonPaths = new Dictionary<string, string>();
-
-        static void CreateRecursive(JObject obj, string path, string finalLink)
-        {
-            JObject selected = obj;
-            string[] pathParts = path.Split('.');
-
-            string actualCursor = "$";
-            for (int i = 0; i < pathParts.Length; i++)
-            {
-                actualCursor += "." + pathParts[i];
-                bool isLast = i == pathParts.Length - 1;
-
-                if (isLast)
-                {
-                    var finalObj = JObject.FromObject(new
-                    {
-                        title = pathParts[i],
-                        link = finalLink
-                    });
-                    (selected.SelectToken("links")! as JArray)!.Add(finalObj);
+                    Console.WriteLine("Specified file was not found.");
                     return;
                 }
 
-                if (JsonPaths.ContainsKey(actualCursor))
+                string fileAssemblyName = Path.GetFileNameWithoutExtension(filePath);
+                string fileContents = File.ReadAllText(filePath);
+
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml(fileContents);
+
+                var members = doc.SelectNodes("/doc/members/member")!;
+
+                foreach (XmlNode member in members)
                 {
-                    selected = (obj.SelectToken(JsonPaths[actualCursor]) as JObject)!;
-                }
-                else
-                {
-                    var newJobj = JObject.FromObject(new
+                    string name = member.Attributes!["name"]!.Value;
+                    string type = member.SelectSingleNode("type")?.InnerText.Trim() ?? "Type";
+                    string definition = member.SelectSingleNode("definition")?.InnerText.Trim() ?? "";
+                    string summary = NormalizeSummary(member.SelectSingleNode("summary")!.InnerXml.Trim());
+
+                    // replace sisk type names and namespaces
+                    summary = Regex.Replace(summary, @"<see cref=""T:Sisk\.([^""]+)""\s?/>", @"<a href=""/spec/Sisk.$1"">Sisk.$1</a>");
+                    // replace sisk method properties etc
+                    summary = Regex.Replace(summary, @"<see cref=""[^T]:(Sisk\.[a-zA-Z0-9.]+)\.([a-zA-Z0-9.]+)""\s?/>", @"<a href=""/spec/$1"">$2</a>");
+                    // replace .net types by their link
+                    summary = Regex.Replace(summary, @"<see cref=""T:System\.([^""]+)""\s?/>", @"<a href=""https://learn.microsoft.com/en-us/dotnet/api/System.$1"">System.$1</a>");
+                    // replace .net method properties etc
+                    summary = Regex.Replace(summary, @"<see cref=""[^T]:(System\.[a-zA-Z0-9.]+)\.([a-zA-Z0-9.]+)""\s?/>", @"<a href=""https://learn.microsoft.com/en-us/dotnet/api/$1.$2"">$2</a>");
+                    // replace to get only the first name from a links
+                    summary = Regex.Replace(summary, @">[a-zA-Z0-9.]+\.(\w+)</a>", @">$1</a>");
+
+                    string nameType = name.Substring(0, 2);
+                    name = name.Substring(2);
+
+                    if (nameType == "T:")
                     {
-                        title = pathParts[i],
-                        links = new object[] { }
-                    });
-                    (selected.SelectToken("links")! as JArray)!.Add(newJobj);
-                    selected = newJobj;
+                        typeList.Add(new StType
+                        {
+                            ShortName = name.Substring(name.LastIndexOf(".") + 1),
+                            FullName = name,
+                            Type = type,
+                            Definition = definition,
+                            Summary = summary,
+                            Assembly = fileAssemblyName,
+                            Members = new List<StMember>()
+                        });
+                    }
+                    else
+                    {
+                        string nameWithoutArgs = name;
+                        string parent = "";
+                        if (name.Contains('('))
+                        {
+                            parent = name.Substring(0, name.IndexOf('('));
+                            nameWithoutArgs = parent;
+                            parent = parent.Substring(0, parent.LastIndexOf('.'));
+                        }
+                        else
+                        {
+                            parent = name.Substring(0, name.LastIndexOf('.'));
+                        }
+                        string remarks = member.SelectSingleNode("remarks")?.InnerXml.Trim() ?? "";
+                        string declaringName = nameWithoutArgs.Substring(nameWithoutArgs.LastIndexOf('.') + 1);
+
+                        if (declaringName == "#ctor")
+                        {
+                            declaringName = parent.Substring(parent.LastIndexOf('.') + 1);
+                            nameWithoutArgs = declaringName;
+                        }
+
+                        if (nameType == "M:")
+                        {
+                            if (name.Contains('('))
+                            {
+                                string @params = name.Substring(name.IndexOf('('));
+                                List<string> newParams = new List<string>();
+
+                                foreach (string s in @params.TrimStart('(').TrimEnd(')').Split(","))
+                                {
+                                    bool isNullable = s.Contains("System.Nullable{");
+                                    string part = "";
+                                    if (s.Contains("{"))
+                                    {
+                                        string piece = s.Substring(s.LastIndexOf('{') + 1).TrimEnd('}');
+                                        part = piece.Substring(piece.LastIndexOf('.') + 1);
+                                    }
+                                    else
+                                    {
+                                        part = s.Substring(s.LastIndexOf('.') + 1);
+                                    }
+
+                                    part = part switch
+                                    {
+                                        "String" => "string",
+                                        "Boolean" => "bool",
+                                        "Int32" => "int",
+                                        "Int16" => "short",
+                                        "Int64" => "long",
+                                        "Char" => "char",
+                                        "Double" => "double",
+                                        "Single" => "float",
+                                        _ => part
+                                    };
+
+                                    if (isNullable) part += "?";
+
+                                    newParams.Add(part);
+                                }
+
+                                declaringName += "(" + string.Join(", ", newParams) + ")";
+                            }
+                            else
+                            {
+                                declaringName += "()";
+                            }
+                        }
+
+                        var parameters = new List<StParam>();
+                        foreach (XmlNode paramNode in member.SelectNodes("param")!)
+                        {
+                            string paramName = paramNode.Attributes!["name"]!.Value;
+                            string paramDescription = paramNode.InnerText;
+                            parameters.Add(new StParam() { Name = paramName, Summary = paramDescription });
+                        }
+
+                        string dRole = "";
+                        if (name.Contains("#ctor"))
+                        {
+                            dRole = "Constructor";
+                        }
+                        else
+                        {
+                            dRole = nameType switch
+                            {
+                                "M:" => "Method",
+                                "P:" => "Property",
+                                "F:" => "Field",
+                                "E:" => "Event",
+                                _ => throw new NotImplementedException()
+                            };
+                        }
+
+                        string fileName = parent + "." + declaringName;
+                        fileName = fileName.Replace("[", "");
+                        fileName = fileName.Replace("]", "");
+                        fileName = fileName.Replace("?", "");
+                        fileName = fileName.Replace(", ", "-");
+
+                        typeList.First(t => t.FullName == parent).Members.Add(new StMember
+                        {
+                            Name = name.Replace("#ctor", nameWithoutArgs),
+                            DeclaringName = declaringName,
+                            Definition = definition,
+                            ParentType = parent,
+                            Role = dRole,
+                            Summary = summary,
+                            Remarks = remarks,
+                            Parameters = parameters,
+                            Filename = fileName
+                        });
+                    }
+                }
+            }
+
+            // types files
+            StringBuilder indexPage = new StringBuilder();
+            StringBuilder componentBuilder = new StringBuilder();
+            componentBuilder.AppendLine("""<div class="doc-navigator">""");
+            indexPage.AppendLine("""
+                <script>
+                    setPageTitle("Specification");
+                    app.navPage = "spec";
+                </script>
+                <include name="component/header"></include>
+                <div id="appContainer">
+                    <section class="doc-container">
+                        <article class="section-content pad">
+                            <h1>
+                                Specification
+                            </h1>
+                            <p>
+                                You are viewing the Sisk API specification. Navigate from the sidebar to get started.
+                            </p>
+                        </article>
+                        <include name="/spec/__Component"></include>
+                    </section>
+                </div>
+                """);
+            foreach (StType type in typeList.OrderBy(t => t.FullName).ToArray())
+            {
+                componentBuilder.AppendLine($"""
+                    <a href="/spec/{type.FullName}">
+                        {type.ShortName}
+                    </a>
+                    """);
+
+                string fileName = type.FullName + ".html";
+                StringBuilder typeFile = new StringBuilder();
+                typeFile.AppendLine($"""
+                    <script>
+                        setPageTitle("{type.ShortName} {type.Type.ToLower()}");
+                        app.navPage = "spec";
+                    </script>
+                    <include name="component/header"></include>
+                    <div id="appContainer">
+                        <section class="doc-container">
+                            <article class="section-content pad">
+                                <h1>
+                                    {type.ShortName} {type.Type.ToLower()}
+                                </h1>
+                    """);
+                if (!string.IsNullOrEmpty(type.Assembly))
+                {
+                    typeFile.AppendLine($"""
+                        <p>
+                            Assembly: {type.Assembly}
+                        </p>
+                        """);
+                }
+                if (!string.IsNullOrEmpty(type.Definition))
+                {
+                    typeFile.AppendLine($"""
+                        <p>
+                            Definition:
+                        </p>
+                        <pre><code class="language-cs">{type.Definition}</code></pre>
+                        """);
+                }
+                if (!string.IsNullOrEmpty(type.Summary))
+                {
+                    typeFile.AppendLine($"""
+                        <p>
+                            {type.Summary}
+                        </p>
+                        """);
                 }
 
-                if (!JsonPaths.ContainsKey(actualCursor)) JsonPaths.Add(actualCursor, selected.Path);
+                var roles = type.Members.Select(m => m.Role).Distinct().ToArray();
+                foreach (string role in roles)
+                {
+                    StMember[] roleMembers = type.Members
+                        .Where(m => m.Role == role)
+                        .OrderBy(m => m.Name)
+                        .ToArray();
+                    if (roleMembers.Length == 0) return;
+
+                    string roleId = role.Replace(" ", "-").ToLower();
+
+                    typeFile.AppendLine($"""
+                        <h2 id="{roleId}">
+                            {role} list
+                        </h2>
+                        <table>
+                            <tbody>
+                        """);
+
+                    foreach (StMember member in roleMembers)
+                    {
+                        typeFile.AppendLine($"""
+                                <tr>
+                                    <td>
+                                        <a href="/spec/{member.Filename}">
+                                            {member.DeclaringName}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        {member.Summary}
+                                    <td>
+                                </tr>
+                                """);
+                    }
+                    typeFile.AppendLine($"""
+                            </tbody>
+                        </table>
+                        """);
+                }
+
+                typeFile.AppendLine($"""
+                                        </article>
+                            <include name="/spec/__Component"></include>
+                        </section>
+                    </div>
+                    """);
+
+                string html = typeFile.ToString();
+                File.WriteAllText("Output/" + fileName, html);
             }
+
+            // members files
+            foreach (StType type in typeList)
+            {
+                foreach (StMember member in type.Members)
+                {
+
+                    StringBuilder html = new StringBuilder();
+                    html.AppendLine($"""
+                            <script>
+                                setPageTitle("{type.ShortName} {type.Type.ToLower()}");
+                                app.navPage = "spec";
+                            </script>
+                            <include name="component/header"></include>
+                            <div id="appContainer">
+                                <section class="doc-container">
+                                    <article class="section-content pad">
+                                        <h1>
+                                            {member.DeclaringName} {member.Role.ToLower()}
+                                        </h1>
+                                        <p>
+                                            Declaring type:
+                                            <a href="/spec/{member.ParentType}">
+                                                {member.ParentType}
+                                            </a>
+                                            (from {type.Assembly})
+                                        </p>
+                            """);
+                    if (!string.IsNullOrEmpty(member.Definition))
+                    {
+                        html.AppendLine($"""
+                            <p>
+                                Definition:
+                            </p>
+                            <pre><code class="language-cs">{member.Definition}</code></pre>
+                            """);
+                    }
+                    if (!string.IsNullOrEmpty(member.Summary))
+                    {
+                        html.AppendLine($"""
+                            <p>
+                                {member.Summary}
+                            </p>
+                            """);
+                    }
+                    if (!string.IsNullOrEmpty(member.Remarks))
+                    {
+                        html.AppendLine($"""
+                            <blockquote>
+                                {member.Remarks}
+                            </blockquote>
+                            """);
+                    }
+                    if (member.Parameters.Count > 0)
+                    {
+                        html.AppendLine($"""
+                            <h2>
+                                Parameters
+                            </h2>
+                            <table>
+                                <tbody>
+                            """);
+                        foreach (StParam param in member.Parameters)
+                        {
+                            html.AppendLine($"""
+                                <tr>
+                                    <td>{param.Name}</td>
+                                    <td>{param.Summary}</td>
+                                </tr>
+                                """);
+                        }
+                        html.AppendLine($"""
+                            </tbody>
+                        </table>
+                        """);
+                    }
+                    html.AppendLine($"""
+                                        </article>
+                            <include name="/spec/__Component"></include>
+                        </section>
+                    </div>
+                    """);
+
+                    string rawHtml = html.ToString();
+                    File.WriteAllText("Output/" + member.Filename + ".html", rawHtml);
+                }
+            }
+
+            componentBuilder.AppendLine("""</div>""");
+            File.WriteAllText("Output/__Component.html", componentBuilder.ToString());
+            File.WriteAllText("Output/index.html", indexPage.ToString());
         }
     }
 }

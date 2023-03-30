@@ -55,48 +55,70 @@
             <p>First let&#39;s configure an RouterFactory class instance that will be configured and will emit a router.
                 This class is not the entry point of the application, but nevertheless it is the object that will run
                 the runtime objects.</p>
-            <pre><code class="lang-cs"><span class="hljs-keyword">internal</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Application</span> : <span class="hljs-title">RouterFactory</span>
+            <pre><code class="lang-cs">public class Application : RouterFactory
 {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> MySqlConnection { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+    public string? MySqlConnection { get; set; }
 
-    <span class="hljs-comment">// Below we indicate to the router to look for the routes in our application instance. </span>
-    <span class="hljs-comment">// You can define the routes on another object or type as well.</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> Router <span class="hljs-title">BuildRouter</span>(<span class="hljs-params"></span>)
-    </span>{
-        Router r = <span class="hljs-keyword">new</span> Router();
-        r.SetObject(<span class="hljs-keyword">this</span>);
-        <span class="hljs-keyword">return</span> r;
+    // Below we indicate to the router to look for the routes in our application instance. 
+    // You can define the routes on another object or type as well.
+    public override Router BuildRouter()
+    {
+        Router r = new Router();
+        r.SetObject(this);
+        return r;
     }
 
-    <span class="hljs-comment">// In setupParameters, we can have the parameters set in the parameters section of our json.</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Setup</span>(<span class="hljs-params">NameValueCollection setupParameters</span>)
-    </span>{
-        <span class="hljs-keyword">this</span>.MySqlConnection = setupParameters[<span class="hljs-string">"MySqlConnection"</span>] ?? <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> ArgumentNullException(<span class="hljs-keyword">nameof</span>(<span class="hljs-string">"MySqlConnection"</span>));
+    // In setupParameters, we can have the parameters set in the parameters section of our json.
+    public override void Setup(NameValueCollection setupParameters)
+    {
+        this.MySqlConnection = setupParameters["MySqlConnection"] ?? throw new ArgumentNullException(nameof(MySqlConnection));
     }
 
-    [Route(RouteMethod.Get, <span class="hljs-string">"/"</span>)]
-    <span class="hljs-function"><span class="hljs-keyword">public</span> HttpResponse <span class="hljs-title">IndexPage</span>(<span class="hljs-params">HttpRequest request</span>)
-    </span>{
-        HttpResponse htmlResponse = <span class="hljs-keyword">new</span> HttpResponse();
-        htmlResponse.Content = <span class="hljs-keyword">new</span> StringContent(<span class="hljs-string">"Hello, world!"</span>, System.Text.Encoding.UTF8, <span class="hljs-string">"text/plain"</span>);
-        <span class="hljs-keyword">return</span> htmlResponse;
+    [Route(RouteMethod.Get, "/")]
+    public HttpResponse IndexPage(HttpRequest request)
+    {
+        HttpResponse htmlResponse = new HttpResponse();
+        htmlResponse.Content = new StringContent("Hello, world!", System.Text.Encoding.UTF8, "text/plain");
+        return htmlResponse;
     }
-}
-</code></pre>
+}</code></pre>
             <p>Now, we can configure a service in our program entry point:</p>
-            <pre><code class="lang-cs"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span>
+            <pre><code class="lang-cs">public class Program
 {
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Application App { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+    public static Application App { get; set; }
 
-    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-keyword">string</span>[] args</span>)
-    </span>{
-        App = <span class="hljs-keyword">new</span> Application();
-        ServiceProvider provider = <span class="hljs-keyword">new</span> ServiceProvider(App);
-        provider.Initialize(<span class="hljs-literal">true</span>); <span class="hljs-comment">// true indicates that the application will support hot reload</span>
-        provider.Wait();           <span class="hljs-comment">// prevents hauting</span>
+    static void Main(string[] args)
+    {
+        App = new Application();
+        ServiceProvider provider = new(App, "config.json");
+        provider.ConfigureInit(config =>
+        {
+            // Defines the main request loop as the Brazilian Portuguese culture info.
+            config.UseLocale(CultureInfo.GetCultureInfo("pt-BR"));
+
+            // Sets HTTP flags on server startup.
+            config.UseFlags(new HttpServerFlags()
+            {
+                SendSiskHeader = true
+            });
+
+            // Indicates that after starting the server, it should
+            // not terminate the main loop.
+            config.UseHauting(true);
+
+            // Overrides HTTP server configuration parameters,
+            // even if they were parameterized in the JSON config file.
+            config.UseOverrides(httpConfig =>
+            {
+                if (httpConfig.AccessLogsStream?.FilePath != null)
+                {
+                    RotatingLogPolicy policy = new RotatingLogPolicy(httpConfig.AccessLogsStream);
+                    policy.Configure(1024 * 1024, TimeSpan.FromHours(6));
+                }
+            });
+        });
     }
-}
-</code></pre>
+}</code></pre>
             <p>Now our application is ready to be started with a JSON file configuring the ports, methods, hostnames and
                 parameters.</p>
             <h2 id="configuration-file-structure">Configuration file structure</h2>

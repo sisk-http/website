@@ -11,18 +11,15 @@
             </h1>
             <p>
                 Declaring type:
+                <a href="/spec/Sisk.Core.Http.HttpServerConfiguration">
+                    Sisk.Core.Http.HttpServerConfiguration
+                </a>
+                (from Sisk.Core)
             </p>
-            <a href="/spec/Sisk.Core.Http.HttpServerConfiguration">
-                Sisk.Core.Http.HttpServerConfiguration
-            </a>
 <p>
     Definition:
 </p>
-<pre>
-<code class="language-cs">
-public bool ResolveForwardedOriginAddress { get; set; }
-</code>
-</pre>
+<pre><code class="language-cs">public bool ResolveForwardedOriginAddress { get; set; }</code></pre>
 <p>
     Gets or sets whether the HTTP server should resolve remote (IP) addresses by the X-Forwarded-For header. This option is useful if you are using Sisk through a reverse proxy.
 </p>

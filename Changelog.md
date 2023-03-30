@@ -1,3 +1,64 @@
+# 0.11.0
+
+This update includes some changes that may break your code. This topic will help you to
+readapt your code to receive these changes.
+
+The entire service provider engine has been removed from the Sisk Core package and will
+be available in another package dedicated to providing a service package using Sisk.
+
+To do so, you can install the new package with the command:
+
+```
+> dotnet add package Sisk.ServiceProvider
+```
+
+## Breaking changes with service providers:
+
+- `ServiceProvider.Wait()` was replaced by `PreventHauting()`.
+- `ServiceProvider.SetFlags()` was replaced by `UseFlags()`.
+
+The new service provider configurator syntax is:
+
+```C#
+var service = new ServiceProvider(program, "debug.json", app =>
+{
+    app.UseLocale(CultureInfo.GetCultureInfo("en-US"));
+    app.UseOverrides(config =>
+    {
+        // do things with ServerConfiguration object
+        // after it get parsed by the .json file
+    });
+    app.SetFlags(new HttpServerFlags());
+    app.PreventHauting();
+});
+service.Initialize();
+```
+
+The delegate defined in the constructor is immediately executed before the HTTP server is started by `service.Initialize();`, overriding variables present in the JSON and allowing more configurations for the application.
+
+## Other breaking changes:
+
+- `Sisk.Core.Routing.Handlers` namespace was removed. All their members was moved to
+`Sisk.Core.Routing`.
+- `Sisk.Core.Routing.Handlers.RateLimiter` class was removed.
+- `Sisk.Core.Routing.RouterFactory` class was moved to the Sisk.ServiceProvider package.
+- `Sisk.Core.Routing.RequestHandlerFactory` class was moved to the Sisk.ServiceProvider package.
+- Everything under `Sisk.Provider` was moved to the Sisk.ServiceProvider package.
+- `AccessLogsStream` and `ErrorsLogsStream` types was changed from `TextWriter?` to `LogStream?`, which holds more functionality for the HTTP server occasion. No notable changes to the code should be made.
+- Added the `ServerConfiguration.DefaultCultureInfo` property.
+- Added the `ServerConfiguration.AccessLogsFormat` property.
+
+## How to fix your code:
+
+- Rename all references of `Sisk.Core.Routing.Handlers` to `Sisk.Core.Routing`.
+- If you was using Sisk's service providers, install the new package mentioned above.
+- If you was using the rate limiter, build your own rate limiter. You can use the old Sisk `RateLimiter` source code from Github too.
+
+# 0.10.1
+
+- Nothing was added, removed or fixed, but only metadata for the Nuget package.
+- Some typo in the docs.
+
 # 0.10.0
 
 - Added: `ContentLength` property for `HttpRequest` objects.
