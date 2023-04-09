@@ -1,11 +1,12 @@
 var __isNavigating = false;
+var objsList = [];
 
 function routerFetchPage() {
     var path = window.location.hash.replace("#/", "");
 
     window.path = "/" + path.replace(/^\//, "");
     window.pathAndQuery = window.path;
-
+ 
     if (path == "") {
         path = "index";
         window.location.href = "#/"

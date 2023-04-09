@@ -8,14 +8,20 @@
         <article class="section-content pad">
             <h1 id="routing">Routing</h1>
             <p>The router refers to what redirects requests to their proper places. A <a
-                    href="/spec/Sisk.Core.Routing.Router">Router</a> is
+                    href="/spec/Sisk.Core.Routing.Router">Router</a> is 
                 responsible for routing <a
                     href="/spec/Sisk.Core.Routing.Route">Route</a> to its
                 responsible controllers, methods or callbacks. What the Router uses to match a route with a Route is the
                 request path and its method. These two items are responsible for assigning a request to a route.</p>
-            <pre><code class="lang-cs">mainRouter.SetRoute(RouteMethod.Get, <span class="hljs-string">"/hey"</span>, <span class="hljs-function"><span class="hljs-params">(request)</span> =&gt;</span>
+            <pre><code class="lang-cs">mainRouter.SetRoute(RouteMethod.Get, "/hey", (request) =>
 {
-    <span class="hljs-keyword">return</span> request.CreateOkResponse(<span class="hljs-string">"Hello!"</span>);
+    return request.CreateOkResponse("Hello!");
+});
+
+// alternative way using the + operator
+mainRouter += new Route(RouteMethod.Get, "/", (req) =>
+{
+    return req.CreateOkResponse("Hello world!");
 });
 </code></pre>
             <p>To understand what a route is capable of doing, we need to understand what a request is capable of doing.

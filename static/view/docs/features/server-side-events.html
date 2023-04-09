@@ -1,0 +1,152 @@
+<script>
+    setPageTitle("Logging");
+    app.navPage = "docs";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>Server-Side Events</h1>
+            <p>
+                Sisk supports sending messages through Server Side Events out of the box. You can create disposable
+                and persistent connections, get the connections during runtime and use them.
+            </p>
+            <p>
+                This feature has some limitations imposed by browsers, such as sending only texts messages
+                and not being able to permanently close a connection. A server-side closed connection
+                will have a client periodically trying to reconnect every 5 seconds (3 for some browsers).
+            </p>
+            <p>
+                These connections are useful for sending events from the server to the client without having the
+                client request the information every time.
+            </p>
+            <section>
+                <h2 id="getting-an-sse-connection">
+                    Creating an SSE connection
+                </h2>
+                <p>
+                    A SSE connection works like a regular HTTP request, but instead of sending a response
+                    and immediately closing the connection, the connection is kept open to send messages.
+                </p>
+                <p>
+                    Calling the <a href="/spec/Sisk.Core.Http.HttpRequest.GetEventSource(string)">HttpRequest.GetEventSource()</a> method, the
+                    request is put in a waiting state while the SSE instance is created.
+                </p>
+                <pre><code class="lang-cs">r += new Route(RouteMethod.Get, "/", (req) =>
+{
+    var sse = req.GetEventSource();
+
+    sse.Send("Hello, world!");
+
+    return sse.Close();
+});</code></pre>
+                <p>
+                    In the above code, we create an SSE connection and send a "Hello, world" message,
+                    then we close the SSE connection from the server side.
+                </p>
+                <blockquote>
+                    <p>
+                        Note that, when closing a server-side connection, by default the client will try
+                        to connect again at that end and the connection will be restarted, executing the method again, forever.
+                    </p>
+                    <p>
+                        It's common to forward a termination message from the server whenever the
+                        connection is closed from the server to prevent the client from
+                        trying to reconnect again.
+                    </p>
+                </blockquote>
+            </section>
+            <section>
+                <h2 id="append-headers">
+                    Appending headers
+                </h2>
+                <p>
+                    If you need to send headers, you can use the
+                    <a href="/spec/Sisk.Core.Http.HttpRequestEventSource.AppendHeader(string-string)">HttpRequestEventSource.AppendHeader</a> method
+                    before sending any messages.
+                </p>
+                <pre><code class="lang-cs">r += new Route(RouteMethod.Get, "/", (req) =>
+{
+    var sse = req.GetEventSource();
+    sse.AppendHeader("Header-Key", "Header-value");
+
+    sse.Send("Hello!");
+
+    return sse.Close();
+});</code></pre>
+                <p>
+                    Note that it is necessary to send the headers before sending any messages.
+                </p>
+            </section>
+            <section>
+                <h2 id="append-headers">
+                    Keep-Alive connections
+                </h2>
+                <p>
+                    Connections are normally terminated when the server is no longer able to send
+                    messages due to an possible client-side disconnection. With that, the connection is
+                    automatically terminated and the instance of the class is discarded.
+                </p>
+                <p>
+                    Even with a reconnection, the instance of the class will not work, as it
+                    is linked to the previous connection. In some situations, you may need this connection
+                    later and you don't want to manage it via the callback method of the route.
+                </p>
+                <p>
+                    For this, we can identify the SSE connections with an identifier and
+                    get them using it later, even outside the callback of the route. In addition, we mark
+                    the connection with KeepAlive so as not to terminate the route and terminate the connection automatically.
+                </p>
+                <p>
+                    An SSE connection in KeepAlive will wait for a send error (caused by disconnection) to
+                    resume method execution. It is also possible to set a Timeout for this. After the time,
+                    if no message has been sent, the connection is terminated and execution resumes.
+                </p>
+                <pre><code class="lang-cs">r += new Route(RouteMethod.Get, "/", (req) =>
+{
+    var sse = req.GetEventSource("my-index-connection");
+
+    sse.KeepAlive(TimeSpan.FromSeconds(15)); // wait for 15 seconds without any message before terminating the connection
+
+    return sse.Close();
+});</code></pre>
+                <p>
+                    The above method will create the connection, handle it and wait for a disconnection or error.
+                </p>
+                <pre><code class="lang-cs">HttpRequestEventSource? evs = server.EventSources.GetByIdentifier("my-index-connection");
+if (evs != null)
+{
+    // the connection is still alive
+    evs.Send("Hello again!");
+}</code></pre>
+                <p>
+                    And the snippet above will try to look for the newly created connection, and if it exists,
+                    it will send a message to it.
+                </p>
+                <p>
+                    All active server connections that are identified will be available in
+                    the collection <a href="/spec/Sisk.Core.Http.HttpServer.EventSources">HttpServer.EventSources</a>. This collection only
+                    stores active and identified connections. Closed connections are removed from the collection.
+                </p>
+            </section>
+            <section>
+                <h2 id="querying-headers">
+                    Querying connections
+                </h2>
+                <p>
+                    You can search for active connections using a predicate on the connection
+                    identifier, to be able to broadcast, for example.
+                </p>
+                <pre><code class="lang-cs">HttpRequestEventSource[] evs = server.EventSources.Find(es => es.StartsWith("my-connection-"));
+foreach (HttpRequestEventSource e in evs)
+{
+    e.Send("Broadcasting to all event sources that starts with 'my-connection-'");
+}</code></pre>
+                <p>
+                    You can also use the <a href="/spec/Sisk.Core.Http.HttpEventSourceCollection.All()">All</a> method to get all active SSE connections.
+                </p>
+            </section>
+        </article>
+        <include name="component/doc-nav"></include>
+    </section>
+</div>

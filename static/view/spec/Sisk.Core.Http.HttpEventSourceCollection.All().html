@@ -1,5 +1,5 @@
 <script>
-    setPageTitle("MultipartObject class");
+    setPageTitle("HttpEventSourceCollection class");
     app.navPage = "spec";
 </script>
 <include name="component/header"></include>
@@ -7,21 +7,21 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                ReadContentAsString() method
+                All() method
             </h1>
             <p>
                 Declaring type:
-                <a href="/spec/Sisk.Core.Entity.MultipartObject">
-                    Sisk.Core.Entity.MultipartObject
+                <a href="/spec/Sisk.Core.Http.HttpEventSourceCollection">
+                    Sisk.Core.Http.HttpEventSourceCollection
                 </a>
                 (from Sisk.Core)
             </p>
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public string? ReadContentAsString()</code></pre>
+<pre><code class="language-cs">public HttpRequestEventSource[] All()</code></pre>
 <p>
-    Reads the content bytes using the <a href="/spec/Sisk.Core.Entity.MultipartObject">DefaultContentEncoding</a> encoding.
+    Gets all actives <a href="/spec/Sisk.Core.Http.HttpRequestEventSource">HttpRequestEventSource</a> instances.
 </p>
                     </article>
         <include name="/spec/__Component"></include>

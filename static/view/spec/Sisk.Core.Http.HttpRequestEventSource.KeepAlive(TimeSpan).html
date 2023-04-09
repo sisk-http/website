@@ -7,7 +7,7 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                Send(string) method
+                KeepAlive(TimeSpan) method
             </h1>
             <p>
                 Declaring type:
@@ -19,9 +19,9 @@
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public bool Send(string data)</code></pre>
+<pre><code class="language-cs">public void KeepAlive()</code></pre>
 <p>
-    Writes a event message with their data to the event listener and returns an boolean indicating if the message was delivered to the client.
+    Asynchronously waits for the connection to close before continuing execution with an maximum keep alive timeout. This method is released when either the client or the server reaches an sending failure.
 </p>
 <h2>
     Parameters
@@ -29,8 +29,8 @@
 <table>
     <tbody>
 <tr>
-    <td>data</td>
-    <td>The message text.</td>
+    <td>maximumIdleTolerance</td>
+    <td>The maximum timeout interval for an idle connection to automatically release this method.</td>
 </tr>
     </tbody>
 </table>

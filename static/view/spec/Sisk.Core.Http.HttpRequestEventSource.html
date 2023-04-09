@@ -26,12 +26,32 @@
     <tbody>
 <tr>
     <td>
-        <a href="/spec/Sisk.Core.Http.HttpRequestEventSource.MaximumErrorAttempts">
-            MaximumErrorAttempts
+        <a href="/spec/Sisk.Core.Http.HttpRequestEventSource.Identifier">
+            Identifier
         </a>
     </td>
     <td>
-        Maximum attempts to resend a message if it fails. Leave it as -1 to never stop trying to resent failed messages.
+        Gets or sets an label to this EventStream connection, useful for finding this connection's reference later.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpRequestEventSource.IsActive">
+            IsActive
+        </a>
+    </td>
+    <td>
+        Gets an boolean indicating if this connection is open and this instance can send messages.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpRequestEventSource.SentContentLength">
+            SentContentLength
+        </a>
+    </td>
+    <td>
+        Gets an integer indicating the total bytes sent by this instance to the client.
     <td>
 </tr>
     </tbody>
@@ -83,12 +103,62 @@
 </tr>
 <tr>
     <td>
+        <a href="/spec/Sisk.Core.Http.HttpRequestEventSource.Equals(Object)">
+            Equals(Object)
+        </a>
+    </td>
+    <td>
+        Determines if another object is equals to this class instance.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpRequestEventSource.GetHashCode()">
+            GetHashCode()
+        </a>
+    </td>
+    <td>
+        Gets the hash code for this event source.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpRequestEventSource.KeepAlive()">
+            KeepAlive()
+        </a>
+    </td>
+    <td>
+        Asynchronously waits for the connection to close before continuing execution. This method is released when either the client or the server reaches an sending failure.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpRequestEventSource.KeepAlive(TimeSpan)">
+            KeepAlive(TimeSpan)
+        </a>
+    </td>
+    <td>
+        Asynchronously waits for the connection to close before continuing execution with an maximum keep alive timeout. This method is released when either the client or the server reaches an sending failure.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpRequestEventSource.Send(Object)">
+            Send(Object)
+        </a>
+    </td>
+    <td>
+        Writes a event message with their data to the event listener and returns an boolean indicating if the message was delivered to the client.
+    <td>
+</tr>
+<tr>
+    <td>
         <a href="/spec/Sisk.Core.Http.HttpRequestEventSource.Send(string)">
             Send(string)
         </a>
     </td>
     <td>
-        Writes a event message with their data to the event listener.
+        Writes a event message with their data to the event listener and returns an boolean indicating if the message was delivered to the client.
     <td>
 </tr>
     </tbody>

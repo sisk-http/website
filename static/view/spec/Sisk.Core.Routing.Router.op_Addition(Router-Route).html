@@ -1,5 +1,5 @@
 <script>
-    setPageTitle("HttpRequestEventSource class");
+    setPageTitle("Router class");
     app.navPage = "spec";
 </script>
 <include name="component/header"></include>
@@ -7,21 +7,21 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                Send(string) method
+                op_Addition(Router, Route) method
             </h1>
             <p>
                 Declaring type:
-                <a href="/spec/Sisk.Core.Http.HttpRequestEventSource">
-                    Sisk.Core.Http.HttpRequestEventSource
+                <a href="/spec/Sisk.Core.Routing.Router">
+                    Sisk.Core.Routing.Router
                 </a>
                 (from Sisk.Core)
             </p>
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public bool Send(string data)</code></pre>
+<pre><code class="language-cs">public static Router operator +(Router r, Route route)</code></pre>
 <p>
-    Writes a event message with their data to the event listener and returns an boolean indicating if the message was delivered to the client.
+    Defines an route to an router.
 </p>
 <h2>
     Parameters
@@ -29,8 +29,12 @@
 <table>
     <tbody>
 <tr>
-    <td>data</td>
-    <td>The message text.</td>
+    <td>r</td>
+    <td>The router instance which the route is being set.</td>
+</tr>
+<tr>
+    <td>route</td>
+    <td>The route to be defined in the router.</td>
 </tr>
     </tbody>
 </table>

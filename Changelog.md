@@ -1,3 +1,15 @@
+# 0.11.1
+
+- Server side events improvements.
+  - Event Source connections are now traceable. When creating a connection with HttpRequest.GetEventSource(),
+you can specify an identifier to retrieve that connection later in another context. The identifier is unique, and new connections with the same identifier will be discarded if there is already an existing one.
+  - When calling the Close() or Dispose() method, the connection will no longer be found and will be discarded. One method calls the other and they do the same thing, except Close() returns an HttpResponse indicating that the event stream was closed.
+  - When sending a message to a client with a closed connection, the Dispose() method will automatically close to indicate that the connection has ended.
+  - HttpRequestEventSource now has a KeepAlive() method, which keeps the connection active until the client disconnects and the server can no longer send messages, and an overload that allows a maximum time that the server can go without sending messages until the connection is terminated.
+  - More info in the documentation.
+- Fixed some bugs with `ThrowExceptions` and the error logging system.
+- Other improvements.
+
 # 0.11.0
 
 This update includes some changes that may break your code. This topic will help you to

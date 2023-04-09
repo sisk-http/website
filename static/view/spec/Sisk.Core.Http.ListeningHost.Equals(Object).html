@@ -1,5 +1,5 @@
 <script>
-    setPageTitle("HttpRequestEventSource class");
+    setPageTitle("ListeningHost class");
     app.navPage = "spec";
 </script>
 <include name="component/header"></include>
@@ -7,21 +7,21 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                Send(string) method
+                Equals(Object) method
             </h1>
             <p>
                 Declaring type:
-                <a href="/spec/Sisk.Core.Http.HttpRequestEventSource">
-                    Sisk.Core.Http.HttpRequestEventSource
+                <a href="/spec/Sisk.Core.Http.ListeningHost">
+                    Sisk.Core.Http.ListeningHost
                 </a>
                 (from Sisk.Core)
             </p>
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public bool Send(string data)</code></pre>
+<pre><code class="language-cs">public override bool Equals(object? obj)</code></pre>
 <p>
-    Writes a event message with their data to the event listener and returns an boolean indicating if the message was delivered to the client.
+    Determines if another object is equals to this class instance.
 </p>
 <h2>
     Parameters
@@ -29,8 +29,8 @@
 <table>
     <tbody>
 <tr>
-    <td>data</td>
-    <td>The message text.</td>
+    <td>obj</td>
+    <td>The another object which will be used to compare.</td>
 </tr>
     </tbody>
 </table>
