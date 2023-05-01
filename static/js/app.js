@@ -17,8 +17,8 @@ function onNavigated() {
 }
 
 function onNavigating() {
-    query("body").classList.remove("page-loaded");
-    window.app.delayNavigation = 250;
+    //query("body").classList.remove("page-loaded");
+    //window.app.delayNavigation = 250;
 }
 
 function createDocLinks() {
@@ -28,7 +28,6 @@ function createDocLinks() {
             let aHref = a.getAttribute("href");
             if (aHref.endsWith(window.path)) {
                 a.classList.add("current");
-
 
                 let htmlList = "";
                 queryAll("article h2[id]").forEach(h2 => {

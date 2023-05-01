@@ -7,7 +7,7 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                Setup(NameValueCollection) method
+                Bootstrap() method
             </h1>
             <p>
                 Declaring type:
@@ -19,21 +19,10 @@
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public abstract void Setup(NameValueCollection setupParameters);</code></pre>
+<pre><code class="language-cs">public abstract void Bootstrap();</code></pre>
 <p>
-    Method that is called by the service instantiator with the parameters defined in configuration before calling <a href="/spec/Sisk.Core.Routing.RouterFactory">BuildRouter</a>.
+    Method that is called immediately before initializing the service, after all configurations was parsed and set up.
 </p>
-<h2>
-    Parameters
-</h2>
-<table>
-    <tbody>
-<tr>
-    <td>setupParameters</td>
-    <td>Parameters that are defined in a configuration file.</td>
-</tr>
-    </tbody>
-</table>
                     </article>
         <include name="/spec/__Component"></include>
     </section>

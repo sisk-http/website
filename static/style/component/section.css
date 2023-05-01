@@ -33,6 +33,9 @@ section > .section-overlay {
 
 section > .section-content {
     position: relative;
+    max-width: 800px;
+    width: 100%;
+    margin-inline: auto;
 }
 
 section:has(> .section-content.center) {

@@ -1,0 +1,72 @@
+<script>
+    setPageTitle("WebSocketMessage class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                WebSocketMessage class
+            </h1>
+<p>
+    Assembly: Sisk.Core
+</p>
+<p>
+    Definition:
+</p>
+<pre><code class="language-cs">public sealed class WebSocketMessage</code></pre>
+<p>
+    Represents an websocket request message received by an websocket server.
+</p>
+<h2 id="property">
+    Property list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.WebSocketMessage.IsClose">
+            IsClose
+        </a>
+    </td>
+    <td>
+        Gets an boolean indicating that this message is an remote closing message.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.WebSocketMessage.IsEnd">
+            IsEnd
+        </a>
+    </td>
+    <td>
+        Gets an boolean indicating that this message is the last chunk of the message.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.WebSocketMessage.MessageBytes">
+            MessageBytes
+        </a>
+    </td>
+    <td>
+        Gets an byte array with the message contents.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.WebSocketMessage.Sender">
+            Sender
+        </a>
+    </td>
+    <td>
+        Gets the sender <a href="/spec/Sisk.Core.Http.HttpWebSocket">HttpWebSocket</a> object instance which received this message.
+    <td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>
