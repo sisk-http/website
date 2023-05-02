@@ -1,0 +1,102 @@
+<script>
+    setPageTitle("HttpWebSocketConnectionCollection class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                HttpWebSocketConnectionCollection class
+            </h1>
+<p>
+    Assembly: Sisk.Core
+</p>
+<p>
+    Namespace: Sisk.Core.Http.Streams
+</p>
+<p>
+    Definition:
+</p>
+<pre><code class="language-cs">public sealed class HttpWebSocketConnectionCollection</code></pre>
+<p>
+    Provides a managed object to manage <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket">HttpWebSocket</a> connections.
+</p>
+<h2 id="event">
+    Event list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocketConnectionCollection.OnWebSocketRegister">
+            OnWebSocketRegister
+        </a>
+    </td>
+    <td>
+        Represents an event that is fired when an <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket">HttpWebSocket</a> is registered in this collection.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocketConnectionCollection.OnWebSocketUnregister">
+            OnWebSocketUnregister
+        </a>
+    </td>
+    <td>
+        Represents an event that is fired when an <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket">HttpWebSocket</a> is closed and removed from this collection.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="method">
+    Method list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocketConnectionCollection.All()">
+            All()
+        </a>
+    </td>
+    <td>
+        Gets all actives <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket">HttpWebSocket</a> instances.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocketConnectionCollection.DropAll()">
+            DropAll()
+        </a>
+    </td>
+    <td>
+        Closes all registered and active <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket">HttpWebSocket</a> in this collections.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocketConnectionCollection.Find(string-Boolean})">
+            Find(string, Boolean})
+        </a>
+    </td>
+    <td>
+        Gets all actives <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket">HttpWebSocket</a> instances that matches their identifier predicate.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocketConnectionCollection.GetByIdentifier(string)">
+            GetByIdentifier(string)
+        </a>
+    </td>
+    <td>
+        Gets the Web Sockect connection for the specified identifier.
+    <td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

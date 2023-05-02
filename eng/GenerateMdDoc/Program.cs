@@ -279,6 +279,9 @@ namespace Sisk.GenerateMdDoc
                         <p>
                             Assembly: {type.Assembly}
                         </p>
+                        <p>
+                            Namespace: {type.FullName.Substring(0, type.FullName.LastIndexOf('.'))}
+                        </p>
                         """);
                 }
                 if (!string.IsNullOrEmpty(type.Definition))

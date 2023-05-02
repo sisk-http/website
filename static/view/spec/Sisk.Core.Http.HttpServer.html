@@ -13,76 +13,15 @@
     Assembly: Sisk.Core
 </p>
 <p>
+    Namespace: Sisk.Core.Http
+</p>
+<p>
     Definition:
 </p>
 <pre><code class="language-cs">public class HttpServer : IDisposable</code></pre>
 <p>
     Provides an lightweight HTTP server powered by Sisk.
 </p>
-<h2 id="property">
-    Property list
-</h2>
-<table>
-    <tbody>
-<tr>
-    <td>
-        <a href="/spec/Sisk.Core.Http.HttpServer.EventSources">
-            EventSources
-        </a>
-    </td>
-    <td>
-        Gets an <a href="/spec/Sisk.Core.Http.HttpEventSourceCollection">HttpEventSourceCollection</a> with active event source connections in this HTTP server.
-    <td>
-</tr>
-<tr>
-    <td>
-        <a href="/spec/Sisk.Core.Http.HttpServer.IsListening">
-            IsListening
-        </a>
-    </td>
-    <td>
-        Gets an boolean indicating if this HTTP server is running and listening.
-    <td>
-</tr>
-<tr>
-    <td>
-        <a href="/spec/Sisk.Core.Http.HttpServer.ServerConfiguration">
-            ServerConfiguration
-        </a>
-    </td>
-    <td>
-        Gets or sets the Server Configuration object.
-    <td>
-</tr>
-    </tbody>
-</table>
-<h2 id="event">
-    Event list
-</h2>
-<table>
-    <tbody>
-<tr>
-    <td>
-        <a href="/spec/Sisk.Core.Http.HttpServer.OnConnectionClose">
-            OnConnectionClose
-        </a>
-    </td>
-    <td>
-        Event that is called when this <a href="/spec/Sisk.Core.Http.HttpServer">HttpServer</a> computes an request and it's response.
-    <td>
-</tr>
-<tr>
-    <td>
-        <a href="/spec/Sisk.Core.Http.HttpServer.OnConnectionOpen">
-            OnConnectionOpen
-        </a>
-    </td>
-    <td>
-        Event that is called when this <a href="/spec/Sisk.Core.Http.HttpServer">HttpServer</a> receives an request.
-    <td>
-</tr>
-    </tbody>
-</table>
 <h2 id="method">
     Method list
 </h2>
@@ -96,6 +35,16 @@
     </td>
     <td>
         Invalidates this class and releases the resources used by it, and permanently closes the HTTP server.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServer.Emit(Int32@-HttpServerConfiguration@-ListeningHost@-Router@)">
+            Emit(Int32@, HttpServerConfiguration@, ListeningHost@, Router@)
+        </a>
+    </td>
+    <td>
+        Outputs an non-listening HTTP server with configuration, listening host, and router.
     <td>
 </tr>
 <tr>
@@ -136,6 +85,90 @@
     </td>
     <td>
         Stops the server from listening and stops the request handler.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="property">
+    Property list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServer.EventSources">
+            EventSources
+        </a>
+    </td>
+    <td>
+        Gets an <a href="/spec/Sisk.Core.Http.Streams.HttpEventSourceCollection">HttpEventSourceCollection</a> with active event source connections in this HTTP server.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServer.IsListening">
+            IsListening
+        </a>
+    </td>
+    <td>
+        Gets an boolean indicating if this HTTP server is running and listening.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServer.ListeningPrefixes">
+            ListeningPrefixes
+        </a>
+    </td>
+    <td>
+        Gets an string array containing all URL prefixes which this HTTP server is listening to.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServer.ServerConfiguration">
+            ServerConfiguration
+        </a>
+    </td>
+    <td>
+        Gets or sets the Server Configuration object.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServer.WebSockets">
+            WebSockets
+        </a>
+    </td>
+    <td>
+        Gets an <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocketConnectionCollection">HttpWebSocketConnectionCollection</a> with active Web Sockets connections in this HTTP server.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="event">
+    Event list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServer.OnConnectionClose">
+            OnConnectionClose
+        </a>
+    </td>
+    <td>
+        Event that is called when this <a href="/spec/Sisk.Core.Http.HttpServer">HttpServer</a> computes an request and it's response.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpServer.OnConnectionOpen">
+            OnConnectionOpen
+        </a>
+    </td>
+    <td>
+        Event that is called when this <a href="/spec/Sisk.Core.Http.HttpServer">HttpServer</a> receives an request.
     <td>
 </tr>
     </tbody>

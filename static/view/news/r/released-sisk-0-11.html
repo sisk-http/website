@@ -1,0 +1,41 @@
+<script>
+    setPageTitle("News");
+    app.navPage = "news";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section>
+        <div class="section-content pad">
+            <a href="/news/index">Go to news directory</a>
+            <h1>
+                Released Sisk 0.12
+            </h1>
+            <ul>
+                <li>Web Sockets initial support. Learn more at <a href="https://sisk.proj.pw/#/docs/features/web-sockets">https://sisk.proj.pw/#/docs/features/web-sockets</a>.</li>
+                <li>Deprecated <code>HttpServerExecutionStatus.EventSourceClosed</code>.</li>
+                <li>Some bug fixes.</li>
+            </ul>
+            <h3 id="service-providers">Service providers</h3>
+            <ul>
+                <li>Router factories now has an <code>Bootstrap</code> method, which is indeed to configure the services before initializing the HTTP server.</li>
+            </ul>
+            <ul>
+                <li>Renamed these types namespaces from <code>Sisk.Core.Http</code> to <code>Sisk.Core.Http.Streams</code>:<ul>
+                        <li>HttpWebSocket</li>
+                        <li>HttpWebSocketConnectionCollection</li>
+                        <li>WebSocketRegistrationHandler</li>
+                        <li>WebSocketUnregistrationHandler</li>
+                        <li>HttpRequestEventSource</li>
+                        <li>HttpEventSourceCollection</li>
+                        <li>EventSourceRegistrationHandler</li>
+                        <li>EventSourceUnregistrationHandler</li>
+                    </ul>
+                </li>
+                <li>Created the <code>HttpWebSocketConnectionCollection</code> class, accessible from <code>HttpServer.WebSockets</code>.</li>
+                <li>Added an option to identify web sockets connections when accepting the socket connection.</li>
+                <li>Changed the <code>WebSocket.OnReceive</code> from property to an event.</li>
+                <li>Deprecated <code>HttpServerExecutionStatus.EventSourceClosed</code></li>
+            </ul>
+        </div>
+    </section>
+</div>

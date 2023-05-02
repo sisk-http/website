@@ -39,7 +39,7 @@
     {
         var ws = req.GetWebSocket();
 
-        ws.OnReceive = (msg) =>
+        ws.OnReceive += (sender, msg) =>
         {
             string msgText = Encoding.UTF8.GetString(msg.MessageBytes);
             Console.WriteLine("Received message: " + msgText);

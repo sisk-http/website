@@ -10,7 +10,51 @@
             <h1>
                 Breaking changes in Sisk 0.11
             </h1>
-
+            <p>This update includes some changes that may break your code. This topic will help you to
+                readapt your code to receive these changes.</p>
+            <p>The entire service provider engine has been removed from the Sisk Core package and will
+                be available in another package dedicated to providing a service package using Sisk.</p>
+            <p>To do so, you can install the new package with the command:</p>
+            <pre><code>&gt; dotnet add <span class="hljs-keyword">package</span> <span class="hljs-title">S</span>isk.ServiceProvider
+                </code></pre>
+            <h2 id="breaking-changes-with-service-providers-">Breaking changes with service providers:</h2>
+            <ul>
+                <li><code>ServiceProvider.Wait()</code> was replaced by <code>PreventHauting()</code>.</li>
+                <li><code>ServiceProvider.SetFlags()</code> was replaced by <code>UseFlags()</code>.</li>
+            </ul>
+            <p>The new service provider configurator syntax is:</p>
+            <pre><code class="lang-csharp">var service = new ServiceProvider(program, "debug.json", app =>
+{
+    app.UseLocale(CultureInfo.GetCultureInfo("en-US"));
+    app.UseOverrides(config =>
+    {
+        // do things with ServerConfiguration object
+        // after it get parsed by the .json file
+    });
+    app.SetFlags(new HttpServerFlags());
+    app.PreventHauting();
+});
+service.Initialize();</code></pre>
+            <p>The delegate defined in the constructor is immediately executed before the HTTP server is started by <code>service.Initialize();</code>, overriding variables present in the JSON and allowing more configurations for the application.</p>
+            <h2 id="other-breaking-changes-">Other breaking changes:</h2>
+            <ul>
+                <li><code>Sisk.Core.Routing.Handlers</code> namespace was removed. All their members was moved to
+                    <code>Sisk.Core.Routing</code>.
+                </li>
+                <li><code>Sisk.Core.Routing.Handlers.RateLimiter</code> class was removed.</li>
+                <li><code>Sisk.Core.Routing.RouterFactory</code> class was moved to the Sisk.ServiceProvider package.</li>
+                <li><code>Sisk.Core.Routing.RequestHandlerFactory</code> class was moved to the Sisk.ServiceProvider package.</li>
+                <li>Everything under <code>Sisk.Provider</code> was moved to the Sisk.ServiceProvider package.</li>
+                <li><code>AccessLogsStream</code> and <code>ErrorsLogsStream</code> types was changed from <code>TextWriter?</code> to <code>LogStream?</code>, which holds more functionality for the HTTP server occasion. No notable changes to the code should be made.</li>
+                <li>Added the <code>ServerConfiguration.DefaultCultureInfo</code> property.</li>
+                <li>Added the <code>ServerConfiguration.AccessLogsFormat</code> property.</li>
+            </ul>
+            <h2 id="how-to-fix-your-code-">How to fix your code:</h2>
+            <ul>
+                <li>Rename all references of <code>Sisk.Core.Routing.Handlers</code> to <code>Sisk.Core.Routing</code>.</li>
+                <li>If you was using Sisk&#39;s service providers, install the new package mentioned above.</li>
+                <li>If you was using the rate limiter, build your own rate limiter. You can use the old Sisk <code>RateLimiter</code> source code from Github too.</li>
+            </ul>
         </div>
     </section>
 </div>

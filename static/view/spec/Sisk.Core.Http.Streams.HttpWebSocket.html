@@ -1,0 +1,169 @@
+<script>
+    setPageTitle("HttpWebSocket class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                HttpWebSocket class
+            </h1>
+<p>
+    Assembly: Sisk.Core
+</p>
+<p>
+    Namespace: Sisk.Core.Http.Streams
+</p>
+<p>
+    Definition:
+</p>
+<pre><code class="language-cs">public sealed class HttpWebSocket</code></pre>
+<p>
+    Provides an persistent bi-directional socket between the client and the HTTP server.
+</p>
+<h2 id="property">
+    Property list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket.HttpRequest">
+            HttpRequest
+        </a>
+    </td>
+    <td>
+        Gets the <a href="/spec/Sisk.Core.Http.HttpRequest">HttpRequest</a> object which created this Web Socket instance.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket.Identifier">
+            Identifier
+        </a>
+    </td>
+    <td>
+        Gets an unique identifier label to this Web Socket connection, useful for finding this connection's reference later.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket.IsClosed">
+            IsClosed
+        </a>
+    </td>
+    <td>
+        Gets an boolean indicating if this Web Socket connection is closed.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="method">
+    Method list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket.Close()">
+            Close()
+        </a>
+    </td>
+    <td>
+        Closes the connection between the client and the server and returns an Http resposne indicating that the connection has been terminated. This method will not throw an exception if the connection is already closed.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket.Equals(Object)">
+            Equals(Object)
+        </a>
+    </td>
+    <td>
+        Determines if another object is equals to this class instance.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket.GetHashCode()">
+            GetHashCode()
+        </a>
+    </td>
+    <td>
+        Gets the hash code for this event source.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket.Send(Byte-int-int)">
+            Send(Byte[], int, int)
+        </a>
+    </td>
+    <td>
+        Sends an binary message to the remote point.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket.Send(Byte)">
+            Send(Byte[])
+        </a>
+    </td>
+    <td>
+        Sends an binary message to the remote point.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket.Send(Byte)">
+            Send(Byte)
+        </a>
+    </td>
+    <td>
+        Sends an binary message to the remote point.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket.Send(string)">
+            Send(string)
+        </a>
+    </td>
+    <td>
+        Sends an text message to the remote point.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket.WaitForClose()">
+            WaitForClose()
+        </a>
+    </td>
+    <td>
+        Blocks the current call stack until the connection is terminated by either the client or the server.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="event">
+    Event list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket.OnReceive">
+            OnReceive
+        </a>
+    </td>
+    <td>
+        Represents the event which is called when this websocket receives an message from remote origin.
+    <td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

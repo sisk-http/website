@@ -1,3 +1,31 @@
+# 0.12.1
+
+- Renamed these types namespaces from `Sisk.Core.Http` to `Sisk.Core.Http.Streams`:
+    - HttpWebSocket
+    - HttpWebSocketConnectionCollection
+    - WebSocketRegistrationHandler
+    - WebSocketUnregistrationHandler
+    - HttpRequestEventSource
+    - HttpEventSourceCollection
+    - EventSourceRegistrationHandler
+    - EventSourceUnregistrationHandler
+- Created the `HttpWebSocketConnectionCollection` class, accessible from `HttpServer.WebSockets`.
+- Added an option to identify web sockets connections when accepting the socket connection.
+- Changed the `WebSocket.OnReceive` from property to an event.
+- Deprecated `HttpServerExecutionStatus.EventSourceClosed`
+
+# 0.12.0
+
+- Web Sockets initial support. Learn more at https://sisk.proj.pw/#/docs/features/web-sockets.
+- Deprecated `HttpServerExecutionStatus.EventSourceClosed`.
+- Some bug fixes.
+
+### Service providers
+
+- Router factories now has an `Bootstrap` method, which is indeed to configure the services before
+initializing the HTTP server.
+
+
 # 0.11.1
 
 - Server side events improvements.

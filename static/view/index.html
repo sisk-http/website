@@ -17,6 +17,29 @@
                 web applications. It's an alternative to Microsoft's ASP.NET Core,
                 which it's simpler and easy to understand and control.
             </p>
+            <pre><code class="language-csharp">public class Program
+{
+    static void Main(string[] args)
+    {
+        HttpServer http = HttpServer.Emit(
+            insecureHttpPort: 5555,
+            out HttpServerConfiguration serverConfig,
+            out ListeningHost listeningHost,
+            out Router mainRouter
+        );
+
+        mainRouter += new Route(RouteMethod.Get, "/", request =>
+        {
+            return new HttpResponse(200) { Content = new StringContent("Hello, world!") };
+        });
+
+        http.Start();
+
+        Console.WriteLine($"HTTP server is listening on {http.ListeningPrefixes[0]}");
+
+        Thread.Sleep(-1);
+    }
+}</code></pre>
             <h2>
                 Main features:
             </h2>
