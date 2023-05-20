@@ -7,7 +7,7 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                ListeningHost(string, ListeningPort[]) constructor
+                ListeningHost() constructor
             </h1>
             <p>
                 Declaring type:
@@ -19,25 +19,10 @@
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public ListeningHost(string hostname, ListeningPort[] ports)</code></pre>
+<pre><code class="language-cs">public ListeningHost()</code></pre>
 <p>
-    Creates the instance of a routerless listener host without any <a href="/spec/Sisk.Core.Routing.Router">Router</a>. This instance will not be listened until it has a router.
+    Creates an new empty <a href="/spec/Sisk.Core.Http.ListeningHost">ListeningHost</a> instance.
 </p>
-<h2>
-    Parameters
-</h2>
-<table>
-    <tbody>
-<tr>
-    <td>hostname</td>
-    <td>The hostname (without the port) that this host will listen on the local machine.</td>
-</tr>
-<tr>
-    <td>ports</td>
-    <td>The ports which this host will listen on.</td>
-</tr>
-    </tbody>
-</table>
                     </article>
         <include name="/spec/__Component"></include>
     </section>

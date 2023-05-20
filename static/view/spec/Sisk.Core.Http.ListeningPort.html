@@ -22,6 +22,24 @@
 <p>
     Provides a structure to contain a listener port for an <a href="/spec/Sisk.Core.Http.ListeningHost">ListeningHost</a> instance.
 </p>
+<section>
+    <p>
+                    A listener port represents an access point on the HTTP server.
+                    It consists of an indicator that it should use a secure connection (HTTPS), its hostname and port.
+                </p><p>
+                    It must start with https:// or http://, and must terminate with an /.
+                </p><p>
+                    It is represented by the syntax:
+                </p><pre><code class="lang-none">
+                    [http|https]://[hostname]:[port]/
+                </code></pre><p>
+                    Examples:
+                </p><pre><code class="lang-none">
+                    http://localhost:80/
+                    https://subdomain.domain.net:443/
+                    http://182.32.112.223:5251/
+                </code></pre>
+</section>
 <h2 id="property">
     Property list
 </h2>
@@ -29,12 +47,22 @@
     <tbody>
 <tr>
     <td>
+        <a href="/spec/Sisk.Core.Http.ListeningPort.Hostname">
+            Hostname
+        </a>
+    </td>
+    <td>
+        Gets or sets the DNS hostname pattern where this listening port will refer.
+    <td>
+</tr>
+<tr>
+    <td>
         <a href="/spec/Sisk.Core.Http.ListeningPort.Port">
             Port
         </a>
     </td>
     <td>
-        Gets or sets the port where the server will listen.
+        Gets or sets the port where this listening port will refer.
     <td>
 </tr>
 <tr>
@@ -56,12 +84,32 @@
     <tbody>
 <tr>
     <td>
+        <a href="/spec/Sisk.Core.Http.ListeningPort.ListeningPort()">
+            ListeningPort()
+        </a>
+    </td>
+    <td>
+        Creates an new <a href="/spec/Sisk.Core.Http.ListeningPort">ListeningPort</a> instance with default parameters.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.ListeningPort.ListeningPort(bool-string-int)">
+            ListeningPort(bool, string, int)
+        </a>
+    </td>
+    <td>
+        Creates an new <a href="/spec/Sisk.Core.Http.ListeningPort">ListeningPort</a> instance with the specified port, secure context and hostname.
+    <td>
+</tr>
+<tr>
+    <td>
         <a href="/spec/Sisk.Core.Http.ListeningPort.ListeningPort(int-bool)">
             ListeningPort(int, bool)
         </a>
     </td>
     <td>
-        Creates an new <a href="/spec/Sisk.Core.Http.ListeningPort">ListeningPort</a> instance with the specified port and secure context.
+        Creates an new <a href="/spec/Sisk.Core.Http.ListeningPort">ListeningPort</a> instance with the specified port and secure context at the loopback host.
     <td>
 </tr>
 <tr>
@@ -71,7 +119,17 @@
         </a>
     </td>
     <td>
-        Creates an new <a href="/spec/Sisk.Core.Http.ListeningPort">ListeningPort</a> instance with the specified port.
+        Creates an new <a href="/spec/Sisk.Core.Http.ListeningPort">ListeningPort</a> instance with the specified port at the loopback host.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.ListeningPort.ListeningPort(string)">
+            ListeningPort(string)
+        </a>
+    </td>
+    <td>
+        Creates an new <a href="/spec/Sisk.Core.Http.ListeningPort">ListeningPort</a> instance with the specified URI.
     <td>
 </tr>
     </tbody>
@@ -99,6 +157,26 @@
     </td>
     <td>
         Gets the hash code for this listening port.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.ListeningPort.GetRandomPort()">
+            GetRandomPort()
+        </a>
+    </td>
+    <td>
+        Gets an <a href="/spec/Sisk.Core.Http.ListeningPort">ListeningPort</a> object with an random insecure port.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.ListeningPort.ToString()">
+            ToString()
+        </a>
+    </td>
+    <td>
+        Gets an string representation of this <a href="/spec/Sisk.Core.Http.ListeningPort">ListeningPort</a>.
     <td>
 </tr>
     </tbody>

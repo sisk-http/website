@@ -9,16 +9,14 @@
             <h1 id="getting-started-with-sisk">Getting started with Sisk</h1>
             <p>Sisk can run in any .NET environment. In this example, we&#39;ll teach you how to create a Sisk
                 application using
-                .NET. If you haven&#39;t installed it yet, install the SDK from <a
-                    href="https://dotnet.microsoft.com/en-us/download/dotnet/7.0">here</a>.</p>
+                .NET. If you haven&#39;t installed it yet, install the SDK from <a href="https://dotnet.microsoft.com/en-us/download/dotnet/7.0">here</a>.</p>
             <p>In this example, we&#39;ll teach you how to create a project structure, receive a request, obtain a URL
                 parameter and
                 send a response. This tutorial will be entirely teaching how to build a simple server using C#. You can
                 also write
                 in your favorite language.</p>
             <blockquote>
-                <p>You may be interested on an quickstarter project. Check <a
-                        href="https://github.com/sisk-http/quickstart">this
+                <p>You may be interested on an quickstarter project. Check <a href="https://github.com/sisk-http/quickstart">this
                         repository</a> for more info.</p>
             </blockquote>
             <h2 id="creating-an-project">Creating an project</h2>
@@ -31,8 +29,7 @@
             <pre><code class="lang-bash">&gt; cd my-sisk-application
 &gt; dotnet add <span class="hljs-keyword">package</span> <span class="hljs-title">S</span>isk.HttpServer
 </code></pre>
-            <p>You can see another ways to install Sisk in your project <a
-                    href="https://www.nuget.org/packages/Sisk.HttpServer/">here</a>.</p>
+            <p>You can see another ways to install Sisk in your project <a href="https://www.nuget.org/packages/Sisk.HttpServer/">here</a>.</p>
             <p>Now let&#39;s create an instance of our HTTP server. As a matter of principle, let&#39;s make it listen
                 on port 5000.
             </p>
@@ -85,21 +82,25 @@ mainRouter.SetRoute(RouteMethod.Get, <span class="hljs-string">"/"</span>, Index
             <p>Now our router can receive and send responses. But <code>mainRouter</code> is not tied to a host or a
                 server, so it
                 will not work on its own. For this, the next step is to create our <code>ListeningHost</code>.</p>
-            <h2 id="listening-hosts">Listening Hosts</h2>
-            <p>Listening Hosts are objects responsible for representing an application or service on the Sisk HTTP
-                server. It is the
-                highest layer of a service that is not always accessible by self.</p>
-            <p>We can create a <code>ListeningHost</code> that listens to port 5000 on localhost and associate our newly
-                created
-                router with it.</p>
-            <pre><code class="lang-cs"><span class="hljs-attribute">ListeningHost myHost</span> = new ListeningHost(<span class="hljs-string">"localhost"</span>, 5000, mainRouter);
-</code></pre>
-            <p>To better understand this relationship, this diagram explains the hierarchy from a route to the Listening
-                Host.</p>
-            <p><img src="/img/listeninghostdiagram.png" class="center" /></p>
-            <p>Now we have our ListeningHost and we need to associate it with some HTTP Server. It&#39;s time to start
-                building our
-                <code>HttpServer</code> and their <code>HttpServerConfiguration</code>.
+            <h2 id="listening-hosts">Listening Hosts and ports</h2>
+            <p>
+                A <a href="/spec/Sisk.Core.Http.ListeningHost">ListeningHost</a> can host a router and multiple listening ports to the same router.
+                A <a href="/spec/Sisk.Core.Http.ListeningPort">ListeningPort</a> is a prefix where the HTTP server will listen.
+            </p>
+            <p>
+                Here we can create an ListeningHost which points two endpoints to our router:
+            </p>
+            <pre><code class="lang-cs">
+                ListeningHost myHost = new ListeningHost();
+                host.Router = new Router();
+                host.Ports = new ListeningPort[]
+                {
+                    new ListeningPort("http://localhost:80/"),
+                    new ListeningPort("https://localhost:443/")
+                };
+            </code></pre>
+            <p>
+                Now our HTTP server will listen to the endpoints above and redirects it's requests to our router.
             </p>
             <h2 id="server-configuration">Server configuration</h2>
             <p>Server configuration is responsible for most of the behavior of the HTTP server itself. In it we can

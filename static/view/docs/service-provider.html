@@ -8,50 +8,46 @@
         <article class="section-content pad">
             <h1 id="service-provider">Service Provider</h1>
             <p>Service Providers are a simple way to port your application in different environments and configurations
-                easily without having to change your code for it. The <a
-                    href="/spec/Sisk/Provider/ServiceProvider">ServiceProvider</a> class is accessible by type that sets
+                easily without having to change your code for it. The <a href="/spec/Sisk/Provider/ServiceProvider">ServiceProvider</a> class is accessible by type that sets
                 an application with your router, configuration and other settings already available on Sisk.</p>
             <p>Service Providers managed by a JSON file of settings that is read by the application that is close to its
                 executable. This is a example service setting file:</p>
-            <pre><code class="lang-json">{
-    <span class="hljs-attr">"Server"</span>: {
-        <span class="hljs-attr">"DefaultEncoding"</span>: <span class="hljs-string">"UTF-8"</span>,
-        <span class="hljs-attr">"ThrowExceptions"</span>: <span class="hljs-literal">true</span>,
-        <span class="hljs-attr">"IncludeRequestIdHeader"</span>: <span class="hljs-literal">true</span>
-    },
-    <span class="hljs-attr">"ListeningHost"</span>: {
-        <span class="hljs-attr">"Label"</span>: <span class="hljs-string">"My sisk application"</span>,
-        <span class="hljs-attr">"Hostname"</span>: <span class="hljs-string">"localhost"</span>,
-        <span class="hljs-attr">"Ports"</span>: [
+            <pre><code class="lang-json">
             {
-                <span class="hljs-attr">"Port"</span>: <span class="hljs-number">5555</span>,
-                <span class="hljs-attr">"Secure"</span>: <span class="hljs-literal">false</span>
+                "Server": {
+                    "DefaultEncoding": "UTF-8",
+                    "ThrowExceptions": true,
+                    "IncludeRequestIdHeader": true
+                },
+                "ListeningHost": {
+                    "Label": "My sisk application",
+                    "Ports": [
+                        "http://localhost:80/",
+                        "https://localhost:443/",  // Configuration files also supports comments
+                    ],
+                    "CrossOriginResourceSharingPolicy": {
+                        "AllowOrigin": "*",
+                        "AllowMethods": [ "*" ],
+                        "AllowHeaders": [ "*" ],
+                        "MaxAge": 3600
+                    },
+                    "Parameters": {
+                        "MySqlConnection": "server=localhost;user=root;"
+                    }
+                }
             }
-        ],
-        <span class="hljs-attr">"CrossOriginResourceSharingPolicy"</span>: {
-            <span class="hljs-attr">"AllowOrigin"</span>: <span class="hljs-string">"*"</span>,
-            <span class="hljs-attr">"AllowMethods"</span>: [ <span class="hljs-string">"*"</span> ],
-            <span class="hljs-attr">"AllowHeaders"</span>: [ <span class="hljs-string">"*"</span> ],
-            <span class="hljs-attr">"MaxAge"</span>: <span class="hljs-number">3600</span>
-        },
-        <span class="hljs-attr">"Parameters"</span>: {
-            <span class="hljs-attr">"MySqlConnection"</span>: <span class="hljs-string">"server=localhost;user=root;"</span>
-        }
-    }
-}
-</code></pre>
+        </code></pre>
             <p>This file is read alongside the server executable, regardless of the build platform. By default the file
                 name is <code>service-config.json</code> and must stay at the same directory of the output executeable.
-                It is also possible to change the file name by tweaking the <a
-                    href="/spec/Sisk/Provider/ServiceProvider">ServiceProvider</a> class.</p>
+                It is also possible to change the file name by tweaking the <a href="/spec/Sisk/Provider/ServiceProvider">ServiceProvider</a> class.</p>
             <blockquote>
                 <p>Tip: in Sisk service provider configuration files it&#39;s allowed to write <code>// single</code> or
-                    <code>/* multi-line comments */</code>, as they are ignored by the interpreter.</p>
+                    <code>/* multi-line comments */</code>, as they are ignored by the interpreter.
+                </p>
             </blockquote>
             <h2 id="creating-an-service-provider-instance">Creating an service provider instance</h2>
             <p>In this session we will learn how to configure the application to run a Sisk service provider. First of
-                all, you will need to have the latest version of Sisk installed in your project. See <a
-                    href="/installing">how to install here</a>.</p>
+                all, you will need to have the latest version of Sisk installed in your project. See <a href="/installing">how to install here</a>.</p>
             <p>First let&#39;s configure an RouterFactory class instance that will be configured and will emit a router.
                 This class is not the entry point of the application, but nevertheless it is the object that will run
                 the runtime objects.</p>
@@ -72,6 +68,12 @@
     public override void Setup(NameValueCollection setupParameters)
     {
         this.MySqlConnection = setupParameters["MySqlConnection"] ?? throw new ArgumentNullException(nameof(MySqlConnection));
+    }
+
+    // Synchronous method called immediately before starting the HTTP server.
+    public override void Bootstrap()
+    {
+        ;
     }
 
     [Route(RouteMethod.Get, "/")]
@@ -108,13 +110,32 @@
 
             // Overrides HTTP server configuration parameters,
             // even if they were parameterized in the JSON config file.
-            config.UseOverrides(httpConfig =>
+            config.UseConfiguration(httpConfig =>
             {
                 if (httpConfig.AccessLogsStream?.FilePath != null)
                 {
                     RotatingLogPolicy policy = new RotatingLogPolicy(httpConfig.AccessLogsStream);
                     policy.Configure(1024 * 1024, TimeSpan.FromHours(6));
                 }
+            });
+
+            // Overrides CORS parameters from the configuration file
+            config.UseCors(cors =>
+            {
+                cors.AllowMethods = new[] { "GET", "POST", "PUT", "DELETE" };
+            });
+
+            // Overrides properties directly to the HTTP server
+            config.UseHttpServer(http =>
+            {
+                http.EventSources.OnEventSourceRegistered += (sender, ws) =>
+                {
+                    Console.WriteLine("New event source: " + ws.Identifier);
+                };
+                http.EventSources.OnEventSourceUnregistration += (sender, ws) =>
+                {
+                    Console.WriteLine("Closed event source: " + ws.Identifier);
+                };
             });
         });
     }
@@ -141,25 +162,29 @@
                         <td>Server.AccessLogsStream</td>
                         <td>Optional</td>
                         <td>Default to <code>console</code>. Specifies the access log output stream. Can be an filename,
-                            <code>null</code> or <code>console</code>.</td>
+                            <code>null</code> or <code>console</code>.
+                        </td>
                     </tr>
                     <tr>
                         <td>Server.ErrorsLogsStream</td>
                         <td>Optional</td>
                         <td>Default to <code>null</code>. Specifies the error log output stream. Can be an filename,
-                            <code>null</code> or <code>console</code>.</td>
+                            <code>null</code> or <code>console</code>.
+                        </td>
                     </tr>
                     <tr>
                         <td>Server.ResolveForwardedOriginAddress</td>
                         <td>Optional</td>
                         <td>Default to <code>false</code>. Specifies if the HTTP server should resolve the
-                            <code>X-Forwarded-For</code> header to the user IP. (Recommended for proxy servers)</td>
+                            <code>X-Forwarded-For</code> header to the user IP. (Recommended for proxy servers)
+                        </td>
                     </tr>
                     <tr>
                         <td>Server.ResolveForwardedOriginHost</td>
                         <td>Optional</td>
                         <td>Default to <code>false</code>. Specifies if the HTTP server should resolve the
-                            <code>X-Forwarded-Host</code> header to the server host.</td>
+                            <code>X-Forwarded-Host</code> header to the server host.
+                        </td>
                     </tr>
                     <tr>
                         <td>Server.DefaultEncoding</td>
@@ -177,23 +202,20 @@
                         <td>Server.IncludeRequestIdHeader</td>
                         <td>Optional</td>
                         <td>Default to <code>false</code>. Specifies if the HTTP server should send the
-                            <code>X-Request-Id</code> header.</td>
+                            <code>X-Request-Id</code> header.
+                        </td>
                     </tr>
                     <tr>
                         <td>Server.ThrowExceptions</td>
                         <td>Optional</td>
                         <td>Default to <code>true</code>. Specifies if unhandled exceptions should be thrown. Set to
-                            <code>false</code> when production and <code>true</code> when debugging.</td>
+                            <code>false</code> when production and <code>true</code> when debugging.
+                        </td>
                     </tr>
                     <tr>
                         <td>ListeningHost</td>
                         <td>Required</td>
                         <td>Represents the server listening host.</td>
-                    </tr>
-                    <tr>
-                        <td>ListeningHost.Hostname</td>
-                        <td>Required</td>
-                        <td>Represents the HTTP server listening hostname.</td>
                     </tr>
                     <tr>
                         <td>ListeningHost.Label</td>
@@ -203,18 +225,7 @@
                     <tr>
                         <td>ListeningHost.Ports</td>
                         <td>Required</td>
-                        <td>Represents an array of listening ports.</td>
-                    </tr>
-                    <tr>
-                        <td>ListeningHost.Ports[*].Port</td>
-                        <td>Required</td>
-                        <td>Specifies the port number.</td>
-                    </tr>
-                    <tr>
-                        <td>ListeningHost.Ports[*].Secure</td>
-                        <td>Required</td>
-                        <td>Specifies if this port should be listened with HTTPS (<code>true</code>) or HTTP
-                            (<code>false</code>).</td>
+                        <td>Represents an array of strings, matching the <a href="/spec/Sisk.Core.Http.ListeningPort">ListeningPort</a> syntax.</td>
                     </tr>
                     <tr>
                         <td>ListeningHost.CrossOriginResourceSharingPolicy</td>
@@ -230,31 +241,36 @@
                         <td>ListeningHost.CrossOriginResourceSharingPolicy.ExposeHeaders</td>
                         <td>Optional</td>
                         <td>Defaults to <code>null</code>. This property expects an array of strings. Specifies the
-                            <code>Expose-Headers</code> header.</td>
+                            <code>Expose-Headers</code> header.
+                        </td>
                     </tr>
                     <tr>
                         <td>ListeningHost.CrossOriginResourceSharingPolicy.AllowOrigin</td>
                         <td>Optional</td>
                         <td>Defaults to <code>null</code>. This property expects an string. Specifies the
-                            <code>Allow-Origin</code> header.</td>
+                            <code>Allow-Origin</code> header.
+                        </td>
                     </tr>
                     <tr>
                         <td>ListeningHost.CrossOriginResourceSharingPolicy.AllowMethods</td>
                         <td>Optional</td>
                         <td>Defaults to <code>null</code>. This property expects an array of strings. Specifies the
-                            <code>Allow-Methods</code> header.</td>
+                            <code>Allow-Methods</code> header.
+                        </td>
                     </tr>
                     <tr>
                         <td>ListeningHost.CrossOriginResourceSharingPolicy.AllowHeaders</td>
                         <td>Optional</td>
                         <td>Defaults to <code>null</code>. This property expects an array of strings. Specifies the
-                            <code>Allow-Headers</code> header.</td>
+                            <code>Allow-Headers</code> header.
+                        </td>
                     </tr>
                     <tr>
                         <td>ListeningHost.CrossOriginResourceSharingPolicy.MaxAge</td>
                         <td>Optional</td>
                         <td>Defaults to <code>null</code>. This property expects an interger. Specifies the
-                            <code>Max-Age</code> header in seconds.</td>
+                            <code>Max-Age</code> header in seconds.
+                        </td>
                     </tr>
                     <tr>
                         <td>ListeningHost.Parameters</td>

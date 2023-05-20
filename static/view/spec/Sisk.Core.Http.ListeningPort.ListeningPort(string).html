@@ -1,5 +1,5 @@
 <script>
-    setPageTitle("HttpRequestEventSource class");
+    setPageTitle("ListeningPort struct");
     app.navPage = "spec";
 </script>
 <include name="component/header"></include>
@@ -7,21 +7,21 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                Equals(Object) method
+                ListeningPort(string) constructor
             </h1>
             <p>
                 Declaring type:
-                <a href="/spec/Sisk.Core.Http.Streams.HttpRequestEventSource">
-                    Sisk.Core.Http.Streams.HttpRequestEventSource
+                <a href="/spec/Sisk.Core.Http.ListeningPort">
+                    Sisk.Core.Http.ListeningPort
                 </a>
                 (from Sisk.Core)
             </p>
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public override bool Equals(object? obj)</code></pre>
+<pre><code class="language-cs">public ListeningPort(string uri)</code></pre>
 <p>
-    Determines if another object is equals to this class instance.
+    Creates an new <a href="/spec/Sisk.Core.Http.ListeningPort">ListeningPort</a> instance with the specified URI.
 </p>
 <h2>
     Parameters
@@ -29,8 +29,8 @@
 <table>
     <tbody>
 <tr>
-    <td>obj</td>
-    <td>The another object which will be used to compare.</td>
+    <td>uri</td>
+    <td>The URI component that will be parsed to the listening port format.</td>
 </tr>
     </tbody>
 </table>

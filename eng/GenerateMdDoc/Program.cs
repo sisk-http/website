@@ -27,6 +27,7 @@ namespace Sisk.GenerateMdDoc
             public string Definition;
             public string Summary;
             public string Remarks;
+            public string Docs;
             public List<StParam> Parameters;
 
             public override string ToString() => DeclaringName;
@@ -40,6 +41,7 @@ namespace Sisk.GenerateMdDoc
             public string Definition;
             public string Summary;
             public string Assembly;
+            public string Docs;
             public List<StMember> Members;
 
             public override string ToString() => FullName;
@@ -93,6 +95,7 @@ namespace Sisk.GenerateMdDoc
                     // replace to get only the first name from a links
                     summary = Regex.Replace(summary, @">[a-zA-Z0-9.]+\.(\w+)</a>", @">$1</a>");
 
+                    string docs = member.SelectSingleNode("docs")?.InnerXml.Trim() ?? "";
                     string nameType = name.Substring(0, 2);
                     name = name.Substring(2);
 
@@ -106,6 +109,7 @@ namespace Sisk.GenerateMdDoc
                             Definition = definition,
                             Summary = summary,
                             Assembly = fileAssemblyName,
+                            Docs = docs,
                             Members = new List<StMember>()
                         });
                     }
@@ -220,7 +224,8 @@ namespace Sisk.GenerateMdDoc
                             Summary = summary,
                             Remarks = remarks,
                             Parameters = parameters,
-                            Filename = fileName
+                            Filename = fileName,
+                            Docs = docs
                         });
                     }
                 }
@@ -301,6 +306,14 @@ namespace Sisk.GenerateMdDoc
                         </p>
                         """);
                 }
+                if (!string.IsNullOrEmpty(type.Docs))
+                {
+                    typeFile.AppendLine($"""
+                        <section>
+                            {type.Docs}
+                        </section>
+                        """);
+                }
 
                 var roles = type.Members.Select(m => m.Role).Distinct().ToArray();
                 foreach (string role in roles)
@@ -358,7 +371,6 @@ namespace Sisk.GenerateMdDoc
             {
                 foreach (StMember member in type.Members)
                 {
-
                     StringBuilder html = new StringBuilder();
                     html.AppendLine($"""
                             <script>
@@ -395,6 +407,14 @@ namespace Sisk.GenerateMdDoc
                             <p>
                                 {member.Summary}
                             </p>
+                            """);
+                    }
+                    if (!string.IsNullOrEmpty(member.Docs))
+                    {
+                        html.AppendLine($"""
+                            <section>
+                                {member.Docs}
+                            </section>
                             """);
                     }
                     if (!string.IsNullOrEmpty(member.Remarks))

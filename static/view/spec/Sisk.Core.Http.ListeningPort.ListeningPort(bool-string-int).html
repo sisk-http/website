@@ -7,7 +7,7 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                ListeningPort(int, bool) constructor
+                ListeningPort(bool, string, int) constructor
             </h1>
             <p>
                 Declaring type:
@@ -19,9 +19,9 @@
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public ListeningPort(int port, bool secure)</code></pre>
+<pre><code class="language-cs">public ListeningPort(bool secure, string hostname, int port)</code></pre>
 <p>
-    Creates an new <a href="/spec/Sisk.Core.Http.ListeningPort">ListeningPort</a> instance with the specified port and secure context at the loopback host.
+    Creates an new <a href="/spec/Sisk.Core.Http.ListeningPort">ListeningPort</a> instance with the specified port, secure context and hostname.
 </p>
 <h2>
     Parameters
@@ -35,6 +35,10 @@
 <tr>
     <td>secure</td>
     <td>Indicates whether the server should listen to this port securely (SSL).</td>
+</tr>
+<tr>
+    <td>hostname</td>
+    <td>The hostname DNS pattern the server will listen to.</td>
 </tr>
     </tbody>
 </table>

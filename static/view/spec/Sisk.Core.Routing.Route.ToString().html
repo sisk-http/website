@@ -1,5 +1,5 @@
 <script>
-    setPageTitle("ListeningPort struct");
+    setPageTitle("Route class");
     app.navPage = "spec";
 </script>
 <include name="component/header"></include>
@@ -7,21 +7,21 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                Port property
+                ToString() method
             </h1>
             <p>
                 Declaring type:
-                <a href="/spec/Sisk.Core.Http.ListeningPort">
-                    Sisk.Core.Http.ListeningPort
+                <a href="/spec/Sisk.Core.Routing.Route">
+                    Sisk.Core.Routing.Route
                 </a>
                 (from Sisk.Core)
             </p>
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public int Port { get; set; }</code></pre>
+<pre><code class="language-cs">public override string ToString()</code></pre>
 <p>
-    Gets or sets the port where this listening port will refer.
+    Gets an string notation for this <a href="/spec/Sisk.Core.Routing.Route">Route</a> object.
 </p>
                     </article>
         <include name="/spec/__Component"></include>

@@ -16,7 +16,7 @@
             </p>
             <section>
                 <h2 id="getting-an-ws-connection">
-                    Accepting and receiving messages
+                    Accepting and receiving messages asynchronously
                 </h2>
                 <p>
                     The example below shows how websocket works in practice, with an example of
@@ -43,9 +43,61 @@
         {
             string msgText = Encoding.UTF8.GetString(msg.MessageBytes);
             Console.WriteLine("Received message: " + msgText);
+
+            // gets the HttpWebSocket context which received the message
+            HttpWebSocket senderWebSocket = (HttpWebSocket)sender!;
+            senderWebSocket.Send("Response!");
         };
 
         ws.WaitForClose();
+
+        return ws.Close();
+    });
+
+    return new ListeningHost("localhost", 5551, r);
+}</code></pre>
+            </section>
+            <section>
+                <h2 id="getting-an-ws-connection-sync">
+                    Accepting and receiving messages synchronously
+                </h2>
+                <p>
+                    The example below contains a way for you to use a synchronous websocket,
+                    without an asynchronous context, where you receive the messages,
+                    deal with them, and finish using the socket.
+                </p>
+                <pre><code class="language-cs">static ListeningHost BuildLhA()
+{
+    Router r = new Router();
+
+    r += new Route(RouteMethod.Get, "/connect", (req) =>
+    {
+        var ws = req.GetWebSocket();
+        WebSocketMessage? msg;
+
+    askName:
+        ws.Send("What is your name?");
+        msg = ws.WaitNext();
+
+        string? name = msg?.GetString();
+
+        if (string.IsNullOrEmpty(name))
+        {
+            ws.Send("Please, insert your name!");
+            goto askName;
+        }
+
+    askAge:
+        ws.Send("And your age?");
+        msg = ws.WaitNext();
+
+        if (!Int32.TryParse(msg?.GetString(), out int age))
+        {
+            ws.Send("Please, insert an valid number");
+            goto askAge;
+        }
+
+        ws.Send($"You're {name}, and you are {age} old.");
 
         return ws.Close();
     });

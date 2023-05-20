@@ -7,7 +7,7 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                Equals(Object) method
+                WaitForClose(TimeSpan) method
             </h1>
             <p>
                 Declaring type:
@@ -19,9 +19,9 @@
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public override bool Equals(object? obj)</code></pre>
+<pre><code class="language-cs">public void WaitForClose(TimeSpan timeout)</code></pre>
 <p>
-    Determines if another object is equals to this class instance.
+    Blocks the current call stack until the connection is terminated by the client or the server, limited to the maximum timeout.
 </p>
 <h2>
     Parameters
@@ -29,8 +29,8 @@
 <table>
     <tbody>
 <tr>
-    <td>obj</td>
-    <td>The another object which will be used to compare.</td>
+    <td>timeout</td>
+    <td>Defines the timeout timer before the connection expires without any message.</td>
 </tr>
     </tbody>
 </table>

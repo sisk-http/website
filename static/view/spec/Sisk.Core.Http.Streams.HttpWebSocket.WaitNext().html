@@ -1,5 +1,5 @@
 <script>
-    setPageTitle("ListeningHost class");
+    setPageTitle("HttpWebSocket class");
     app.navPage = "spec";
 </script>
 <include name="component/header"></include>
@@ -7,22 +7,25 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                Hostname property
+                WaitNext() method
             </h1>
             <p>
                 Declaring type:
-                <a href="/spec/Sisk.Core.Http.ListeningHost">
-                    Sisk.Core.Http.ListeningHost
+                <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket">
+                    Sisk.Core.Http.Streams.HttpWebSocket
                 </a>
                 (from Sisk.Core)
             </p>
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public string Hostname { get; set; }</code></pre>
+<pre><code class="language-cs">public WebSocketMessage? WaitNext()</code></pre>
 <p>
-    Gets or sets the hostname (without the port) that this host will listen on the local machine.
+    Blocks the current thread and waits the next incoming message from this web socket instance.
 </p>
+<blockquote>
+    Null is returned if a connection error is thrown.
+</blockquote>
                     </article>
         <include name="/spec/__Component"></include>
     </section>

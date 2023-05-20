@@ -7,7 +7,7 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                UseOverrides(HttpServerConfiguration) method
+                UseHttpServer(HttpServer) method
             </h1>
             <p>
                 Declaring type:
@@ -19,9 +19,9 @@
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public void UseOverrides(Action overrideCallback)</code></pre>
+<pre><code class="language-cs">public void UseHttpServer(Action serverCallback)</code></pre>
 <p>
-    Calls a callback that has the HTTP server configuration as an argument.
+    Calls a callback that has the HTTP server instance as an argument.
 </p>
 <h2>
     Parameters
@@ -29,8 +29,8 @@
 <table>
     <tbody>
 <tr>
-    <td>overrideCallback</td>
-    <td>An action where the first argument is an .</td>
+    <td>serverCallback</td>
+    <td>An action where the first argument is the main  object.</td>
 </tr>
     </tbody>
 </table>

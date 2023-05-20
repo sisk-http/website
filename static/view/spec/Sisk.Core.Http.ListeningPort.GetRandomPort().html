@@ -1,5 +1,5 @@
 <script>
-    setPageTitle("IRequestHandler interface");
+    setPageTitle("ListeningPort struct");
     app.navPage = "spec";
 </script>
 <include name="component/header"></include>
@@ -7,21 +7,21 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                Identifier property
+                GetRandomPort() method
             </h1>
             <p>
                 Declaring type:
-                <a href="/spec/Sisk.Core.Routing.IRequestHandler">
-                    Sisk.Core.Routing.IRequestHandler
+                <a href="/spec/Sisk.Core.Http.ListeningPort">
+                    Sisk.Core.Http.ListeningPort
                 </a>
                 (from Sisk.Core)
             </p>
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">string Identifier { get; init; }</code></pre>
+<pre><code class="language-cs">public static ListeningPort GetRandomPort()</code></pre>
 <p>
-    Gets or sets the unique identifier of the instance of this interface.
+    Gets an <a href="/spec/Sisk.Core.Http.ListeningPort">ListeningPort</a> object with an random insecure port.
 </p>
                     </article>
         <include name="/spec/__Component"></include>

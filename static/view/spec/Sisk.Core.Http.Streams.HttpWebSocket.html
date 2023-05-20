@@ -57,6 +57,33 @@
         Gets an boolean indicating if this Web Socket connection is closed.
     <td>
 </tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket.State">
+            State
+        </a>
+    </td>
+    <td>
+        Gets or sets an object linked with this <a href="https://learn.microsoft.com/en-us/dotnet/api/System.Net.WebSockets.WebSocket">WebSocket</a> session.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="event">
+    Event list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket.OnReceive">
+            OnReceive
+        </a>
+    </td>
+    <td>
+        Represents the event which is called when this websocket receives an message from remote origin.
+    <td>
+</tr>
     </tbody>
 </table>
 <h2 id="method">
@@ -72,26 +99,6 @@
     </td>
     <td>
         Closes the connection between the client and the server and returns an Http resposne indicating that the connection has been terminated. This method will not throw an exception if the connection is already closed.
-    <td>
-</tr>
-<tr>
-    <td>
-        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket.Equals(Object)">
-            Equals(Object)
-        </a>
-    </td>
-    <td>
-        Determines if another object is equals to this class instance.
-    <td>
-</tr>
-<tr>
-    <td>
-        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket.GetHashCode()">
-            GetHashCode()
-        </a>
-    </td>
-    <td>
-        Gets the hash code for this event source.
     <td>
 </tr>
 <tr>
@@ -144,21 +151,24 @@
         Blocks the current call stack until the connection is terminated by either the client or the server.
     <td>
 </tr>
-    </tbody>
-</table>
-<h2 id="event">
-    Event list
-</h2>
-<table>
-    <tbody>
 <tr>
     <td>
-        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket.OnReceive">
-            OnReceive
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket.WaitForClose(TimeSpan)">
+            WaitForClose(TimeSpan)
         </a>
     </td>
     <td>
-        Represents the event which is called when this websocket receives an message from remote origin.
+        Blocks the current call stack until the connection is terminated by the client or the server, limited to the maximum timeout.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket.WaitNext()">
+            WaitNext()
+        </a>
+    </td>
+    <td>
+        Blocks the current thread and waits the next incoming message from this web socket instance.
     <td>
 </tr>
     </tbody>

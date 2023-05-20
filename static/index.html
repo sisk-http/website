@@ -14,10 +14,7 @@
     <link rel="stylesheet" href="/style/component/footer.css">
     <link rel="stylesheet" href="/style/globals.css">
 
-    <script type="text/javascript">
-        window.app = {};
-    </script>
-    <script defer src="/js/router.js"></script>
+    <script src="/js/router.js"></script>
     <script src="/js/app.js"></script>
 </head>
 
@@ -39,12 +36,26 @@
         </nav>
     </footer>
     <script type="text/javascript">
-        window.appContainer = document.getElementById("app");
         window.Prism = window.Prism || {};
         window.Prism.manual = true;
+        window.PlanifoliaSettings = {
+            container: document.querySelector("main"),
+            basePath: "/view/",
+            delayNavigation: 0,
+            autoRewriteLinks: true,
+            onNavigated: () => {
+                queryAll("[role='nav-link']").forEach(navLink => {
+                    if (app.navPage == navLink.getAttribute("navpage")) {
+                        navLink.classList.add("current-page");
+                    }
+                });
+                createDocLinks();
+                Prism.highlightAll();
+            }
+        };
+        Planifolia.initializeAutoRouter();
     </script>
     <script src="/js/prism.js" data-manual></script>
-    <script defer src="/js/h/test.js"></script>
 </body>
 
 </html>

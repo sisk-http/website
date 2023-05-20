@@ -1,3 +1,36 @@
+# 0.13.0
+
+Released: May 20, 2023
+
+Core:
+
+- Listening hosts no longer carries an `Hostname` property. Instead of this, the property was moved to the `ListeningPort` structure. With this change, an ListeningHost can now listen to multiple hostnames, at multiple ports at multiple secure states, to the same router. Learn more about this change in the docs.
+- Header values were coming with invalid encoding when using UTF-8 characters. Sisk's native HTTP engine (Microsoft HTTP2) does not support header values other than ASCII, however the `HttpServerFlags.NormalizeHeadersEncodings` flag will enable codepage conversion so that you get header values in the correct encoding. 
+
+> HTTP header names must came in ASCII.
+
+- Improvements made to the WebSocket module:
+    - Now you can send and wait for messages synchronously by the method `WaitNext()`, which blocks the current thread and waits for the next message.
+    - Added an timeout option for `HttpWebSocket.WaitForClose()`.
+- Improvements to the way the server writes log messages.
+- Improved router collision checker.
+- Added an `HttpServer.Emit()` method, for HTTP server testing only. Don't use it on production environments.
+- Added an `LogStream.WriteException()` to dump error logs.
+- Fully removed all Regex uses on the HTTP server and replaced with string-methods. Performance should increase with this change.
+- Fixed an bug where the cookie `SameSite` were being set with an unexpected `$`.
+- Fixed an bug where the HTTP Event Sources and WebSockets were raising collection issues when using with too many simultaneos threads.
+- Fixed an bug where the previous WebSocket connection with an identifier that already had an connection weren't being close by the new connection.
+- Fixed an bug where request handlers weren't running in the same try-catch context as the routers callbacks.
+- Removed `IRequestHandler.Identifier` property.
+
+Service provider:
+
+- Adjusted the configuration syntax to match the new listening ports and hosts concept.
+- Added an new configurator: `UseHttpServer()`.
+- Added an new configurator: `UseCors()`.
+- Renamed `UseOverrides()` to `UseConfiguration()`.
+- The server bootstrap method now runs outside an try-catch context, so you can get more detailed errors when bootstraping your application.
+
 # 0.12.1
 
 - Renamed these types namespaces from `Sisk.Core.Http` to `Sisk.Core.Http.Streams`:
