@@ -1,3 +1,20 @@
+# 0.13.1, rev 1
+
+Released: June 9, 2023
+
+You can now export Sisk source code to a contained file with all the source code needed to run Sisk. See more details inside the `merge` folder.
+
+Core:
+
+- Added the `HttpServerFlags.ForceTrailingSlash`, which determines if the HTTP server should automatically rewrite URL paths
+to end with / before the query string. Does not works with Regex routes.
+- Added the `CrossOriginResourceSharingPolicy.AllowOrigins` property, which allows to route `Allow-Origin` header to multiple
+domains.
+- Rewrited the `CrossOriginResourceSharingPolicy` properties descriptions.
+- Removed all `HttpRequest.Create*` helper methods, plus created some additional constructors for `HttpResponse`.
+- Sisk does not requires to be builded with `/unsafe` anymore.
+- Code cleanup.
+
 # 0.13.0
 
 Released: May 20, 2023
@@ -7,7 +24,7 @@ Core:
 - Listening hosts no longer carries an `Hostname` property. Instead of this, the property was moved to the `ListeningPort` structure. With this change, an ListeningHost can now listen to multiple hostnames, at multiple ports at multiple secure states, to the same router. Learn more about this change in the docs.
 - Header values were coming with invalid encoding when using UTF-8 characters. Sisk's native HTTP engine (Microsoft HTTP2) does not support header values other than ASCII, however the `HttpServerFlags.NormalizeHeadersEncodings` flag will enable codepage conversion so that you get header values in the correct encoding. 
 
-> HTTP header names must came in ASCII.
+> HTTP header names must be received in ASCII encoding.
 
 - Improvements made to the WebSocket module:
     - Now you can send and wait for messages synchronously by the method `WaitNext()`, which blocks the current thread and waits for the next message.

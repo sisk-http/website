@@ -7,10 +7,8 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1 id="routing">Routing</h1>
-            <p>The router refers to what redirects requests to their proper places. A <a
-                    href="/spec/Sisk.Core.Routing.Router">Router</a> is 
-                responsible for routing <a
-                    href="/spec/Sisk.Core.Routing.Route">Route</a> to its
+            <p>The router refers to what redirects requests to their proper places. A <a href="/spec/Sisk.Core.Routing.Router">Router</a> is
+                responsible for routing <a href="/spec/Sisk.Core.Routing.Route">Route</a> to its
                 responsible controllers, methods or callbacks. What the Router uses to match a route with a Route is the
                 request path and its method. These two items are responsible for assigning a request to a route.</p>
             <pre><code class="lang-cs">mainRouter.SetRoute(RouteMethod.Get, "/hey", (request) =>
@@ -34,7 +32,8 @@ mainRouter += new Route(RouteMethod.Get, "/", (req) =>
 <span class="hljs-selector-tag">mainRouter</span><span class="hljs-selector-class">.SetRoute</span>(RouteMethod.Get, <span class="hljs-string">"/"</span>, callbackFunction);
 </code></pre>
             <p>You can also specify parameters in the path and get them in the request. Parameters names is denoted by
-                <code>&lt;</code> and <code>&gt;</code>.</p>
+                <code>&lt;</code> and <code>&gt;</code>.
+            </p>
             <pre><code class="lang-cs">mainRouter.SetRoute(RouteMethod.Get, <span class="hljs-string">"/hey/&lt;name&gt;"</span>, <span class="hljs-function"><span class="hljs-params">(request)</span> =&gt;</span>
 {
     <span class="hljs-built_in">string</span> name = request.Query[<span class="hljs-string">"name"</span>]!; // name will never be null <span class="hljs-keyword">in</span> this context
@@ -49,40 +48,57 @@ mainRouter.SetRoute(RouteMethod.Get, <span class="hljs-string">"/hey/&lt;name&gt
     <span class="hljs-keyword">return</span> request.CreateOkResponse($<span class="hljs-string">"Hello, {name} {surname}!"</span>);
 });
 </code></pre>
-            <p>The HTTP request <a
-                    href="/spec/Sisk.Core.Http.HttpRequest.Query">Query</a>
+            <p>The HTTP request <a href="/spec/Sisk.Core.Http.HttpRequest.Query">Query</a>
                 property also stores the content of an original query, but if there are parameters in the route with the
                 same name as a query, it will be replaced by what is in the route. The path that is matched with an
-                request URI is always the path as explained in <a
-                    href="https://www.rfc-editor.org/rfc/rfc3986#section-3.3">RFC 3986</a>.</p>
+                request URI is always the path as explained in <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.3">RFC 3986</a>.</p>
             <blockquote>
                 <p>Paths have their trailing <code>/</code> ignored in both request and route path, that is, if you try
                     to access a route defined as <code>/index/page</code> you&#39;ll be able to access using
-                    <code>/index/page/</code> too.</p>
+                    <code>/index/page/</code> too.
+                </p>
             </blockquote>
             <h2 id="creating-routes-using-class-instances">Creating routes using class instances</h2>
-            <p>You can also define routes dynamically using reflection with the attribute <a
-                    href="/spec/Sisk.Core.Routing.RouteAttribute">RouteAttribute</a>.
+            <p>You can also define routes dynamically using reflection with the attribute <a href="/spec/Sisk.Core.Routing.RouteAttribute">RouteAttribute</a>.
                 This way, the instance of a class in which its methods implement this attribute will have their routes
                 defined in the target router.</p>
             <p>Methods marked with the route attribute must be static.</p>
-            <pre><code class="lang-cs"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyController</span>
-</span>{
-    [Route(RouteMethod.Get, <span class="hljs-string">"/"</span>)]
-    <span class="hljs-keyword">static</span> HttpResponse Index(HttpRequest request)
-    {
-        HttpResponse res = <span class="hljs-keyword">new</span> <span class="hljs-type">HttpResponse</span>();
-        res.Content = <span class="hljs-keyword">new</span> <span class="hljs-type">StringContent</span>(<span class="hljs-string">"Hello world!"</span>);
-        <span class="hljs-keyword">return</span> res;
-    }
-}
+            <pre><code class="lang-cs">
+                public class MyController
+                {
+                    // will be reached as an instance form
+                    [Route(RouteMethod.Get, "/")]
+                    HttpResponse Index(HttpRequest request)
+                    {
+                        HttpResponse res = new HttpResponse();
+                        res.Content = new StringContent("Index!");
+                        return res;
+                    }
 
-mainRouter.SetObject(<span class="hljs-keyword">new</span> <span class="hljs-type">MyController</span>());
-</code></pre>
-            <p>You can also pass the type of the class where the methods are without having to create an instance of it.
+                    // static methods only be reached when setting the object type
+                    [Route(RouteMethod.Get, "/hello")]
+                    static HttpResponse Hello(HttpRequest request)
+                    {
+                        HttpResponse res = new HttpResponse();
+                        res.Content = new StringContent("Hello world!");
+                        return res;
+                    }
+                }
+            </code></pre>
+            <p>
+                Then you can define the routes of the MyController instance:
             </p>
-            <pre><code class="lang-cs"><span class="hljs-title">mainRouter</span>.<span class="hljs-type">SetObject</span>(typeof(<span class="hljs-type">MyController</span>));
-</code></pre>
+            <pre><code class="lang-cs">
+                var myController = new MyController();
+                mainRouter.SetObject(myController);
+            </code></pre>
+            <p>
+                Alternatively, you can define your members statically,
+                without an instance, by passing the class's type as a parameter:
+            </p>
+            <pre><code class="lang-cs">
+                mainRouter.SetObject(typeof(MyController));
+            </code></pre>
             <h2 id="regex-routes">Regex routes</h2>
             <p>Instead of using the default HTTP path matching methods, you can mark a route to be interpreted with
                 Regex.</p>
@@ -99,8 +115,9 @@ mainRouter.SetRoute(RouteMethod.<span class="hljs-keyword">Any</span>, <span cla
             <h2 id="ignore-case-route-matching">Ignore case route matching</h2>
             <p>By default, the interpretation of routes with requests are case-sensitive. To make it ignore case, enable
                 this option:</p>
-            <pre><code class="lang-cs">mainRouter.<span class="hljs-attr">MatchRoutesIgnoreCase</span> = <span class="hljs-literal">true</span>;
-</code></pre>
+            <pre><code class="lang-cs">
+                mainRouter.MatchRoutesIgnoreCase = true;
+            </code></pre>
             <p>This will also enable the option <code>RegexOptions.IgnoreCase</code> for routes where it&#39;s
                 regex-matching.</p>
             <h2 id="not-found-404-callback-handler">Not Found (404) callback handler</h2>

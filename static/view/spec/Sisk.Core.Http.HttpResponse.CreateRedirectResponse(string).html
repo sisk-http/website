@@ -1,0 +1,40 @@
+<script>
+    setPageTitle("HttpResponse class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                CreateRedirectResponse(string) method
+            </h1>
+            <p>
+                Declaring type:
+                <a href="/spec/Sisk.Core.Http.HttpResponse">
+                    Sisk.Core.Http.HttpResponse
+                </a>
+                (from Sisk.Core)
+            </p>
+<p>
+    Definition:
+</p>
+<pre><code class="language-cs">public static HttpResponse CreateRedirectResponse(string location)</code></pre>
+<p>
+    Creates an new redirect <a href="/spec/Sisk.Core.Http.HttpResponse">HttpResponse</a> with given location header.
+</p>
+<h2>
+    Parameters
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>location</td>
+    <td>The absolute or relative URL path which the client must be redirected to.</td>
+</tr>
+    </tbody>
+</table>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

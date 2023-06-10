@@ -1,5 +1,5 @@
 <script>
-    setPageTitle("CrossOriginResourceSharingHeaders class");
+    setPageTitle("HttpResponse class");
     app.navPage = "spec";
 </script>
 <include name="component/header"></include>
@@ -7,21 +7,21 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                AllowMethods property
+                HttpResponse(int, HttpContent) constructor
             </h1>
             <p>
                 Declaring type:
-                <a href="/spec/Sisk.Core.Entity.CrossOriginResourceSharingHeaders">
-                    Sisk.Core.Entity.CrossOriginResourceSharingHeaders
+                <a href="/spec/Sisk.Core.Http.HttpResponse">
+                    Sisk.Core.Http.HttpResponse
                 </a>
                 (from Sisk.Core)
             </p>
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public string[] AllowMethods { get; set; }</code></pre>
+<pre><code class="language-cs">public HttpResponse(int status, HttpContent? content)</code></pre>
 <p>
-    Gets or sets the Access-Control-Allow-Methods header specifies the method or methods allowed when accessing the resource.
+    Creates an new <a href="/spec/Sisk.Core.Http.HttpResponse">HttpResponse</a> instance with given status code and HTTP content.
 </p>
                     </article>
         <include name="/spec/__Component"></include>

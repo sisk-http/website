@@ -7,7 +7,7 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                CreatePublicContext() method
+                AllowOrigins property
             </h1>
             <p>
                 Declaring type:
@@ -19,10 +19,13 @@
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public static CrossOriginResourceSharingHeaders CreatePublicContext()</code></pre>
+<pre><code class="language-cs">public string[] AllowOrigins { get; set; }</code></pre>
 <p>
-    Create an instance of Cross-Origin Resource Sharing that allows any origin, any method and any header in the request.
+    Gets or sets domains which will define the source header according to one of the domains present below.
 </p>
+<blockquote>
+    This property makes the server compare the origin of the request and associate the domain that corresponds to it.
+</blockquote>
                     </article>
         <include name="/spec/__Component"></include>
     </section>

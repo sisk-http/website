@@ -1,0 +1,29 @@
+<script>
+    setPageTitle("HttpResponse class");
+    app.navPage = "spec";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                CreateEmptyResponse() method
+            </h1>
+            <p>
+                Declaring type:
+                <a href="/spec/Sisk.Core.Http.HttpResponse">
+                    Sisk.Core.Http.HttpResponse
+                </a>
+                (from Sisk.Core)
+            </p>
+<p>
+    Definition:
+</p>
+<pre><code class="language-cs">public static HttpResponse CreateEmptyResponse()</code></pre>
+<p>
+    Creates an new empty <a href="/spec/Sisk.Core.Http.HttpResponse">HttpResponse</a> with no status code or contents. This will cause to the HTTP server to close the connection between the server and the client and don't deliver any response.
+</p>
+                    </article>
+        <include name="/spec/__Component"></include>
+    </section>
+</div>

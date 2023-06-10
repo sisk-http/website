@@ -80,7 +80,6 @@ pre[class*="language-"] {
 .token.url,
 .token.symbol,
 .token.number,
-.token.boolean,
 .token.variable,
 .token.constant,
 .token.inserted {
@@ -89,6 +88,7 @@ pre[class*="language-"] {
 
 .token.atrule,
 .token.keyword,
+.token.boolean,
 .token.attr-value,
 .language-autohotkey .token.selector,
 .language-json .token.boolean,

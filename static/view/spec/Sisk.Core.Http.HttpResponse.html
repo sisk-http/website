@@ -22,6 +22,63 @@
 <p>
     Represents an HTTP Response.
 </p>
+<h2 id="method">
+    Method list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpResponse.CreateEmptyResponse()">
+            CreateEmptyResponse()
+        </a>
+    </td>
+    <td>
+        Creates an new empty <a href="/spec/Sisk.Core.Http.HttpResponse">HttpResponse</a> with no status code or contents. This will cause to the HTTP server to close the connection between the server and the client and don't deliver any response.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpResponse.CreateRedirectResponse(string)">
+            CreateRedirectResponse(string)
+        </a>
+    </td>
+    <td>
+        Creates an new redirect <a href="/spec/Sisk.Core.Http.HttpResponse">HttpResponse</a> with given location header.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpResponse.GetRawHttpResponse(bool)">
+            GetRawHttpResponse(bool)
+        </a>
+    </td>
+    <td>
+        Gets the raw HTTP response message.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpResponse.SetCookie(string-string-DateTime-TimeSpan-string-string-bool-bool-string)">
+            SetCookie(string, string, DateTime?, TimeSpan?, string, string, bool?, bool?, string)
+        </a>
+    </td>
+    <td>
+        Sets a cookie and sends it in the response to be set by the client.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpResponse.SetCookie(string-string)">
+            SetCookie(string, string)
+        </a>
+    </td>
+    <td>
+        Sets a cookie and sends it in the response to be set by the client.
+    <td>
+</tr>
+    </tbody>
+</table>
 <h2 id="property">
     Property list
 </h2>
@@ -89,43 +146,6 @@
 </tr>
     </tbody>
 </table>
-<h2 id="method">
-    Method list
-</h2>
-<table>
-    <tbody>
-<tr>
-    <td>
-        <a href="/spec/Sisk.Core.Http.HttpResponse.GetRawHttpResponse(bool)">
-            GetRawHttpResponse(bool)
-        </a>
-    </td>
-    <td>
-        Gets the raw HTTP response message.
-    <td>
-</tr>
-<tr>
-    <td>
-        <a href="/spec/Sisk.Core.Http.HttpResponse.SetCookie(string-string-DateTime-TimeSpan-string-string-bool-bool-string)">
-            SetCookie(string, string, DateTime?, TimeSpan?, string, string, bool?, bool?, string)
-        </a>
-    </td>
-    <td>
-        Sets a cookie and sends it in the response to be set by the client.
-    <td>
-</tr>
-<tr>
-    <td>
-        <a href="/spec/Sisk.Core.Http.HttpResponse.SetCookie(string-string)">
-            SetCookie(string, string)
-        </a>
-    </td>
-    <td>
-        Sets a cookie and sends it in the response to be set by the client.
-    <td>
-</tr>
-    </tbody>
-</table>
 <h2 id="constructor">
     Constructor list
 </h2>
@@ -143,12 +163,42 @@
 </tr>
 <tr>
     <td>
+        <a href="/spec/Sisk.Core.Http.HttpResponse.HttpResponse(int-HttpContent)">
+            HttpResponse(int, HttpContent)
+        </a>
+    </td>
+    <td>
+        Creates an new <a href="/spec/Sisk.Core.Http.HttpResponse">HttpResponse</a> instance with given status code and HTTP content.
+    <td>
+</tr>
+<tr>
+    <td>
         <a href="/spec/Sisk.Core.Http.HttpResponse.HttpResponse(int)">
             HttpResponse(int)
         </a>
     </td>
     <td>
         Creates an new <a href="/spec/Sisk.Core.Http.HttpResponse">HttpResponse</a> instance with given status code.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpResponse.HttpResponse(HttpContent)">
+            HttpResponse(HttpContent)
+        </a>
+    </td>
+    <td>
+        Creates an new <a href="/spec/Sisk.Core.Http.HttpResponse">HttpResponse</a> instance with given HTTP content, with default status code as 200 OK.
+    <td>
+</tr>
+<tr>
+    <td>
+        <a href="/spec/Sisk.Core.Http.HttpResponse.HttpResponse(HttpStatusCode-HttpContent)">
+            HttpResponse(HttpStatusCode, HttpContent)
+        </a>
+    </td>
+    <td>
+        Creates an new <a href="/spec/Sisk.Core.Http.HttpResponse">HttpResponse</a> instance with given status code and HTTP contents.
     <td>
 </tr>
 <tr>
