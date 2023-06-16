@@ -1,3 +1,13 @@
+# 0.14
+
+Released: June 13, 2023
+
+Core:
+
+- Created the HttpResponseStream class, which allows the user to write contents on-fly to the HTTP response output stream.
+- Rewrited `HttpServerExecutionStatus` enum items. Obsolete items was removed.
+- Fixed an bug where the CORS headers was being set on Event Source connections even if `HttpServerFlags.SendCorsHeaders` was false.
+
 # 0.13.1, rev 1
 
 Released: June 9, 2023

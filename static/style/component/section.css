@@ -33,9 +33,20 @@ section > .section-overlay {
 
 section > .section-content {
     position: relative;
-    max-width: 800px;
+    max-width: 1100px;
     width: 100%;
     margin-inline: auto;
+}
+
+section.doc-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: .2fr .8fr;
+    gap: 60px;
+}
+
+section.doc-container > article.section-content.pad {
+    padding: 0;
 }
 
 section:has(> .section-content.center) {
@@ -56,21 +67,33 @@ article img {
     margin-inline: auto;
 }
 
-.doc-container {
-    position: relative;
-    display: grid;
-    grid-template-columns: .8fr .2fr;
+.doc-navigator {
+    position: sticky;
+    order: -1;
+    height: calc(100vh - 80px - 30px);
+    width: 100%;
+    left: var(--container-inline);
+    top: 30px;
+    overflow-y: scroll;
+    border: 1px solid gainsboro;
 }
 
-.doc-navigator {
-    margin-top: var(--container-block);
-    height: fit-content;
-    border-left: 1px solid gainsboro;
+.doc-navigator .namespace-sep {
+    display: block;
+    padding-block: 8px;
+    padding-left: 1rem;
+    color: black;
+    opacity: .6;
+}
+
+.doc-navigator .namespace-sep:not(:first-child) {
+    padding-block: 40px 8px;
 }
 
 .doc-navigator a {
     display: block;
-    padding: 8px 14px;
+    padding-block: 8px;
+    padding-left: 2rem;
     color: black;
     opacity: .75;
     font-weight: 500;
@@ -78,7 +101,7 @@ article img {
 }
 
 .doc-navigator a.anchor {
-    margin-left: 1rem;
+    padding-left: 3.8rem;
 }
 
 .doc-navigator a.anchor:has(+ a:not(.anchor)) {
@@ -86,6 +109,7 @@ article img {
 }
 
 .doc-navigator a.current {
+    background-color: #e6e6ff;
     font-weight: 600;
     opacity: 1;
 }
@@ -94,9 +118,17 @@ article img {
     opacity: 1;
 }
 
+.doc-navigator a img {
+    display: inline-block;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    top: 1px;
+    margin-right: 4px;
+}
+
 .doc-navigator div.separator {
     padding: 8px 14px;
-    ;
     opacity: .4;
     margin-top: 2rem;
     font-weight: 600;

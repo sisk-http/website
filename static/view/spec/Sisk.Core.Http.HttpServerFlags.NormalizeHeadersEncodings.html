@@ -1,5 +1,5 @@
 <script>
-    setPageTitle("HttpServerFlags type");
+    setPageTitle("HttpServerFlags class");
     app.navPage = "spec";
 </script>
 <include name="component/header"></include>
@@ -17,8 +17,16 @@
                 (from Sisk.Core)
             </p>
 <p>
+    Definition:
+</p>
+<pre><code class="language-cs">public bool NormalizeHeadersEncodings;</code></pre>
+<p>
     Determines if the HTTP server should convert request headers encoding to the content encoding.
 </p>
+<section>
+    <p>
+                    Default value: <code>true</code></p>
+</section>
                     </article>
         <include name="/spec/__Component"></include>
     </section>

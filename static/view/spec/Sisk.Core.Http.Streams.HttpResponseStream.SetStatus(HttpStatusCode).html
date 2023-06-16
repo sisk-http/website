@@ -1,5 +1,5 @@
 <script>
-    setPageTitle("HttpResponse class");
+    setPageTitle("HttpResponseStream class");
     app.navPage = "spec";
 </script>
 <include name="component/header"></include>
@@ -7,21 +7,21 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                SetCookie(string, string) method
+                SetStatus(HttpStatusCode) method
             </h1>
             <p>
                 Declaring type:
-                <a href="/spec/Sisk.Core.Http.HttpResponse">
-                    Sisk.Core.Http.HttpResponse
+                <a href="/spec/Sisk.Core.Http.Streams.HttpResponseStream">
+                    Sisk.Core.Http.Streams.HttpResponseStream
                 </a>
                 (from Sisk.Core)
             </p>
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public void SetCookie(string name, string value)</code></pre>
+<pre><code class="language-cs">public void SetStatus(int httpStatusCode)</code></pre>
 <p>
-    Sets a cookie and sends it in the response to be set by the client.
+    Sets the HTTP status code for this response stream.
 </p>
 <h2>
     Parameters
@@ -29,12 +29,8 @@
 <table>
     <tbody>
 <tr>
-    <td>name</td>
-    <td>The cookie name.</td>
-</tr>
-<tr>
-    <td>value</td>
-    <td>The cookie value.</td>
+    <td width="33%">statusCode</td>
+    <td>The HTTP status code.</td>
 </tr>
     </tbody>
 </table>

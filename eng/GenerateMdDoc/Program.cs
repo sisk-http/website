@@ -255,11 +255,24 @@ namespace Sisk.GenerateMdDoc
                     </section>
                 </div>
                 """);
+            string lastNamespace = "";
+
             foreach (StType type in typeList.OrderBy(t => t.FullName).ToArray())
             {
+                string nsmsp = type.FullName.Substring(0, type.FullName.LastIndexOf('.'));
+                if (lastNamespace != nsmsp)
+                {
+                    componentBuilder.AppendLine($"""
+                        <div class="namespace-sep">
+                            {nsmsp}
+                        </div>
+                        """);
+                    lastNamespace = nsmsp;
+                }
+
                 componentBuilder.AppendLine($"""
                     <a href="/spec/{type.FullName}">
-                        {type.ShortName}
+                        <img src="/img/icons/{type.Type.ToLower()}.svg"> {type.ShortName}
                     </a>
                     """);
 
@@ -285,7 +298,7 @@ namespace Sisk.GenerateMdDoc
                             Assembly: {type.Assembly}
                         </p>
                         <p>
-                            Namespace: {type.FullName.Substring(0, type.FullName.LastIndexOf('.'))}
+                            Namespace: {nsmsp}
                         </p>
                         """);
                 }
@@ -338,7 +351,8 @@ namespace Sisk.GenerateMdDoc
                     {
                         typeFile.AppendLine($"""
                                 <tr>
-                                    <td>
+                                    <td width="33%">
+                                        <img src="/img/icons/{member.Role.ToLower()}.svg">
                                         <a href="/spec/{member.Filename}">
                                             {member.DeclaringName}
                                         </a>
@@ -421,7 +435,8 @@ namespace Sisk.GenerateMdDoc
                     {
                         html.AppendLine($"""
                             <blockquote>
-                                {member.Remarks}
+                                <p><b>Remarks:</b></p>
+                                <p>{member.Remarks}</p>
                             </blockquote>
                             """);
                     }
@@ -438,7 +453,7 @@ namespace Sisk.GenerateMdDoc
                         {
                             html.AppendLine($"""
                                 <tr>
-                                    <td>{param.Name}</td>
+                                    <td width="33%">{param.Name}</td>
                                     <td>{param.Summary}</td>
                                 </tr>
                                 """);

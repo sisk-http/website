@@ -11,15 +11,20 @@
                 responsible for routing <a href="/spec/Sisk.Core.Routing.Route">Route</a> to its
                 responsible controllers, methods or callbacks. What the Router uses to match a route with a Route is the
                 request path and its method. These two items are responsible for assigning a request to a route.</p>
-            <pre><code class="lang-cs">mainRouter.SetRoute(RouteMethod.Get, "/hey", (request) =>
+            <pre><code class="lang-cs">
+mainRouter.SetRoute(RouteMethod.Get, "/hey", (request) =>
 {
-    return request.CreateOkResponse("Hello!");
+    return new HttpResponse() { Content = new StringContent("Hello!") };
 });
 
 // alternative way using the + operator
 mainRouter += new Route(RouteMethod.Get, "/", (req) =>
 {
-    return req.CreateOkResponse("Hello world!");
+    return new HttpResponse() 
+    { 
+        Content = new StringContent("...world"), 
+        Status = HttpStatusCode.Ok 
+    };
 });
 </code></pre>
             <p>To understand what a route is capable of doing, we need to understand what a request is capable of doing.
@@ -28,34 +33,39 @@ mainRouter += new Route(RouteMethod.Get, "/", (req) =>
                 development.</p>
             <h2 id="creating-routes-using-paths">Creating routes using paths</h2>
             <p>You can define routes using SetRoute methods.</p>
-            <pre><code class="lang-cs"><span class="hljs-comment">// will match / on GET</span>
-<span class="hljs-selector-tag">mainRouter</span><span class="hljs-selector-class">.SetRoute</span>(RouteMethod.Get, <span class="hljs-string">"/"</span>, callbackFunction);
-</code></pre>
-            <p>You can also specify parameters in the path and get them in the request. Parameters names is denoted by
-                <code>&lt;</code> and <code>&gt;</code>.
-            </p>
-            <pre><code class="lang-cs">mainRouter.SetRoute(RouteMethod.Get, <span class="hljs-string">"/hey/&lt;name&gt;"</span>, <span class="hljs-function"><span class="hljs-params">(request)</span> =&gt;</span>
-{
-    <span class="hljs-built_in">string</span> name = request.Query[<span class="hljs-string">"name"</span>]!; // name will never be null <span class="hljs-keyword">in</span> this context
-    <span class="hljs-keyword">return</span> request.CreateOkResponse($<span class="hljs-string">"Hello, {name}"</span>);
-});
-
-// <span class="hljs-keyword">or</span> multiple parameters
-mainRouter.SetRoute(RouteMethod.Get, <span class="hljs-string">"/hey/&lt;name&gt;/surname/&lt;surname&gt;"</span>, <span class="hljs-function"><span class="hljs-params">(request)</span> =&gt;</span>
-{
-    <span class="hljs-built_in">string</span> name = request.Query[<span class="hljs-string">"name"</span>]!;
-    <span class="hljs-built_in">string</span> surname = request.Query[<span class="hljs-string">"surname"</span>]!;
-    <span class="hljs-keyword">return</span> request.CreateOkResponse($<span class="hljs-string">"Hello, {name} {surname}!"</span>);
-});
-</code></pre>
+            <pre><code class="lang-cs">
+                <xmp>
+                    mainRouter.SetRoute(RouteMethod.Get, "/hey/<name>", (request) =>
+                    {
+                        string name = request.Query["name"]!; // name will never be null in this context
+                        return request.CreateOkResponse($"Hello, {name}");
+                    });
+                    
+                    // or multiple parameters
+                    mainRouter.SetRoute(RouteMethod.Get, "/hey/<name>/surname/<surname>", (request) =>
+                    {
+                        string name = request.Query["name"]!;
+                        string surname = request.Query["surname"]!;
+                        return request.CreateOkResponse($"Hello, {name} {surname}!");
+                    });
+                </xmp>
+            </code></pre>
             <p>The HTTP request <a href="/spec/Sisk.Core.Http.HttpRequest.Query">Query</a>
                 property also stores the content of an original query, but if there are parameters in the route with the
                 same name as a query, it will be replaced by what is in the route. The path that is matched with an
                 request URI is always the path as explained in <a href="https://www.rfc-editor.org/rfc/rfc3986#section-3.3">RFC 3986</a>.</p>
             <blockquote>
-                <p>Paths have their trailing <code>/</code> ignored in both request and route path, that is, if you try
+                <p>
+                    <b>Note:</b>
+                </p>
+                <p>
+                    Paths have their trailing <code>/</code> ignored in both request and route path, that is, if you try
                     to access a route defined as <code>/index/page</code> you&#39;ll be able to access using
                     <code>/index/page/</code> too.
+                </p>
+                <p>
+                    You can also force URLs to terminate with <code>/</code> enabling the
+                    <a href="/spec/Sisk.Core.Http.HttpServerFlags.ForceTrailingSlash">ForceTrailingSlash</a> flag.
                 </p>
             </blockquote>
             <h2 id="creating-routes-using-class-instances">Creating routes using class instances</h2>
@@ -122,14 +132,20 @@ mainRouter.SetRoute(RouteMethod.<span class="hljs-keyword">Any</span>, <span cla
                 regex-matching.</p>
             <h2 id="not-found-404-callback-handler">Not Found (404) callback handler</h2>
             <p>You can create a custom callback for when a request doesn&#39;t match any known routes.</p>
-            <pre><code class="lang-cs">mainRouter.NotFoundErrorHandler = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span>
-{
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> HttpResponse(<span class="hljs-number">404</span>)
-    {
-        Content = <span class="hljs-keyword">new</span> StringContent(<span class="hljs-string">"Couldn't find your route!"</span>)
-    };
-};
-</code></pre>
+            <pre><code class="lang-cs">
+                <xmp>
+                    mainRouter.NotFoundErrorHandler = () =>
+                    {
+                        return new HttpResponse(404)
+                        {
+                            // Since v0.14
+                            Content = new HtmlContent("<h1>Not found</h1>")
+                            // older versions
+                            Content = new StringContent("<h1>Not found</h1>", Encoding.UTF8, "text/html")
+                        };
+                    };
+                </xmp>
+            </code></pre>
             <h2 id="method-not-allowed-405-callback-handler">Method not allowed (405) callback handler</h2>
             <p>You can also create a custom callback for when a request matches it&#39;s path, but doens&#39;t match the
                 method.</p>

@@ -86,6 +86,10 @@ pre[class*="language-"] {
     color: #155a59;
 }
 
+.token.struct {
+    color: #4e5c00;
+}
+
 .token.atrule,
 .token.keyword,
 .token.boolean,

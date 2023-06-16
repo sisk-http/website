@@ -16,8 +16,13 @@
                 also write
                 in your favorite language.</p>
             <blockquote>
-                <p>You may be interested on an quickstarter project. Check <a href="https://github.com/sisk-http/quickstart">this
-                        repository</a> for more info.</p>
+                <p>
+                    <b>Tip:</b>
+                </p>
+                <p>
+                    You may be interested on an quickstarter project. Check <a href="https://github.com/sisk-http/quickstart">this
+                        repository</a> for more info.
+                </p>
             </blockquote>
             <h2 id="creating-an-project">Creating an project</h2>
             <p>Let&#39;s name our project &quot;My Sisk application&quot;. When you&#39;re ready with .NET, we can
@@ -33,38 +38,33 @@
             <p>Now let&#39;s create an instance of our HTTP server. As a matter of principle, let&#39;s make it listen
                 on port 5000.
             </p>
-            <blockquote>
-                <p>Windows would ask for elevated privileges since Sisk listens to all incoming hosts. This is required
-                    to match
-                    multiple hosts patterns in the host server.</p>
-            </blockquote>
             <h2 id="requests-and-responses">Requests and responses</h2>
             <p>The request and response model is simple: for every request there must be a response. In Sisk ins&#39;t
                 different.
                 Let&#39;s create a method that responds with a Hello World response in HTML, specifying the code and
                 headers.</p>
-            <pre>
-                <code class="language-csharp">
-// Program.cs
-using Sisk.Core.Http;
-using Sisk.Core.Routing;
+            <pre><code class="language-csharp">
+                <xmp>
+                    // Program.cs
+                    using Sisk.Core.Http;
+                    using Sisk.Core.Routing;
 
-static HttpResponse IndexPage(HttpRequest request)
-{
-    HttpResponse indexResponse = new HttpResponse();
-    indexResponse.Status = System.Net.HttpStatusCode.OK;
-    indexResponse.Content = new StringContent(@&quot;
-        &lt;html&gt;
-            &lt;body&gt;
-                &lt;h1&gt;Hello, world!&lt;/h1&gt;
-            &lt;/body&gt;
-        &lt;/html&gt;
-    &quot;, System.Text.Encoding.UTF8, &quot;text/html&quot;);
+                    static HttpResponse IndexPage(HttpRequest request)
+                    {
+                        HttpResponse indexResponse = new HttpResponse();
+                        indexResponse.Status = System.Net.HttpStatusCode.OK;
+                        indexResponse.Content = new HtmlContent(@"
+                            <html>
+                                <body>
+                                    <h1>Hello, world!</h1>
+                                </body>
+                            </html>
+                        ");
 
-    return indexResponse;
-}
-</code>
-</pre>
+                        return indexResponse;
+                    }
+                </xmp>
+            </code></pre>
             <p>The next step is to associate this method with an HTTP route.</p>
             <h2 id="routers">Routers</h2>
             <p>Routers are the abstraction of requests routes and the bridge between requests and responses for the

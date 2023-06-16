@@ -1,5 +1,5 @@
 <script>
-    setPageTitle("HttpRequest class");
+    setPageTitle("HttpResponseStream class");
     app.navPage = "spec";
 </script>
 <include name="component/header"></include>
@@ -7,21 +7,21 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                CreateOkResponse(string) method
+                SetStatus(HttpStatusInformation) method
             </h1>
             <p>
                 Declaring type:
-                <a href="/spec/Sisk.Core.Http.HttpRequest">
-                    Sisk.Core.Http.HttpRequest
+                <a href="/spec/Sisk.Core.Http.Streams.HttpResponseStream">
+                    Sisk.Core.Http.Streams.HttpResponseStream
                 </a>
                 (from Sisk.Core)
             </p>
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public HttpResponse CreateOkResponse(string? content)</code></pre>
+<pre><code class="language-cs">public void SetStatus(HttpStatusInformation statusCode)</code></pre>
 <p>
-    Creates an HttpResponse object with status code 200 OK and given content.
+    Sets the HTTP status code and description for this response stream.
 </p>
 <h2>
     Parameters
@@ -29,8 +29,8 @@
 <table>
     <tbody>
 <tr>
-    <td>content</td>
-    <td>The string content.</td>
+    <td width="33%">statusCode</td>
+    <td>The custom HTTP status code information.</td>
 </tr>
     </tbody>
 </table>

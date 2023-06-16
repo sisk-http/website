@@ -5,22 +5,6 @@ function setPageTitle(title) {
     document.title = "Sisk - " + title;
 }
 
-function onNavigated() {
-    query("body").classList.add("page-loaded");
-    queryAll("[role='nav-link']").forEach(navLink => {
-        if (app.navPage == navLink.getAttribute("navpage")) {
-            navLink.classList.add("current-page");
-        }
-    });
-    createDocLinks();
-    Prism.highlightAll();
-}
-
-function onNavigating() {
-    //query("body").classList.remove("page-loaded");
-    //window.app.delayNavigation = 250;
-}
-
 function createDocLinks() {
     if (window.path.startsWith("/docs/") || window.path.startsWith("/spec/")) {
         let docNavigator = queryAll(".doc-navigator > a");
@@ -28,6 +12,7 @@ function createDocLinks() {
             let aHref = a.getAttribute("href");
             if (aHref.endsWith(window.path)) {
                 a.classList.add("current");
+                a.scrollIntoView({ block: 'center' });
 
                 let htmlList = "";
                 queryAll("article h2[id]").forEach(h2 => {
@@ -49,4 +34,6 @@ function createDocLinks() {
 
 function scrollToView(element) {
     query(element).scrollIntoView({ block: 'center', behavior: 'smooth' });
+    query(element).classList.add("flash");
+    setTimeout(() => query(element).classList.remove("flash"), 2500);
 }

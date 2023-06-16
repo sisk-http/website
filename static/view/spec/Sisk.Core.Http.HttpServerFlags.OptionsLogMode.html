@@ -1,5 +1,5 @@
 <script>
-    setPageTitle("HttpServerFlags type");
+    setPageTitle("HttpServerFlags class");
     app.navPage = "spec";
 </script>
 <include name="component/header"></include>
@@ -17,8 +17,16 @@
                 (from Sisk.Core)
             </p>
 <p>
+    Definition:
+</p>
+<pre><code class="language-cs">public LogOutput OptionsLogMode;</code></pre>
+<p>
     Determines if the HTTP server should write log to OPTIONS requests.
 </p>
+<section>
+    <p>
+                    Default value: <code>LogOutput.Both</code></p>
+</section>
                     </article>
         <include name="/spec/__Component"></include>
     </section>

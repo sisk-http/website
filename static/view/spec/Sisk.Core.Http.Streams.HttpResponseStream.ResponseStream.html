@@ -1,5 +1,5 @@
 <script>
-    setPageTitle("HttpRequest class");
+    setPageTitle("HttpResponseStream class");
     app.navPage = "spec";
 </script>
 <include name="component/header"></include>
@@ -7,21 +7,21 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                CreateHeadResponse() method
+                ResponseStream property
             </h1>
             <p>
                 Declaring type:
-                <a href="/spec/Sisk.Core.Http.HttpRequest">
-                    Sisk.Core.Http.HttpRequest
+                <a href="/spec/Sisk.Core.Http.Streams.HttpResponseStream">
+                    Sisk.Core.Http.Streams.HttpResponseStream
                 </a>
                 (from Sisk.Core)
             </p>
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public HttpResponse CreateHeadResponse()</code></pre>
+<pre><code class="language-cs">public Stream ResponseStream { get; }</code></pre>
 <p>
-    Create an HTTP response with code 200 OK without any body.
+    Gets the <a href="https://learn.microsoft.com/en-us/dotnet/api/System.IO.Stream">Stream</a> that represents the HTTP response output stream.
 </p>
                     </article>
         <include name="/spec/__Component"></include>

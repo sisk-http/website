@@ -1,14 +1,15 @@
 table {
+    border: 1px solid gainsboro;
     border-collapse: collapse;
     width: 100%;
 }
 
 table td,
 table th {
-    padding: 8px 2px;
+    padding: 8px 6px;
 }
 
-table th  {
+table th {
     text-align: left;
     text-transform: lowercase;
     opacity: .6;
@@ -20,4 +21,13 @@ table tr {
 
 table a {
     text-decoration: none;
+}
+
+table td img {
+    position: relative;
+    display: inline-block;
+    margin-right: 3px;
+    top: 2px;
+    height: 16px;
+    width: 16px;
 }

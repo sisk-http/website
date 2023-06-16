@@ -47,10 +47,11 @@
                 queryAll("[role='nav-link']").forEach(navLink => {
                     if (app.navPage == navLink.getAttribute("navpage")) {
                         navLink.classList.add("current-page");
-                    }
+                    } 
                 });
                 createDocLinks();
                 Prism.highlightAll();
+                window.scrollTo(0, 0);
             }
         };
         Planifolia.initializeAutoRouter();

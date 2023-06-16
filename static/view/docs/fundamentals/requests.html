@@ -7,8 +7,7 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1 id="requests">Requests</h1>
-            <p>Requests are structures that represent an HTTP request message. The <a
-                    href="/spec/Sisk.Core.Http.HttpRequest">HttpRequest</a> object contains useful functions for
+            <p>Requests are structures that represent an HTTP request message. The <a href="/spec/Sisk.Core.Http.HttpRequest">HttpRequest</a> object contains useful functions for
                 handling HTTP messages throughout your application.</p>
             <p>An HTTP request is formed by the method, path, version, headers and body.</p>
             <p>In this document, we will teach you how to obtain each of these elements.</p>
@@ -16,13 +15,16 @@
             <p>To obtain the method of the received request, you can use the Method property:</p>
             <pre><code class="lang-cs"><span class="hljs-attribute">HttpMethod requestMethod</span> = request.Method;
 </code></pre>
-            <p>This property returns the request&#39;s method represented by an <a
-                    href="https://learn.microsoft.com/pt-br/dotnet/api/system.net.http.httpmethod">HttpMethod</a>
+            <p>This property returns the request&#39;s method represented by an <a href="https://learn.microsoft.com/pt-br/dotnet/api/system.net.http.httpmethod">HttpMethod</a>
                 object.</p>
             <blockquote>
-                <p>Note that, unlike route methods, this property does not serves the <a
-                        href="/spec/Sisk.Core.Routing.RouteMethod.Any">RouteMethod.Any</a> item. Instead, it returns the
-                    real request method. Custom or non RFC http methods are not supported.</p>
+                <p>
+                    <b>Note:</b>
+                </p>
+                <p>
+                    Unlike route methods, this property does not serves the <a href="/spec/Sisk.Core.Routing.RouteMethod.Any">RouteMethod.Any</a>
+                    item. Instead, it returns the real request method. Custom or non RFC http methods are not supported.
+                </p>
             </blockquote>
             <h2 id="getting-the-request-url-elements">Getting the request url elements</h2>
             <p>You can get various elements from a URL through certain properties of a request. For this example,
@@ -153,18 +155,20 @@
 </code></pre>
             <p>It is also possible to determine if there is a body in the request and if it is loaded with the
                 properties <a href="/spec/Sisk.Core.Http.HttpRequest.HasContents">HasContents</a>, which determines if
-                the request has contents and <a
-                    href="/spec/Sisk.Core.Http.HttpRequest.IsContentAvailable">IsContentAvailable</a> which indicates
+                the request has contents and <a href="/spec/Sisk.Core.Http.HttpRequest.IsContentAvailable">IsContentAvailable</a> which indicates
                 that the HTTP server fully received the content from the remote point.</p>
             <blockquote>
-                <p>Sisk follows the RFC 9110 &quot;HTTP Semantics&quot;, which doens&#39;t allow certain requests
+                <p>
+                    <b>Note:</b>
+                </p>
+                <p>
+                    Sisk follows the RFC 9110 &quot;HTTP Semantics&quot;, which doens&#39;t allow certain requests
                     methods to have body. These requests will immediately drop an 400 (Bad Request) with the
                     <code>ContentServedOnIllegalMethod</code> status. Requests with bodies are not allowed in methods
                     GET, OPTIONS, HEAD and TRACE. You can read the <a href="https://httpwg.org/specs/rfc9110.html">RFC
                         9910</a> here.
                 </p>
-                <p>You can disable this feature by turning <a
-                        href="/spec/Sisk.Core.Http.HttpServerFlags">ThrowContentOnNonSemanticMethods</a>
+                <p>You can disable this feature by turning <a href="/spec/Sisk.Core.Http.HttpServerFlags">ThrowContentOnNonSemanticMethods</a>
                     to <code>false</code>.</p>
             </blockquote>
             <h2 id="getting-the-request-context">Getting the request context</h2>
@@ -209,8 +213,7 @@
 }
 </code></pre>
             <h2 id="getting-form-data">Getting form data</h2>
-            <p>You can get the values of a form data in an <a
-                    href="https://learn.microsoft.com/pt-br/dotnet/api/system.collections.specialized.namevaluecollection">NameValueCollection</a>
+            <p>You can get the values of a form data in an <a href="https://learn.microsoft.com/pt-br/dotnet/api/system.collections.specialized.namevaluecollection">NameValueCollection</a>
                 with the example below:</p>
             <pre><code class="lang-cs"><span class="hljs-function"><span class="hljs-keyword">static</span> HttpResponse <span class="hljs-title">Index</span>(<span class="hljs-params">HttpRequest request</span>)
 </span>{
@@ -249,16 +252,14 @@
             <p>Calling the <a href="/spec/Sisk.Core.Http.HttpRequest.GetEventSource()">HttpRequest.GetEventSource</a>
                 method will put the HttpRequest in it&#39;s listener state. From this, the context of this HTTP request
                 will not expect an HttpResponse as it will overlap the packets sent by server side events.</p>
-            <p>After sending all packets, the callback must return the <a
-                    href="/spec/Sisk.Core.Http.HttpRequestEventSource.Close()">Close</a> method, which will send the
+            <p>After sending all packets, the callback must return the <a href="/spec/Sisk.Core.Http.HttpRequestEventSource.Close()">Close</a> method, which will send the
                 final response to the server and indicate that the streaming has ended.</p>
             <p>It&#39;s not possible to predict what the total length of all packets that will be sent, so it is not
                 possible to determine the end of the connection with <code>Content-Length</code> header.</p>
             <p>By most browsers defaults, server-side events does not support sending HTTP headers or methods other than
                 the GET method. Therefore, be careful when using request handlers with event-source requests that
                 require specific headers in the request, as it probably they ins&#39;t going to have them.</p>
-            <p>Also, most browsers restart streams if the <a
-                    href="https://developer.mozilla.org/en-US/docs/Web/API/EventSource/close">EventSource.close</a>
+            <p>Also, most browsers restart streams if the <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventSource/close">EventSource.close</a>
                 method ins&#39;t called on the client side after receiving all the packets, causing infinite additional
                 processing on the server side. To avoid this kind of problem, it&#39;s common to send an final packet
                 indicating that the event source has finished sending all packets.</p>
@@ -319,8 +320,7 @@
 confg.ResolveForwardedOriginAddress = <span class="hljs-literal">true</span>; <span class="hljs-comment">// will resolve the first X-Forwarded-For address entry</span>
 confg.ResolveForwardedOriginHost = <span class="hljs-literal">true</span>;
 </code></pre>
-            <p>In case of <a
-                    href="/spec/Sisk.Core.Http.HttpServerConfiguration.ResolveForwardedOriginHost">ResolveForwardedOriginHost</a>
+            <p>In case of <a href="/spec/Sisk.Core.Http.HttpServerConfiguration.ResolveForwardedOriginHost">ResolveForwardedOriginHost</a>
                 and an <code>X-Forwarded-Host</code> header is present, the value of this header will be used for
                 server-side DNS matching.</p>
         </article>

@@ -7,7 +7,7 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                CreateRedirectResponse(string, bool) method
+                GetResponseStream() method
             </h1>
             <p>
                 Declaring type:
@@ -19,25 +19,10 @@
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public HttpResponse CreateRedirectResponse(string location, bool permanent)</code></pre>
+<pre><code class="language-cs">public HttpResponseStream GetResponseStream()</code></pre>
 <p>
-    Creates an HTTP 301 response code for the given location.
+    Gets an HTTP response stream for this HTTP request.
 </p>
-<h2>
-    Parameters
-</h2>
-<table>
-    <tbody>
-<tr>
-    <td>location</td>
-    <td>The header value for the new location.</td>
-</tr>
-<tr>
-    <td>permanent</td>
-    <td>Determines if the response is HTTP 301 or HTTP 302.</td>
-</tr>
-    </tbody>
-</table>
                     </article>
         <include name="/spec/__Component"></include>
     </section>

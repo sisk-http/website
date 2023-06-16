@@ -1,7 +1,7 @@
 html {
     font-family: 'Arial', sans-serif;
     font-size: 14px;
-    --container-inline: 80px;
+    --container-inline: 30px;
     --container-block: 120px;
     --primary-color: #4408fe;
 }
@@ -56,6 +56,33 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+.flash {
+    position: relative;
+}
+
+.flash::before {
+    content: '';
+    background-color: #ffae00;
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    width: calc(100% + 60px);
+    height: calc(100% + 60px);
+    animation: 1.5s ease-out flashing;
+    animation-fill-mode: forwards;
+    z-index: -1;
+}
+
+@keyframes flashing {
+    0% {
+        opacity: .7;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 @media only screen and (max-width: 1366px) {

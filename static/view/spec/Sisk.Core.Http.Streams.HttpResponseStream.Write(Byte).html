@@ -1,5 +1,5 @@
 <script>
-    setPageTitle("HttpRequest class");
+    setPageTitle("HttpResponseStream class");
     app.navPage = "spec";
 </script>
 <include name="component/header"></include>
@@ -7,21 +7,21 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                CreateResponse(HttpStatusCode, string) method
+                Write(Byte[]) method
             </h1>
             <p>
                 Declaring type:
-                <a href="/spec/Sisk.Core.Http.HttpRequest">
-                    Sisk.Core.Http.HttpRequest
+                <a href="/spec/Sisk.Core.Http.Streams.HttpResponseStream">
+                    Sisk.Core.Http.Streams.HttpResponseStream
                 </a>
                 (from Sisk.Core)
             </p>
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public HttpResponse CreateResponse(HttpStatusCode statusCode, string? content)</code></pre>
+<pre><code class="language-cs">public void Write(byte[] buffer)</code></pre>
 <p>
-    Creates an HttpResponse object with given status code and body content.
+    Writes an sequence of bytes to the HTTP response stream.
 </p>
 <h2>
     Parameters
@@ -29,12 +29,8 @@
 <table>
     <tbody>
 <tr>
-    <td>statusCode</td>
-    <td>The Http response status code.</td>
-</tr>
-<tr>
-    <td>content</td>
-    <td>The body content.</td>
+    <td width="33%">buffer</td>
+    <td>The byte array that includes the buffer which will be written to the HTTP response.</td>
 </tr>
     </tbody>
 </table>
