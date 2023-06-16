@@ -95,7 +95,7 @@ article img {
     padding-block: 8px;
     padding-left: 2rem;
     color: black;
-    opacity: .75;
+    opacity: .7;
     font-weight: 500;
     text-decoration: none;
 }
@@ -115,6 +115,7 @@ article img {
 }
 
 .doc-navigator a:hover {
+    text-decoration: none;
     opacity: 1;
 }
 

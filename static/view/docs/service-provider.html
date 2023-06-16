@@ -27,6 +27,7 @@
                     ],
                     "CrossOriginResourceSharingPolicy": {
                         "AllowOrigin": "*",
+                        "AllowOrigins": [ "*" ],   // new on 0.14
                         "AllowMethods": [ "*" ],
                         "AllowHeaders": [ "*" ],
                         "MaxAge": 3600
@@ -253,6 +254,15 @@
                         <td>Optional</td>
                         <td>Defaults to <code>null</code>. This property expects an string. Specifies the
                             <code>Allow-Origin</code> header.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ListeningHost.CrossOriginResourceSharingPolicy.AllowOrigins</td>
+                        <td>Optional</td>
+                        <td>Defaults to <code>null</code>. This property expects an array of strings.
+                            Specifies multiples <code>Allow-Origin</code> headers. See <a href="/spec/Sisk.Core.Entity.CrossOriginResourceSharingHeaders.AllowOrigins">
+                                AllowOrigins
+                            </a> for more information.
                         </td>
                     </tr>
                     <tr>
