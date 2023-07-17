@@ -1,5 +1,5 @@
 <script>
-    setPageTitle("HttpServerConfiguration class");
+    setPageTitle("HttpEventSourceBouncePolicy class");
     app.navPage = "spec";
 </script>
 <include name="component/header"></include>
@@ -7,21 +7,21 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                Flags property
+                Start() method
             </h1>
             <p>
                 Declaring type:
-                <a href="/spec/Sisk.Core.Http.HttpServerConfiguration">
-                    Sisk.Core.Http.HttpServerConfiguration
+                <a href="/spec/Sisk.Core.Http.Streams.HttpEventSourceBouncePolicy">
+                    Sisk.Core.Http.Streams.HttpEventSourceBouncePolicy
                 </a>
                 (from Sisk.Core)
             </p>
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public HttpServerFlags Flags { get; set; }</code></pre>
+<pre><code class="language-cs">public void Start()</code></pre>
 <p>
-    Gets or sets advanced flags and configuration settings for the HTTP server.
+    Starts sending periodic pings to the client.
 </p>
                     </article>
         <include name="/spec/__Component"></include>

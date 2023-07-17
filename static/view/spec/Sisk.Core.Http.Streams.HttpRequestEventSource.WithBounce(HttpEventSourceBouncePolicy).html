@@ -7,7 +7,7 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                KeepAlive(TimeSpan) method
+                WithBounce(HttpEventSourceBouncePolicy) method
             </h1>
             <p>
                 Declaring type:
@@ -19,9 +19,9 @@
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public void KeepAlive()</code></pre>
+<pre><code class="language-cs">public void WithBounce(Action'HttpEventSourceBouncePolicy act)</code></pre>
 <p>
-    Asynchronously waits for the connection to close before continuing execution with an maximum keep alive timeout. This method is released when either the client or the server reaches an sending failure.
+    Configures the bouce policy for this instance of HTTP Event Source.
 </p>
 <h2>
     Parameters
@@ -29,8 +29,8 @@
 <table>
     <tbody>
 <tr>
-    <td width="33%">maximumIdleTolerance</td>
-    <td>The maximum timeout interval for an idle connection to automatically release this method.</td>
+    <td width="33%">act</td>
+    <td>The method that runs on the bounce policy for this HTTP Event Source.</td>
 </tr>
     </tbody>
 </table>

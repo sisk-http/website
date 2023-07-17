@@ -1,12 +1,58 @@
 # 0.14
 
-Released: June 13, 2023
+Core:
+
+- Fixed an several websocket issue.
+
+# 0.14, rc 4
 
 Core:
 
-- Created the HttpResponseStream class, which allows the user to write contents on-fly to the HTTP response output stream.
+- Optimized `LogStream` queue processing function.
+- Fixed an issue where closed streams were aborting connections instead of closing them.
+
+# 0.14, rc 3
+
+Core:
+
+- .. everything from rc 1, rc 2
+- Added the `%rm` log constant, which is replaced by the request HTTP method.
+- Added the `HttpContext.Request` property.
+- Fixed some issues related to `HttpResponseStream`.
+- Fixed an issue where the HTTP server was writing ignored errors to the output stream.
+- Fixed an issue where closed streams weren't returning an `ConnectionClosed` status.
+- Replaced the `ExceptionErrorCallback` delegate second parameter type from `HttpRequest` to `HttpContext`.
+- `HttpRequest.Close()` should now reset the connection between the client and server even if the content
+was not completely sent.
+- Docs cleanup.
+
+# 0.14, rc 2
+
+This release is not available at nuget yet.
+
+Core:
+
+- .. everything from rc 1
+- Created the `RoutePrefix` attribute.
+- Created the `RouteGet`, `RoutePost`, `RoutePut`, `RoutePatch` and `RouteDelete` attributes.
+- Created the `HttpRequest.SendTo` method, which prevents stack overflow exceptions when
+redirecting the execution context to another callback.
+- Created the `HtmlContent` class.
+- Now it's possible to set more than one route to the same action callback.
+- Removed `HttpServerConfiguration.Verbose` obsolete property.
+- Removed `VerboseMode` obsolete enum.
+- Removed `HttpResponse.DefaultEncoding` obsolete property.
+- Removed the obsolete `CrossOriginResourceSharingHeaders` constructor.
+- Fixed an bug where the CORS headers was not being set on empty responses.
+
+# 0.14, rc 1
+
+Core:
+
+- Created the `HttpResponseStream` class, which allows the user to write contents on-fly to the HTTP response output stream.
 - Rewrited `HttpServerExecutionStatus` enum items. Obsolete items was removed.
 - Fixed an bug where the CORS headers was being set on Event Source connections even if `HttpServerFlags.SendCorsHeaders` was false.
+
 
 # 0.13.1, rev 1
 

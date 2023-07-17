@@ -30,6 +30,17 @@
 <tr>
     <td width="33%">
         <img src="/img/icons/property.svg">
+        <a href="/spec/Sisk.Core.Http.Streams.HttpRequestEventSource.BoucePolicy">
+            BoucePolicy
+        </a>
+    </td>
+    <td>
+        Gets the <a href="/spec/Sisk.Core.Http.Streams.HttpEventSourceBouncePolicy">HttpEventSourceBouncePolicy</a> for this HTTP event source connection.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img src="/img/icons/property.svg">
         <a href="/spec/Sisk.Core.Http.Streams.HttpRequestEventSource.HttpRequest">
             HttpRequest
         </a>
@@ -136,17 +147,6 @@
 <tr>
     <td width="33%">
         <img src="/img/icons/method.svg">
-        <a href="/spec/Sisk.Core.Http.Streams.HttpRequestEventSource.KeepAlive(TimeSpan)">
-            KeepAlive(TimeSpan)
-        </a>
-    </td>
-    <td>
-        Asynchronously waits for the connection to close before continuing execution with an maximum keep alive timeout. This method is released when either the client or the server reaches an sending failure.
-    <td>
-</tr>
-<tr>
-    <td width="33%">
-        <img src="/img/icons/method.svg">
         <a href="/spec/Sisk.Core.Http.Streams.HttpRequestEventSource.Send(Object)">
             Send(Object)
         </a>
@@ -164,6 +164,28 @@
     </td>
     <td>
         Writes a event message with their data to the event listener and returns an boolean indicating if the message was delivered to the client.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img src="/img/icons/method.svg">
+        <a href="/spec/Sisk.Core.Http.Streams.HttpRequestEventSource.WaitForFail(TimeSpan)">
+            WaitForFail(TimeSpan)
+        </a>
+    </td>
+    <td>
+        Asynchronously waits for the connection to close before continuing execution with an maximum keep alive timeout. This method is released when either the client or the server reaches an sending failure.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img src="/img/icons/method.svg">
+        <a href="/spec/Sisk.Core.Http.Streams.HttpRequestEventSource.WithBounce(HttpEventSourceBouncePolicy)">
+            WithBounce(HttpEventSourceBouncePolicy)
+        </a>
+    </td>
+    <td>
+        Configures the bouce policy for this instance of HTTP Event Source.
     <td>
 </tr>
     </tbody>

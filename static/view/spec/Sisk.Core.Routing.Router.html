@@ -22,91 +22,22 @@
 <p>
     Represents a collection of Routes and main executor of callbacks in an <a href="/spec/Sisk.Core.Http.HttpServer">HttpServer</a>.
 </p>
-<h2 id="property">
-    Property list
-</h2>
-<table>
-    <tbody>
-<tr>
-    <td width="33%">
-        <img src="/img/icons/property.svg">
-        <a href="/spec/Sisk.Core.Routing.Router.CallbackErrorHandler">
-            CallbackErrorHandler
-        </a>
-    </td>
-    <td>
-        Gets or sets the Router callback exception handler.
-    <td>
-</tr>
-<tr>
-    <td width="33%">
-        <img src="/img/icons/property.svg">
-        <a href="/spec/Sisk.Core.Routing.Router.GlobalRequestHandlers">
-            GlobalRequestHandlers
-        </a>
-    </td>
-    <td>
-        Gets or sets the global requests handlers that will be executed in all matched routes.
-    <td>
-</tr>
-<tr>
-    <td width="33%">
-        <img src="/img/icons/property.svg">
-        <a href="/spec/Sisk.Core.Routing.Router.MatchRoutesIgnoreCase">
-            MatchRoutesIgnoreCase
-        </a>
-    </td>
-    <td>
-        Gets or sets whether this <a href="/spec/Sisk.Core.Routing.Router">Router</a> will match routes ignoring case.
-    <td>
-</tr>
-<tr>
-    <td width="33%">
-        <img src="/img/icons/property.svg">
-        <a href="/spec/Sisk.Core.Routing.Router.MethodNotAllowedErrorHandler">
-            MethodNotAllowedErrorHandler
-        </a>
-    </td>
-    <td>
-        Gets or sets the Router "405 Method Not Allowed" handler.
-    <td>
-</tr>
-<tr>
-    <td width="33%">
-        <img src="/img/icons/property.svg">
-        <a href="/spec/Sisk.Core.Routing.Router.NotFoundErrorHandler">
-            NotFoundErrorHandler
-        </a>
-    </td>
-    <td>
-        Gets or sets the Router "404 Not Found" handler.
-    <td>
-</tr>
-    </tbody>
-</table>
-<h2 id="constructor">
-    Constructor list
-</h2>
-<table>
-    <tbody>
-<tr>
-    <td width="33%">
-        <img src="/img/icons/constructor.svg">
-        <a href="/spec/Sisk.Core.Routing.Router.Router()">
-            Router()
-        </a>
-    </td>
-    <td>
-        Creates an new <a href="/spec/Sisk.Core.Routing.Router">Router</a> instance with default properties values.
-    <td>
-</tr>
-    </tbody>
-</table>
 <h2 id="method">
     Method list
 </h2>
 <table>
     <tbody>
+<tr>
+    <td width="33%">
+        <img src="/img/icons/method.svg">
+        <a href="/spec/Sisk.Core.Routing.Router.CombinePaths(string-string)">
+            CombinePaths(string, string)
+        </a>
+    </td>
+    <td>
+        Concats the two routes paths into one.
+    <td>
+</tr>
 <tr>
     <td width="33%">
         <img src="/img/icons/method.svg">
@@ -204,6 +135,86 @@
     </td>
     <td>
         Defines an route with their method, path and callback function.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="property">
+    Property list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td width="33%">
+        <img src="/img/icons/property.svg">
+        <a href="/spec/Sisk.Core.Routing.Router.CallbackErrorHandler">
+            CallbackErrorHandler
+        </a>
+    </td>
+    <td>
+        Gets or sets the Router callback exception handler.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img src="/img/icons/property.svg">
+        <a href="/spec/Sisk.Core.Routing.Router.GlobalRequestHandlers">
+            GlobalRequestHandlers
+        </a>
+    </td>
+    <td>
+        Gets or sets the global requests handlers that will be executed in all matched routes.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img src="/img/icons/property.svg">
+        <a href="/spec/Sisk.Core.Routing.Router.MatchRoutesIgnoreCase">
+            MatchRoutesIgnoreCase
+        </a>
+    </td>
+    <td>
+        Gets or sets whether this <a href="/spec/Sisk.Core.Routing.Router">Router</a> will match routes ignoring case.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img src="/img/icons/property.svg">
+        <a href="/spec/Sisk.Core.Routing.Router.MethodNotAllowedErrorHandler">
+            MethodNotAllowedErrorHandler
+        </a>
+    </td>
+    <td>
+        Gets or sets the Router "405 Method Not Allowed" handler.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img src="/img/icons/property.svg">
+        <a href="/spec/Sisk.Core.Routing.Router.NotFoundErrorHandler">
+            NotFoundErrorHandler
+        </a>
+    </td>
+    <td>
+        Gets or sets the Router "404 Not Found" handler.
+    <td>
+</tr>
+    </tbody>
+</table>
+<h2 id="constructor">
+    Constructor list
+</h2>
+<table>
+    <tbody>
+<tr>
+    <td width="33%">
+        <img src="/img/icons/constructor.svg">
+        <a href="/spec/Sisk.Core.Routing.Router.Router()">
+            Router()
+        </a>
+    </td>
+    <td>
+        Creates an new <a href="/spec/Sisk.Core.Routing.Router">Router</a> instance with default properties values.
     <td>
 </tr>
     </tbody>

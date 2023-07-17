@@ -364,6 +364,28 @@
         Accepts and acquires a websocket for this request. Calling this method will put this <a href="/spec/Sisk.Core.Http.HttpRequest">HttpRequest</a> instance in streaming state.
     <td>
 </tr>
+<tr>
+    <td width="33%">
+        <img src="/img/icons/method.svg">
+        <a href="/spec/Sisk.Core.Http.HttpRequest.SendTo(RouterCallback)">
+            SendTo(RouterCallback)
+        </a>
+    </td>
+    <td>
+        Calls another handler for this request, preserving the current call-stack frame, and then returns the response from it. This method manages to prevent possible stack overflows.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img src="/img/icons/method.svg">
+        <a href="/spec/Sisk.Core.Http.HttpRequest.ToString()">
+            ToString()
+        </a>
+    </td>
+    <td>
+        Gets an string representation of this <a href="/spec/Sisk.Core.Http.HttpRequest">HttpRequest</a> object.
+    <td>
+</tr>
     </tbody>
 </table>
                     </article>

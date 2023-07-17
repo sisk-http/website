@@ -1,0 +1,234 @@
+<script>
+    setPageTitle("Examples");
+    app.navPage = "docs";
+</script>
+<include name="component/header"></include>
+<div id="appContainer">
+    <section class="doc-container">
+        <article class="section-content pad">
+            <h1>
+                Examples
+            </h1>
+            <section>
+                <h2 id="service-providers">
+                    Simple RESTful API
+                </h2>
+                <pre><code class="lang-cs">
+                    <xmp>
+                        using Sisk.Core.Http;
+                        using Sisk.Core.Routing;
+                        using System.Text;
+                        using System.Text.Json;
+
+                        class Program
+                        {
+                            static void Main(string[] args)
+                            {
+                                var httpServer = HttpServer.Emit(5000,
+                                    out var _,
+                                    out var _,
+                                    out Router r);
+
+                                r.SetObject(new UserController());
+                                httpServer.Start();
+
+                                Console.WriteLine("Server is listening at {0}", httpServer.ListeningPrefixes[0]);
+                                Thread.Sleep(-1);
+                            }
+                        }
+
+                        class UserController
+                        {
+                            int currentId = 0;
+                            List<User> users = new List<User>();
+
+                            [Route(RouteMethod.Get, "/user/<id>")]
+                            HttpResponse ViewUser(HttpRequest request)
+                            {
+                                User? user = users.FirstOrDefault(u => u.Id == int.Parse(request.Query["id"]!));
+                                if (user == null)
+                                {
+                                    return new HttpResponse(404);
+                                }
+                                else
+                                {
+                                    string json = JsonSerializer.Serialize(user);
+                                    return new HttpResponse() { Content = new StringContent(json, Encoding.UTF8, "application/json") };
+                                }
+                            }
+
+                            [Route(RouteMethod.Post, "/user")]
+                            HttpResponse AddUser(HttpRequest request)
+                            {
+                                User fromBody = JsonSerializer.Deserialize<User>(request.Body)!;
+                                fromBody.Id = currentId;
+                                Interlocked.Increment(ref currentId);
+
+                                users.Add(fromBody);
+                                string json = JsonSerializer.Serialize(new { Id = fromBody.Id });
+                                return new HttpResponse() { Content = new StringContent(json, Encoding.UTF8, "application/json") };
+                            }
+
+                            [Route(RouteMethod.Get, "/users")]
+                            HttpResponse ListUsers(HttpRequest request)
+                            {
+                                var list = users.Select(u => new { u.Id, u.Name }).ToArray();
+                                string json = JsonSerializer.Serialize(list);
+                                return new HttpResponse() { Content = new StringContent(json, Encoding.UTF8, "application/json") };
+                            }
+                        }
+
+                        record User
+                        {
+                            public int Id { get; set; }
+                            public string? Name { get; set; }
+                            public string? Profession { get; set; }
+                            public int Age { get; set; }
+                        }
+                    </xmp>
+                </code></pre>
+            </section>
+            <section>
+                <h2 id="file-server">
+                    Simple file server
+                </h2>
+                <pre><code class="lang-csharp">
+                    <xmp>
+                        using Sisk.Core.Http;
+                        using Sisk.Core.Http.Streams;
+                        using Sisk.Core.Routing;
+                        using System.Text;
+
+                        class Program
+                        {
+                            static void Main(string[] args)
+                            {
+                                var httpServer = HttpServer.Emit(5000,
+                                    out var _,
+                                    out var _,
+                                    out Router r);
+
+                                Route matchAllRoute = new Route()
+                                {
+                                    Method = RouteMethod.Any,
+                                    UseRegex = true,
+                                    Path = ".*",
+                                    Callback = new RouterCallback(RouteResponse)
+                                };
+
+                                r.SetRoute(matchAllRoute);
+                                httpServer.Start();
+
+                                Console.WriteLine("Server is listening at {0}", httpServer.ListeningPrefixes[0]);
+                                Thread.Sleep(-1);
+                            }
+
+                            static HttpResponse RouteResponse(HttpRequest request)
+                            {
+                                string root = @"C:\Users\admin\sisk\docs\static";
+                                string routePath = request.Path;
+
+                                if (request.Path.EndsWith('/'))
+                                {
+                                    routePath += "/index.html"; // find the index file
+                                }
+
+                                string requestedFile = NormalizedCombine(root, routePath);
+
+                                if (!File.Exists(requestedFile))
+                                {
+                                    return new HttpResponse(404);
+                                }
+
+                                Stream fileStream = File.OpenRead(requestedFile);
+                                HttpResponseStream res = request.GetResponseStream();
+
+                                string filename = Path.GetFileName(requestedFile);
+                                string extension = Path.GetExtension(filename);
+                                string? mimeType = GetMimeType(extension);
+
+                                res.SendChunked = true;
+                                res.SetStatus(200);
+                                if (mimeType != null)
+                                {
+                                    res.AppendHeader("Content-Type", mimeType);
+                                }
+                                else
+                                {
+                                    res.AppendHeader("Content-Disposition", $"attachment; filename=\"{Path.GetFileName(requestedFile)}\"");
+                                }
+
+                                fileStream.CopyTo(res.ResponseStream);
+
+                                return res.Close();
+                            }
+
+                            static string? GetMimeType(string extension)
+                            {
+                                return extension switch
+                                {
+                                    ".png" => "image/png",
+                                    ".jpg" or ".jpeg" => "image/jpg",
+                                    ".svg" => "image/svg+xml",
+                                    ".css" => "text/css",
+                                    ".html" => "text/html",
+                                    ".js" => "application/javascript",
+                                    ".json" => "application/json",
+                                    _ => null // download the file
+                                };
+                            }
+
+                            // folk from https://cy.proj.pw/#/blog-post?link=normalizando-path-combine.md
+                            public static string NormalizedCombine(params string[] paths)
+                            {
+                                if (paths.Length == 0) return "";
+
+                                bool startsWithSepChar = paths[0].StartsWith("/") || paths[0].StartsWith("\\");
+                                char environmentPathChar = Path.DirectorySeparatorChar;
+                                List<string> tokens = new List<string>();
+
+                                for (int ip = 0; ip < paths.Length; ip++)
+                                {
+                                    string path = paths[ip]
+                                        ?? throw new ArgumentNullException($"The path string at index {ip} is null.");
+
+                                    string normalizedPath = path
+                                        .Replace('/', environmentPathChar)
+                                        .Replace('\\', environmentPathChar)
+                                        .Trim(environmentPathChar);
+
+                                    string[] pathIdentities = normalizedPath.Split(
+                                        environmentPathChar,
+                                        StringSplitOptions.RemoveEmptyEntries
+                                    );
+
+                                    tokens.AddRange(pathIdentities);
+                                }
+
+                                StringBuilder pathBuilder = new StringBuilder();
+                                foreach (string token in tokens)
+                                {
+                                    if (token == "." || token == "..")
+                                    {
+                                        continue;
+                                    }
+                                    else
+                                    {
+                                        pathBuilder.Append(token);
+                                        pathBuilder.Append(environmentPathChar);
+                                    }
+                                }
+
+                                if (startsWithSepChar)
+                                    pathBuilder.Insert(0, environmentPathChar);
+
+                                return pathBuilder.ToString().TrimEnd(environmentPathChar);
+                            }
+                        }
+                    </xmp>
+                </code></pre>
+            </section>
+        </article>
+        <include name="component/doc-nav"></include>
+    </section>
+</div>

@@ -813,11 +813,11 @@ Prism.languages.javascript = Prism.languages.extend("clike", {
                 alias: "class-name"
             },
             "defaults": {
-                pattern: s("\\b(Int16|Int32|Int64|Math|Encoding|Thread|HttpWebSocket|Console|File)\\b", [x]),
+                pattern: s("\\b(Int16|Int32|Int64|Math|Encoding|Thread|JsonSerializer|HttpServer|HttpWebSocket|Console|File|Path)\\b", [x]),
                 alias: "class-name"
             },
             "struct": {
-                pattern: s("\\b(HttpStatusCode|Guid|RouteMethod)\\b", [x]),
+                pattern: s("\\b(HttpStatusCode|Guid|RouteMethod|StringSplitOptions)\\b", [x]),
                 alias: "struct"
             },
             "generic-method": {

@@ -1,5 +1,5 @@
 <script>
-    setPageTitle("HttpServerConfiguration class");
+    setPageTitle("HttpRequestEventSource class");
     app.navPage = "spec";
 </script>
 <include name="component/header"></include>
@@ -7,21 +7,21 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                Flags property
+                BoucePolicy property
             </h1>
             <p>
                 Declaring type:
-                <a href="/spec/Sisk.Core.Http.HttpServerConfiguration">
-                    Sisk.Core.Http.HttpServerConfiguration
+                <a href="/spec/Sisk.Core.Http.Streams.HttpRequestEventSource">
+                    Sisk.Core.Http.Streams.HttpRequestEventSource
                 </a>
                 (from Sisk.Core)
             </p>
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public HttpServerFlags Flags { get; set; }</code></pre>
+<pre><code class="language-cs">public HttpEventSourceBouncePolicy BoucePolicy { get; }</code></pre>
 <p>
-    Gets or sets advanced flags and configuration settings for the HTTP server.
+    Gets the <a href="/spec/Sisk.Core.Http.Streams.HttpEventSourceBouncePolicy">HttpEventSourceBouncePolicy</a> for this HTTP event source connection.
 </p>
                     </article>
         <include name="/spec/__Component"></include>

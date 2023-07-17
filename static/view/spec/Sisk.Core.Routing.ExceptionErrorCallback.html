@@ -18,7 +18,7 @@
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public delegate HttpResponse ExceptionErrorCallback(Exception ex, HttpRequest request);</code></pre>
+<pre><code class="language-cs">public delegate HttpResponse ExceptionErrorCallback(Exception ex, HttpContext context);</code></pre>
 <p>
     Represents the function that is called after the route callback threw an exception.
 </p>

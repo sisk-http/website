@@ -45,6 +45,7 @@ code[class*="language-"] ::selection {
 
 /* Code blocks */
 pre[class*="language-"] {
+    max-height: 800px;
     padding: 1em;
     margin: .5em 0;
     overflow: auto;
@@ -67,7 +68,8 @@ pre[class*="language-"] {
     color: #008000;
 }
 
-.token.string {
+.token.string,
+.token.char {
     color: #A31515;
 }
 

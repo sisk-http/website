@@ -1,5 +1,5 @@
 <script>
-    setPageTitle("VerboseMode enum");
+    setPageTitle("HttpContext class");
     app.navPage = "spec";
 </script>
 <include name="component/header"></include>
@@ -7,17 +7,21 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                Silent field
+                ListeningHost property
             </h1>
             <p>
                 Declaring type:
-                <a href="/spec/Sisk.Core.Http.VerboseMode">
-                    Sisk.Core.Http.VerboseMode
+                <a href="/spec/Sisk.Core.Http.HttpContext">
+                    Sisk.Core.Http.HttpContext
                 </a>
                 (from Sisk.Core)
             </p>
 <p>
-    No message will be written.
+    Definition:
+</p>
+<pre><code class="language-cs">public ListeningHost ListeningHost { get; }</code></pre>
+<p>
+    Gets the <a href="/spec/Sisk.Core.Http.HttpContext">ListeningHost</a> instance of this HTTP context.
 </p>
                     </article>
         <include name="/spec/__Component"></include>

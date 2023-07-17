@@ -1,5 +1,5 @@
 <script>
-    setPageTitle("HttpServerConfiguration class");
+    setPageTitle("HttpWebSocket class");
     app.navPage = "spec";
 </script>
 <include name="component/header"></include>
@@ -7,21 +7,21 @@
     <section class="doc-container">
         <article class="section-content pad">
             <h1>
-                Flags property
+                MaxAttempts property
             </h1>
             <p>
                 Declaring type:
-                <a href="/spec/Sisk.Core.Http.HttpServerConfiguration">
-                    Sisk.Core.Http.HttpServerConfiguration
+                <a href="/spec/Sisk.Core.Http.Streams.HttpWebSocket">
+                    Sisk.Core.Http.Streams.HttpWebSocket
                 </a>
                 (from Sisk.Core)
             </p>
 <p>
     Definition:
 </p>
-<pre><code class="language-cs">public HttpServerFlags Flags { get; set; }</code></pre>
+<pre><code class="language-cs">public int MaxAttempts { get; set; }</code></pre>
 <p>
-    Gets or sets advanced flags and configuration settings for the HTTP server.
+    Gets or sets the maximum number of attempts to send a failed message before the server closes the connection. Set it to -1 to don't close the connection on failed attempts.
 </p>
                     </article>
         <include name="/spec/__Component"></include>
