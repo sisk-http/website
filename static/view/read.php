@@ -63,7 +63,7 @@
                     classes += "active scroll-to-component";
 
                     document.querySelectorAll("#docsContainer h1[id]").forEach(e => {
-                        after += html`
+                        after += html` 
                             <a class="sub-link" href="#${e.id}">
                                 ${e.innerText}
                             </a>

@@ -166,5 +166,9 @@ function path_combine(...$paths)
         $path = trim($path, '\\/');
         $out .= $path . '/';
     }
-    return rtrim($out, '/');
+    if (str_contains(PHP_OS, 'WIN')) {
+        return rtrim($out, '/');
+    } else {
+        return '/' . rtrim($out, '/');
+    }
 }
