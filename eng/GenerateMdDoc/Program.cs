@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Reflection;
 using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
@@ -9,6 +10,20 @@ namespace Sisk.GenerateMdDoc
 {
     internal class Program
     {
+        class DocLink
+        {
+            public string Title { get; set; }
+            public string Href { get; set; }
+            public string? Icon { get; set; }
+
+            public DocLink(String title, String href, String? icon)
+            {
+                Title = title ?? throw new ArgumentNullException(nameof(title));
+                Href = href ?? throw new ArgumentNullException(nameof(href));
+                Icon = icon;
+            }
+        }
+
         struct StParam
         {
             public string Name;
@@ -48,6 +63,7 @@ namespace Sisk.GenerateMdDoc
         }
 
         protected static string NormalizeSummary(string s) => Regex.Replace(s, @"\s{2,}", " ").Trim();
+        protected static string NormalizeCodeWhitespace(string s) => Regex.Replace(s, @"^\s+", "", RegexOptions.Multiline).Trim();
 
         static void Main(string[] args)
         {
@@ -77,17 +93,25 @@ namespace Sisk.GenerateMdDoc
 
                 var members = doc.SelectNodes("/doc/members/member")!;
 
+                File.WriteAllText("Output/index.md", """
+                    # Specification
+
+                    You are viewing the Sisk API specification. Navigate from the sidebar to get started.
+                    """);
+
                 foreach (XmlNode member in members)
                 {
+                    if (member.SelectSingleNode("nodocs") != null) continue;
+
                     string name = member.Attributes!["name"]!.Value;
                     string type = member.SelectSingleNode("type")?.InnerText.Trim() ?? "Type";
-                    string definition = member.SelectSingleNode("definition")?.InnerText.Trim() ?? "";
+                    string definition = NormalizeCodeWhitespace(member.SelectSingleNode("definition")?.InnerText.Trim() ?? "");
                     string summary = NormalizeSummary(member.SelectSingleNode("summary")!.InnerXml.Trim());
 
                     // replace sisk type names and namespaces
-                    summary = Regex.Replace(summary, @"<see cref=""T:Sisk\.([^""]+)""\s?/>", @"<a href=""/spec/Sisk.$1"">Sisk.$1</a>");
+                    summary = Regex.Replace(summary, @"<see cref=""T:Sisk\.([^""]+)""\s?/>", @"<a href=""/read?q=/contents/spec/Sisk.$1.md"">Sisk.$1</a>");
                     // replace sisk method properties etc
-                    summary = Regex.Replace(summary, @"<see cref=""[^T]:(Sisk\.[a-zA-Z0-9.]+)\.([a-zA-Z0-9.]+)""\s?/>", @"<a href=""/spec/$1"">$2</a>");
+                    summary = Regex.Replace(summary, @"<see cref=""[^T]:(Sisk\.[a-zA-Z0-9.]+)\.([a-zA-Z0-9.]+)""\s?/>", @"<a href=""/read?q=/contents/spec/$1.md"">$2</a>");
                     // replace .net types by their link
                     summary = Regex.Replace(summary, @"<see cref=""T:System\.([^""]+)""\s?/>", @"<a href=""https://learn.microsoft.com/en-us/dotnet/api/System.$1"">System.$1</a>");
                     // replace .net method properties etc
@@ -97,7 +121,11 @@ namespace Sisk.GenerateMdDoc
 
                     string docs = member.SelectSingleNode("docs")?.InnerXml.Trim() ?? "";
                     string nameType = name.Substring(0, 2);
-                    name = name.Substring(2);
+                    name = name.Substring(2)
+                        .Replace("`1", "")
+                        .Replace("``1", "")
+                        .Replace("``0", "");
+                    definition = definition.Replace("{{", "<").Replace("}}", ">");
 
                     if (nameType == "T:")
                     {
@@ -232,29 +260,7 @@ namespace Sisk.GenerateMdDoc
             }
 
             // types files
-            StringBuilder indexPage = new StringBuilder();
-            StringBuilder componentBuilder = new StringBuilder();
-            componentBuilder.AppendLine("""<div class="doc-navigator">""");
-            indexPage.AppendLine("""
-                <script>
-                    setPageTitle("Specification");
-                    app.navPage = "spec";
-                </script>
-                <include name="component/header"></include>
-                <div id="appContainer">
-                    <section class="doc-container">
-                        <article class="section-content pad">
-                            <h1>
-                                Specification
-                            </h1>
-                            <p>
-                                You are viewing the Sisk API specification. Navigate from the sidebar to get started.
-                            </p>
-                        </article>
-                        <include name="/spec/__Component"></include>
-                    </section>
-                </div>
-                """);
+            List<dynamic> links = new List<dynamic>();
             string lastNamespace = "";
 
             foreach (StType type in typeList.OrderBy(t => t.FullName).ToArray())
@@ -262,69 +268,64 @@ namespace Sisk.GenerateMdDoc
                 string nsmsp = type.FullName.Substring(0, type.FullName.LastIndexOf('.'));
                 if (lastNamespace != nsmsp)
                 {
-                    componentBuilder.AppendLine($"""
-                        <div class="namespace-sep">
-                            {nsmsp}
-                        </div>
-                        """);
+                    links.Add(nsmsp);
                     lastNamespace = nsmsp;
                 }
 
-                componentBuilder.AppendLine($"""
-                    <a href="/spec/{type.FullName}">
-                        <img src="/img/icons/{type.Type.ToLower()}.svg"> {type.ShortName}
-                    </a>
+                links.Add(new DocLink(type.ShortName, "/contents/spec/" + type.FullName + ".md", type.Type.ToLower()));
+
+                string fileName = type.FullName + ".md";
+                StringBuilder typeFile = new StringBuilder();
+
+                typeFile.AppendLine("""
+                    <!--
+                    
+                    Copyrights 2023 Sisk Framework - CypherPotato
+                    Published under MIT license
+                    
+                    !!! DO NOT EDIT THIS FILE !!!
+                    This file was generated by a tool in the Sisk package. To edit the information in this documentation,
+                    edit the XML documentation present in the Sisk source code.
+                    
+                    -->
+
                     """);
 
-                string fileName = type.FullName + ".html";
-                StringBuilder typeFile = new StringBuilder();
-                typeFile.AppendLine($"""
-                    <script>
-                        setPageTitle("{type.ShortName} {type.Type.ToLower()}");
-                        app.navPage = "spec";
-                    </script>
-                    <include name="component/header"></include>
-                    <div id="appContainer">
-                        <section class="doc-container">
-                            <article class="section-content pad">
-                                <h1>
-                                    {type.ShortName} {type.Type.ToLower()}
-                                </h1>
-                    """);
+                typeFile.AppendLine($"# {type.ShortName} {type.Type.ToLower()}");
+
                 if (!string.IsNullOrEmpty(type.Assembly))
                 {
                     typeFile.AppendLine($"""
-                        <p>
-                            Assembly: {type.Assembly}
-                        </p>
-                        <p>
-                            Namespace: {nsmsp}
-                        </p>
+                        Assembly: {type.Assembly}
+                       
+                        Namespace: {nsmsp}
                         """);
                 }
                 if (!string.IsNullOrEmpty(type.Definition))
                 {
                     typeFile.AppendLine($"""
-                        <p>
-                            Definition:
-                        </p>
-                        <pre><code class="language-cs">{type.Definition}</code></pre>
+
+                        Definition:
+
+                        ```cs
+                        {type.Definition}
+                        ```
                         """);
                 }
                 if (!string.IsNullOrEmpty(type.Summary))
                 {
                     typeFile.AppendLine($"""
-                        <p>
-                            {type.Summary}
-                        </p>
+
+                        {type.Summary}
+
                         """);
                 }
                 if (!string.IsNullOrEmpty(type.Docs))
                 {
                     typeFile.AppendLine($"""
-                        <section>
-                            {type.Docs}
-                        </section>
+
+                        {type.Docs}
+
                         """);
                 }
 
@@ -340,9 +341,7 @@ namespace Sisk.GenerateMdDoc
                     string roleId = role.Replace(" ", "-").ToLower();
 
                     typeFile.AppendLine($"""
-                        <h2 id="{roleId}">
-                            {role} list
-                        </h2>
+                        # {role} list
                         <table>
                             <tbody>
                         """);
@@ -352,8 +351,8 @@ namespace Sisk.GenerateMdDoc
                         typeFile.AppendLine($"""
                                 <tr>
                                     <td width="33%">
-                                        <img src="/img/icons/{member.Role.ToLower()}.svg">
-                                        <a href="/spec/{member.Filename}">
+                                        <img class="icon" src="/assets/img/icons/{member.Role.ToLower()}.svg">
+                                        <a href="/read?q=/contents/spec/{member.Filename}.md">
                                             {member.DeclaringName}
                                         </a>
                                     </td>
@@ -369,15 +368,8 @@ namespace Sisk.GenerateMdDoc
                         """);
                 }
 
-                typeFile.AppendLine($"""
-                                        </article>
-                            <include name="/spec/__Component"></include>
-                        </section>
-                    </div>
-                    """);
-
-                string html = typeFile.ToString();
-                File.WriteAllText("Output/" + fileName, html);
+                string mk = typeFile.ToString();
+                File.WriteAllText("Output/" + fileName, mk);
             }
 
             // members files
@@ -385,99 +377,97 @@ namespace Sisk.GenerateMdDoc
             {
                 foreach (StMember member in type.Members)
                 {
-                    StringBuilder html = new StringBuilder();
-                    html.AppendLine($"""
-                            <script>
-                                setPageTitle("{type.ShortName} {type.Type.ToLower()}");
-                                app.navPage = "spec";
-                            </script>
-                            <include name="component/header"></include>
-                            <div id="appContainer">
-                                <section class="doc-container">
-                                    <article class="section-content pad">
-                                        <h1>
-                                            {member.DeclaringName} {member.Role.ToLower()}
-                                        </h1>
-                                        <p>
-                                            Declaring type:
-                                            <a href="/spec/{member.ParentType}">
-                                                {member.ParentType}
-                                            </a>
-                                            (from {type.Assembly})
-                                        </p>
+                    StringBuilder md = new StringBuilder();
+                    md.AppendLine($"""
+                            <!--
+
+                            Copyrights 2023 Sisk Framework - CypherPotato
+                            Published under MIT license
+
+                            !!! DO NOT EDIT THIS FILE !!!
+                            This file was generated by a tool in the Sisk package. To edit the information in this documentation,
+                            edit the XML documentation present in the Sisk source code.
+
+                            -->
+
+
+                            # {member.DeclaringName} {member.Role.ToLower()}
+
+                            Declaring type: [{member.ParentType}](/read?q=/contents/spec/{member.ParentType}.md) (from {type.Assembly})
+
                             """);
                     if (!string.IsNullOrEmpty(member.Definition))
                     {
-                        html.AppendLine($"""
-                            <p>
-                                Definition:
-                            </p>
-                            <pre><code class="language-cs">{member.Definition}</code></pre>
+                        md.AppendLine($"""
+
+                            Definition:
+
+                            ```cs
+                            {member.Definition}
+                            ```
                             """);
                     }
                     if (!string.IsNullOrEmpty(member.Summary))
                     {
-                        html.AppendLine($"""
-                            <p>
-                                {member.Summary}
-                            </p>
+                        md.AppendLine($"""
+                           
+                            {member.Summary}
+
                             """);
                     }
                     if (!string.IsNullOrEmpty(member.Docs))
                     {
-                        html.AppendLine($"""
-                            <section>
-                                {member.Docs}
-                            </section>
+                        md.AppendLine($"""
+                            
+                            {member.Docs}
+
                             """);
                     }
                     if (!string.IsNullOrEmpty(member.Remarks))
                     {
-                        html.AppendLine($"""
-                            <blockquote>
-                                <p><b>Remarks:</b></p>
-                                <p>{member.Remarks}</p>
-                            </blockquote>
+                        md.AppendLine($"""
+                            > **Remarks:**
+                            >
+                            > {member.Remarks}
                             """);
                     }
                     if (member.Parameters.Count > 0)
                     {
-                        html.AppendLine($"""
-                            <h2>
-                                Parameters
-                            </h2>
+                        md.AppendLine($"""
+                            
+                            # Parameters
+
                             <table>
                                 <tbody>
                             """);
                         foreach (StParam param in member.Parameters)
                         {
-                            html.AppendLine($"""
+                            md.AppendLine($"""
                                 <tr>
                                     <td width="33%">{param.Name}</td>
                                     <td>{param.Summary}</td>
                                 </tr>
                                 """);
                         }
-                        html.AppendLine($"""
+                        md.AppendLine($"""
                             </tbody>
                         </table>
                         """);
                     }
-                    html.AppendLine($"""
-                                        </article>
-                            <include name="/spec/__Component"></include>
-                        </section>
-                    </div>
-                    """);
 
-                    string rawHtml = html.ToString();
-                    File.WriteAllText("Output/" + member.Filename + ".html", rawHtml);
+                    string rawHtml = md.ToString();
+                    File.WriteAllText("Output/" + member.Filename + ".md", rawHtml);
                 }
             }
 
-            componentBuilder.AppendLine("""</div>""");
-            File.WriteAllText("Output/__Component.html", componentBuilder.ToString());
-            File.WriteAllText("Output/index.html", indexPage.ToString());
+            string specJs = "var specsIndex = ";
+            specJs += JsonSerializer.Serialize(links, new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                WriteIndented = true
+            }) + ";";
+
+            File.WriteAllText("Output/spec.js", specJs);
         }
     }
 }

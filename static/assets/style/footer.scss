@@ -1,0 +1,40 @@
+@import "./variables.scss";
+
+#footer {
+    @include container;
+    position: relative;
+    display: grid;
+    align-items: center;
+    background-color: $bg-300;
+    color: $foreground-100;
+    margin-block: 100px 30px;
+    border-radius: 16px;
+    padding: 50px;
+    height: 400px;
+    bottom: 0;
+    overflow: hidden;
+
+    .legal {
+        position: relative;
+        z-index: 5;
+        width: 70%;
+
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        a {
+            color: $primary-100;
+            text-decoration: none;
+        }
+    }
+
+    img {
+        position: absolute;
+        width: 1800px;
+        height: auto;
+        right: -25%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}

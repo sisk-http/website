@@ -1,0 +1,185 @@
+@import "./variables.scss";
+
+@mixin section-padding {
+    padding-block: 100px;
+}
+
+.lp-wrapper {
+
+    p,
+    li {
+        line-height: 1.6;
+    }
+
+    #principal {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 2fr 1fr;
+        width: 100%;
+        height: 700px;
+        border-radius: 16px;
+        background: url('/assets/img/bg.jpg');
+        border: 1px solid #00000006;
+        background-size: cover;
+        margin-inline: auto;
+        padding: 70px;
+
+        h1,
+        p {
+            max-width: 700px;
+        }
+
+        h1 {
+            font-size: 60px;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 21px;
+            font-weight: 300;
+            margin-block: 2.5rem;
+        }
+
+        img {
+            width: 90%;
+            height: auto;
+        }
+    }
+
+    #why-sisk {
+        @include section-padding;
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr 1fr;
+
+        h1 {
+            font-size: 46px;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: 300;
+            margin-block: 2.5rem;
+        }
+
+        ul {
+            li {
+                font-size: 20px;
+                list-style: none;
+                margin-bottom: 25px;
+
+                b {
+                    color: $primary-100;
+                }
+
+                ::before {
+                    content: '\2713';
+                    display: inline-block;
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        img {
+            place-self: center;
+            width: 70%;
+            height: auto;
+        }
+    }
+
+    #install-banner {
+        @include section-padding;
+        padding: 70px;
+        width: fit-content;
+        height: 300px;
+        background-color: $bg-200;
+        border: 1px solid #00000006;
+        border-radius: 16px;
+        margin-inline: auto;
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        pre {
+            display: block;
+            font-size: 20px;
+            width: fit-content;
+            margin-inline: auto;
+        }
+    }
+
+    #dotnet-banner {
+        @include section-padding;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        text-align: right;
+
+        h1 {
+            font-size: 45px;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: 300;
+            margin-block: 2.5rem;
+        }
+
+        img {
+            place-self: center;
+            width: 70%;
+            height: auto;
+        }
+    }
+
+    #links-banner {
+        @include section-padding;
+        display: flex;
+        gap: 15px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-wrap: 1;
+        justify-content: center;
+
+        a {
+            background-color: $bg-200;
+            border: 1px solid #00000006;
+            display: block;
+            border-radius: 6px;
+            text-decoration: none;
+            color: $foreground-100;
+            padding: 30px;
+            width: 400px;
+            height: auto;
+
+            i {
+                display: block;
+                position: relative;
+                left: -5px;
+                font-size: 36px;
+                margin-bottom: 15px;
+            }
+
+            div {
+                font-weight: 600;
+                font-size: 17px;
+            }
+
+            p {
+                margin-block: 10px 0;
+                font-size: 16px;
+                font-weight: 400;
+            }
+
+            &:hover {
+                opacity: $hover-opacity;
+            }
+
+            &:active {
+                opacity: $active-opacity;
+            }
+        }
+    }
+}

@@ -1,0 +1,99 @@
+@import "./variables.scss";
+
+#docsContainer {
+    line-height: 1.8;
+    padding-bottom: 100px;
+
+    blockquote {
+        background-color: #f3f6ff;
+        margin-inline: 0;
+        padding: 10px 30px;
+        border-radius: 12px;
+
+        p:first-of-type>strong {
+            color: #05113b;
+        }
+    }
+
+    a {
+        border-radius: 4px;
+        color: $foreground-link;
+        text-decoration: none;
+
+        &:hover {
+            background-color: $bg-200;
+            outline: 3px solid $bg-200;
+        }
+
+        &:active {
+            opacity: $active-opacity;
+        }
+    }
+
+    h1[id] {
+        margin-top: 7rem;
+
+        &:first-of-type {
+            margin-top: 0;
+            font-size: 3rem;
+        }
+
+        &::before {
+            content: '';
+            display: block;
+            height: 140px;
+            margin-top: -140px;
+            visibility: hidden;
+        }
+    }
+
+    h2[id] {
+        margin-top: 2.7rem;
+    }
+
+    img {
+        max-width: 700px;
+        display: block;
+        margin-inline: auto;
+
+        &.icon {
+            position: relative;
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            margin-right: 12px;
+            left: 2px;
+            top: 3px;
+        }
+    }
+
+    table {
+        border-collapse: collapse;
+        outline: 1px solid $bg-400;
+        border-radius: 8px;
+        overflow: hidden;
+        width: 100%;
+
+        th,
+        td {
+            padding: 4px 10px;
+            min-width: 140px;
+        }
+
+        tr:not(:last-of-type) {
+            border-bottom: 1px solid $bg-400;
+        }
+
+        thead {
+            background-color: $bg-300;
+            color: $foreground-200;
+
+            th {
+                text-align: left;
+                font-size: 12px;
+                text-transform: uppercase;
+                padding: 6px 10px;
+            }
+        }
+    }
+}

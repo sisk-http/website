@@ -1,0 +1,39 @@
+.unloading {
+    animation-name: unload;
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation-duration: .25s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.loading {
+    animation-name: onload;
+    animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation-duration: .25s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes unload {
+    0% {
+        top: 0;
+        opacity: 1;
+    }
+
+    100% {
+        top: -80px;
+        opacity: 0;
+    }
+}
+
+@keyframes onload {
+    0% {
+        top: 80px;
+        opacity: 0;
+    }
+
+    100% {
+        top: 0;
+        opacity: 1;
+    }
+}
