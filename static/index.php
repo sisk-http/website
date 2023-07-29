@@ -1,6 +1,7 @@
 <?php
 
 define("APP_ROOT", __DIR__);
+define("CACHE_INDEX", 2);
 require_once 'lib/fw.php';
 
 usleep(200 * 1000);
