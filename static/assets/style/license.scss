@@ -1,0 +1,25 @@
+@import "./variables.scss";
+
+.license-screen {
+    h1:first-child {
+        font-size: 80px;
+        max-width: 1000px;
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    .license-text {
+        background-color: $bg-200;
+        border-radius: 12px;
+        border: 1px solid #00000012;
+        width: 800px;
+        margin-inline: auto;
+        padding: 20px;
+    }
+
+    .explanation {
+        width: 800px;
+        margin-inline: auto;
+        padding: 20px;
+    }
+}

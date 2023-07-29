@@ -9,7 +9,7 @@
             and maintained by <a href="https://www.project-principium.dev/">Project Principium</a>.
         </p>
         <p>
-            Sisk is distributed under <a href="https://opensource.org/license/mit/">The MIT License</a>.
+            Sisk is distributed under <a href="/license">The MIT License</a>.
         </p>
         <p>
             <small>

@@ -49,6 +49,7 @@ $routes = [];
 function render_view(string $view_path, ?array $args = [])
 {
     extract($args, EXTR_OVERWRITE);
+    $view_path = str_replace('.', DIRECTORY_SEPARATOR, $view_path);
     include path_combine(APP_ROOT, VIEW_PATH, $view_path . ".php");
 }
 

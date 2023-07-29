@@ -9,13 +9,13 @@ There are two types of request handlers:
 
 Both requests handlers can override the actual router callback function response. By the way, request handlers can be useful for validating a request, such as authentication, content, or any other information, such as storing information, logs, or other steps that can be performed before or after a response.
 
-![](/img/requesthandlers1.png)
+![](/assets/img/requesthandlers1.png)
 
 This way, a request handler can interrupt all this execution and return a response before finishing the cycle, discarding everything else in the process.
 
 Example: let's assume that a user authentication request handler does not authenticate him. It will prevent the request lifecycle from being continued and will hang. If this happens in the request handler at position two, the third and onwards will not be evaluated.
 
-![](/img/requesthandlers2.png)
+![](/assets/img/requesthandlers2.png)
 
 # Creating an request handler
 

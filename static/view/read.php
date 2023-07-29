@@ -21,6 +21,7 @@
         const query = '<?= $_GET['q'] ?>';
 
         var docContainer = document.getElementById("docsContainer");
+        var docWrapper = document.getElementById("docsWrapper");
 
         let queryFormatted = query;
         if (!query.endsWith(".md"))
@@ -30,9 +31,18 @@
             .then(res => res.text())
             .then(md => {
                 docContainer.innerHTML = new showdown.Converter().makeHtml(md);
-                document.getElementById("docsWrapper").style.height = Math.max(docContainer.clientHeight, window.innerHeight) + "px";
                 Prism.highlightAll();
                 initializeDocLinks();
+
+                const images = [...document.querySelectorAll("#docsWrapper img")];
+
+                const proms = images.map(im => new Promise(res =>
+                    im.onload = () => res([im.width, im.height])
+                ))
+
+                Promise.all(proms).then(data => {
+                    docWrapper.style.height = Math.max(docContainer.clientHeight + 200, window.innerHeight) + "px";
+                });
             });
 
         addEventListener("beforeunload", (event) => {

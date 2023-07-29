@@ -19,7 +19,10 @@ html {
 
         main {
             @include container;
-            margin-top: $container-top;
+
+            &:not(.doc-reader) {
+                margin-top: $container-top;
+            }
 
             .button {
                 display: inline-block;
@@ -58,17 +61,19 @@ html {
                     width: 80%;
                     height: auto;
                     padding-inline: 80px;
+                    margin-top: $container-top;
                 }
 
                 #docsNav {
+                    @include scrollbar;
                     position: sticky;
                     left: 0;
                     top: $header-height;
-                    padding-block: 0 30px;
+                    padding-block: 100px 30px;
                     width: 20%;
                     height: 100%;
                     padding-inline: 15px;
-                    max-height: calc(100svh - $header-height - $container-top);
+                    max-height: calc(100svh - $header-height);
                     overflow-y: scroll;
                 }
 

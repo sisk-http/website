@@ -7,5 +7,6 @@ usleep(200 * 1000);
 
 set_view('/', 'home');
 set_view('/read', 'read');
+set_view('/license', 'license');
 
 router_execute();

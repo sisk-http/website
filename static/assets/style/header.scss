@@ -20,6 +20,7 @@ header {
         @include container;
 
         .logo {
+            text-decoration: none;
             display: flex;
             align-items: center;
             height: 100%;
@@ -38,8 +39,74 @@ header {
             }
         }
 
-        .nav-links {
+        .search-box {
+            background-color: #85858511;
+            border: 1px solid #85858534;
+            border-radius: 500px;
+            overflow: hidden;
             margin-left: auto;
+            display: block;
+            position: relative;
+            height: 42px;
+            width: 182px;
+            transition: .25s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+            .placeholder {
+                position: absolute;
+                pointer-events: none;
+                top: 50%;
+                left: 16px;
+                transform: translateY(-50%);
+                color: $foreground-200;
+                opacity: 1;
+                font-size: 14px;
+                transition: .25s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+                i {
+                    position: relative;
+                    top: 1px;
+                    font-size: 16px;
+                    margin-right: 3px;
+                }
+
+                kbd {
+                    padding: 3px 6px;
+                    border: 1px solid #85858534;
+                    border-radius: 4px;
+                }
+            }
+
+            input {
+                font-family: $font-family;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                line-height: 42px;
+                border: none;
+                outline: none;
+                background-color: transparent;
+                padding-inline: 42px 18px;
+            }
+
+            &:has(input:focus) {
+                background-color: #ffffffda;
+                border-color: #85858541;
+                width: 320px;
+
+                .placeholder {
+                    left: 0;
+                    opacity: 0;
+                }
+
+                input {
+                    padding-inline: 18px;
+                }
+            }
+        }
+
+        .nav-links {
+            margin-left: 20px;
             display: flex;
             align-items: center;
 

@@ -1,0 +1,54 @@
+@import "./variables.scss";
+
+#searchResults {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    height: 400px;
+    width: 700px;
+    transform: translateX(-50%);
+    background-color: #ffffffda;
+    backdrop-filter: blur(40px);
+    border-radius: 12px;
+    opacity: 0;
+    box-shadow: 0 6px 20px 0 #00000033;
+    pointer-events: none;
+    overflow-y: scroll;
+    padding: 8px;
+    z-index: 50;
+    transition: .2s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    &.visible {
+        pointer-events: all;
+        top: 120px;
+        opacity: 1;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+        padding: 8px 12px;
+        border-radius: 8px;
+        margin-bottom: 3px;
+
+        &:hover,
+        &.selected {
+            background-color: #9494942c;
+        }
+
+        &:active {
+            opacity: $active-opacity;
+        }
+
+        .title {
+            font-weight: 500;
+            color: $foreground-100;
+        }
+
+        .ref {
+            font-weight: 400;
+            color: $foreground-200;
+            font-size: 14px;
+        }
+    }
+}
