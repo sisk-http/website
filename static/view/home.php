@@ -87,7 +87,7 @@
             <a href="https://github.com/sisk-http">
                 <i class="lab la-github"></i>
                 <div>
-                    Folk Sisk
+                    Fork Sisk
                 </div>
                 <p>
                     Collaborate, edit, build, access our code repository.
