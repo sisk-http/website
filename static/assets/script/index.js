@@ -15,38 +15,43 @@ var docsIndex = [
         title: "Native AOT Support",
         href: "/contents/docs/native-aot.md"
     },
-    {
-        title: "Service providers",
-        href: "/contents/docs/service-providers.md"
-    },
     "Fundamentals",
     {
         title: "Routing",
-        href: "/contents/docs/routing.md"
+        href: "/contents/docs/fundamentals/routing.md"
     },
     {
         title: "Request handlers",
-        href: "/contents/docs/request-handlers.md"
+        href: "/contents/docs/fundamentals/request-handlers.md"
     },
     {
         title: "Requests",
-        href: "/contents/docs/requests.md"
+        href: "/contents/docs/fundamentals/requests.md"
     },
     {
         title: "Responses",
-        href: "/contents/docs/responses.md"
+        href: "/contents/docs/fundamentals/responses.md"
     },
-    "features",
+    "Features",
     {
         title: "Logging",
-        href: "/contents/docs/logging.md"
+        href: "/contents/docs/features/logging.md"
     },
     {
         title: "Server sent events",
-        href: "/contents/docs/server-sent-events.md"
+        href: "/contents/docs/features/server-sent-events.md"
     },
     {
         title: "Websockets",
-        href: "/contents/docs/websockets.md"
+        href: "/contents/docs/features/websockets.md"
     },
+    "Extensions",
+    {
+        title: "Service providers",
+        href: "/contents/docs/extensions/service-providers.md"
+    },
+    {
+        title: "Basic auth",
+        href: "/contents/docs/extensions/basic-auth.md"
+    }
 ];

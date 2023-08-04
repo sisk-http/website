@@ -10,7 +10,7 @@ edit the XML documentation present in the Sisk source code.
 -->
 
 
-# RegisterValueHandler(Object, HttpResponse}) method
+# RegisterValueHandler`(Object, HttpResponse}) method
 
 Declaring type: [Sisk.Core.Routing.Router](/read?q=/contents/spec/Sisk.Core.Routing.Router.md) (from Sisk.Core)
 

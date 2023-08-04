@@ -10,16 +10,16 @@ edit the XML documentation present in the Sisk source code.
 -->
 
 
-# GetContextBag() method
+# Realm property
 
-Declaring type: [Sisk.Core.Http.HttpRequest](/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.md) (from Sisk.Core)
+Declaring type: [Sisk.BasicAuth.BasicAuthenticateRequestHandler](/read?q=/contents/spec/Sisk.BasicAuth.BasicAuthenticateRequestHandler.md) (from Sisk.BasicAuth)
 
 
 Definition:
 
 ```cs
-public T GetContextBag<T>(T contextObject)
+public string Realm { get; set; }
 ```
 
-Gets an managed object from the HTTP context bag through it's type.
+Gets or sets a message to show the client which protection scope it needs to authenticate to.
 

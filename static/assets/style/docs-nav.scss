@@ -22,6 +22,10 @@
         text-decoration: none;
         color: $foreground-100;
         width: fit-content;
+        max-width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         transition: .5s cubic-bezier(0.075, 0.82, 0.165, 1);
 
         &:hover {

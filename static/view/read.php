@@ -72,7 +72,12 @@
                 if (query.includes(navItem.href)) {
                     classes += "active scroll-to-component";
 
+                    let firstLinkAdded = false;
                     document.querySelectorAll("#docsContainer h1[id]").forEach(e => {
+                        if (firstLinkAdded == false) {
+                            firstLinkAdded = true;
+                            return; // skip the first h1
+                        }
                         after += html` 
                             <a class="sub-link" href="#${e.id}">
                                 ${e.innerText}

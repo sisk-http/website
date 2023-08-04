@@ -9,7 +9,7 @@ edit the XML documentation present in the Sisk source code.
 
 -->
 
-# ValueResult`1 class
+# ValueResult class
 Assembly: Sisk.Core
 
 Namespace: Sisk.Core.Routing

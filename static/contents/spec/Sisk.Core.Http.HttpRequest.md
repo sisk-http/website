@@ -138,6 +138,17 @@ Represents an HTTP request received by a Sisk server.
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/property.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.InputStream.md">
+            InputStream
+        </a>
+    </td>
+    <td>
+        Gets the HTTP request content stream.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/property.svg">
         <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.IsContentAvailable.md">
             IsContentAvailable
         </a>
@@ -275,8 +286,8 @@ Represents an HTTP request received by a Sisk server.
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/method.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.GetContextBag().md">
-            GetContextBag()
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.GetContextBag`().md">
+            GetContextBag`()
         </a>
     </td>
     <td>
@@ -385,8 +396,8 @@ Represents an HTTP request received by a Sisk server.
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/method.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.SetContextBag().md">
-            SetContextBag()
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.SetContextBag`().md">
+            SetContextBag`()
         </a>
     </td>
     <td>

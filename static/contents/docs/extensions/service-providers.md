@@ -37,9 +37,17 @@ This file is read alongside the server executable, regardless of the build platf
 > 
 > In Sisk service provider configuration files it's allowed to write `// single` or `/* multi-line comments */`, as they are ignored by the interpreter.
 
+# Installing
+
+You can install the Sisk.ServiceProviders package it by:
+
+    dotnet add package Sisk.SericeProviders
+
+You can find more options downloading it [here](https://www.nuget.org/packages/Sisk.ServiceProvider/).
+
 # Creating an service provider instance
 
-In this session we will learn how to configure the application to run a Sisk service provider. First of all, you will need to have the latest version of Sisk installed in your project. See [how to install here](/read?q=/contents/docs/installing).
+In this session we will learn how to configure the application to run a Sisk service provider. First of all, you will need to have the latest version of Sisk installed in your project.
 
 First let's configure an RouterFactory class instance that will be configured and will emit a router. This class is not the entry point of the application, but nevertheless it is the object that will run the runtime objects.
 

@@ -72,8 +72,8 @@ Represents a collection of Routes and main executor of callbacks in an <a href="
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/method.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Router.RegisterValueHandler(Object-HttpResponse}).md">
-            RegisterValueHandler(Object, HttpResponse})
+        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Router.RegisterValueHandler`(Object-HttpResponse}).md">
+            RegisterValueHandler`(Object, HttpResponse})
         </a>
     </td>
     <td>

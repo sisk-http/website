@@ -1,4 +1,15 @@
 var specsIndex = [
+  "Sisk.BasicAuth",
+  {
+    "title": "BasicAuthenticateRequestHandler",
+    "href": "/contents/spec/Sisk.BasicAuth.BasicAuthenticateRequestHandler.md",
+    "icon": "class"
+  },
+  {
+    "title": "BasicAuthenticationCredentials",
+    "href": "/contents/spec/Sisk.BasicAuth.BasicAuthenticationCredentials.md",
+    "icon": "class"
+  },
   "Sisk.Core.Entity",
   {
     "title": "CrossOriginResourceSharingHeaders",
@@ -269,8 +280,8 @@ var specsIndex = [
     "icon": "class"
   },
   {
-    "title": "ValueResult\u00601",
-    "href": "/contents/spec/Sisk.Core.Routing.ValueResult\u00601.md",
+    "title": "ValueResult",
+    "href": "/contents/spec/Sisk.Core.Routing.ValueResult.md",
     "icon": "class"
   },
   "Sisk.Provider",

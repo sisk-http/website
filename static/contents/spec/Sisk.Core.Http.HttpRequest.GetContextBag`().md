@@ -10,7 +10,7 @@ edit the XML documentation present in the Sisk source code.
 -->
 
 
-# SetContextBag() method
+# GetContextBag`() method
 
 Declaring type: [Sisk.Core.Http.HttpRequest](/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.md) (from Sisk.Core)
 
@@ -18,19 +18,8 @@ Declaring type: [Sisk.Core.Http.HttpRequest](/read?q=/contents/spec/Sisk.Core.Ht
 Definition:
 
 ```cs
-public T SetContextBag<T>(T contextObject)
+public T GetContextBag<T>(T contextObject)
 ```
 
-Stores a managed object in HTTP context bag through it's type.
+Gets an managed object from the HTTP context bag through it's type.
 
-
-# Parameters
-
-<table>
-    <tbody>
-<tr>
-    <td width="33%">contextObject</td>
-    <td>The object which will be stored.</td>
-</tr>
-    </tbody>
-</table>
