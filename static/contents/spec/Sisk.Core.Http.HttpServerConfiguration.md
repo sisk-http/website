@@ -105,6 +105,17 @@ Provides execution parameters for an <a href="/read?q=/contents/spec/Sisk.Core.H
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/property.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServerConfiguration.KeepAlive.md">
+            KeepAlive
+        </a>
+    </td>
+    <td>
+        Gets or sets whether the client should mantain an persistent connection with the HTTP server.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/property.svg">
         <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServerConfiguration.ListeningHosts.md">
             ListeningHosts
         </a>
@@ -144,6 +155,17 @@ Provides execution parameters for an <a href="/read?q=/contents/spec/Sisk.Core.H
     </td>
     <td>
         Gets or sets whether the HTTP server should resolve remote forwarded hosts by the header X-Forwarded-Host.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/property.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServerConfiguration.SessionConfiguration.md">
+            SessionConfiguration
+        </a>
+    </td>
+    <td>
+        Get specific settings for sessions.
     <td>
 </tr>
 <tr>

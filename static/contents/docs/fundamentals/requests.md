@@ -18,7 +18,7 @@ This property returns the request's method represented by an [HttpMethod](https:
 
 > **Note:**
 > 
-> Unlike route methods, this property does not serves the [RouteMethod.Any](/read?q=/contents/spec/Sisk.Core.Routing.RouteMethod.Any) item. Instead, it returns the real request method. Custom or non RFC http methods are not supported.
+> Unlike route methods, this property does not serves the [RouteMethod.Any](/read?q=/contents/spec/Sisk.Core.Routing.RouteMethod.Any) item. Instead, it returns the real request method.
 
 # Getting the request url component
 
@@ -154,6 +154,8 @@ byte[] bodyBytes = request.RawBody;
 ```
 
 It is also possible to determine if there is a body in the request and if it is loaded with the properties [HasContents](/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.HasContents), which determines if the request has contents and [IsContentAvailable](/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.IsContentAvailable) which indicates that the HTTP server fully received the content from the remote point.
+
+In a BeforeContents Request Handler context, you can read the request content inline with GetInputStream(). Learn more [here](/read?q=/contents/docs/fundamentals/request-handlers.md).
 
 > **Note:**
 > 

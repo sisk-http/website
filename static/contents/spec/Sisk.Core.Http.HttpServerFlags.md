@@ -50,6 +50,17 @@ Provides advanced fields for Sisk server behavior.
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/field.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServerFlags.IdleConnectionTimeout.md">
+            IdleConnectionTimeout
+        </a>
+    </td>
+    <td>
+        Determines the maximum amount of time an connection can keep alive without sending or receiving any data.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/field.svg">
         <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServerFlags.NormalizeHeadersEncodings.md">
             NormalizeHeadersEncodings
         </a>
@@ -89,6 +100,17 @@ Provides advanced fields for Sisk server behavior.
     </td>
     <td>
         Determines if the HTTP server should send the X-Powered-By header in all responses.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/field.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServerFlags.SessionIdCookie.md">
+            SessionIdCookie
+        </a>
+    </td>
+    <td>
+        Defines the name of the cookie that is sent by the HTTP server for the Session ID.
     <td>
 </tr>
 <tr>

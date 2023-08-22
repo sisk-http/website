@@ -134,6 +134,12 @@ header {
                         opacity: $active-opacity;
                     }
                 }
+
+                >i {
+                    font-size: 1.75rem;
+                    top: 1px;
+                    position: relative;
+                }
             }
         }
     }

@@ -36,6 +36,9 @@ function nav_active($name)
             <a <?= nav_active('license') ?> href="/license">
                 License
             </a>
+            <a href="https://github.com/sisk-http">
+                <i class="lab la-github"></i>
+            </a>
         </div>
     </div>
 </header>

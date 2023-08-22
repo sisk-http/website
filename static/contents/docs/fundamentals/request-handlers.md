@@ -2,10 +2,11 @@
 
 Request handlers, also known as "middlewares", are functions that run before or after a request is executed on the router. They can be defined per route or per router.
 
-There are two types of request handlers:
+There are three types of request handlers:
 
-- **Before requests**: defines that the request handler will be executed BEFORE calling the router callback. response with it's own response.
-- **After response**: defines that the request handler will be executed AFTER calling the router callback.
+- **BeforeContents**: defines a Request Handler that will be executed before the request content is loaded. Note that it is possible to use the [GetInputStream()](/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.GetInputStream().md) method in this context and also the [ContentLength](/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.ContentLength.md) property. Returning a non-null HTTP response will discard the content sent by the client and not load the input body into the memory.
+- **BeforeResponse**: defines that the request handler will be executed before calling the router callback, but after the contents is loaded and ready.
+- **AfterResponse**: defines that the request handler will be executed after calling the router callback. Sending an HTTP response in this context will overwrite the router's HTTP response.
 
 Both requests handlers can override the actual router callback function response. By the way, request handlers can be useful for validating a request, such as authentication, content, or any other information, such as storing information, logs, or other steps that can be performed before or after a response.
 
@@ -106,6 +107,30 @@ Example:
 
 ```cs
 [RequestHandler(typeof(AuthenticateUserRequestHandler), ConstructorArguments = new object?[] { "arg1", 123, ... })]
+static HttpResponse Index(HttpRequest request)
+{
+    HttpResponse res = new HttpResponse();
+    res.Content = new StringContent("Hello world!");
+    return res;
+}
+```
+
+You can also create your own attribute that implements RequestHandler:
+
+```cs
+public class AuthenticateAttribute : RequestHandlerAttribute
+{
+    public AuthenticateAttribute() : base(typeof(AuthenticateUserRequestHandler), ConstructorArguments = new object?[] { "arg1", 123, ... })
+    {
+        ;
+    }
+}
+```
+
+And use it with:
+
+```cs
+[Authenticate]
 static HttpResponse Index(HttpRequest request)
 {
     HttpResponse res = new HttpResponse();

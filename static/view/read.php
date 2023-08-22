@@ -38,7 +38,9 @@
 
                 const proms = images.map(im => new Promise(res =>
                     im.onload = () => res([im.width, im.height])
-                ))
+                ));
+
+                proms.push(new Promise(r => setTimeout(r, 250)));
 
                 Promise.all(proms).then(data => {
                     docWrapper.style.height = Math.max(docContainer.clientHeight + 200, window.innerHeight) + "px";

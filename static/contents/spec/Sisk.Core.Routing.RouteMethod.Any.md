@@ -18,7 +18,7 @@ Declaring type: [Sisk.Core.Routing.RouteMethod](/read?q=/contents/spec/Sisk.Core
 Definition:
 
 ```cs
-Any = 0
+Any = Get | Post | Put | Patch | Delete | Copy | Head | Options | Link | Unlink | View | Trace
 ```
 
 Represents any HTTP method.

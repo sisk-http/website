@@ -18,7 +18,7 @@ Declaring type: [Sisk.Core.Http.HttpRequest](/read?q=/contents/spec/Sisk.Core.Ht
 Definition:
 
 ```cs
-public HttpContext? Context { get; }
+public HttpContext Context { get; }
 ```
 
 Gets the HttpContext for this request.

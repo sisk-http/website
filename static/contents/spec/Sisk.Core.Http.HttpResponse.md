@@ -39,6 +39,17 @@ Represents an HTTP Response.
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.CreateRedirectResponse(RouterCallback).md">
+            CreateRedirectResponse(RouterCallback)
+        </a>
+    </td>
+    <td>
+        Creates an new redirect <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.md">HttpResponse</a> which redirects to the route path defined in a callback. The provided method must have a valid RouteAttribute attribute.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
         <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.CreateRedirectResponse(string).md">
             CreateRedirectResponse(string)
         </a>
@@ -56,6 +67,72 @@ Represents an HTTP Response.
     </td>
     <td>
         Gets the raw HTTP response message.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.WithContent(ByteArrayContent).md">
+            WithContent(ByteArrayContent)
+        </a>
+    </td>
+    <td>
+        Sets an content in this <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.md">HttpResponse</a> object.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.WithContent(string).md">
+            WithContent(string)
+        </a>
+    </td>
+    <td>
+        Sets an UTF-8 string in this <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.md">HttpResponse</a> content.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.WithHeader(NameValueCollection).md">
+            WithHeader(NameValueCollection)
+        </a>
+    </td>
+    <td>
+        Sets an array of HTTP header in this <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.md">HttpResponse</a> object.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.WithHeader(string-string).md">
+            WithHeader(string, string)
+        </a>
+    </td>
+    <td>
+        Sets an HTTP header in this <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.md">HttpResponse</a> object.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.WithStatus(int).md">
+            WithStatus(int)
+        </a>
+    </td>
+    <td>
+        Sets the HTTP response status code.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.WithStatus(HttpStatusCode).md">
+            WithStatus(HttpStatusCode)
+        </a>
+    </td>
+    <td>
+        Sets the HTTP response status code.
     <td>
 </tr>
     </tbody>

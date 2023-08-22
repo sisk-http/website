@@ -81,6 +81,17 @@ Represents an class that, when applied to a method, will be recognized by a rout
         Gets or sets whether this route should send Cross-Origin Resource Sharing headers in the response.
     <td>
 </tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/property.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Routing.RouteAttribute.UseRegex.md">
+            UseRegex
+        </a>
+    </td>
+    <td>
+        Get or sets if this route should use regex to be interpreted instead of predefined templates.
+    <td>
+</tr>
     </tbody>
 </table>
 # Constructor list

@@ -138,17 +138,6 @@ Represents an HTTP request received by a Sisk server.
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/property.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.InputStream.md">
-            InputStream
-        </a>
-    </td>
-    <td>
-        Gets the HTTP request content stream.
-    <td>
-</tr>
-<tr>
-    <td width="33%">
-        <img class="icon" src="/assets/img/icons/property.svg">
         <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.IsContentAvailable.md">
             IsContentAvailable
         </a>
@@ -267,6 +256,17 @@ Represents an HTTP request received by a Sisk server.
         Gets a unique random ID for this request.
     <td>
 </tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/property.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.Session.md">
+            Session
+        </a>
+    </td>
+    <td>
+        Gets the persistent session that is embedded in this request. This property returns null if the server is not configured to use sessions.
+    <td>
+</tr>
     </tbody>
 </table>
 # Method list
@@ -325,6 +325,17 @@ Represents an HTTP request received by a Sisk server.
     </td>
     <td>
         Gets a header value using a case-insensitive search.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.GetInputStream().md">
+            GetInputStream()
+        </a>
+    </td>
+    <td>
+        Gets the HTTP request content stream. This property is only available while the content has not been imported by the HTTP server and will invalidate the body content cached in this object.
     <td>
 </tr>
 <tr>

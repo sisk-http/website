@@ -18,7 +18,7 @@ Declaring type: [Sisk.Core.Http.HttpContext](/read?q=/contents/spec/Sisk.Core.Ht
 Definition:
 
 ```cs
-public HttpServer? HttpServer { get; }
+public HttpServer HttpServer { get; }
 ```
 
 Gets the context Http Server instance.
