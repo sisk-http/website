@@ -160,17 +160,6 @@ Provides execution parameters for an <a href="/read?q=/contents/spec/Sisk.Core.H
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/property.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServerConfiguration.SessionConfiguration.md">
-            SessionConfiguration
-        </a>
-    </td>
-    <td>
-        Get specific settings for sessions.
-    <td>
-</tr>
-<tr>
-    <td width="33%">
-        <img class="icon" src="/assets/img/icons/property.svg">
         <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServerConfiguration.ThrowExceptions.md">
             ThrowExceptions
         </a>

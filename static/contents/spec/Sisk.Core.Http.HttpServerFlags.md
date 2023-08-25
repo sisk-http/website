@@ -105,17 +105,6 @@ Provides advanced fields for Sisk server behavior.
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/field.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServerFlags.SessionIdCookie.md">
-            SessionIdCookie
-        </a>
-    </td>
-    <td>
-        Defines the name of the cookie that is sent by the HTTP server for the Session ID.
-    <td>
-</tr>
-<tr>
-    <td width="33%">
-        <img class="icon" src="/assets/img/icons/field.svg">
         <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServerFlags.ThrowContentOnNonSemanticMethods.md">
             ThrowContentOnNonSemanticMethods
         </a>

@@ -1,6 +1,40 @@
-# 0.15
+# 0.15-rc
 
+Please, read the [release overview](https://github.com/sisk-http/core/tree/main/feature-preview/0.15) for full changelogs and details for this version.
 
+Core:
+
+- Added the HttpContext.OverrideHeaders property.
+- Added the HttpRequest.SetContextBag and GetContextBag methods.
+- Added the Router.RegisterValueHandler method.
+- Added the RouterModule class.
+- Added the ValueResult class.
+- Added the HttpWebSocket.MaxAttempts property.
+- Added the HttpStreamPingPolicy class.
+- Added the HttpRequest.InputStream property.
+- Added an string representation to HttpRequest.ToString().
+- Added the HttpServerConfiguration.KeepAlive property.
+- Added Fluent Interface style methods for HttpResponse: WithContent, WithHeader, WithHeaders, WithStatus. Documented in [a9c8873](https://github.com/sisk-http/core/commit/a9c8873519b7c4dcf4a9ad9bcb878f897fee2611).
+- Added the HttpServerFlags.IdleConnectionTimeout which determines the time to keep an keep-alive connection alive.
+- Improved regex routes functionality, with improved performance and regex groups to queries.
+- Renamed HttpRequestEventSource.KeepAlive -> WaitForFail.
+- Simplified the way HttpRequest obtains the origin IP of the request.
+- Rewrite the return type of HttpRequest.SendTo from HttpResponse to object.
+- Rewrite the LogStream.WriteException output format.
+- Rewrite the return type of RouterCallback delegate from HttpResponse to object.
+- The HttpContext.HttpServer property ins't nullable anymore.
+- The HttpRequest.Context property inst't nullable anymore.
+- The RouteMethod.Any enum nows flags all the previous defined Route methods.
+- Extended the CreateRedirectResponse method to be able to extract the route from a RouteCallback with the RouteAttribute attribute.
+- Fixed an bug where the WebSocket was throwing an exception when the client didn't terminated the close handshake with the server.
+- Fixed a bug where requests with non-common HTTP methods were not accepted in routes even when used in RouteMethod.Any.
+- Fixed an bug where regex routers weren't matching ignore-case when MatchRoutesIgnoreCase was enabled.
+- Fixed a bug where README.html was being moved to the target project directory.
+- Dropped support for hot reload. Removed the ServiceReloadManager class.
+
+Service Providers:
+
+- Fixed inconsistencies in the Sisk.ServiceProvider package namespace. Now the default namespace is Sisk.ServiceProvider.
 
 # 0.14
 

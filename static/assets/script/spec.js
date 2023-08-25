@@ -284,30 +284,25 @@ var specsIndex = [
     "href": "/contents/spec/Sisk.Core.Routing.ValueResult.md",
     "icon": "class"
   },
-  "Sisk.Provider",
+  "Sisk.ServiceProvider",
   {
     "title": "RotatingLogPolicy",
-    "href": "/contents/spec/Sisk.Provider.RotatingLogPolicy.md",
+    "href": "/contents/spec/Sisk.ServiceProvider.RotatingLogPolicy.md",
     "icon": "class"
   },
   {
     "title": "ServiceProvider",
-    "href": "/contents/spec/Sisk.Provider.ServiceProvider.md",
+    "href": "/contents/spec/Sisk.ServiceProvider.ServiceProvider.md",
     "icon": "class"
   },
   {
     "title": "ServiceProviderConfigurator",
-    "href": "/contents/spec/Sisk.Provider.ServiceProviderConfigurator.md",
+    "href": "/contents/spec/Sisk.ServiceProvider.ServiceProviderConfigurator.md",
     "icon": "class"
   },
   {
     "title": "ServiceProviderConfiguratorHandler",
-    "href": "/contents/spec/Sisk.Provider.ServiceProviderConfiguratorHandler.md",
+    "href": "/contents/spec/Sisk.ServiceProvider.ServiceProviderConfiguratorHandler.md",
     "icon": "delegate"
-  },
-  {
-    "title": "ServiceReloadManager",
-    "href": "/contents/spec/Sisk.Provider.ServiceReloadManager.md",
-    "icon": "class"
   }
 ];

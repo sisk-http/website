@@ -102,16 +102,5 @@ Represents an context for Http requests.
         Gets or sets the HTTP response for this context. This property is only not null when a post-executing <a href="/read?q=/contents/spec/Sisk.Core.Routing.IRequestHandler.md">IRequestHandler</a> was executed for this router context.
     <td>
 </tr>
-<tr>
-    <td width="33%">
-        <img class="icon" src="/assets/img/icons/property.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpContext.Session.md">
-            Session
-        </a>
-    </td>
-    <td>
-        Gets the persistent session that is embedded in this HTTP context. This property returns null if the server is not configured to use sessions.
-    <td>
-</tr>
     </tbody>
 </table>

@@ -1,10 +1,8 @@
 ﻿using System.Data;
-using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Xml;
-using System.Xml.Linq;
 
 namespace Sisk.GenerateMdDoc
 {
@@ -81,7 +79,7 @@ namespace Sisk.GenerateMdDoc
 
                 if (!File.Exists(filePath))
                 {
-                    Console.WriteLine("Specified file was not found.");
+                    Console.WriteLine("Specified file was not found: " + filePath);
                     return;
                 }
 
@@ -107,6 +105,8 @@ namespace Sisk.GenerateMdDoc
                     string type = member.SelectSingleNode("type")?.InnerText.Trim() ?? "Type";
                     string definition = NormalizeCodeWhitespace(member.SelectSingleNode("definition")?.InnerText.Trim() ?? "");
                     string summary = NormalizeSummary(member.SelectSingleNode("summary")!.InnerXml.Trim());
+
+                    Console.WriteLine("Reading {0}...", name);
 
                     // replace sisk type names and namespaces
                     summary = Regex.Replace(summary, @"<see cref=""T:Sisk\.([^""]+)""\s?/>", @"<a href=""/read?q=/contents/spec/Sisk.$1.md"">Sisk.$1</a>");
@@ -265,6 +265,8 @@ namespace Sisk.GenerateMdDoc
 
             foreach (StType type in typeList.OrderBy(t => t.FullName).ToArray())
             {
+                Console.WriteLine("Creating doc for type {0}...", type.FullName);
+
                 string nsmsp = type.FullName.Substring(0, type.FullName.LastIndexOf('.'));
                 if (lastNamespace != nsmsp)
                 {
@@ -377,6 +379,8 @@ namespace Sisk.GenerateMdDoc
             {
                 foreach (StMember member in type.Members)
                 {
+                    Console.WriteLine("Creating doc for member {0}...", member.Name);
+
                     StringBuilder md = new StringBuilder();
                     md.AppendLine($"""
                             <!--
@@ -468,6 +472,8 @@ namespace Sisk.GenerateMdDoc
             }) + ";";
 
             File.WriteAllText("Output/spec.js", specJs);
+
+            Console.WriteLine("Done!");
         }
     }
 }

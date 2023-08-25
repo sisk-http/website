@@ -91,16 +91,5 @@ Represents the configurator that associates post-interpretation generation funct
         Overrides the <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServerConfiguration.md">DefaultCultureInfo</a> property in the HTTP server configuration.
     <td>
 </tr>
-<tr>
-    <td width="33%">
-        <img class="icon" src="/assets/img/icons/method.svg">
-        <a href="/read?q=/contents/spec/Sisk.ServiceProvider.ServiceProviderConfigurator.UseSessions(SessionConfiguration).md">
-            UseSessions(SessionConfiguration)
-        </a>
-    </td>
-    <td>
-        Calls a callback over the <a href="/read?q=/contents/spec/Sisk.Core.Sessions.SessionConfiguration.md">SessionConfiguration</a> in the HTTP configuration.
-    <td>
-</tr>
     </tbody>
 </table>

@@ -256,17 +256,6 @@ Represents an HTTP request received by a Sisk server.
         Gets a unique random ID for this request.
     <td>
 </tr>
-<tr>
-    <td width="33%">
-        <img class="icon" src="/assets/img/icons/property.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.Session.md">
-            Session
-        </a>
-    </td>
-    <td>
-        Gets the persistent session that is embedded in this request. This property returns null if the server is not configured to use sessions.
-    <td>
-</tr>
     </tbody>
 </table>
 # Method list
