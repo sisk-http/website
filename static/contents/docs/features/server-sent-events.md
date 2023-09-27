@@ -49,13 +49,13 @@ r += new Route(RouteMethod.Get, "/", (req) =>
 
 Note that it is necessary to send the headers before sending any messages.
 
-# Keep-Alive connections
+# Wait-For-Fail connections
 
 Connections are normally terminated when the server is no longer able to send messages due to an possible client-side disconnection. With that, the connection is automatically terminated and the instance of the class is discarded.
 
 Even with a reconnection, the instance of the class will not work, as it is linked to the previous connection. In some situations, you may need this connection later and you don't want to manage it via the callback method of the route.
 
-For this, we can identify the SSE connections with an identifier and get them using it later, even outside the callback of the route. In addition, we mark the connection with KeepAlive so as not to terminate the route and terminate the connection automatically.
+For this, we can identify the SSE connections with an identifier and get them using it later, even outside the callback of the route. In addition, we mark the connection with [WaitForFail](/read?q=/contents/spec/Sisk.Core.Http.Streams.HttpRequestEventSource.md) so as not to terminate the route and terminate the connection automatically.
 
 An SSE connection in KeepAlive will wait for a send error (caused by disconnection) to resume method execution. It is also possible to set a Timeout for this. After the time, if no message has been sent, the connection is terminated and execution resumes.
 
@@ -64,7 +64,7 @@ r += new Route(RouteMethod.Get, "/", (req) =>
 {
     var sse = req.GetEventSource("my-index-connection");
 
-    sse.KeepAlive(TimeSpan.FromSeconds(15)); // wait for 15 seconds without any message before terminating the connection
+    sse.WaitForFail(TimeSpan.FromSeconds(15)); // wait for 15 seconds without any message before terminating the connection
 
     return sse.Close();
 });

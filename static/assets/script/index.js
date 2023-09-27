@@ -15,6 +15,10 @@ var docsIndex = [
         title: "Native AOT Support",
         href: "/contents/docs/native-aot.md"
     },
+    {
+        title: "Deploying",
+        href: "/contents/docs/deploying.md"
+    },
     "Fundamentals",
     {
         title: "Routing",
