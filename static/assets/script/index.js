@@ -19,6 +19,10 @@ var docsIndex = [
         title: "Deploying",
         href: "/contents/docs/deploying.md"
     },
+    {
+        title: "Setup namespaces on Windows",
+        href: "/contents/docs/registering-namespace.md"
+    },
     "Fundamentals",
     {
         title: "Routing",
