@@ -1,3 +1,11 @@
+# 0.15.2
+
+Released: Oct 10, 2023
+
+Core:
+- Fixed an issue where HttpResponse.Close() weren't refusing connections, instead was closing then.
+- Fixed HttpStatusInformation missing docs components.
+
 # 0.15-rc
 
 Please, read the [release overview](https://github.com/sisk-http/core/tree/main/feature-preview/0.15) for full changelogs and details for this version.
