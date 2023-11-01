@@ -9,7 +9,7 @@ function nav_active($name)
 ?>
 
 <header>
-    <div class="contents">
+    <div class="container contents">
         <a href="/" class="logo">
             <img src="/assets/img/Icon.png" alt="">
             <h1>
@@ -23,7 +23,11 @@ function nav_active($name)
             </div>
             <input type="text" id="searchInput" oninput="doSearch()">
         </div>
+        <label for="navVisible" class="nav-toggle">
+            <i class="las la-bars"></i>
+        </label>
         <div class="nav-links">
+            <input type="checkbox" id="navVisible">
             <a <?= $_SERVER['REQUEST_URI'] == "/" ? "nav-active" : "" ?> href="/">
                 Home
             </a>

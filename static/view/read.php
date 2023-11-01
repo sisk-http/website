@@ -4,17 +4,20 @@
 
 <body>
     <?= render_view('layout.nav') ?>
-    <main class="doc-reader" id="docsWrapper" style="height: 100svh;">
+    <main class="container doc-reader" id="docsWrapper" style="height: 100svh;">
         <div id="docsContainer" onbeforeunload="onunload()"></div>
-        <div id="docsNav"></div>
+        <div id="docsNav" class="thin-scrollbar"></div>
+        <div id="docsNavToggle" onclick="toggleDocNav()">
+            <i class="las la-angle-double-right"></i>
+        </div>
     </main>
     <?php if (str_contains($_GET['q'], '/contents/docs')) : ?>
         <script>
-            window.documentsIndex = docsIndex;
+            window.documentsIndex = window.docContents.documentation;
         </script>
     <?php elseif (str_contains($_GET['q'], '/contents/spec')) : ?>
         <script>
-            window.documentsIndex = specsIndex;
+            window.documentsIndex = window.docContents.specification;
         </script>
     <?php endif; ?>
     <script>
@@ -80,7 +83,7 @@
                             firstLinkAdded = true;
                             return; // skip the first h1
                         }
-                        after += html` 
+                        after += html`
                             <a class="sub-link" href="#${e.id}">
                                 ${e.innerText}
                             </a>

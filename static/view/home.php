@@ -4,7 +4,7 @@
 
 <body>
     <?= render_view('layout.nav') ?>
-    <main class="lp-wrapper">
+    <main class="container lp-wrapper">
         <section id="principal">
             <div>
                 <h1>

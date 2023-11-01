@@ -1,0 +1,31 @@
+.button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 8px 22px;
+    border-radius: 4px;
+    background-color: --primary-100;
+    color: white;
+    text-decoration: none;
+
+    & :hover {
+        background-color: --primary-200;
+    }
+
+    & :active {
+        opacity: --active-opacity;
+    }
+
+    & .alt {
+        background-color: transparent;
+        color: --primary-100;
+
+        & :hover {
+            background-color: rgba(--primary-100, .1);
+        }
+    }
+
+    @media mobile {
+        padding: 12px 18px;
+        border-radius: 6px;
+    }
+}

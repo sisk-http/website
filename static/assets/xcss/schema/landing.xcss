@@ -1,14 +1,13 @@
-@import "./variables.scss";
-
-@mixin section-padding {
-    padding-block: 100px;
-}
-
 .lp-wrapper {
+    margin-top: 90px;
 
     p,
     li {
         line-height: 1.6;
+    }
+
+    section {
+        padding-block: 120px;
     }
 
     #principal {
@@ -24,6 +23,23 @@
         margin-inline: auto;
         padding: 70px;
 
+        @media mobile {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            height: auto;
+            text-align: center;
+
+            h1,
+            p {
+                max-width: revert;
+            }
+
+            a {
+                display: block;
+            }
+        }
+
         h1,
         p {
             max-width: 700px;
@@ -32,28 +48,48 @@
         h1 {
             font-size: 60px;
             font-weight: 700;
+
+            @media mobile {
+                font-size: 38px;
+            }
         }
 
         p {
             font-size: 21px;
             font-weight: 300;
             margin-block: 2.5rem;
+
+            @media mobile {
+                font-size: 18px;
+            }
         }
 
         img {
             width: 90%;
             height: auto;
+
+            @media mobile {
+                order: -1;
+            }
         }
     }
 
     #why-sisk {
-        @include section-padding;
         display: grid;
         align-items: center;
         grid-template-columns: 1fr 1fr;
 
+        @media mobile {
+            grid-template-columns: 1fr;
+        }
+
         h1 {
             font-size: 46px;
+
+            @media mobile {
+                font-size: 30px;
+                text-align: center;
+            }
         }
 
         p {
@@ -63,13 +99,17 @@
         }
 
         ul {
+            @media mobile {
+                padding-left: 0;
+            }
+
             li {
                 font-size: 20px;
                 list-style: none;
                 margin-bottom: 25px;
 
                 b {
-                    color: $primary-100;
+                    color: --primary-100;
                 }
 
                 ::before {
@@ -84,18 +124,25 @@
             place-self: center;
             width: 70%;
             height: auto;
+
+            @media mobile {
+                display: none;
+            }
         }
     }
 
     #install-banner {
-        @include section-padding;
         padding: 70px;
         width: fit-content;
         height: 300px;
-        background-color: $bg-200;
+        background-color: --bg-200;
         border: 1px solid #00000006;
         border-radius: 16px;
         margin-inline: auto;
+
+        @media mobile {
+            display: none;
+        }
 
         h1 {
             text-align: center;
@@ -111,14 +158,22 @@
     }
 
     #dotnet-banner {
-        @include section-padding;
         display: grid;
         grid-template-columns: 1fr 1fr;
         align-items: center;
         text-align: right;
 
+        @media mobile {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+
         h1 {
             font-size: 45px;
+
+            @media mobile {
+                font-size: 30px;
+            }
         }
 
         p {
@@ -131,11 +186,14 @@
             place-self: center;
             width: 70%;
             height: auto;
+
+            @media mobile {
+                width: 100%;
+            }
         }
     }
 
     #links-banner {
-        @include section-padding;
         display: flex;
         gap: 15px;
         flex-grow: 0;
@@ -143,16 +201,24 @@
         flex-wrap: 1;
         justify-content: center;
 
+        @media mobile {
+            flex-direction: column;
+        }
+
         a {
-            background-color: $bg-200;
+            background-color: --bg-200;
             border: 1px solid #00000006;
             display: block;
             border-radius: 6px;
             text-decoration: none;
-            color: $foreground-100;
+            color: --foreground-100;
             padding: 30px;
             width: 400px;
             height: auto;
+
+            @media mobile {
+                width: 100%;
+            }
 
             i {
                 display: block;
@@ -174,11 +240,11 @@
             }
 
             &:hover {
-                opacity: $hover-opacity;
+                opacity: --hover-opacity;
             }
 
             &:active {
-                opacity: $active-opacity;
+                opacity: --active-opacity;
             }
         }
     }

@@ -37,7 +37,7 @@ pre {
     border-radius: 0.3em;
 }
 
-:not(pre)>code {
+:not(pre) > code {
     background-color: #f3f5ff;
     color: #21273b;
     font-family: "REM", sans-serif;
@@ -50,7 +50,7 @@ pre {
 }
 
 /* Inline code */
-:not(pre)>code[class*="language-"] {
+:not(pre) > code[class*="language-"] {
     padding: .1em;
     border-radius: .3em;
     white-space: normal;

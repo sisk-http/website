@@ -1,5 +1,3 @@
-@import "./variables.scss";
-
 #searchResults {
     position: fixed;
     top: 100px;
@@ -20,7 +18,7 @@
 
     &.visible {
         pointer-events: all;
-        top: 120px;
+        top: 70px;
         opacity: 1;
     }
 
@@ -31,23 +29,23 @@
         border-radius: 8px;
         margin-bottom: 3px;
 
-        &:hover,
+        & :hover,
         &.selected {
             background-color: #9494942c;
         }
 
-        &:active {
-            opacity: $active-opacity;
+        & :active {
+            opacity: --active-opacity;
         }
 
         .title {
             font-weight: 500;
-            color: $foreground-100;
+            color: --foreground-100;
         }
 
         .ref {
             font-weight: 400;
-            color: $foreground-200;
+            color: --foreground-200;
             font-size: 14px;
         }
     }

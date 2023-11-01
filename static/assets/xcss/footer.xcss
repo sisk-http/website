@@ -1,18 +1,31 @@
-@import "./variables.scss";
-
 #footer {
-    @include container;
     position: relative;
     display: grid;
     align-items: center;
-    background-color: $bg-300;
-    color: $foreground-100;
+    background-color: --bg-300;
+    color: --foreground-100;
     margin-block: 100px 30px;
     border-radius: 16px;
     padding: 50px;
     height: 400px;
     bottom: 0;
     overflow: hidden;
+
+    @media mobile {
+        padding: 30px;
+
+        .legal {
+            text-align: center;
+            width: 100%;
+        }
+
+        img {
+            width: 140vw;
+            right: 50%;
+            top: 110%;
+            translate: 50%;
+        }
+    }
 
     .legal {
         position: relative;
@@ -24,7 +37,7 @@
         }
 
         a {
-            color: $primary-100;
+            color: --primary-100;
             text-decoration: none;
         }
     }

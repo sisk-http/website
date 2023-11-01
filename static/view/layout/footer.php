@@ -1,4 +1,4 @@
-<div id="footer">
+<div id="footer" class="container">
     <div class="legal">
         <h1>
             Sisk web framework

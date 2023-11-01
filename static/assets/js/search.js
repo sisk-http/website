@@ -1,3 +1,6 @@
+import { docsIndex } from "./links/index";
+import { specsIndex } from "./links/spec";
+
 var allDocLinks = [];
 var index = 0;
 
@@ -10,6 +13,7 @@ for (const docLink of specsIndex) {
         href: docLink.href
     });
 }
+
 for (const docLink of docsIndex) {
     if (typeof (docLink) !== 'object') continue;
     allDocLinks.push({
@@ -18,26 +22,6 @@ for (const docLink of docsIndex) {
         ref: "Documentation",
         href: docLink.href
     });
-}
-
-var searchIntervalToken = 0;
-window.addEventListener("keydown", e => {
-    if (e.key == "/") {
-        let input = document.getElementById("searchInput");
-        setTimeout(() => {
-            input.focus();
-        }, 0);
-    }
-});
-
-function html(strings, ...placeholders) {
-    const N = placeholders.length;
-    let out = '';
-    for (let i = 0; i < N; i++) {
-        out += strings[i] + placeholders[i];
-    }
-    out += strings[N];
-    return out;
 }
 
 function openSearchBox() {
@@ -109,3 +93,17 @@ function onKey(e) {
         searchResults[index].click();
     }
 }
+
+var searchIntervalToken = 0;
+window.addEventListener("keydown", e => {
+    if (e.key == "/") {
+        let input = document.getElementById("searchInput");
+        setTimeout(() => {
+            input.focus();
+        }, 0);
+    }
+});
+window.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("searchInput")
+        .addEventListener("input", doSearch);
+});

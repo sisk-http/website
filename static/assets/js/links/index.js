@@ -1,4 +1,4 @@
-var docsIndex = [
+export const docsIndex = [
     {
         title: "Introduction",
         href: "/contents/docs/welcome.md"

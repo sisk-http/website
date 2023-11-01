@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="shortcut icon" href="/assets/img/Icon.png">
 
-    <link href="/assets/app.css?__nocache=<?= CACHE_INDEX ?>" rel="stylesheet">
-    <script src="/assets/app.js?__nocache=<?= CACHE_INDEX ?>"></script>
+    <link href="/dist/app.css?__nocache=<?= CACHE_INDEX ?>" rel="stylesheet">
+    <script src="/dist/app.js?__nocache=<?= CACHE_INDEX ?>"></script>
+    <script src="/dist/prism.js?__nocache=<?= CACHE_INDEX ?>"></script>
 </head>

@@ -1,0 +1,169 @@
+:root {
+    --primary-100: #052283;
+    --primary-200: #072dac;
+    --primary-300: #d0d9f5;
+
+    --bg-100: #fff;
+    --bg-200: #f5f7fa;
+    --bg-300: #f3f3f3;
+    --bg-400: #e0e0e0;
+
+    --foreground-100: #050505;
+    --foreground-200: #7e7e7e;
+    --foreground-300: #9b9b9b;
+    --foreground-link: #1940ce;
+
+    --screen-sm: 700px;
+    --screen-md: 1300px;
+    --screen-lg: 1900px;
+
+    --active-opacity: .6;
+    --hover-opacity: .75;
+
+    --header-height: 64px;
+    --container-top: 140px;
+    --font-family: 'REM', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    font-family: --font-family;
+    font-size: 16px;
+    scroll-behavior: smooth;
+    margin: 0;
+    background-color: #fff;
+    color: --foreground-100;
+}
+
+main {
+    & :not(.doc-reader) {
+        margin-top: --container-top;
+    }
+
+    .button {
+        display: inline-block;
+        text-decoration: none;
+        padding: 8px 22px;
+        border-radius: 4px;
+        background-color: --primary-100;
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+            background-color: --primary-200;
+        }
+
+        &:active {
+            opacity: --active-opacity;
+        }
+
+        &.alt {
+            background-color: transparent;
+            color: --primary-100;
+
+            &:hover {
+                background-color: --primary-300;
+            }
+        }
+    }
+
+    & .doc-reader {
+        position: relative;
+
+        #docsContainer {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80%;
+            height: auto;
+            padding-inline: 80px;
+            margin-top: --container-top;
+        }
+
+        @media desktop {
+            #docsContainer {
+                width: 75%;
+            }
+
+            #docsNav {
+                width: 25%;
+            }
+        }
+
+        @media tablet {
+            #docsContainer {
+                width: 70%;
+                padding-inline: 50px;
+            }
+
+            #docsNav {
+                width: 30%;
+            }
+        }
+
+        @media mobile {
+            #docsContainer {
+                width: 100%;
+                padding-inline: 10px;
+            }
+
+            #docsNav {
+                width: 90%;
+                padding-bottom: 180px;
+            }
+        }
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 1900px;
+    margin-inline: auto;
+    padding-inline: 15px;
+
+    @media desktop {
+        max-width: 1700px;
+    }
+
+    @media tablet {
+        max-width: 1100px;
+    }
+
+    @media mobile {
+        max-width: 680px;
+    }
+}
+
+.thin-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: transparent #ffffff;
+
+    &:hover {
+        scrollbar-color: #858585 #ffffff;
+    }
+
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #ffffff;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        border-radius: 7px;
+        border: 1px solid #ffffff;
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+        background-color: #858585;
+    }
+}

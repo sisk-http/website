@@ -1,4 +1,4 @@
-var specsIndex = [
+export const specsIndex = [
   "Sisk.BasicAuth",
   {
     "title": "BasicAuthenticateRequestHandler",

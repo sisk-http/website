@@ -4,7 +4,7 @@
 
 <body>
     <?= render_view('layout.nav') ?>
-    <main class="license-screen">
+    <main class="license-screen container">
         <h1>
             The Sisk Framework project is licensed under The MIT license.
         </h1>
