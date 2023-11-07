@@ -275,8 +275,8 @@ Represents an HTTP request received by a Sisk server.
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/method.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.GetContextBag`().md">
-            GetContextBag`()
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.GetContextBag().md">
+            GetContextBag()
         </a>
     </td>
     <td>
@@ -341,6 +341,17 @@ Represents an HTTP request received by a Sisk server.
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.GetQueryValue().md">
+            GetQueryValue()
+        </a>
+    </td>
+    <td>
+        Gets the value stored from the <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.md">Query</a> and converts it to the given type.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
         <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.GetQueryValue(string).md">
             GetQueryValue(string)
         </a>
@@ -396,8 +407,19 @@ Represents an HTTP request received by a Sisk server.
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/method.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.SetContextBag`().md">
-            SetContextBag`()
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.SetContextBag().md">
+            SetContextBag()
+        </a>
+    </td>
+    <td>
+        Creates and stores a managed object in HTTP context bag through it's type.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.SetContextBag().md">
+            SetContextBag()
         </a>
     </td>
     <td>

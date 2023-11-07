@@ -50,6 +50,17 @@ Represents an HTTP route to be matched by an <a href="/read?q=/contents/spec/Sis
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/property.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Route.IsAsync.md">
+            IsAsync
+        </a>
+    </td>
+    <td>
+        Gets an boolean indicating if this <a href="/read?q=/contents/spec/Sisk.Core.Routing.Route.md">Route</a> callback return is an asynchronous <a href="https://learn.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task">Task</a>.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/property.svg">
         <a href="/read?q=/contents/spec/Sisk.Core.Routing.Route.LogMode.md">
             LogMode
         </a>

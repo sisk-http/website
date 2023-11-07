@@ -17,7 +17,7 @@ Namespace: Sisk.Core.Routing
 Definition:
 
 ```cs
-public abstract class RouterModule
+public class RouterModule
 ```
 
 Indicates that extended class supports router modules, which allows the management of routes, request handlers and prefixes.

@@ -11,13 +11,17 @@ In this document, we will teach you how to obtain each of these elements.
 To obtain the method of the received request, you can use the Method property:
 
 ```cs
-HttpMethod requestMethod = request.Method;
+static HttpResponse Index(HttpRequest request)
+{
+    HttpMethod requestMethod = request.Method;
+    ...
+}
 ```
 
 This property returns the request's method represented by an [HttpMethod](https://learn.microsoft.com/pt-br/dotnet/api/system.net.http.httpmethod) object.
 
 > **Note:**
-> 
+>
 > Unlike route methods, this property does not serves the [RouteMethod.Any](/read?q=/contents/spec/Sisk.Core.Routing.RouteMethod.Any) item. Instead, it returns the real request method.
 
 # Getting the request url component
@@ -158,9 +162,9 @@ It is also possible to determine if there is a body in the request and if it is 
 In a BeforeContents Request Handler context, you can read the request content inline with GetInputStream(). Learn more [here](/read?q=/contents/docs/fundamentals/request-handlers.md).
 
 > **Note:**
-> 
+>
 > Sisk follows the RFC 9110 "HTTP Semantics", which doens't allow certain requests methods to have body. These requests will immediately drop an 400 (Bad Request) with the `ContentServedOnIllegalMethod` status. Requests with bodies are not allowed in methods GET, OPTIONS, HEAD and TRACE. You can read the [RFC 9910](https://httpwg.org/spec/rfc9110.html) here.
-> 
+>
 > You can disable this feature by turning [ThrowContentOnNonSemanticMethods](/read?q=/contents/spec/Sisk.Core.Http.HttpServerFlags) to `false`.
 
 # Getting the request context
@@ -214,11 +218,17 @@ You can get the values of a form data in an [NameValueCollection](https://learn.
 ```cs
 static HttpResponse Index(HttpRequest request)
 {
-    var formData = request.GetFormContent();
+    var form = request.GetFormContent();
+
+    string? username = form["username"];
+    string? password = form["password"];
+
+    if (AttempLogin(username, password) == true)
+    {
+        ...
+    }
 }
 ```
-
-This method does not supports interpreting arrays as multiple fields ending in `[]` as some HTTP servers do.
 
 # Getting multipart form data
 

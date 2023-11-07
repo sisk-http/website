@@ -10,7 +10,7 @@ edit the XML documentation present in the Sisk source code.
 -->
 
 
-# CombinePaths(string, string) method
+# CombinePaths(String[]) method
 
 Declaring type: [Sisk.Core.Routing.Router](/read?q=/contents/spec/Sisk.Core.Routing.Router.md) (from Sisk.Core)
 
@@ -18,10 +18,10 @@ Declaring type: [Sisk.Core.Routing.Router](/read?q=/contents/spec/Sisk.Core.Rout
 Definition:
 
 ```cs
-public static string CombinePaths(string path1, string path2)
+public static string CombinePaths(params string[] paths)
 ```
 
-Concats the two routes paths into one.
+Combines the specified URL paths into one.
 
 
 # Parameters
@@ -29,12 +29,8 @@ Concats the two routes paths into one.
 <table>
     <tbody>
 <tr>
-    <td width="33%">path1</td>
-    <td>The first path to concat;</td>
-</tr>
-<tr>
-    <td width="33%">path2</td>
-    <td>The second path to concat.</td>
+    <td width="33%">paths</td>
+    <td>The string array which contains parts that will be combined.</td>
 </tr>
     </tbody>
 </table>

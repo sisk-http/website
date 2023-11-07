@@ -50,6 +50,17 @@ Provides a class that instantiates a router, capable of porting applications for
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Routing.RouterFactory.MapSetupParameters().md">
+            MapSetupParameters()
+        </a>
+    </td>
+    <td>
+        Associates the parameters received in the service configuration to a managed object.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
         <a href="/read?q=/contents/spec/Sisk.Core.Routing.RouterFactory.Setup(NameValueCollection).md">
             Setup(NameValueCollection)
         </a>

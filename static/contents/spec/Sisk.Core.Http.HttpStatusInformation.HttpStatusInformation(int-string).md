@@ -15,6 +15,12 @@ edit the XML documentation present in the Sisk source code.
 Declaring type: [Sisk.Core.Http.HttpStatusInformation](/read?q=/contents/spec/Sisk.Core.Http.HttpStatusInformation.md) (from Sisk.Core)
 
 
+Definition:
+
+```cs
+public HttpStatusInformation(int statusCode, string description)
+```
+
 Creates an new <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpStatusInformation.md">HttpStatusInformation</a> instance with given parameters.
 
 

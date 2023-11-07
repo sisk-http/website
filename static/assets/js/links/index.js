@@ -61,5 +61,14 @@ export const docsIndex = [
     {
         title: "Basic auth",
         href: "/contents/docs/extensions/basic-auth.md"
-    }
+    },
+    "Advanced",
+    {
+        title: "Request lifecycle",
+        href: "/contents/docs/advanced/request-lifecycle.md"
+    },
+    {
+        title: "HTTP server handlers",
+        href: "/contents/docs/advanced/http-server-handlers.md"
+    },
 ];

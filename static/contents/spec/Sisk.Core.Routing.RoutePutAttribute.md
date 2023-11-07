@@ -29,6 +29,17 @@ Represents a mapping to an HTTP PUT route. This attribute is an shorthand from <
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/constructor.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Routing.RoutePutAttribute.RoutePutAttribute().md">
+            RoutePutAttribute()
+        </a>
+    </td>
+    <td>
+        Creates an new <a href="/read?q=/contents/spec/Sisk.Core.Routing.RoutePutAttribute.md">RoutePutAttribute</a> attribute instance with an root path (/).
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/constructor.svg">
         <a href="/read?q=/contents/spec/Sisk.Core.Routing.RoutePutAttribute.RoutePutAttribute(string).md">
             RoutePutAttribute(string)
         </a>

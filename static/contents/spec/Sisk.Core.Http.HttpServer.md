@@ -28,6 +28,28 @@ Provides an lightweight HTTP server powered by Sisk.
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServer.CreateBuilder().md">
+            CreateBuilder()
+        </a>
+    </td>
+    <td>
+        Builds an empty <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServerHostContext.md">HttpServerHostContext</a> context.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServer.CreateBuilder(HttpServerHostContextBuilder).md">
+            CreateBuilder(HttpServerHostContextBuilder)
+        </a>
+    </td>
+    <td>
+        Builds an <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServerHostContext.md">HttpServerHostContext</a> context invoking the handler on it.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
         <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServer.Dispose().md">
             Dispose()
         </a>
@@ -56,6 +78,17 @@ Provides an lightweight HTTP server powered by Sisk.
     </td>
     <td>
         Get Sisk version label.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServer.RegisterHandler().md">
+            RegisterHandler()
+        </a>
+    </td>
+    <td>
+        Associate an <a href="/read?q=/contents/spec/Sisk.Core.Http.Handlers.HttpServerHandler.md">HttpServerHandler</a> in this HttpServer to handle functions such as requests, routers and contexts.
     <td>
 </tr>
 <tr>

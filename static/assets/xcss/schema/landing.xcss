@@ -74,6 +74,60 @@
         }
     }
 
+    #first-alternative {
+        position: relative;
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        max-width: 1400px;
+        width: 100%;
+        margin-inline: auto;
+        top: -40px;
+        background-color: white;
+        box-shadow: 0 10px 20px 0 #00000035;
+        padding: 40px;
+        border-radius: 16px;
+
+        @media mobile {
+            grid-template-columns: 1fr;
+            padding: 16px;
+            position: static;
+            margin-block: 120px 60px;
+        }
+
+        pre {
+            margin: 0;
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        .icons {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(1px, 1fr));
+
+            > .icon {
+                margin-block: 20px;
+
+                > img {
+                    display: block;
+                    margin-inline: auto;
+                    margin-bottom: 15px;
+                    $size: 54px;
+                }
+
+                > div {
+                    font-size: .9rem;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
     #why-sisk {
         display: grid;
         align-items: center;

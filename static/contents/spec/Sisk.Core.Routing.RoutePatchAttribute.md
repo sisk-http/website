@@ -29,6 +29,17 @@ Represents a mapping to an HTTP PATCH route. This attribute is an shorthand from
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/constructor.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Routing.RoutePatchAttribute.RoutePatchAttribute().md">
+            RoutePatchAttribute()
+        </a>
+    </td>
+    <td>
+        Creates an new <a href="/read?q=/contents/spec/Sisk.Core.Routing.RoutePatchAttribute.md">RoutePatchAttribute</a> attribute instance with an root path (/).
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/constructor.svg">
         <a href="/read?q=/contents/spec/Sisk.Core.Routing.RoutePatchAttribute.RoutePatchAttribute(string).md">
             RoutePatchAttribute(string)
         </a>

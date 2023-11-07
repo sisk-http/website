@@ -47,5 +47,16 @@ Provides a class that contains useful methods for working with cookies in HTTP r
         Sets a cookie and sends it in the response to be set by the client.
     <td>
 </tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.CookieHelper.SetCookieHeader(string-string).md">
+            SetCookieHeader(string, string)
+        </a>
+    </td>
+    <td>
+        Abstract method that calls the "Set-Cookie" header with the value of the created cookie.
+    <td>
+</tr>
     </tbody>
 </table>

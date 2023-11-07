@@ -23,9 +23,39 @@ You can see another ways to install Sisk in your project [here](https://www.nuge
 
 Now let's create an instance of our HTTP server. As a matter of principle, let's make it listen on port 5000.
 
-# Requests and responses
+# Building the Http server
 
-The request and response model is simple: for every request there must be a response. In Sisk ins't different. Let's create a method that responds with a Hello World response in HTML, specifying the code and headers.
+Sisk allows you to build your application step by step manually, since the router to the HttpServer object, but it may not be very convenient for most projects. Because of this, we can use the builder method which is easier to get our app live.
+
+```cs
+class Program
+{
+    static void Main(string[] args)
+    {
+        var app = HttpServer.CreateBuilder(host =>
+        {
+            host.UseListeningPort("http://localhost:5000/");
+        });
+
+        app.Router.SetRoute(RouteMethod.Get, "/", request =>
+        {
+            return new HttpResponse()
+                .WithStatus(200)
+                .WithContent("Hello, world!");
+        });
+
+        app.Start();
+    }
+}
+```
+
+But it's interesting to understand each vital component of Sisk. Later in this document you will understand a little about how Sisk works.
+
+# Manually creating your app
+
+In this topic we will create our Http server without any standards, in a completely abstract way. Here you can manually build how your Http server will work. Each ListeningHost has a router, and an Http server can have multiple ListeningHosts, each pointing to a different host on a different port.
+
+Firstly, we need to understand the request/response concept. It is pretty simple: for every request there must be a response. In Sisk ins't different. Let's create a method that responds with a Hello World response in HTML, specifying the code and headers.
 
 ```cs
 // Program.cs

@@ -29,6 +29,17 @@ Represents a mapping to an HTTP GET route. This attribute is an shorthand from <
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/constructor.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Routing.RouteGetAttribute.RouteGetAttribute().md">
+            RouteGetAttribute()
+        </a>
+    </td>
+    <td>
+        Creates an new <a href="/read?q=/contents/spec/Sisk.Core.Routing.RouteGetAttribute.md">RouteGetAttribute</a> attribute instance with an root path (/).
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/constructor.svg">
         <a href="/read?q=/contents/spec/Sisk.Core.Routing.RouteGetAttribute.RouteGetAttribute(string).md">
             RouteGetAttribute(string)
         </a>

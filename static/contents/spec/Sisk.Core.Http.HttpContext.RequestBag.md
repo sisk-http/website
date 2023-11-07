@@ -18,7 +18,7 @@ Declaring type: [Sisk.Core.Http.HttpContext](/read?q=/contents/spec/Sisk.Core.Ht
 Definition:
 
 ```cs
-public Dictionary<string, object?> RequestBag { get; set; }
+public HttpContextBag RequestBag { get; set; }
 ```
 
 Gets or sets a managed object that is accessed and modified by request handlers.

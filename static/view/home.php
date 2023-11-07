@@ -23,6 +23,95 @@
             </div>
             <img src="/assets/img/Icon-HQ.png" alt="">
         </section>
+        <section id="first-alternative">
+            <pre><code class="lang-csharp">
+                using Sisk.Core.Http;
+                using Sisk.Core.Routing;
+
+                class Program
+                {
+                    static void Main(string[] args)
+                    {
+                        var app = HttpServer.CreateBuilder(host =>
+                        {
+                            host.UseListeningPort("http://localhost:5000/");
+                        });
+
+                        app.Router.SetRoute(RouteMethod.Get, "/", request =>
+                        {
+                            return new HttpResponse(200)
+                                .WithContent("Hello, world!");
+                        });
+
+                        app.Start();
+                    }
+                }
+            </code></pre>
+            <div>
+                <h1>
+                    Robustness hidden in its simplicity
+                </h1>
+                <p>
+                    Sisk allows you to create quick or
+                    large projects with as less code
+                    as possible, quickly, focused on
+                    enabling development your way.
+                </p>
+                <p>
+                    With Sisk you can create:
+                </p>
+                <div class="icons">
+                    <div class="icon">
+                        <img src="/assets/img/icons8/icons8-module-80.png" alt="">
+                        <div>
+                            Microservices
+                        </div>
+                    </div>
+                    <div class="icon">
+                        <img src="/assets/img/icons8/icons8-rest-api-80.png" alt="">
+                        <div>
+                            Restful APIs
+                        </div>
+                    </div>
+                    <div class="icon">
+                        <img src="/assets/img/icons8/icons8-cloud-80.png" alt="">
+                        <div>
+                            Cloud services
+                        </div>
+                    </div>
+                    <div class="icon">
+                        <img src="/assets/img/icons8/icons8-binary-file-80.png" alt="">
+                        <div>
+                            Native AOT apps
+                        </div>
+                    </div>
+                    <div class="icon">
+                        <img src="/assets/img/icons8/icons8-game-80.png" alt="">
+                        <div>
+                            Game servers
+                        </div>
+                    </div>
+                    <div class="icon">
+                        <img src="/assets/img/icons8/icons8-online-80.png" alt="">
+                        <div>
+                            Websockets
+                        </div>
+                    </div>
+                    <div class="icon">
+                        <img src="/assets/img/icons8/icons8-folder-tree-80.png" alt="">
+                        <div>
+                            File servers
+                        </div>
+                    </div>
+                    <div class="icon">
+                        <img src="/assets/img/icons8/icons8-plus-80.png" alt="">
+                        <div>
+                            And more!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section id="why-sisk">
             <div>
                 <h1>

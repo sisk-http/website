@@ -10,18 +10,18 @@ edit the XML documentation present in the Sisk source code.
 -->
 
 
-# SetContextBag`() method
+# OnException(Exception) method
 
-Declaring type: [Sisk.Core.Http.HttpRequest](/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.md) (from Sisk.Core)
+Declaring type: [Sisk.Core.Http.Handlers.HttpServerHandler](/read?q=/contents/spec/Sisk.Core.Http.Handlers.HttpServerHandler.md) (from Sisk.Core)
 
 
 Definition:
 
 ```cs
-public T SetContextBag<T>(T contextObject)
+public virtual void OnException(Exception exception)
 ```
 
-Stores a managed object in HTTP context bag through it's type.
+Method that is called when an exception is caught in the Http server.
 
 
 # Parameters
@@ -29,8 +29,8 @@ Stores a managed object in HTTP context bag through it's type.
 <table>
     <tbody>
 <tr>
-    <td width="33%">contextObject</td>
-    <td>The object which will be stored.</td>
+    <td width="33%">exception</td>
+    <td>The exception object.</td>
 </tr>
     </tbody>
 </table>

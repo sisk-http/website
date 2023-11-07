@@ -28,12 +28,34 @@ Represents a collection of Routes and main executor of callbacks in an <a href="
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/method.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Router.CombinePaths(string-string).md">
-            CombinePaths(string, string)
+        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Router.AutoScanModules().md">
+            AutoScanModules()
         </a>
     </td>
     <td>
-        Concats the two routes paths into one.
+        Scans for all types that implements <typeparamref name="T" /> and associates an instance of each type to the router. Note that, <typeparamref name="T" /> must be an <a href="/read?q=/contents/spec/Sisk.Core.Routing.RouterModule.md">RouterModule</a> type and an accessible constructor for each type must be present.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Router.AutoScanModules().md">
+            AutoScanModules()
+        </a>
+    </td>
+    <td>
+        Scans for all types that implements <typeparamref name="T" /> and associates an instance of each type to the router. Note that, <typeparamref name="T" /> must be an <a href="/read?q=/contents/spec/Sisk.Core.Routing.RouterModule.md">RouterModule</a> type and an accessible constructor for each type must be present.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Router.CombinePaths(String).md">
+            CombinePaths(String[])
+        </a>
+    </td>
+    <td>
+        Combines the specified URL paths into one.
     <td>
 </tr>
 <tr>
@@ -72,8 +94,8 @@ Represents a collection of Routes and main executor of callbacks in an <a href="
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/method.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Router.RegisterValueHandler`(Object-HttpResponse}).md">
-            RegisterValueHandler`(Object, HttpResponse})
+        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Router.RegisterValueHandler().md">
+            RegisterValueHandler()
         </a>
     </td>
     <td>

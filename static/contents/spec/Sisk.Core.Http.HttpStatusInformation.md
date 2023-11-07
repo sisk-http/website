@@ -63,5 +63,43 @@ Represents a structure that holds an HTTP response status information, with its 
         Creates an new <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpStatusInformation.md">HttpStatusInformation</a> instance with given parameters.
     <td>
 </tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/constructor.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpStatusInformation.HttpStatusInformation(int).md">
+            HttpStatusInformation(int)
+        </a>
+    </td>
+    <td>
+        Creates an new <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpStatusInformation.md">HttpStatusInformation</a> instance with given parameters.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/constructor.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpStatusInformation.HttpStatusInformation(HttpStatusCode).md">
+            HttpStatusInformation(HttpStatusCode)
+        </a>
+    </td>
+    <td>
+        Creates an new <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpStatusInformation.md">HttpStatusInformation</a> instance with given parameters.
+    <td>
+</tr>
+    </tbody>
+</table>
+# Method list
+<table>
+    <tbody>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpStatusInformation.GetStatusCodeDescription(int).md">
+            GetStatusCodeDescription(int)
+        </a>
+    </td>
+    <td>
+        Gets the description of the HTTP status based on its description.
+    <td>
+</tr>
     </tbody>
 </table>

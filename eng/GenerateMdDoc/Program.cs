@@ -99,12 +99,16 @@ namespace Sisk.GenerateMdDoc
 
                 foreach (XmlNode member in members)
                 {
-                    if (member.SelectSingleNode("nodocs") != null) continue;
+                    if (
+                         member.SelectSingleNode("nodocs") != null 
+                      || member.SelectSingleNode("nodoc") != null) continue;
 
                     string name = member.Attributes!["name"]!.Value;
                     string type = member.SelectSingleNode("type")?.InnerText.Trim() ?? "Type";
                     string definition = NormalizeCodeWhitespace(member.SelectSingleNode("definition")?.InnerText.Trim() ?? "");
-                    string summary = NormalizeSummary(member.SelectSingleNode("summary")!.InnerXml.Trim());
+                    string summary = NormalizeSummary(member.SelectSingleNode("summary")?.InnerXml.Trim() ?? "");
+
+                    if (string.IsNullOrWhiteSpace(summary)) continue;
 
                     Console.WriteLine("Reading {0}...", name);
 
@@ -121,10 +125,7 @@ namespace Sisk.GenerateMdDoc
 
                     string docs = member.SelectSingleNode("docs")?.InnerXml.Trim() ?? "";
                     string nameType = name.Substring(0, 2);
-                    name = name.Substring(2)
-                        .Replace("`1", "")
-                        .Replace("``1", "")
-                        .Replace("``0", "");
+                    name = Regex.Replace(name.Substring(2), @"([^`]+)`.*", "$1");
                     definition = definition.Replace("{{", "<").Replace("}}", ">");
 
                     if (nameType == "T:")
@@ -464,7 +465,7 @@ namespace Sisk.GenerateMdDoc
                 }
             }
 
-            string specJs = "var specsIndex = ";
+            string specJs = "export const specsIndex = ";
             specJs += JsonSerializer.Serialize(links, new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,

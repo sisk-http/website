@@ -10,16 +10,16 @@ edit the XML documentation present in the Sisk source code.
 -->
 
 
-# GetContextBag`() method
+# Values property
 
-Declaring type: [Sisk.Core.Http.HttpRequest](/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.md) (from Sisk.Core)
+Declaring type: [Sisk.Core.Http.HttpContextBagRepository](/read?q=/contents/spec/Sisk.Core.Http.HttpContextBagRepository.md) (from Sisk.Core)
 
 
 Definition:
 
 ```cs
-public T GetContextBag<T>(T contextObject)
+public ICollection<Object?> Values { get; set; }
 ```
 
-Gets an managed object from the HTTP context bag through it's type.
+Gets an collection containing the values in this repository.
 

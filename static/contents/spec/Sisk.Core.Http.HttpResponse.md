@@ -17,7 +17,7 @@ Namespace: Sisk.Core.Http
 Definition:
 
 ```cs
-public sealed class HttpResponse : CookieHelper
+public class HttpResponse : CookieHelper
 ```
 
 Represents an HTTP Response.
@@ -72,8 +72,8 @@ Represents an HTTP Response.
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/method.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.WithContent(ByteArrayContent).md">
-            WithContent(ByteArrayContent)
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.WithContent(HttpContent).md">
+            WithContent(HttpContent)
         </a>
     </td>
     <td>
@@ -89,6 +89,17 @@ Represents an HTTP Response.
     </td>
     <td>
         Sets an UTF-8 string in this <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.md">HttpResponse</a> content.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.WithCookie(string-string-DateTime-TimeSpan-string-string-bool-bool-string).md">
+            WithCookie(string, string, DateTime?, TimeSpan?, string, string, bool?, bool?, string)
+        </a>
+    </td>
+    <td>
+        Sets a cookie and sends it in the response to be set by the client.
     <td>
 </tr>
 <tr>

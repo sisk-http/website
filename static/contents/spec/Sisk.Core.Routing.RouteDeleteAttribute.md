@@ -29,6 +29,17 @@ Represents a mapping to an HTTP DELETE route. This attribute is an shorthand fro
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/constructor.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Routing.RouteDeleteAttribute.RouteDeleteAttribute().md">
+            RouteDeleteAttribute()
+        </a>
+    </td>
+    <td>
+        Creates an new <a href="/read?q=/contents/spec/Sisk.Core.Routing.RouteDeleteAttribute.md">RouteDeleteAttribute</a> attribute instance with an root path (/).
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/constructor.svg">
         <a href="/read?q=/contents/spec/Sisk.Core.Routing.RouteDeleteAttribute.RouteDeleteAttribute(string).md">
             RouteDeleteAttribute(string)
         </a>
