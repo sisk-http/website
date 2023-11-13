@@ -3,7 +3,7 @@
 session_start();
 
 define("APP_ROOT", __DIR__);
-define("CACHE_INDEX", 7);
+define("CACHE_INDEX", 8);
 require_once 'lib/fw.php';
 
 usleep(200 * 1000);

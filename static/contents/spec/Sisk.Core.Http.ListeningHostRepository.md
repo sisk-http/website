@@ -82,7 +82,7 @@ Represents an fluent repository of <a href="/read?q=/contents/spec/Sisk.Core.Htt
         </a>
     </td>
     <td>
-        Gets a listening host through its index.
+        Gets or sets a listening host through its index.
     <td>
 </tr>
     </tbody>

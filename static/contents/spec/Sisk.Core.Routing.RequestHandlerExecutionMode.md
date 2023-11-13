@@ -33,7 +33,7 @@ Defines when the <a href="/read?q=/contents/spec/Sisk.Core.Routing.IRequestHandl
         </a>
     </td>
     <td>
-        Indicates that the handler must be executed after the route callback execution.
+        Indicates that the handler must be executed after the route action execution.
     <td>
 </tr>
 <tr>
@@ -44,7 +44,7 @@ Defines when the <a href="/read?q=/contents/spec/Sisk.Core.Routing.IRequestHandl
         </a>
     </td>
     <td>
-        Indicates that the handler must be executed before the router calls the route callback and before the request content is available.
+        Indicates that the handler must be executed before the router calls the route action and before the request content is available.
     <td>
 </tr>
 <tr>
@@ -55,7 +55,7 @@ Defines when the <a href="/read?q=/contents/spec/Sisk.Core.Routing.IRequestHandl
         </a>
     </td>
     <td>
-        Indicates that the handler must be executed before the router calls the route callback and after request contents is loaded.
+        Indicates that the handler must be executed before the router calls the route action and after request contents is loaded.
     <td>
 </tr>
     </tbody>

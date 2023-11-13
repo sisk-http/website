@@ -15,5 +15,5 @@ edit the XML documentation present in the Sisk source code.
 Declaring type: [Sisk.Core.Http.HttpServerExecutionStatus](/read?q=/contents/spec/Sisk.Core.Http.HttpServerExecutionStatus.md) (from Sisk.Core)
 
 
-Indicates that the router encontered an uncaught exception while calling it's callback function.
+Indicates that the router encontered an uncaught exception while calling it's action function.
 

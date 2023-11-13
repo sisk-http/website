@@ -20,5 +20,5 @@ Definition:
 public delegate HttpResponse ExceptionErrorCallback(Exception ex, HttpContext context);
 ```
 
-Represents the function that is called after the route callback threw an exception.
+Represents the function that is called after the route action threw an exception.
 

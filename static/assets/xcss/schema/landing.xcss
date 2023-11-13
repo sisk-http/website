@@ -178,6 +178,7 @@
             place-self: center;
             width: 70%;
             height: auto;
+            filter: hue-rotate(15deg) saturate(3.5);
 
             @media mobile {
                 display: none;

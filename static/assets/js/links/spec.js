@@ -38,6 +38,37 @@ export const specsIndex = [
     "href": "/contents/spec/Sisk.Core.Http.Handlers.HttpServerHandler.md",
     "icon": "class"
   },
+  "Sisk.Core.Http.Hosting",
+  {
+    "title": "HttpServerHostContext",
+    "href": "/contents/spec/Sisk.Core.Http.Hosting.HttpServerHostContext.md",
+    "icon": "class"
+  },
+  {
+    "title": "HttpServerHostContextBuilder",
+    "href": "/contents/spec/Sisk.Core.Http.Hosting.HttpServerHostContextBuilder.md",
+    "icon": "class"
+  },
+  {
+    "title": "HttpServerHostContextBuilderExceptionMode",
+    "href": "/contents/spec/Sisk.Core.Http.Hosting.HttpServerHostContextBuilderExceptionMode.md",
+    "icon": "enum"
+  },
+  {
+    "title": "InitializationParameterCollection",
+    "href": "/contents/spec/Sisk.Core.Http.Hosting.InitializationParameterCollection.md",
+    "icon": "class"
+  },
+  {
+    "title": "PortableConfigurationBuilder",
+    "href": "/contents/spec/Sisk.Core.Http.Hosting.PortableConfigurationBuilder.md",
+    "icon": "class"
+  },
+  {
+    "title": "PortableConfigurationRequireSection",
+    "href": "/contents/spec/Sisk.Core.Http.Hosting.PortableConfigurationRequireSection.md",
+    "icon": "enum"
+  },
   "Sisk.Core.Http",
   {
     "title": "HtmlContent",
@@ -95,16 +126,6 @@ export const specsIndex = [
     "icon": "class"
   },
   {
-    "title": "HttpServerHostContext",
-    "href": "/contents/spec/Sisk.Core.Http.HttpServerHostContext.md",
-    "icon": "class"
-  },
-  {
-    "title": "HttpServerHostContextBuilder",
-    "href": "/contents/spec/Sisk.Core.Http.HttpServerHostContextBuilder.md",
-    "icon": "class"
-  },
-  {
     "title": "HttpStatusInformation",
     "href": "/contents/spec/Sisk.Core.Http.HttpStatusInformation.md",
     "icon": "struct"
@@ -133,6 +154,11 @@ export const specsIndex = [
     "title": "ReceiveRequestEventHandler",
     "href": "/contents/spec/Sisk.Core.Http.ReceiveRequestEventHandler.md",
     "icon": "delegate"
+  },
+  {
+    "title": "RotatingLogPolicy",
+    "href": "/contents/spec/Sisk.Core.Http.RotatingLogPolicy.md",
+    "icon": "class"
   },
   {
     "title": "ServerExecutionEventHandler",
@@ -232,6 +258,11 @@ export const specsIndex = [
     "icon": "class"
   },
   {
+    "title": "RequestHandler",
+    "href": "/contents/spec/Sisk.Core.Routing.RequestHandler.md",
+    "icon": "class"
+  },
+  {
     "title": "RequestHandlerAttribute",
     "href": "/contents/spec/Sisk.Core.Routing.RequestHandlerAttribute.md",
     "icon": "class"
@@ -250,6 +281,11 @@ export const specsIndex = [
     "title": "Route",
     "href": "/contents/spec/Sisk.Core.Routing.Route.md",
     "icon": "class"
+  },
+  {
+    "title": "RouteAction",
+    "href": "/contents/spec/Sisk.Core.Routing.RouteAction.md",
+    "icon": "delegate"
   },
   {
     "title": "RouteAttribute",
@@ -295,11 +331,6 @@ export const specsIndex = [
     "title": "Router",
     "href": "/contents/spec/Sisk.Core.Routing.Router.md",
     "icon": "class"
-  },
-  {
-    "title": "RouterCallback",
-    "href": "/contents/spec/Sisk.Core.Routing.RouterCallback.md",
-    "icon": "delegate"
   },
   {
     "title": "RouterFactory",

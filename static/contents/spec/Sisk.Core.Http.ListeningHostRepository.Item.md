@@ -21,7 +21,7 @@ Definition:
 public ListeningHost this[int index]
 ```
 
-Gets a listening host through its index.
+Gets or sets a listening host through its index.
 
 
 # Parameters

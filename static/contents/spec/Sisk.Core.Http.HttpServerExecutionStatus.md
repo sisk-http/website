@@ -143,7 +143,7 @@ Represents the status of an execution of a request on an <a href="/read?q=/conte
         </a>
     </td>
     <td>
-        Indicates that the router encontered an uncaught exception while calling it's callback function.
+        Indicates that the router encontered an uncaught exception while calling it's action function.
     <td>
 </tr>
     </tbody>

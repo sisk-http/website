@@ -8,7 +8,9 @@
         <section id="principal">
             <div>
                 <h1>
-                    Take the full control of web development.
+                    Fast.<br>
+                    Robust.<br>
+                    Predictable.
                 </h1>
                 <p>
                     Sisk is an lightweight web framework designed for fast and robust development, which

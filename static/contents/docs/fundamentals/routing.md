@@ -44,9 +44,9 @@ mainRouter.SetRoute(RouteMethod.Get, "/hey/<name>/surname/<surname>", (request) 
 The HTTP request [Query](/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.Query) property also stores the content of an original query, but if there are parameters in the route with the same name as a query, it will be replaced by what is in the route. The path that is matched with an request URI is always the path as explained in [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986#section-3.3).
 
 > **Note:**
-> 
+>
 > Paths have their trailing `/` ignored in both request and route path, that is, if you try to access a route defined as `/index/page` you'll be able to access using `/index/page/` too.
-> 
+>
 > You can also force URLs to terminate with `/` enabling the [ForceTrailingSlash](/read?q=/contents/spec/Sisk.Core.Http.HttpServerFlags.ForceTrailingSlash) flag.
 
 # Creating routes using class instances
@@ -99,6 +99,17 @@ Instead of using the default HTTP path matching methods, you can mark a route to
 Route indexRoute = new Route(RouteMethod.Get, @"\/[a-z]+\/", "My route", IndexPage, null);
 indexRoute.UseRegex = true;
 mainRouter.SetRoute(indexRoute);
+```
+
+You can also capture groups from the regex pattern into the [Request.Query](/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.Query.md) contents:
+
+```cs
+[RegexRoute(RouteMethod.Get, @"/uploads/(?<filename>.*\.(jpeg|jpg|png))")]
+static HttpResponse RegexRoute(HttpRequest request)
+{
+    string? filename = request.Query["filename"];
+    return new HttpResponse().WithContent($"Acessing file {filename}");
+}
 ```
 
 # Any method routes

@@ -49,7 +49,18 @@ Represents a class that implements <a href="/read?q=/contents/spec/Sisk.Core.Rou
         </a>
     </td>
     <td>
-        This method is called by the <a href="/read?q=/contents/spec/Sisk.Core.Routing.Router.md">Router</a> before executing a request when the <a href="/read?q=/contents/spec/Sisk.Core.Routing.Route.md">Route</a> instantiates an object that implements this interface. If it returns a <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.md">HttpResponse</a> object, the route callback is not called and all execution of the route is stopped. If it returns "null", the execution is continued.
+        This method is called by the <a href="/read?q=/contents/spec/Sisk.Core.Routing.Router.md">Router</a> before executing a request when the <a href="/read?q=/contents/spec/Sisk.Core.Routing.Route.md">Route</a> instantiates an object that implements this interface. If it returns a <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.md">HttpResponse</a> object, the route action is not called and all execution of the route is stopped. If it returns "null", the execution is continued.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Routing.AsyncRequestHandler.Next().md">
+            Next()
+        </a>
+    </td>
+    <td>
+        Returns an null <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.md">HttpResponse</a> reference, which points to the next request handler or route action.
     <td>
 </tr>
     </tbody>

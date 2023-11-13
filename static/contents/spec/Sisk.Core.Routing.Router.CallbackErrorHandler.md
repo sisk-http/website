@@ -21,5 +21,5 @@ Definition:
 public ExceptionErrorCallback? CallbackErrorHandler { get; set; }
 ```
 
-Gets or sets the Router callback exception handler.
+Gets or sets the Router action exception handler.
 

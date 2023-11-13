@@ -33,7 +33,7 @@ Represents a collection of Routes and main executor of callbacks in an <a href="
         </a>
     </td>
     <td>
-        Scans for all types that implements <typeparamref name="T" /> and associates an instance of each type to the router. Note that, <typeparamref name="T" /> must be an <a href="/read?q=/contents/spec/Sisk.Core.Routing.RouterModule.md">RouterModule</a> type and an accessible constructor for each type must be present.
+        Scans for all types that implements <typeparamref name="TModule" /> and associates an instance of each type to the router. Note that, <typeparamref name="TModule" /> must be an <a href="/read?q=/contents/spec/Sisk.Core.Routing.RouterModule.md">RouterModule</a> type and an accessible constructor for each type must be present.
     <td>
 </tr>
 <tr>
@@ -44,7 +44,7 @@ Represents a collection of Routes and main executor of callbacks in an <a href="
         </a>
     </td>
     <td>
-        Scans for all types that implements <typeparamref name="T" /> and associates an instance of each type to the router. Note that, <typeparamref name="T" /> must be an <a href="/read?q=/contents/spec/Sisk.Core.Routing.RouterModule.md">RouterModule</a> type and an accessible constructor for each type must be present.
+        Scans for all types that implements <typeparamref name="TModule" /> and associates an instance of each type to the router. Note that, <typeparamref name="TModule" /> must be an <a href="/read?q=/contents/spec/Sisk.Core.Routing.RouterModule.md">RouterModule</a> type and an accessible constructor for each type must be present.
     <td>
 </tr>
 <tr>
@@ -138,34 +138,34 @@ Represents a collection of Routes and main executor of callbacks in an <a href="
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/method.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Router.SetRoute(RouteMethod-string-RouterCallback-string-IRequestHandler).md">
-            SetRoute(RouteMethod, string, RouterCallback, string, IRequestHandler[])
+        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Router.SetRoute(RouteMethod-string-RouteAction-string-IRequestHandler).md">
+            SetRoute(RouteMethod, string, RouteAction, string, IRequestHandler[])
         </a>
     </td>
     <td>
-        Defines an route with their method, path, callback function, name and request handlers.
+        Defines an route with their method, path, action function, name and request handlers.
     <td>
 </tr>
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/method.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Router.SetRoute(RouteMethod-string-RouterCallback-string).md">
-            SetRoute(RouteMethod, string, RouterCallback, string)
+        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Router.SetRoute(RouteMethod-string-RouteAction-string).md">
+            SetRoute(RouteMethod, string, RouteAction, string)
         </a>
     </td>
     <td>
-        Defines an route with their method, path, callback function and name.
+        Defines an route with their method, path, action function and name.
     <td>
 </tr>
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/method.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Router.SetRoute(RouteMethod-string-RouterCallback).md">
-            SetRoute(RouteMethod, string, RouterCallback)
+        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Router.SetRoute(RouteMethod-string-RouteAction).md">
+            SetRoute(RouteMethod, string, RouteAction)
         </a>
     </td>
     <td>
-        Defines an route with their method, path and callback function.
+        Defines an route with their method, path and action function.
     <td>
 </tr>
     </tbody>
@@ -181,7 +181,7 @@ Represents a collection of Routes and main executor of callbacks in an <a href="
         </a>
     </td>
     <td>
-        Gets or sets the Router callback exception handler.
+        Gets or sets the Router action exception handler.
     <td>
 </tr>
 <tr>

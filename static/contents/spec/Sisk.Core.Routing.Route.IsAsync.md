@@ -21,5 +21,5 @@ Definition:
 public bool IsAsync { get; }
 ```
 
-Gets an boolean indicating if this <a href="/read?q=/contents/spec/Sisk.Core.Routing.Route.md">Route</a> callback return is an asynchronous <a href="https://learn.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task">Task</a>.
+Gets an boolean indicating if this <a href="/read?q=/contents/spec/Sisk.Core.Routing.Route.md">Route</a> action return is an asynchronous <a href="https://learn.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task">Task</a>.
 

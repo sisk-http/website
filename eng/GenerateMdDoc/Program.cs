@@ -100,7 +100,7 @@ namespace Sisk.GenerateMdDoc
                 foreach (XmlNode member in members)
                 {
                     if (
-                         member.SelectSingleNode("nodocs") != null 
+                         member.SelectSingleNode("nodocs") != null
                       || member.SelectSingleNode("nodoc") != null) continue;
 
                     string name = member.Attributes!["name"]!.Value;

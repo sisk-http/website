@@ -21,7 +21,7 @@ Definition:
 public static HttpServerHostContext CreateBuilder(Action<HttpServerHostContextBuilder> handler)
 ```
 
-Builds an <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServerHostContext.md">HttpServerHostContext</a> context invoking the handler on it.
+Builds an <a href="/read?q=/contents/spec/Sisk.Core.Http.Hosting.HttpServerHostContext.md">HttpServerHostContext</a> context invoking the handler on it.
 
 
 # Parameters

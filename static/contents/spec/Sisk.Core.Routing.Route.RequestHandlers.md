@@ -21,5 +21,5 @@ Definition:
 public IRequestHandler[]? RequestHandlers { get; set; }
 ```
 
-Gets or sets the RequestHandlers to run before the route's Callback.
+Gets or sets the RequestHandlers to run before the route's Action.
 

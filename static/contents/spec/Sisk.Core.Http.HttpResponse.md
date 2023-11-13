@@ -39,12 +39,12 @@ Represents an HTTP Response.
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/method.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.CreateRedirectResponse(RouterCallback).md">
-            CreateRedirectResponse(RouterCallback)
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.CreateRedirectResponse(RouteAction).md">
+            CreateRedirectResponse(RouteAction)
         </a>
     </td>
     <td>
-        Creates an new redirect <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.md">HttpResponse</a> which redirects to the route path defined in a callback. The provided method must have a valid RouteAttribute attribute.
+        Creates an new redirect <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.md">HttpResponse</a> which redirects to the route path defined in a action. The provided method must have a valid RouteAttribute attribute.
     <td>
 </tr>
 <tr>

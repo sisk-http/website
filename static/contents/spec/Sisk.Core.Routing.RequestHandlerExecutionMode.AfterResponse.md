@@ -15,5 +15,5 @@ edit the XML documentation present in the Sisk source code.
 Declaring type: [Sisk.Core.Routing.RequestHandlerExecutionMode](/read?q=/contents/spec/Sisk.Core.Routing.RequestHandlerExecutionMode.md) (from Sisk.Core)
 
 
-Indicates that the handler must be executed after the route callback execution.
+Indicates that the handler must be executed after the route action execution.
 

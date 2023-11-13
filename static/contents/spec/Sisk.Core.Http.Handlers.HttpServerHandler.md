@@ -72,12 +72,12 @@ Represents a handler for the <a href="/read?q=/contents/spec/Sisk.Core.Http.Http
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/method.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Http.Handlers.HttpServerHandler.OnSetupHttpServer(HttpServer).md">
-            OnSetupHttpServer(HttpServer)
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.Handlers.HttpServerHandler.OnServerStarting(HttpServer).md">
+            OnServerStarting(HttpServer)
         </a>
     </td>
     <td>
-        Method that is called before starting the <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServer.md">HttpServer</a>.
+        Method that is called immediately before starting the <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServer.md">HttpServer</a>.
     <td>
 </tr>
 <tr>

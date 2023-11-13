@@ -33,7 +33,7 @@ Represents an interface that is executed before a request.
         </a>
     </td>
     <td>
-        This method is called by the <a href="/read?q=/contents/spec/Sisk.Core.Routing.Router.md">Router</a> before executing a request when the <a href="/read?q=/contents/spec/Sisk.Core.Routing.Route.md">Route</a> instantiates an object that implements this interface. If it returns a <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.md">HttpResponse</a> object, the route callback is not called and all execution of the route is stopped. If it returns "null", the execution is continued.
+        This method is called by the <a href="/read?q=/contents/spec/Sisk.Core.Routing.Router.md">Router</a> before executing a request when the <a href="/read?q=/contents/spec/Sisk.Core.Routing.Route.md">Route</a> instantiates an object that implements this interface. If it returns a <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpResponse.md">HttpResponse</a> object, the route action is not called and all execution of the route is stopped. If it returns "null", the execution is continued.
     <td>
 </tr>
     </tbody>

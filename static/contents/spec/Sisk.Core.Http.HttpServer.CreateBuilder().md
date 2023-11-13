@@ -21,5 +21,5 @@ Definition:
 public static HttpServerHostContext CreateBuilder()
 ```
 
-Builds an empty <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServerHostContext.md">HttpServerHostContext</a> context.
+Builds an empty <a href="/read?q=/contents/spec/Sisk.Core.Http.Hosting.HttpServerHostContext.md">HttpServerHostContext</a> context.
 

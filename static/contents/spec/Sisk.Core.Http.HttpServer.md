@@ -33,7 +33,7 @@ Provides an lightweight HTTP server powered by Sisk.
         </a>
     </td>
     <td>
-        Builds an empty <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServerHostContext.md">HttpServerHostContext</a> context.
+        Builds an empty <a href="/read?q=/contents/spec/Sisk.Core.Http.Hosting.HttpServerHostContext.md">HttpServerHostContext</a> context.
     <td>
 </tr>
 <tr>
@@ -44,7 +44,7 @@ Provides an lightweight HTTP server powered by Sisk.
         </a>
     </td>
     <td>
-        Builds an <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServerHostContext.md">HttpServerHostContext</a> context invoking the handler on it.
+        Builds an <a href="/read?q=/contents/spec/Sisk.Core.Http.Hosting.HttpServerHostContext.md">HttpServerHostContext</a> context invoking the handler on it.
     <td>
 </tr>
 <tr>

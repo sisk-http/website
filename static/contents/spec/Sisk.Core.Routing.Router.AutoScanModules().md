@@ -18,8 +18,8 @@ Declaring type: [Sisk.Core.Routing.Router](/read?q=/contents/spec/Sisk.Core.Rout
 Definition:
 
 ```cs
-public void AutoScanModules<T>() where T : RouterModule
+public void AutoScanModules<TModule>() where T : RouterModule, new()
 ```
 
-Scans for all types that implements <typeparamref name="T" /> and associates an instance of each type to the router. Note that, <typeparamref name="T" /> must be an <a href="/read?q=/contents/spec/Sisk.Core.Routing.RouterModule.md">RouterModule</a> type and an accessible constructor for each type must be present.
+Scans for all types that implements <typeparamref name="TModule" /> and associates an instance of each type to the router. Note that, <typeparamref name="TModule" /> must be an <a href="/read?q=/contents/spec/Sisk.Core.Routing.RouterModule.md">RouterModule</a> type and an accessible constructor for each type must be present.
 

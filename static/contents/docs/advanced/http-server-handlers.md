@@ -147,3 +147,7 @@ public class ApiController : RouterModule
     }
 }
 ```
+
+Developers can implement sessions, contexts, and database connections using this class. The provided code showcases a practical example with the DatabaseConnectionHandler, automating database connection disposal at the end of each request.
+
+Integration is straightforward, with handlers registered during server setup. The HttpServerHandler class offers a powerful toolset for managing resources and extending Sisk behavior in HTTP applications.

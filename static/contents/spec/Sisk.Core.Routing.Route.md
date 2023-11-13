@@ -28,6 +28,17 @@ Represents an HTTP route to be matched by an <a href="/read?q=/contents/spec/Sis
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/property.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Route.Action.md">
+            Action
+        </a>
+    </td>
+    <td>
+        Gets or sets the function that is called after the route is matched with the request.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/property.svg">
         <a href="/read?q=/contents/spec/Sisk.Core.Routing.Route.BypassGlobalRequestHandlers.md">
             BypassGlobalRequestHandlers
         </a>
@@ -39,23 +50,12 @@ Represents an HTTP route to be matched by an <a href="/read?q=/contents/spec/Sis
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/property.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Route.Callback.md">
-            Callback
-        </a>
-    </td>
-    <td>
-        Gets or sets the function that is called after the route is matched with the request.
-    <td>
-</tr>
-<tr>
-    <td width="33%">
-        <img class="icon" src="/assets/img/icons/property.svg">
         <a href="/read?q=/contents/spec/Sisk.Core.Routing.Route.IsAsync.md">
             IsAsync
         </a>
     </td>
     <td>
-        Gets an boolean indicating if this <a href="/read?q=/contents/spec/Sisk.Core.Routing.Route.md">Route</a> callback return is an asynchronous <a href="https://learn.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task">Task</a>.
+        Gets an boolean indicating if this <a href="/read?q=/contents/spec/Sisk.Core.Routing.Route.md">Route</a> action return is an asynchronous <a href="https://learn.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task">Task</a>.
     <td>
 </tr>
 <tr>
@@ -110,7 +110,7 @@ Represents an HTTP route to be matched by an <a href="/read?q=/contents/spec/Sis
         </a>
     </td>
     <td>
-        Gets or sets the RequestHandlers to run before the route's Callback.
+        Gets or sets the RequestHandlers to run before the route's Action.
     <td>
 </tr>
 <tr>
@@ -154,8 +154,8 @@ Represents an HTTP route to be matched by an <a href="/read?q=/contents/spec/Sis
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/constructor.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Route.Route(RouteMethod-string-RouterCallback).md">
-            Route(RouteMethod, string, RouterCallback)
+        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Route.Route(RouteMethod-string-RouteAction).md">
+            Route(RouteMethod, string, RouteAction)
         </a>
     </td>
     <td>
@@ -165,8 +165,8 @@ Represents an HTTP route to be matched by an <a href="/read?q=/contents/spec/Sis
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/constructor.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Route.Route(RouteMethod-string-string-RouterCallback-IRequestHandler).md">
-            Route(RouteMethod, string, string, RouterCallback, IRequestHandler[])
+        <a href="/read?q=/contents/spec/Sisk.Core.Routing.Route.Route(RouteMethod-string-string-RouteAction-IRequestHandler).md">
+            Route(RouteMethod, string, string, RouteAction, IRequestHandler[])
         </a>
     </td>
     <td>

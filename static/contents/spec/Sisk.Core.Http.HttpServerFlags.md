@@ -28,6 +28,17 @@ Provides advanced fields for Sisk server behavior.
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/field.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServerFlags.AutoReadRequestStream.md">
+            AutoReadRequestStream
+        </a>
+    </td>
+    <td>
+        Determines if the request input stream should be read into an byte array after running all <a href="/read?q=/contents/spec/Sisk.Core.Routing.RequestHandlerExecutionMode.md">BeforeContents</a> request handlers.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/field.svg">
         <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServerFlags.ForceTrailingSlash.md">
             ForceTrailingSlash
         </a>

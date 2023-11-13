@@ -319,17 +319,6 @@ Represents an HTTP request received by a Sisk server.
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/method.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.GetInputStream().md">
-            GetInputStream()
-        </a>
-    </td>
-    <td>
-        Gets the HTTP request content stream. This property is only available while the content has not been imported by the HTTP server and will invalidate the body content cached in this object.
-    <td>
-</tr>
-<tr>
-    <td width="33%">
-        <img class="icon" src="/assets/img/icons/method.svg">
         <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.GetMultipartFormContent().md">
             GetMultipartFormContent()
         </a>
@@ -374,6 +363,17 @@ Represents an HTTP request received by a Sisk server.
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.GetRequestStream().md">
+            GetRequestStream()
+        </a>
+    </td>
+    <td>
+        Gets the HTTP request content stream. This property is only available while the content has not been imported by the HTTP server and will invalidate the body content cached in this object.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
         <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.GetResponseStream().md">
             GetResponseStream()
         </a>
@@ -396,8 +396,19 @@ Represents an HTTP request received by a Sisk server.
 <tr>
     <td width="33%">
         <img class="icon" src="/assets/img/icons/method.svg">
-        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.SendTo(RouterCallback).md">
-            SendTo(RouterCallback)
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.ReadRequestStreamContents().md">
+            ReadRequestStreamContents()
+        </a>
+    </td>
+    <td>
+        Reads the entire request input stream and stores it into <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.md">RawBody</a>. This method is invoked automatically when the <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpServerFlags.md">AutoReadRequestStream</a> is enabled.
+    <td>
+</tr>
+<tr>
+    <td width="33%">
+        <img class="icon" src="/assets/img/icons/method.svg">
+        <a href="/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.SendTo(RouteAction).md">
+            SendTo(RouteAction)
         </a>
     </td>
     <td>
