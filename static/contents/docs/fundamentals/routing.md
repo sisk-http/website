@@ -43,6 +43,17 @@ mainRouter.SetRoute(RouteMethod.Get, "/hey/<name>/surname/<surname>", (request) 
 
 The HTTP request [Query](/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.Query) property also stores the content of an original query, but if there are parameters in the route with the same name as a query, it will be replaced by what is in the route. The path that is matched with an request URI is always the path as explained in [RFC 3986](https://www.rfc-editor.org/rfc/rfc3986#section-3.3).
 
+You can also get an query parameter, including an route parameter, casting it to the desired type, with [GetQueryValue](/read?q=/contents/spec/Sisk.Core.Http.HttpRequest.GetQueryValue(string).md):
+
+```cs
+mainRouter.SetRoute(RouteMethod.Get, "/user/<id>", (request) =>
+{
+    Guid id = request.GetQueryValue<Guid>("id");
+});
+```
+
+Internally, the implementation of this method differs from .NET 6 to newer versions of .NET that did not yet implement `IParsable`, so to make it compatible, some converters were implemented manually. You can see the [supported types here](https://github.com/sisk-http/core/blob/main/src/Internal/Parseable.cs).
+
 > **Note:**
 >
 > Paths have their trailing `/` ignored in both request and route path, that is, if you try to access a route defined as `/index/page` you'll be able to access using `/index/page/` too.
@@ -89,6 +100,12 @@ Alternatively, you can define your members statically, without an instance, by p
 
 ```cs
 mainRouter.SetObject(typeof(MyController));
+```
+
+Since Sisk version 0.16, it is possible to enable AutoScan, which will search for user-defined classes that implement `RouterModule` and will automatically associate it with the router. This method is experimental and is not supported by Native AOT.
+
+```cs
+mainRouter.AutoScanModules<ApiController>();
 ```
 
 # Regex routes
@@ -165,6 +182,8 @@ mainRouter.MethodNotAllowedErrorHandler = () =>
 # Internal error handler
 
 Route callbacks can throw errors during server execution. If not handled correctly, the overall functioning of the HTTP server can be terminated. The router has a callback for when a route callback fails and prevents service interruption.
+
+This method is only reacheable when [ThrowExceptions](/read?q=/contents/spec/Sisk.Core.Http.HttpServerConfiguration.ThrowExceptions.md) is false.
 
 ```cs
 mainRouter.CallbackErrorHandler = (ex, req) =>

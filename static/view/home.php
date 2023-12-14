@@ -51,7 +51,7 @@
             </code></pre>
             <div>
                 <h1>
-                    Robustness hidden in its simplicity
+                    Robustness hidden in it's simplicity
                 </h1>
                 <p>
                     Sisk allows you to create quick or

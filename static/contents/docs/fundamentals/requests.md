@@ -211,6 +211,25 @@ public class MyController
 }
 ```
 
+You can also use the `GetContextBag()` and `SetContextBag()` helper methods to get or set objects by their type.
+
+```cs
+public class Authenticate : RequestHandler
+{
+    public override HttpResponse? Execute(HttpRequest request, HttpContext context)
+    {
+        request.SetContextBag<User>(authUser);
+    }
+}
+
+[RouteGet("/")]
+[RequestHandler<Authenticate>]
+public static HttpResponse Test(HttpRequest request)
+{
+    var user = request.GetContextBag<User>();
+}
+```
+
 # Getting form data
 
 You can get the values of a form data in an [NameValueCollection](https://learn.microsoft.com/pt-br/dotnet/api/system.collections.specialized.namevaluecollection) with the example below:

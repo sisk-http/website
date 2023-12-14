@@ -337,8 +337,8 @@ You can format your log file by the format described by the table:
 # Rotating logs
 
 > **Tip:**
-> 
-> This function is only available with the Sisk.ServiceProvider package.
+>
+> In Sisk 0.15 and older, this function is only available with the Sisk.ServiceProvider package. In Sisk 0.16 and above, this function is implemented on it's core package.
 
 You can configure the HTTP server to rotate the log files to a compressed .gz file when they reach a certain size. The size is checked periodically by the limiar you define.
 

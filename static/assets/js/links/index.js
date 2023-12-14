@@ -12,10 +12,6 @@ export const docsIndex = [
         href: "/contents/docs/installing.md"
     },
     {
-        title: "Overview",
-        href: "/contents/docs/overview.md"
-    },
-    {
         title: "Native AOT Support",
         href: "/contents/docs/native-aot.md"
     },

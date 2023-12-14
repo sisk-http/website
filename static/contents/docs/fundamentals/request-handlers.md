@@ -139,6 +139,18 @@ static HttpResponse Index(HttpRequest request)
 }
 ```
 
+Since .NET 8 and Sisk 0.16, you can also use generic types to bind request handlers to your routes using attributes:
+
+```cs
+[RequestHandler<AuthenticateUserRequestHandler>]
+static HttpResponse Index(HttpRequest request)
+{
+    HttpResponse res = new HttpResponse();
+    res.Content = new StringContent("Hello world!");
+    return res;
+}
+```
+
 # Bypassing an global request handler
 
 After defining a global request handler on a route, you can ignore this request handler on specific routes.
@@ -161,5 +173,5 @@ mainRouter.SetRoute(new Route(RouteMethod.Get, "/", "My route", IndexPage, null)
 ```
 
 > **Note:**
-> 
+>
 > If you're bypassing a request handler you must use the same reference of what you instanced before to skip. Creating another request handler instance will not skip the global request handler since it's reference will change. Remember to use the same request handler reference used in both GlobalRequestHandlers and BypassGlobalRequestHandlers.
