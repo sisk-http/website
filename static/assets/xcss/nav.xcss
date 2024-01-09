@@ -121,7 +121,7 @@ header {
         }
 
         .nav-links {
-            margin-left: 20px;
+            margin-left: auto;
             display: flex;
             align-items: center;
             transition: .3s cubic-bezier(0.075, 0.82, 0.165, 1);

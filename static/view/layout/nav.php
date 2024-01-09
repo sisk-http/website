@@ -16,13 +16,6 @@ function nav_active($name)
                 Sisk Framework
             </h1>
         </a>
-        <div class="search-box">
-            <div class="placeholder">
-                <i class="las la-search"></i>
-                Press <kbd>/</kbd> to search
-            </div>
-            <input type="text" id="searchInput" oninput="doSearch()">
-        </div>
         <label for="navVisible" class="nav-toggle">
             <i class="las la-bars"></i>
         </label>
@@ -31,11 +24,8 @@ function nav_active($name)
             <a <?= $_SERVER['REQUEST_URI'] == "/" ? "nav-active" : "" ?> href="/">
                 Home
             </a>
-            <a <?= nav_active('contents/docs') ?> href="/read?q=/contents/docs/welcome.md">
-                Getting Started
-            </a>
-            <a <?= nav_active('contents/spec') ?> href="/read?q=/contents/spec/index.md">
-                Specification
+            <a target="_blank" href="https://md.proj.pw/sisk-http/docs-v2/main">
+                Get Started
             </a>
             <a <?= nav_active('license') ?> href="/license">
                 License

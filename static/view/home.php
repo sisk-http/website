@@ -16,7 +16,7 @@
                     Sisk is an lightweight web framework designed for fast and robust development, which
                     allows you to take the full control of what you want to do.
                 </p>
-                <a class="button" href="/read?q=/contents/docs/welcome.md">
+                <a class="button" href="https://md.proj.pw/sisk-http/docs-v2/main" target="_blank">
                     Get started
                 </a>
                 <a class="button alt" href="https://github.com/sisk-http">
@@ -166,7 +166,7 @@
             </div>
         </section>
         <section id="links-banner">
-            <a href="/read?q=/contents/docs/welcome.md">
+            <a target="_blank" href="https://md.proj.pw/sisk-http/docs-v2/main">
                 <i class="las la-play"></i>
                 <div>
                     Start using Sisk
