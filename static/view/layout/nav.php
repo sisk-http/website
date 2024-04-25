@@ -24,7 +24,7 @@ function nav_active($name)
             <a <?= $_SERVER['REQUEST_URI'] == "/" ? "nav-active" : "" ?> href="/">
                 Home
             </a>
-            <a target="_blank" href="https://md.proj.pw/sisk-http/docs-v2/main">
+            <a target="_blank" href="https://docs.sisk-framework.org/">
                 Get Started
             </a>
             <a <?= nav_active('license') ?> href="/license">
@@ -36,4 +36,3 @@ function nav_active($name)
         </div>
     </div>
 </header>
-<div id="searchResults" onfocusout="closeSearchBox()"></div>
