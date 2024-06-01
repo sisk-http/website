@@ -35,10 +35,10 @@ html,
 body {
     width: 100%;
     font-family: --font-family;
-    font-size: 16px;
+    font-size: 14px;
     scroll-behavior: smooth;
     margin: 0;
-    background-color: #fff;
+    background-color: rgb(248, 249, 250);
     color: --foreground-100;
 }
 
@@ -124,7 +124,7 @@ main {
 
 .container {
     width: 100%;
-    max-width: 1900px;
+    max-width: 1350px;
     margin-inline: auto;
     padding-inline: 15px;
 

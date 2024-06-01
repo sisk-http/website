@@ -1,6 +1,9 @@
 {
     "pretty": false,
-    "outputFile": "./dist/app.css",
+    "outputFile": "./dist/assets/app.css",
+    "inputDirectories": [
+        "src/"
+    ],
     "converters": [
         {
             "matchProperty": "$size",

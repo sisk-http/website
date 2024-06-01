@@ -1,10 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<?= render_view('layout.head') ?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sisk - Lightweight .NET Web Framework</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=REM:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="shortcut icon" href="/assets/img/Icon.png">
+    
+    <link href="/assets/app.css?__nocache=665a99c57407f" rel="stylesheet">
+    <script src="/assets/prism.js?__nocache=665a99c57407f"></script>
+</head>
 <body>
-    <?= render_view('layout.nav') ?>
-    <main class="container lp-wrapper">
+    
+<header>
+    <div class="container contents">
+        <a href="/" class="logo">
+            <img src="/assets/img/Icon.png" alt="">
+            <h1>
+                Sisk Framework
+            </h1>
+        </a>
+        <label for="navVisible" class="nav-toggle">
+            <i class="las la-bars"></i>
+        </label>
+        <div class="nav-links">
+            <input type="checkbox" id="navVisible">
+            <a nav-active href="/">
+                Home
+            </a>
+            <a target="_blank" href="https://docs.sisk-framework.org/">
+                Get Started
+            </a>
+            <a  href="/license">
+                License
+            </a>
+            <a href="https://github.com/sisk-http">
+                <i class="lab la-github"></i>
+            </a>
+        </div>
+    </div>
+</header>    <main class="container lp-wrapper">
         <section id="principal">
             <div>
                 <h1>
@@ -16,7 +55,7 @@
                     Sisk is an lightweight web framework designed for fast and robust development, which
                     allows you to take the full control of what you want to do.
                 </p>
-                <a class="button" href="https://md.proj.pw/sisk-http/docs-v2/main" target="_blank">
+                <a class="button" href="https://docs.sisk-framework.org/" target="_blank">
                     Get started
                 </a>
                 <a class="button alt" href="https://github.com/sisk-http">
@@ -34,10 +73,10 @@
                 {
                     static void Main(string[] args)
                     {
-                        var app = HttpServer.CreateBuilder(host =>
+                        using var app = HttpServer.CreateBuilder(host =>
                         {
                             host.UseListeningPort("http://localhost:5000/");
-                        });
+                        }).Build();
 
                         app.Router.SetRoute(RouteMethod.Get, "/", request =>
                         {
@@ -166,7 +205,7 @@
             </div>
         </section>
         <section id="links-banner">
-            <a target="_blank" href="https://md.proj.pw/sisk-http/docs-v2/main">
+            <a target="_blank" href="https://docs.sisk-framework.org/">
                 <i class="las la-play"></i>
                 <div>
                     Start using Sisk
@@ -195,7 +234,27 @@
             </a>
         </section>
     </main>
-    <?= render_view('layout.footer') ?>
-</body>
+    <div id="footer" class="container">
+    <div class="legal">
+        <h1>
+            Sisk web framework
+        </h1>
+        <p>
+            Sisk was built to change the way of developing HTTP servers and handing development
+            control to the developer. Sisk is a free, open source project created
+            and maintained by <a href="https://www.project-principium.dev/">Project Principium</a>.
+        </p>
+        <p>
+            Sisk is distributed under <a href="/license">The MIT License</a>.
+        </p>
+        <div>
+            <small>
+                Copyright 2022 Project Principium/CypherPotato. Some
+                icons is provided by <a href="https://icons8.com/icons">Icons8</a> and <a href="https://icons8.com/line-awesome">Line Awesome</a>.
+            </small>
+        </div>
+    </div>
+    <img src="/assets/img/no-bg-ico.png" alt="">
+</div></body>
 
 </html>
