@@ -4,9 +4,9 @@ header {
     left: 50%;
     height: --header-height;
     width: 100%;
-    background-color: #ffffffbb;
+    background-color: #ffffffdd;
     border-bottom: 1px solid #00000022;
-    z-index: 10;
+    z-index: 100;
     backdrop-filter: saturate(1.5) brightness(4) blur(50px);
     transform: translateX(-50%);
 

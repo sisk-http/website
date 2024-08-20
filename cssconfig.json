@@ -1,8 +1,8 @@
 {
     "pretty": false,
-    "outputFile": "./dist/assets/app.css",
+    "outputFile": "assets/app.css",
     "inputDirectories": [
-        "src/"
+        "styles/"
     ],
     "converters": [
         {

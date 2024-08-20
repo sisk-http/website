@@ -1,7 +1,7 @@
 :root {
     --primary-100: #052283;
     --primary-200: #072dac;
-    --primary-300: #d0d9f5;
+    --primary-300: #e7edff;
 
     --bg-100: #fff;
     --bg-200: #f5f7fa;
@@ -35,43 +35,16 @@ html,
 body {
     width: 100%;
     font-family: --font-family;
-    font-size: 14px;
+    font-size: 16px;
     scroll-behavior: smooth;
     margin: 0;
-    background-color: rgb(248, 249, 250);
+    background-color: #fff;
     color: --foreground-100;
 }
 
 main {
     & :not(.doc-reader) {
         margin-top: --container-top;
-    }
-
-    .button {
-        display: inline-block;
-        text-decoration: none;
-        padding: 8px 22px;
-        border-radius: 4px;
-        background-color: --primary-100;
-        color: white;
-        text-decoration: none;
-
-        &:hover {
-            background-color: --primary-200;
-        }
-
-        &:active {
-            opacity: --active-opacity;
-        }
-
-        &.alt {
-            background-color: transparent;
-            color: --primary-100;
-
-            &:hover {
-                background-color: --primary-300;
-            }
-        }
     }
 
     & .doc-reader {
@@ -129,7 +102,7 @@ main {
     padding-inline: 15px;
 
     @media desktop {
-        max-width: 1700px;
+        max-width: 1500px;
     }
 
     @media tablet {

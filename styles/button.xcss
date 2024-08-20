@@ -1,11 +1,14 @@
 .button {
     display: inline-block;
     text-decoration: none;
-    padding: 8px 22px;
+    padding: 12px 26px;
     border-radius: 4px;
     background-color: --primary-100;
     color: white;
     text-decoration: none;
+    font-family: --font-family;
+    font-weight: 500;
+    transition: .3s cubic-bezier(0.075, 0.82, 0.165, 1);
 
     & :hover {
         background-color: --primary-200;
@@ -20,7 +23,16 @@
         color: --primary-100;
 
         & :hover {
-            background-color: rgba(--primary-100, .1);
+            background-color: --primary-300;
+        }
+    }
+
+    & .featured {
+        background: linear-gradient(.4turn, #9b65fe, #4109ff);
+        background-size: 100%;
+
+        & :hover {
+            background-size: 180%;
         }
     }
 

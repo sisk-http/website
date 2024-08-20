@@ -8,7 +8,6 @@ You can visit the Sisk website from [this link](https://sisk.proj.pw/) and the d
 
 To build this website, you will need to have installed:
 
-- PHP 7.4+
 - Node.js v17+
 - [Cascadium](https://github.com/CypherPotato/cascadium)
 - An Node package manager, like [pnpm](https://pnpm.io/pt/).
@@ -25,10 +24,4 @@ To build this website, you will need to have installed:
 
     ```
     pnpm install
-    ```
-
-3. Build the website with:
-
-    ```
-    pnpm build
     ```
