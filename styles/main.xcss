@@ -16,7 +16,7 @@
     --screen-sm: 700px;
     --screen-md: 1300px;
     --screen-lg: 1900px;
-
+    
     --active-opacity: .6;
     --hover-opacity: .75;
 

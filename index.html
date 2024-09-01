@@ -50,7 +50,7 @@
                         Predictable.
                     </h1>
                     <p>
-                        Sisk is an lightweight web framework designed for fast and robust development, which
+                        Sisk is a lightweight web framework designed for fast and robust development, which
                         allows you to take the full control of what you want to do.
                     </p>
                     <a class="button featured" href="https://docs.sisk-framework.org/" target="_blank">
@@ -71,16 +71,15 @@
                 {
                     static void Main(string[] args)
                     {
-                        using var app = HttpServer.CreateBuilder(host =>
-                        {
-                            host.UseListeningPort("http://localhost:5000/");
-                        }).Build();
-
-                        app.Router.MapGet("/", request =>
-                        {
-                            return new HttpResponse(200)
-                                .WithContent("Hello, world!");
-                        });
+                        using var app = HttpServer.CreateBuilder(port: 5555)
+                            .UseRouter(r =>
+                            {
+                                r.MapGet("/", request =>
+                                {
+                                    return new HttpResponse("Hello, world!");
+                                });
+                            })
+                            .Build();
 
                         app.Start();
                     }
@@ -88,11 +87,11 @@
             </code></pre>
                 <div>
                     <h1>
-                        Robustness hidden in it's simplicity
+                        Robustness hidden in its simplicity.
                     </h1>
                     <p>
                         Sisk allows you to create quick or
-                        large projects with as less code
+                        large projects with as little code
                         as possible, quickly, focused on
                         enabling development your way.
                     </p>
@@ -157,24 +156,24 @@
                         Simple and robust development.
                     </h1>
                     <p>
-                        Sisk can do web development the way you want. Create MVC, MVVC, SOLID applications, or
+                        Sisk enables web development the way you want. Create MVC, MVVM, SOLID applications, or
                         any other design pattern you're interested in.
                     </p>
                     <ul>
                         <li>
                             <b>Lightweight:</b> robust projects tested in small, low-cost, low-performance
-                            environments and got good results. The entire Sisk ecosystem is less than
-                            500kb in size!
+                            environments with good, stable results. The entire Sisk ecosystem is less than
+                            500 KB in size!
                         </li>
                         <li>
                             <b>Open-source:</b> the entire Sisk ecosystem is open source, and all the libraries
-                            and technologies we use must be open source as well. Sisk is entirely distributed
-                            under the MIT License, which allows the commercial development.
+                            and technologies we use are also open source. Sisk is entirely distributed
+                            under the MIT License, which allows commercial development.
                         </li>
                         <li>
                             <b>Sustainable:</b> you are the one who makes the project, Sisk gives you the
                             tools. Because it is open source, the community (including you) can maintain,
-                            fix bugs and improve Sisk over time.
+                            fix bugs, and improve Sisk over time.
                         </li>
                     </ul>
                 </div>
@@ -190,7 +189,7 @@
                 <img src="/assets/img/storyset/dotnet-amico.png" alt="">
                 <div>
                     <h1>
-                        A single development for everything .NET provides.
+                        A single development environment for everything .NET provides.
                     </h1>
                     <p>
                         Get all the firepower of .NET in your project, and export the same code to Windows, Linux or Mac.
@@ -198,7 +197,7 @@
                     <p>
                         The world's leading organizations are powered by .NET and trust Microsoft to make .NET the industry's
                         best choice for their mission-critical software. Sisk is very inspired by .NET development methodologies,
-                        making him feel at home when working with the framework.
+                        making it feel familiar when working with the framework.
                     </p>
                 </div>
             </section>
@@ -209,7 +208,7 @@
                         Start using Sisk
                     </div>
                     <p>
-                        Read our documentation that has been prepared to get you started with Sisk today.
+                        Read our documentation, prepared to get you started with Sisk today.
                     </p>
                 </a>
                 <a href="https://github.com/sisk-http">
@@ -218,7 +217,7 @@
                         Fork Sisk
                     </div>
                     <p>
-                        Collaborate, edit, build, access our code repository.
+                        Collaborate, edit, build and access our code repository.
                     </p>
                 </a>
                 <a href="https://www.nuget.org/packages/Sisk.HttpServer/">
@@ -227,7 +226,7 @@
                         Install Sisk
                     </div>
                     <p>
-                        Access the Nuget repository to find details on how to get started with Sisk.
+                        Visit the NuGet repository
                     </p>
                 </a>
             </section>
