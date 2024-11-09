@@ -67,26 +67,25 @@
             </section>
             <section id="first-alternative">
                 <pre><code class="lang-csharp">
-                using Sisk.Core.Http;
-                using Sisk.Core.Routing;
+                    using Sisk.Core.Http;
 
-                class Program
-                {
-                    static void Main(string[] args)
+                    class Program
                     {
-                        using var app = HttpServer.CreateBuilder(port: 5555)
-                            .UseRouter(r =>
-                            {
-                                r.MapGet("/", request =>
+                        static void Main(string[] args)
+                        {
+                            using var app = HttpServer.CreateBuilder(port: 5555)
+                                .UseRouter(r =>
                                 {
-                                    return new HttpResponse("Hello, world!");
-                                });
-                            })
-                            .Build();
-
-                        app.Start();
+                                    r.MapGet("/", (HttpRequest request) =>
+                                    {
+                                        return new HttpResponse("Hello, world!");
+                                    });
+                                })
+                                .Build();
+                    
+                            app.Start();
+                        }
                     }
-                }
             </code></pre>
                 <div>
                     <h1>
